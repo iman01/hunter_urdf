@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!-- Shared materials and inertia helpers for the HUNTeR replica. -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ===================================================== materials -->
+  <!-- Polish Army green (approx. RAL 6031 / "khaki-green" field finish). -->
+  <material name="hunter_green"><color rgba="0.247 0.290 0.180 1.0"/></material>
+  <material name="hunter_green_dark"><color rgba="0.180 0.212 0.137 1.0"/></material>
+  <material name="tyre_black"><color rgba="0.055 0.055 0.055 1.0"/></material>
+  <material name="rim_dark"><color rgba="0.200 0.220 0.170 1.0"/></material>
+  <material name="steel"><color rgba="0.420 0.430 0.440 1.0"/></material>
+  <material name="steel_dark"><color rgba="0.250 0.255 0.260 1.0"/></material>
+  <material name="chrome"><color rgba="0.780 0.790 0.800 1.0"/></material>
+  <material name="spring_red"><color rgba="0.600 0.110 0.090 1.0"/></material>
+  <material name="sensor_black"><color rgba="0.090 0.090 0.100 1.0"/></material>
+  <material name="sensor_grey"><color rgba="0.550 0.560 0.570 1.0"/></material>
+  <material name="glass"><color rgba="0.080 0.120 0.180 1.0"/></material>
+  <material name="lamp_white"><color rgba="0.950 0.950 0.900 1.0"/></material>
+  <material name="lamp_amber"><color rgba="1.000 0.550 0.050 1.0"/></material>
+  <material name="lamp_red"><color rgba="0.800 0.050 0.050 1.0"/></material>
+  <material name="pad_grey"><color rgba="0.330 0.340 0.330 1.0"/></material>
+
+  <!-- ====================================================== inertia -->
+  <xacro:macro name="inertial_box" params="mass x y z *origin">
+    <inertial>
+      <xacro:insert_block name="origin"/>
+      <mass value="${mass}"/>
+      <inertia ixx="${mass * (y*y + z*z) / 12.0}" ixy="0" ixz="0"
+               iyy="${mass * (x*x + z*z) / 12.0}" iyz="0"
+               izz="${mass * (x*x + y*y) / 12.0}"/>
+    </inertial>
+  </xacro:macro>
+
+  <!-- Solid cylinder with its axis along the local Y axis (wheels, hubs). -->
+  <xacro:macro name="inertial_cylinder_y" params="mass radius length *origin">
+    <inertial>
+      <xacro:insert_block name="origin"/>
+      <mass value="${mass}"/>
+      <inertia ixx="${mass * (3*radius*radius + length*length) / 12.0}" ixy="0" ixz="0"
+               iyy="${mass * radius*radius / 2.0}" iyz="0"
+               izz="${mass * (3*radius*radius + length*length) / 12.0}"/>
+    </inertial>
+  </xacro:macro>
+
+  <!-- Explicit inertia tensor (used for components whose tensor is
+       computed by tools/derive_parameters.py). -->
+  <xacro:macro name="inertial_tensor" params="mass xyz ixx iyy izz ixy:=0 ixz:=0 iyz:=0">
+    <inertial>
+      <origin xyz="${xyz}" rpy="0 0 0"/>
+      <mass value="${mass}"/>
+      <inertia ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}"/>
+    </inertial>
+  </xacro:macro>
+
+  <!-- Small, massless-looking link for frames and visual-only parts.
+       Gazebo needs a non-zero mass on every non-fixed child, so keep it tiny. -->
+  <xacro:macro name="inertial_tiny">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.05"/>
+      <inertia ixx="1e-5" ixy="0" ixz="0" iyy="1e-5" iyz="0" izz="1e-5"/>
+    </inertial>
+  </xacro:macro>
+
+  <!-- Mesh helper: all visual meshes are authored in metres, Z up, X forward. -->
+  <xacro:macro name="mesh_visual" params="file material xyz:='0 0 0' rpy:='0 0 0' scale:='1 1 1' name:=''">
+    <visual name="${name}">
+      <origin xyz="${xyz}" rpy="${rpy}"/>
+      <geometry><mesh filename="package://hunter_description/meshes/visual/${file}" scale="${scale}"/></geometry>
+      <material name="${material}"/>
+    </visual>
+  </xacro:macro>
+
+</robot>

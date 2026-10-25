@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!-- Gazebo (gz sim Harmonic) integration: ros2_control plugin and
+     ground-truth odometry. Sensor plugins live in sensors.xacro. -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="hunter_gazebo" params="controllers_file">
+    <gazebo>
+      <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+        <parameters>${controllers_file}</parameters>
+      </plugin>
+
+      <!-- Ground truth pose/twist of base_link, bridged to /ground_truth/odom. -->
+      <plugin filename="gz-sim-odometry-publisher-system" name="gz::sim::systems::OdometryPublisher">
+        <odom_frame>odom_ground_truth</odom_frame>
+        <robot_base_frame>base_footprint</robot_base_frame>
+        <odom_topic>ground_truth/odom</odom_topic>
+        <tf_topic>ground_truth/tf</tf_topic>
+        <dimensions>3</dimensions>
+        <odom_publish_frequency>50</odom_publish_frequency>
+      </plugin>
+    </gazebo>
+  </xacro:macro>
+
+</robot>

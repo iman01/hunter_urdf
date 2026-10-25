@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<!-- ros2_control interfaces of the HUNTeR replica.
+     Steering knuckles: position command (one electric steering actuator per
+     axle drives both knuckles through the tie rod; the 4WS controller sends
+     the linkage-consistent left/right pair).
+     Wheels: velocity command (axle traction motors + differentials; the
+     controller emulates the electronic / locked differential).
+     Suspension: passive, state interfaces only. -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="hunter_ros2_control" params="sim_mode">
+    <xacro:property name="steer_limit" value="${radians(V.steering.max_angle_deg)}"/>
+    <xacro:property name="wheel_vmax" value="${V.drive.wheel_max_speed}"/>
+
+    <ros2_control name="HunterSystem" type="system">
+      <hardware>
+        <xacro:if value="${sim_mode == 'gz'}">
+          <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+          <!-- P gain turning knuckle position commands into joint velocity commands. -->
+          <param name="position_proportional_gain">${V.steering.sim_position_gain}</param>
+        </xacro:if>
+        <xacro:if value="${sim_mode == 'mock'}">
+          <plugin>mock_components/GenericSystem</plugin>
+          <param name="calculate_dynamics">true</param>
+        </xacro:if>
+        <xacro:if value="${sim_mode == 'hardware'}">
+          <!-- Placeholder: replace with the vehicle's CAN/EtherCAT hardware interface. -->
+          <plugin>mock_components/GenericSystem</plugin>
+        </xacro:if>
+      </hardware>
+
+      <xacro:macro name="steer_iface" params="name">
+        <joint name="${name}_steer_joint">
+          <command_interface name="position">
+            <param name="min">${-steer_limit}</param>
+            <param name="max">${steer_limit}</param>
+          </command_interface>
+          <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+          <state_interface name="velocity"/>
+        </joint>
+      </xacro:macro>
+      <xacro:macro name="wheel_iface" params="name">
+        <joint name="${name}_wheel_joint">
+          <command_interface name="velocity">
+            <param name="min">${-wheel_vmax}</param>
+            <param name="max">${wheel_vmax}</param>
+          </command_interface>
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+        </joint>
+      </xacro:macro>
+      <xacro:macro name="position_iface" params="name lo hi">
+        <joint name="${name}">
+          <command_interface name="position">
+            <param name="min">${lo}</param>
+            <param name="max">${hi}</param>
+          </command_interface>
+          <state_interface name="position"><param name="initial_value">0.0</param></state_interface>
+          <state_interface name="velocity"/>
+        </joint>
+      </xacro:macro>
+      <xacro:macro name="passive_iface" params="name">
+        <joint name="${name}">
+          <state_interface name="position"/>
+          <state_interface name="velocity"/>
+        </joint>
+      </xacro:macro>
+
+      <xacro:steer_iface name="front_left"/>
+      <xacro:steer_iface name="front_right"/>
+      <xacro:steer_iface name="rear_left"/>
+      <xacro:steer_iface name="rear_right"/>
+      <xacro:wheel_iface name="front_left"/>
+      <xacro:wheel_iface name="front_right"/>
+      <xacro:wheel_iface name="rear_left"/>
+      <xacro:wheel_iface name="rear_right"/>
+      <xacro:passive_iface name="front_axle_heave_joint"/>
+      <xacro:passive_iface name="front_axle_roll_joint"/>
+      <xacro:passive_iface name="rear_axle_heave_joint"/>
+      <xacro:passive_iface name="rear_axle_roll_joint"/>
+      <xacro:if value="${has_ptz}">
+        <xacro:position_iface name="ptz_pan_joint" lo="${-1e9}" hi="${1e9}"/>
+        <xacro:position_iface name="ptz_tilt_joint" lo="${-radians(V.ptz.tilt_max_deg)}" hi="${-radians(V.ptz.tilt_min_deg)}"/>
+      </xacro:if>
+      <xacro:if value="${payload == 'rws'}">
+        <xacro:position_iface name="rws_yaw_joint" lo="${-1e9}" hi="${1e9}"/>
+        <xacro:position_iface name="rws_pitch_joint" lo="${radians(V.payloads.rws.pitch_min_deg)}" hi="${radians(V.payloads.rws.pitch_max_deg)}"/>
+      </xacro:if>
+    </ros2_control>
+  </xacro:macro>
+
+</robot>

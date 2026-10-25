@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>HUNTeR render</title>
+<style>html,body{margin:0;background:#c9d3dc;overflow:hidden}</style>
+<script type="importmap">
+{ "imports": {
+    "three": "/node_modules/three/build/three.module.js",
+    "three/examples/jsm/": "/node_modules/three/examples/jsm/",
+    "urdf-loader": "/node_modules/urdf-loader/src/URDFLoader.js"
+} }
+</script>
+</head>
+<body>
+<script type="module">
+// Offline renderer used by tools/render/render.mjs: loads /robot.urdf with
+// meshes under /hunter_description, applies ?joints=name:value,... and frames
+// the camera from ?view=<az>,<el>,<dist>,<tx>,<ty>,<tz> (Z-up robot frame).
+import * as THREE from 'three';
+import URDFLoader from 'urdf-loader';
+
+const q = new URLSearchParams(location.search);
+const W = +(q.get('w') || 1600), H = +(q.get('h') || 1000);
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setSize(W, H);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xc9d3dc);
+scene.fog = new THREE.Fog(0xc9d3dc, 25, 60);
+const world = new THREE.Group();           // Z-up world
+world.rotation.x = -Math.PI / 2;
+scene.add(world);
+
+scene.add(new THREE.HemisphereLight(0xe8eef5, 0x5a5440, 1.4));
+const sun = new THREE.DirectionalLight(0xffffff, 2.2);
+sun.position.set(-6, 12, 8);
+sun.castShadow = true;
+sun.shadow.mapSize.set(4096, 4096);
+Object.assign(sun.shadow.camera, { left: -6, right: 6, top: 6, bottom: -6, near: 1, far: 40 });
+scene.add(sun);
+
+const showGround = q.get('ground') !== '0';
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(200, 200),
+  new THREE.MeshStandardMaterial({ color: 0x8a8467, roughness: 0.95 }));
+ground.receiveShadow = true;
+if (showGround) world.add(ground);
+if (showGround && q.get('grid') !== '0') {
+  const grid = new THREE.GridHelper(40, 40, 0x6d6850, 0x7a7459);
+  grid.rotation.x = Math.PI / 2; grid.position.z = 0.002; world.add(grid);
+}
+
+const loader = new URDFLoader();
+loader.packages = { hunter_description: '/hunter_description' };
+const hide = (q.get('hide') || '').split(',').filter(Boolean);
+loader.loadMeshCb = (path, manager, done) => {
+  if (hide.some(h => path.includes(h))) { done(new THREE.Object3D()); return; }
+  import('three/examples/jsm/loaders/STLLoader.js').then(({ STLLoader }) => {
+    new STLLoader(manager).load(path, geom => {
+      geom.computeVertexNormals();
+      const m = new THREE.Mesh(geom, new THREE.MeshStandardMaterial());
+      m.castShadow = true; m.receiveShadow = true;
+      done(m);
+    }, undefined, err => done(null, err));
+  });
+};
+
+loader.load('/robot.urdf', robot => {
+  // Physically based look per URDF material colour.
+  robot.traverse(o => {
+    if (o.isMesh) {
+      const c = o.material.color ? o.material.color.clone() : new THREE.Color(0x777777);
+      const metal = (c.r + c.g + c.b) / 3 > 0.35 && Math.abs(c.r - c.g) < 0.05 ? 0.6 : 0.1;
+      o.material = new THREE.MeshStandardMaterial({ color: c, roughness: 0.75, metalness: metal });
+      o.castShadow = true; o.receiveShadow = true;
+    }
+  });
+  world.add(robot);
+  for (const kv of (q.get('joints') || '').split(',').filter(Boolean)) {
+    const [n, v] = kv.split(':');
+    if (robot.joints[n]) robot.joints[n].setJointValue(parseFloat(v));
+  }
+  const z0 = parseFloat(q.get('z') || '0');
+  robot.position.z = z0;
+  const [az, el, dist, tx, ty, tz] = (q.get('view') || '35,20,9,0,0,1').split(',').map(Number);
+  const cam = new THREE.PerspectiveCamera(+(q.get('fov') || 30), W / H, 0.05, 200);
+  const a = THREE.MathUtils.degToRad(az), e = THREE.MathUtils.degToRad(el);
+  // Z-up target -> Y-up scene coordinates
+  const target = new THREE.Vector3(tx, tz, -ty);
+  cam.position.set(target.x + dist * Math.cos(e) * Math.cos(a), target.y + dist * Math.sin(e),
+                   target.z - dist * Math.cos(e) * Math.sin(a));
+  cam.lookAt(target);
+  const draw = () => { renderer.render(scene, cam); };
+  setTimeout(() => { draw(); window.__ready = true; }, 300);
+}, undefined, err => { document.title = 'ERROR ' + err; window.__ready = true; });
+</script>
+</body>
+</html>

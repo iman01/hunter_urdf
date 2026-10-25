@@ -1,0 +1,293 @@
+<?xml version="1.0"?>
+<!-- Sensor suite of the HUNTeR replica, generated from vehicle.yaml.
+
+     Published layout (see docs/DESIGN_REPORT.md):
+       2020 prototype: GPS, two lidars, 9 HD cameras = PTZ + 4 hull/side
+                       navigation cameras + 4 drive-assist cameras
+                       (front/rear driving + 2 top-view cameras on the railing)
+       2023+ armed:    2 driving + 4 perimeter cameras, RWS optics act as PTZ,
+                       stereovision cameras and extra lidars (2024)
+     Positions are reconstructions (no drawings are public).
+
+     Every camera has a <name>_optical_frame (z forward, x right, y down) used as
+     the frame_id of its images. -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ============================================================ shared -->
+  <xacro:macro name="optical_frame" params="name">
+    <link name="${name}_optical_frame"/>
+    <joint name="${name}_optical_joint" type="fixed">
+      <parent link="${name}_link"/>
+      <child link="${name}_optical_frame"/>
+      <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+    </joint>
+  </xacro:macro>
+
+  <xacro:macro name="gz_camera" params="name hfov width height rate far:=300.0">
+    <gazebo reference="${name}_link">
+      <sensor name="${name}" type="camera">
+        <always_on>true</always_on>
+        <update_rate>${rate}</update_rate>
+        <visualize>false</visualize>
+        <topic>${name}/image_raw</topic>
+        <gz_frame_id>${name}_optical_frame</gz_frame_id>
+        <camera>
+          <camera_info_topic>${name}/camera_info</camera_info_topic>
+          <horizontal_fov>${radians(hfov)}</horizontal_fov>
+          <image><width>${width}</width><height>${height}</height><format>R8G8B8</format></image>
+          <clip><near>0.05</near><far>${far}</far></clip>
+          <noise><type>gaussian</type><mean>0.0</mean><stddev>0.005</stddev></noise>
+        </camera>
+      </sensor>
+    </gazebo>
+  </xacro:macro>
+
+  <!-- ============================================================ lidar -->
+  <xacro:macro name="hunter_lidar" params="s">
+    <link name="${s['name']}_link">
+      <xacro:inertial_box mass="0.45" x="0.087" y="0.087" z="0.074"><origin xyz="0 0 0.037"/></xacro:inertial_box>
+      <xacro:if value="${visual_detail == 'mesh'}">
+        <xacro:mesh_visual file="lidar.stl" material="sensor_black"/>
+      </xacro:if>
+      <xacro:unless value="${visual_detail == 'mesh'}">
+        <visual><origin xyz="0 0 0.037"/><geometry><cylinder radius="0.0435" length="0.0735"/></geometry>
+          <material name="sensor_black"/></visual>
+      </xacro:unless>
+    </link>
+    <joint name="${s['name']}_joint" type="fixed">
+      <parent link="base_link"/>
+      <child link="${s['name']}_link"/>
+      <origin xyz="${s['xyz'][0]} ${s['xyz'][1]} ${s['xyz'][2]}" rpy="${s['rpy'][0]} ${s['rpy'][1]} ${s['rpy'][2]}"/>
+    </joint>
+    <!-- Measurement origin at the optical centre, 36 mm above the base. -->
+    <link name="${s['name']}_sensor_frame"/>
+    <joint name="${s['name']}_sensor_joint" type="fixed">
+      <parent link="${s['name']}_link"/>
+      <child link="${s['name']}_sensor_frame"/>
+      <origin xyz="0 0 0.036" rpy="0 0 0"/>
+    </joint>
+    <gazebo reference="${s['name']}_sensor_frame">
+      <sensor name="${s['name']}" type="gpu_lidar">
+        <always_on>true</always_on>
+        <update_rate>${s['rate']}</update_rate>
+        <visualize>false</visualize>
+        <topic>${s['name']}/scan</topic>
+        <gz_frame_id>${s['name']}_sensor_frame</gz_frame_id>
+        <lidar>
+          <scan>
+            <horizontal>
+              <samples>${int(s['h_samples'] * lidar_resolution)}</samples>
+              <resolution>1</resolution>
+              <min_angle>${-pi}</min_angle>
+              <max_angle>${pi}</max_angle>
+            </horizontal>
+            <vertical>
+              <samples>${s['v_samples']}</samples>
+              <resolution>1</resolution>
+              <min_angle>${-radians(s['vfov_deg']) / 2}</min_angle>
+              <max_angle>${radians(s['vfov_deg']) / 2}</max_angle>
+            </vertical>
+          </scan>
+          <range><min>${s['range_min']}</min><max>${s['range_max']}</max><resolution>0.003</resolution></range>
+          <noise><type>gaussian</type><mean>0.0</mean><stddev>0.01</stddev></noise>
+        </lidar>
+      </sensor>
+    </gazebo>
+  </xacro:macro>
+
+  <!-- =========================================================== cameras -->
+  <xacro:macro name="hunter_camera" params="s">
+    <link name="${s['name']}_link">
+      <xacro:inertial_box mass="0.3" x="0.07" y="0.07" z="0.06"><origin xyz="-0.035 0 0"/></xacro:inertial_box>
+      <xacro:mesh_visual file="camera.stl" material="sensor_black"/>
+    </link>
+    <joint name="${s['name']}_joint" type="fixed">
+      <parent link="base_link"/>
+      <child link="${s['name']}_link"/>
+      <origin xyz="${s['xyz'][0]} ${s['xyz'][1]} ${s['xyz'][2]}" rpy="${s['rpy'][0]} ${s['rpy'][1]} ${s['rpy'][2]}"/>
+    </joint>
+    <xacro:optical_frame name="${s['name']}"/>
+    <xacro:if value="${camera_sensors}">
+      <xacro:gz_camera name="${s['name']}" hfov="${s['hfov_deg']}" width="${s['width']}" height="${s['height']}" rate="${s['rate']}"/>
+    </xacro:if>
+  </xacro:macro>
+
+  <xacro:macro name="hunter_stereo" params="s">
+    <link name="${s['name']}_link">
+      <xacro:inertial_box mass="0.5" x="0.04" y="0.18" z="0.05"><origin xyz="-0.02 0 0"/></xacro:inertial_box>
+      <xacro:mesh_visual file="stereo_camera.stl" material="sensor_black"/>
+    </link>
+    <joint name="${s['name']}_joint" type="fixed">
+      <parent link="base_link"/>
+      <child link="${s['name']}_link"/>
+      <origin xyz="${s['xyz'][0]} ${s['xyz'][1]} ${s['xyz'][2]}" rpy="${s['rpy'][0]} ${s['rpy'][1]} ${s['rpy'][2]}"/>
+    </joint>
+    <xacro:macro name="stereo_eye" params="eye y">
+      <link name="${s['name']}_${eye}_link"/>
+      <joint name="${s['name']}_${eye}_joint" type="fixed">
+        <parent link="${s['name']}_link"/>
+        <child link="${s['name']}_${eye}_link"/>
+        <origin xyz="0.01 ${y} 0" rpy="0 0 0"/>
+      </joint>
+      <xacro:optical_frame name="${s['name']}_${eye}"/>
+      <xacro:if value="${camera_sensors}">
+        <xacro:gz_camera name="${s['name']}_${eye}" hfov="${s['hfov_deg']}" width="${s['width']}" height="${s['height']}" rate="${s['rate']}" far="60.0"/>
+      </xacro:if>
+    </xacro:macro>
+    <xacro:stereo_eye eye="left" y="${s['baseline'] / 2}"/>
+    <xacro:stereo_eye eye="right" y="${-s['baseline'] / 2}"/>
+  </xacro:macro>
+
+  <!-- ============================================================== GNSS -->
+  <xacro:macro name="hunter_navsat" params="s">
+    <link name="${s['name']}_link">
+      <xacro:inertial_box mass="0.4" x="0.15" y="0.15" z="0.06"><origin xyz="0 0 0.02"/></xacro:inertial_box>
+      <xacro:mesh_visual file="gnss.stl" material="sensor_grey"/>
+    </link>
+    <joint name="${s['name']}_joint" type="fixed">
+      <parent link="base_link"/>
+      <child link="${s['name']}_link"/>
+      <origin xyz="${s['xyz'][0]} ${s['xyz'][1]} ${s['xyz'][2]}" rpy="0 0 0"/>
+    </joint>
+    <gazebo reference="${s['name']}_link">
+      <sensor name="${s['name']}" type="navsat">
+        <always_on>true</always_on>
+        <update_rate>${s['rate']}</update_rate>
+        <topic>${s['name']}/fix</topic>
+        <gz_frame_id>${s['name']}_link</gz_frame_id>
+        <navsat>
+          <position_sensing>
+            <horizontal><noise type="gaussian"><mean>0.0</mean><stddev>0.5</stddev></noise></horizontal>
+            <vertical><noise type="gaussian"><mean>0.0</mean><stddev>1.0</stddev></noise></vertical>
+          </position_sensing>
+          <velocity_sensing>
+            <horizontal><noise type="gaussian"><mean>0.0</mean><stddev>0.05</stddev></noise></horizontal>
+            <vertical><noise type="gaussian"><mean>0.0</mean><stddev>0.1</stddev></noise></vertical>
+          </velocity_sensing>
+        </navsat>
+      </sensor>
+    </gazebo>
+  </xacro:macro>
+
+  <!-- =============================================================== IMU -->
+  <xacro:macro name="hunter_imu" params="s">
+    <link name="${s['name']}_link">
+      <xacro:inertial_box mass="0.3" x="0.06" y="0.06" z="0.04"><origin xyz="0 0 0"/></xacro:inertial_box>
+    </link>
+    <joint name="${s['name']}_joint" type="fixed">
+      <parent link="base_link"/>
+      <child link="${s['name']}_link"/>
+      <origin xyz="${s['xyz'][0]} ${s['xyz'][1]} ${s['xyz'][2]}" rpy="0 0 0"/>
+    </joint>
+    <gazebo reference="${s['name']}_link">
+      <sensor name="${s['name']}" type="imu">
+        <always_on>true</always_on>
+        <update_rate>${s['rate']}</update_rate>
+        <topic>${s['name']}/data</topic>
+        <gz_frame_id>${s['name']}_link</gz_frame_id>
+        <imu>
+          <angular_velocity>
+            <x><noise type="gaussian"><mean>0</mean><stddev>0.0005</stddev><bias_stddev>0.00005</bias_stddev></noise></x>
+            <y><noise type="gaussian"><mean>0</mean><stddev>0.0005</stddev><bias_stddev>0.00005</bias_stddev></noise></y>
+            <z><noise type="gaussian"><mean>0</mean><stddev>0.0005</stddev><bias_stddev>0.00005</bias_stddev></noise></z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x><noise type="gaussian"><mean>0</mean><stddev>0.01</stddev><bias_stddev>0.001</bias_stddev></noise></x>
+            <y><noise type="gaussian"><mean>0</mean><stddev>0.01</stddev><bias_stddev>0.001</bias_stddev></noise></y>
+            <z><noise type="gaussian"><mean>0</mean><stddev>0.01</stddev><bias_stddev>0.001</bias_stddev></noise></z>
+          </linear_acceleration>
+        </imu>
+      </sensor>
+    </gazebo>
+  </xacro:macro>
+
+  <!-- =============================================================== PTZ -->
+  <xacro:macro name="hunter_ptz">
+    <xacro:property name="P" value="${V.ptz}"/>
+    <link name="ptz_mast_link">
+      <xacro:inertial_box mass="6.0" x="0.18" y="0.18" z="${P.mast_height}"><origin xyz="0 0 ${P.mast_height / 2}"/></xacro:inertial_box>
+      <xacro:mesh_visual file="ptz_mast.stl" material="hunter_green_dark"/>
+    </link>
+    <joint name="ptz_mast_joint" type="fixed">
+      <parent link="base_link"/>
+      <child link="ptz_mast_link"/>
+      <origin xyz="${P.mount_xyz[0]} ${P.mount_xyz[1]} ${P.mount_xyz[2]}" rpy="0 0 0"/>
+    </joint>
+    <link name="ptz_pan_link">
+      <xacro:inertial_box mass="2.0" x="0.12" y="0.26" z="0.22"><origin xyz="0 0 0.11"/></xacro:inertial_box>
+      <xacro:mesh_visual file="ptz_yoke.stl" material="sensor_grey"/>
+    </link>
+    <joint name="ptz_pan_joint" type="continuous">
+      <parent link="ptz_mast_link"/>
+      <child link="ptz_pan_link"/>
+      <origin xyz="0 0 ${P.mast_height}" rpy="0 0 0"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="50" velocity="1.5"/>
+      <dynamics damping="2.0"/>
+    </joint>
+    <link name="ptz_camera_link">
+      <xacro:inertial_box mass="3.0" x="${P.head_size}" y="0.2" z="0.14"><origin xyz="0 0 0"/></xacro:inertial_box>
+      <xacro:mesh_visual file="ptz_head.stl" material="sensor_grey"/>
+    </link>
+    <joint name="ptz_tilt_joint" type="revolute">
+      <parent link="ptz_pan_link"/>
+      <child link="ptz_camera_link"/>
+      <origin xyz="0 0 0.15" rpy="0 0 0"/>
+      <axis xyz="0 1 0"/>
+      <!-- +y axis: positive tilt looks down -->
+      <limit lower="${-radians(P.tilt_max_deg)}" upper="${-radians(P.tilt_min_deg)}" effort="50" velocity="1.0"/>
+      <dynamics damping="2.0"/>
+    </joint>
+    <link name="ptz_lens_link"/>
+    <joint name="ptz_lens_joint" type="fixed">
+      <parent link="ptz_camera_link"/>
+      <child link="ptz_lens_link"/>
+      <origin xyz="${P.head_size / 2 + 0.02} 0.04 0" rpy="0 0 0"/>
+    </joint>
+    <link name="ptz_camera_optical_frame"/>
+    <joint name="ptz_camera_optical_joint" type="fixed">
+      <parent link="ptz_lens_link"/>
+      <child link="ptz_camera_optical_frame"/>
+      <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+    </joint>
+    <xacro:if value="${camera_sensors}">
+      <gazebo reference="ptz_lens_link">
+        <sensor name="ptz_camera" type="camera">
+          <always_on>true</always_on>
+          <update_rate>15</update_rate>
+          <topic>ptz_camera/image_raw</topic>
+          <gz_frame_id>ptz_camera_optical_frame</gz_frame_id>
+          <camera>
+            <camera_info_topic>ptz_camera/camera_info</camera_info_topic>
+            <horizontal_fov>${radians(P.hfov_wide_deg)}</horizontal_fov>
+            <image><width>1280</width><height>720</height><format>R8G8B8</format></image>
+            <clip><near>0.1</near><far>1000</far></clip>
+          </camera>
+        </sensor>
+      </gazebo>
+    </xacro:if>
+  </xacro:macro>
+
+  <!-- ============================================================ driver -->
+  <xacro:macro name="sensor_list" params="items">
+    <xacro:if value="${len(items) > 0}">
+      <xacro:property name="s" value="${items[0]}"/>
+      <xacro:if value="${str(variant) in s['variants']}">
+        <xacro:if value="${s['type'] == 'lidar'}"><xacro:hunter_lidar s="${s}"/></xacro:if>
+        <xacro:if value="${s['type'] == 'camera'}"><xacro:hunter_camera s="${s}"/></xacro:if>
+        <xacro:if value="${s['type'] == 'stereo'}"><xacro:hunter_stereo s="${s}"/></xacro:if>
+        <xacro:if value="${s['type'] == 'navsat'}"><xacro:hunter_navsat s="${s}"/></xacro:if>
+        <xacro:if value="${s['type'] == 'imu'}"><xacro:hunter_imu s="${s}"/></xacro:if>
+      </xacro:if>
+      <xacro:sensor_list items="${items[1:]}"/>
+    </xacro:if>
+  </xacro:macro>
+
+  <xacro:macro name="hunter_sensors">
+    <xacro:sensor_list items="${V.sensors}"/>
+    <xacro:if value="${str(variant) in V.ptz.variants and payload != 'rws'}">
+      <xacro:hunter_ptz/>
+    </xacro:if>
+  </xacro:macro>
+
+</robot>

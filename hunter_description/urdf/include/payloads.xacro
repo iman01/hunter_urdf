@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<!-- Mission modules on the HUNTeR rear/centre deck.
+       none     bare deck
+       cargo    crates (cargo-mule configuration, 2020-2021, up to ~1000 kg)
+       rws      AREX ZMU-03 remote weapon station, 12.7 mm (2023+), yaw/pitch joints
+       uav_pad  UAV landing pad with a small relay multirotor
+     Plus the variant:=2023 mass growth to the published 'over 4 t' armed kerb mass. -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="fixed_module" params="name parent xyz">
+    <joint name="${name}_joint" type="fixed">
+      <parent link="${parent}"/>
+      <child link="${name}_link"/>
+      <origin xyz="${xyz}" rpy="0 0 0"/>
+    </joint>
+  </xacro:macro>
+
+  <xacro:macro name="hunter_payload" params="payload">
+    <xacro:property name="PL" value="${V.payloads}"/>
+
+    <xacro:if value="${payload == 'cargo'}">
+      <xacro:property name="C" value="${PL.cargo}"/>
+      <link name="cargo_link">
+        <xacro:inertial_box mass="${cargo_mass if cargo_mass > 0 else C.mass}" x="${C.box[0]}" y="${C.box[1]}" z="${C.box[2]}">
+          <origin xyz="0 0 0"/>
+        </xacro:inertial_box>
+        <xacro:mesh_visual file="cargo.stl" material="hunter_green_dark"/>
+        <collision><origin xyz="0 0 0"/><geometry><box size="${C.box[0]} ${C.box[1]} ${C.box[2]}"/></geometry></collision>
+      </link>
+      <xacro:fixed_module name="cargo" parent="base_link" xyz="${C.xyz[0]} ${C.xyz[1]} ${C.xyz[2]}"/>
+    </xacro:if>
+
+    <xacro:if value="${payload == 'uav_pad'}">
+      <xacro:property name="U" value="${PL.uav_pad}"/>
+      <link name="uav_pad_link">
+        <xacro:inertial_box mass="${U.mass}" x="${U.size[0]}" y="${U.size[1]}" z="0.2"><origin xyz="0 0 -0.08"/></xacro:inertial_box>
+        <xacro:mesh_visual file="uav_pad.stl" material="pad_grey"/>
+        <xacro:mesh_visual file="uav_pad_marking.stl" material="lamp_white"/>
+        <xacro:mesh_visual file="uav.stl" material="sensor_black"/>
+        <collision><origin xyz="0 0 0"/><geometry><box size="${U.size[0]} ${U.size[1]} ${U.size[2]}"/></geometry></collision>
+      </link>
+      <xacro:fixed_module name="uav_pad" parent="base_link" xyz="${U.xyz[0]} ${U.xyz[1]} ${U.xyz[2]}"/>
+    </xacro:if>
+
+    <xacro:if value="${payload == 'rws'}">
+      <xacro:property name="W" value="${PL.rws}"/>
+      <!-- Mass split of the published 205 kg: pedestal 40, turret 95, cradle/gun/ammo/optics 70. -->
+      <link name="rws_base_link">
+        <xacro:inertial_box mass="40.0" x="${W.base_diameter}" y="${W.base_diameter}" z="${W.yaw_height}">
+          <origin xyz="0 0 ${W.yaw_height / 2}"/>
+        </xacro:inertial_box>
+        <xacro:mesh_visual file="rws_base.stl" material="hunter_green_dark"/>
+      </link>
+      <xacro:fixed_module name="rws_base" parent="base_link" xyz="${W.base_xyz[0]} ${W.base_xyz[1]} ${W.base_xyz[2]}"/>
+      <link name="rws_turret_link">
+        <xacro:inertial_box mass="95.0" x="0.75" y="0.66" z="0.30"><origin xyz="-0.05 0 0.12"/></xacro:inertial_box>
+        <xacro:mesh_visual file="rws_turret.stl" material="hunter_green"/>
+        <collision><origin xyz="-0.05 0 0.15"/><geometry><box size="0.75 0.70 0.30"/></geometry></collision>
+      </link>
+      <joint name="rws_yaw_joint" type="continuous">
+        <parent link="rws_base_link"/>
+        <child link="rws_turret_link"/>
+        <origin xyz="0 0 ${W.yaw_height}" rpy="0 0 0"/>
+        <axis xyz="0 0 1"/>
+        <limit effort="2000" velocity="1.0"/>
+        <dynamics damping="50.0"/>
+      </joint>
+      <link name="rws_cradle_link">
+        <xacro:inertial_box mass="70.0" x="0.9" y="0.45" z="0.25"><origin xyz="0.10 0 0"/></xacro:inertial_box>
+        <xacro:mesh_visual file="rws_cradle.stl" material="hunter_green_dark"/>
+        <collision><origin xyz="0.10 0.03 0"/><geometry><box size="0.65 0.5 0.25"/></geometry></collision>
+      </link>
+      <joint name="rws_pitch_joint" type="revolute">
+        <parent link="rws_turret_link"/>
+        <child link="rws_cradle_link"/>
+        <origin xyz="0 0 ${W.pitch_height - W.yaw_height}" rpy="0 0 0"/>
+        <!-- -y axis: positive pitch raises the barrel -->
+        <axis xyz="0 -1 0"/>
+        <limit lower="${radians(W.pitch_min_deg)}" upper="${radians(W.pitch_max_deg)}" effort="1500" velocity="1.0"/>
+        <dynamics damping="30.0"/>
+      </joint>
+      <link name="rws_camera_link"/>
+      <joint name="rws_camera_joint" type="fixed">
+        <parent link="rws_cradle_link"/>
+        <child link="rws_camera_link"/>
+        <origin xyz="0.235 0.17 0.08" rpy="0 0 0"/>
+      </joint>
+      <link name="rws_camera_optical_frame"/>
+      <joint name="rws_camera_optical_joint" type="fixed">
+        <parent link="rws_camera_link"/>
+        <child link="rws_camera_optical_frame"/>
+        <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+      </joint>
+      <link name="rws_muzzle_link"/>
+      <joint name="rws_muzzle_joint" type="fixed">
+        <parent link="rws_cradle_link"/>
+        <child link="rws_muzzle_link"/>
+        <origin xyz="${W.length - 0.33} 0 0.02" rpy="0 0 0"/>
+      </joint>
+      <xacro:if value="${camera_sensors and sensors_on}">
+        <gazebo reference="rws_camera_link">
+          <sensor name="rws_camera" type="camera">
+            <always_on>true</always_on>
+            <update_rate>15</update_rate>
+            <topic>rws_camera/image_raw</topic>
+            <gz_frame_id>rws_camera_optical_frame</gz_frame_id>
+            <camera>
+              <camera_info_topic>rws_camera/camera_info</camera_info_topic>
+              <horizontal_fov>${radians(20.0)}</horizontal_fov>
+              <image><width>1280</width><height>720</height><format>R8G8B8</format></image>
+              <clip><near>0.5</near><far>2000</far></clip>
+            </camera>
+          </sensor>
+        </gazebo>
+      </xacro:if>
+    </xacro:if>
+
+    <xacro:if value="${str(variant) == '2023'}">
+      <xacro:property name="UP" value="${V.mass.upgrade_2023}"/>
+      <!-- Armour, electronics and sensor growth of the armed variant (no visual). -->
+      <link name="variant_2023_mass_link">
+        <xacro:inertial_box mass="${UP.mass}" x="2.5" y="1.6" z="0.5"><origin xyz="0 0 0"/></xacro:inertial_box>
+      </link>
+      <xacro:fixed_module name="variant_2023_mass" parent="base_link" xyz="${UP.xyz[0]} ${UP.xyz[1]} ${UP.xyz[2]}"/>
+    </xacro:if>
+  </xacro:macro>
+
+</robot>

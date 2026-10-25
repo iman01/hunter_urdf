@@ -1,0 +1,2305 @@
+{
+ "retrieved": "2026-10-25",
+ "method": "WebSearch (server-side) result summaries; page fetches were blocked by the session network policy. Quotes are as returned by the search tool and should be checked against the original pages.",
+ "angles": {
+  "research:core-specs": {
+   "findings": [
+    {
+     "parameter": "overall_length",
+     "value": "470",
+     "unit": "cm",
+     "variant": "2020 prototype (cargo/mule), unveiling coverage",
+     "quote": "Ma 3,5 t masy własnej, 470 cm długości, 220 cm szerokości, rozstaw osi 220 cm, a koła mają średnicę 1 m.",
+     "source_url": "https://milmag.pl/lukasiewicz-piap-prezentuje-bezzalogowego-huntera/",
+     "confidence": "high"
+    },
+    {
+     "parameter": "overall_length",
+     "value": "4.7",
+     "unit": "m",
+     "variant": "2020 prototype (Janes report, quoted by reposts)",
+     "quote": "Hunter's 4x4 chassis measures 4.7 m long and 2.2 m wide and features two steering axles – each integrated with an electric motor – with a 3-link Panhard suspension.",
+     "source_url": "https://defencehub.live/threads/polish-lukasiewicz-piap-unveils-hunter-ugv.1331/",
+     "confidence": "high"
+    },
+    {
+     "parameter": "overall_length",
+     "value": "470",
+     "unit": "cm",
+     "variant": "2023 armed (FEX 2023 / ZMU-03)",
+     "quote": "PIAP HUNTeR liczy ponad cztery tony masy własnej. Ma 470 cm długości, 220 cm szerokości, rozstaw osi 220 cm, a koła mają średnicę 1 m.",
+     "source_url": "https://defence24.pl/technologie/polski-robot-bojowy-na-poligonie",
+     "confidence": "high"
+    },
+    {
+     "parameter": "overall_length",
+     "value": "470",
+     "unit": "cm",
+     "variant": "MSPO 2025 (WLKM 12.7 mm anti-drone RCWS)",
+     "quote": "4 tons and measuring 470 cm in length and 220 cm in width",
+     "source_url": "https://milmag.pl/en/mspo-2025-piap-hunter-with-a-12-7-mm-weapon-module/",
+     "confidence": "high"
+    },
+    {
+     "parameter": "overall_length",
+     "value": "nearly 4.7 (about 4.7)",
+     "unit": "m",
+     "variant": "2026 (Eurosatory 2026 Bluszcz chassis; Cyfrowy Legionista 2026)",
+     "quote": "Platforma o masie około 4 ton i długości blisko 4,7 m",
+     "source_url": "https://defence24.pl/technologie/roboty-lukasiewicz-piap-na-cwiczeniach-cyfrowy-legionista",
+     "confidence": "high"
+    },
+    {
+     "parameter": "overall_length",
+     "value": "nearly five meters (approximate press rounding)",
+     "unit": "m",
+     "variant": "2024 armed (field test January 2024, ZMU-03)",
+     "quote": "weighs over four tons and is nearly five meters long",
+     "source_url": "https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/polish-defense-industries-field-test-piap-hunter-ugv-for-combat-purposes",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "overall_width",
+     "value": "220",
+     "unit": "cm",
+     "variant": "all variants 2020-2026 (consistent across sources)",
+     "quote": "The HUNTeR platform weighs 3500 kg and measures 470x220 cm with a wheelbase of 270 cm.",
+     "source_url": "https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle",
+     "confidence": "high"
+    },
+    {
+     "parameter": "wheelbase",
+     "value": "270",
+     "unit": "cm",
+     "variant": "2020/2021 prototype spec (Army Recognition 2024 article; same figure reportedly on PIAP INTARG 2021 poster)",
+     "quote": "The HUNTeR platform weighs 3500 kg and measures 470x220 cm with a wheelbase of 270 cm.",
+     "source_url": "https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "wheelbase",
+     "value": "270",
+     "unit": "cm",
+     "variant": "PIAP-authored INTARG 2021 invention-fair poster 'PIAP HUNTER - UGV HUNTeR is a high-mobility unmanned hybrid' (PDF not downloadable here; figure reported by the search summary, not seen verbatim)",
+     "quote": "[search summary of the poster] The poster gives a weight of 3500 kg, dimensions of 470x220 cm, and a 270 cm wheelbase",
+     "source_url": "https://www.intarg.haller.pl/targi/pliki_wynalazki/posters/157-1623325091.pdf",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "wheelbase",
+     "value": "2.7",
+     "unit": "m",
+     "variant": "2024/2025 exercise coverage (Militär Aktuell)",
+     "quote": "The vehicle is 4.7 meters long, 2.2 meters wide and has a wheelbase of 2.7 meters.",
+     "source_url": "https://militaeraktuell.at/en/poland-practices-with-unmanned-systems/",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "wheelbase",
+     "value": "220 (CONFLICTS with 270)",
+     "unit": "cm",
+     "variant": "2020 prototype (Polish milmag) and 2023 armed (defence24); widely copied by spidersweb, portalobronny, tek.info.pl, wnp.pl",
+     "quote": "PIAP HUNTeR liczy ponad cztery tony masy własnej. Ma 470 cm długości, 220 cm szerokości, rozstaw osi 220 cm, a koła mają średnicę 1 m.",
+     "source_url": "https://defence24.pl/technologie/polski-robot-bojowy-na-poligonie",
+     "confidence": "low"
+    },
+    {
+     "parameter": "wheelbase",
+     "value": "2.2 (CONFLICTS with 2.7; English article has an internal typo)",
+     "unit": "m",
+     "variant": "2023 armed (FEX 2023)",
+     "quote": "PIAP HUNTeR weighs more than 4 tonnes. It is 4.7 meters long, 2.2 meters long, with a 2.2 meters wheelbase. The wheels have a diameter of 1 meter.",
+     "source_url": "https://defence24.com/technology/polish-hunter-armed-ugv-field-tested",
+     "confidence": "low"
+    },
+    {
+     "parameter": "wheelbase",
+     "value": "2.2 (CONFLICTS)",
+     "unit": "m",
+     "variant": "2020-2023 (MON-sourced figure as reported by wnp.pl / tek.info.pl)",
+     "quote": "Bezzałogowy Hunter waży 3,5 tony, ma 4,7 m długości, 2,2 m szerokości i 2,2 m rozstaw osi.",
+     "source_url": "https://www.wnp.pl/bezpieczenstwo/oto-polski-pomysl-na-walczacego-robota,724478.html",
+     "confidence": "low"
+    },
+    {
+     "parameter": "wheel_diameter",
+     "value": "1.0",
+     "unit": "m",
+     "variant": "2023 armed (MSPO 2023) - same figure in 2020 milmag and 2023 defence24.pl",
+     "quote": "the robot's wheels, with a diameter of 1 meter, with offroad tyres, along with a 4x4 drivetrain, make the robot very agile offroad",
+     "source_url": "https://defence24.com/industry/mspo-2023-lukasiewicz-piap-robots-for-the-armed-forces",
+     "confidence": "high"
+    },
+    {
+     "parameter": "wheel_diameter",
+     "value": "1",
+     "unit": "m",
+     "variant": "2023 (Polish)",
+     "quote": "Koła o średnicy metra w połączeniu z układem napędowym 4x4 dają platformie wysoką dzielność terenową.",
+     "source_url": "https://mspo.defence24.pl/na-ladzie/mspo-2023-robotyczne-platformy-lukasiewicz-piap-dla-sil-zbrojnych",
+     "confidence": "high"
+    },
+    {
+     "parameter": "curb_mass",
+     "value": "3500",
+     "unit": "kg",
+     "variant": "2020 prototype (cargo/mule)",
+     "quote": "Ma 3,5 t masy własnej, 470 cm długości, 220 cm szerokości, rozstaw osi 220 cm, a koła mają średnicę 1 m.",
+     "source_url": "https://milmag.pl/lukasiewicz-piap-prezentuje-bezzalogowego-huntera/",
+     "confidence": "high"
+    },
+    {
+     "parameter": "curb_mass",
+     "value": "3.5 t ('3,5-tonne platform')",
+     "unit": "t",
+     "variant": "2020 prototype (milmag EN)",
+     "quote": "a 3,5-tonne platform reaching speeds of up to 50 km/h",
+     "source_url": "https://milmag.pl/en/lukasiewicz-piap-institute-presents-hunter-ugv/",
+     "confidence": "high"
+    },
+    {
+     "parameter": "curb_mass",
+     "value": ">4000 ('ponad cztery tony masy własnej')",
+     "unit": "kg",
+     "variant": "2023 armed version with AREX ZMU-03 (FEX 2023 / MSPO 2023)",
+     "quote": "PIAP HUNTeR liczy ponad cztery tony masy własnej.",
+     "source_url": "https://defence24.pl/technologie/polski-robot-bojowy-na-poligonie",
+     "confidence": "high"
+    },
+    {
+     "parameter": "curb_mass",
+     "value": "~4000",
+     "unit": "kg",
+     "variant": "MSPO 2025 (WLKM anti-drone RCWS) and later",
+     "quote": "PIAP showed its 4-ton HUNTeR unmanned ground vehicle carrying a remote weapon station built around the WLKM 12.7 mm multi-barrel machine gun",
+     "source_url": "https://milmag.pl/en/mspo-2025-piap-hunter-with-a-12-7-mm-weapon-module/",
+     "confidence": "high"
+    },
+    {
+     "parameter": "combat_mass",
+     "value": "approximately 4 tonnes ('combat weight')",
+     "unit": "t",
+     "variant": "MSPO exhibitor listing (Targi Kielce), year of listing not confirmed",
+     "quote": "[search summary paraphrase, not verbatim] TargiKielce's exhibitor listing gives a combat weight of approximately 4 tonnes, with a length of 4.7 m and a width of 2.2 m.",
+     "source_url": "https://www.targikielce.pl/en/mspo/list-of-exhibitors/siec-badawcza-lukasiewicz-przemyslowy-instytut-automatyki-i-pomiarow-piap,4035187",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "payload_capacity",
+     "value": "~1000",
+     "unit": "kg",
+     "variant": "2021 cargo-mule configuration (Defence24 TV interview with PIAP designer Rafał Więckowski, 12.10.2021)",
+     "quote": "The vehicle is presented in a cargo mule configuration. It can carry up to around 1,000 kilograms of payload",
+     "source_url": "https://defence24.com/armed-forces/land/hunter-35-tonnes-hybrid-land-robot-defence24-tv",
+     "confidence": "high"
+    },
+    {
+     "parameter": "payload_capacity",
+     "value": "up to 1 t",
+     "unit": "t",
+     "variant": "MSPO 2026 minelaying (BELMA) variant",
+     "quote": "PIAP HUNTeR może udźwignąć nawet jednotonowy ładunek",
+     "source_url": "https://polska-zbrojna.pl/home/articleshow/47110?t=PIAP-HUNTeR-w-nowej-odslonie-na-MSPO",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "max_speed",
+     "value": "50",
+     "unit": "km/h",
+     "variant": "2020 prototype; also R&D project target",
+     "quote": "a 3,5-tonne platform reaching speeds of up to 50 km/h",
+     "source_url": "https://milmag.pl/en/lukasiewicz-piap-institute-presents-hunter-ugv/",
+     "confidence": "high"
+    },
+    {
+     "parameter": "max_speed",
+     "value": "up to 50 (teleoperated and semi-autonomous)",
+     "unit": "km/h",
+     "variant": "2024 coverage",
+     "quote": "Capable of reaching speeds up to 50 km/h in both teleoperated and semi-autonomous modes",
+     "source_url": "https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle",
+     "confidence": "high"
+    },
+    {
+     "parameter": "max_speed",
+     "value": ">50 (company claim)",
+     "unit": "km/h",
+     "variant": "2023 FEX armed version",
+     "quote": "HUNTeR reaches a maximum speed of over 50 km/h, per the company",
+     "source_url": "https://breakingdefense.com/2023/07/with-live-field-experimentation-poland-shapes-its-future-force/",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "max_speed",
+     "value": "~50 (depending on configuration)",
+     "unit": "km/h",
+     "variant": "2025 OPEX / later",
+     "quote": "can reach speeds of approximately 50 km/h, depending on the equipment configuration and intended use",
+     "source_url": "https://milmag.pl/en/autonomous-and-unmanned-systems-by-lukasiewicz-piap-at-the-opex-2025-training-ground-in-italy/",
+     "confidence": "high"
+    },
+    {
+     "parameter": "range",
+     "value": "450",
+     "unit": "km",
+     "variant": "MSPO 2026 (4 t version) - on full tank without charging",
+     "quote": "Maksymalny dystans, który może pokonać bez ładowania i przy pełnym zatankowaniu, wynosi 450 km.",
+     "source_url": "https://polska-zbrojna.pl/home/articleshow/47110?t=PIAP-HUNTeR-w-nowej-odslonie-na-MSPO",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "range",
+     "value": "up to 450 on one refuelling",
+     "unit": "km",
+     "variant": "MSPO 2026 (Radio Kielce)",
+     "quote": "zasięg na jednym tankowaniu nawet 450 km",
+     "source_url": "https://radiokielce.pl/1440214/technologiczne-nowosci-polskiej-produkcji-na-targach-zbrojeniowych/",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "endurance",
+     "value": "up to 8",
+     "unit": "h",
+     "variant": "MSPO 2024 armed version (single source, Portal Obronny)",
+     "quote": "[search summary paraphrase] napęd z dwoma silnikami elektrycznymi pozwala na prędkość około 50 km/h oraz działanie do 8 godzin",
+     "source_url": "https://portalobronny.se.pl/przemysl-zbrojeniowy/mspo-2024-roboty-piap-atakuja-ratuja-i-ewakuuja-to-sprzet-testowany-przez-wojsko-aa-3QTu-7phN-mQir.html",
+     "confidence": "low"
+    },
+    {
+     "parameter": "suspension_travel",
+     "value": "25",
+     "unit": "cm",
+     "variant": "2020/2021 prototype (PIAP INTARG poster) and 2024 Army Recognition",
+     "quote": "Suspension stroke - 25 cm",
+     "source_url": "https://www.intarg.haller.pl/targi/pliki_wynalazki/posters/157-1623325091.pdf",
+     "confidence": "high"
+    },
+    {
+     "parameter": "suspension_travel",
+     "value": "25",
+     "unit": "cm",
+     "variant": "2024 coverage of prototype spec",
+     "quote": "The dependent 3-link type suspension with Panhard bar, coil springs, and controlled damping shock absorbers offers a suspension stroke of 25 cm.",
+     "source_url": "https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle",
+     "confidence": "high"
+    },
+    {
+     "parameter": "suspension_type",
+     "value": "Dependent (rigid/solid axles), 3-link with Panhard bar, coil springs, controlled-damping shock absorbers",
+     "unit": "",
+     "variant": "2020-2023 (PIAP poster)",
+     "quote": "Dependent suspension, 3-link type with Panhard bar, coil springs, controlled damping shock absorbers.",
+     "source_url": "https://www.intarg.haller.pl/targi/pliki_wynalazki/posters/157-1623325091.pdf",
+     "confidence": "high"
+    },
+    {
+     "parameter": "suspension_type",
+     "value": "Dependent (rigid axles), three reaction rods + Panhard rod, coil springs, adjustable dampers",
+     "unit": "",
+     "variant": "2023 armed version (FEX 2023)",
+     "quote": "dependent suspension (rigid), with three reaction rods, and a Panhard rod with screw springs and adjustable shock absorbers",
+     "source_url": "https://defence24.com/technology/polish-hunter-armed-ugv-field-tested",
+     "confidence": "high"
+    },
+    {
+     "parameter": "suspension_type",
+     "value": "Dependent (rigid axles) - Polish wording",
+     "unit": "",
+     "variant": "2023 armed version",
+     "quote": "zawieszenie zależne (sztywne mosty) z trzema drążkami reakcyjnymi i drążkiem Panharda",
+     "source_url": "https://defence24.pl/technologie/polski-robot-bojowy-na-poligonie",
+     "confidence": "high"
+    },
+    {
+     "parameter": "suspension_type",
+     "value": "'independent suspension' (CONTRADICTS all earlier sources; may be journalist error or a design change)",
+     "unit": "",
+     "variant": "April 2026 (Cyfrowy Legionista exercise)",
+     "quote": "układzie niezależnego zawieszenia",
+     "source_url": "https://defence24.pl/technologie/roboty-lukasiewicz-piap-na-cwiczeniach-cyfrowy-legionista",
+     "confidence": "low"
+    },
+    {
+     "parameter": "suspension_type",
+     "value": "'active suspension' named as mobility enabler in R&D project description",
+     "unit": "",
+     "variant": "HUNTeR R&D project 2017-2020 (PIAP project page)",
+     "quote": "aktywnego zawieszenia oraz osiąganiu dużej prędkości",
+     "source_url": "https://piap.lukasiewicz.gov.pl/badanie/projekt-hunter/",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "steering_type",
+     "value": "Two steering axles (front and rear steer), each axle integrated with an electric traction motor",
+     "unit": "",
+     "variant": "2020 prototype (Janes via reposts)",
+     "quote": "features two steering axles – each integrated with an electric motor – with a 3-link Panhard suspension",
+     "source_url": "https://defensehere.com/en/a-polish-company-unveils-a-hunter-ugv/",
+     "confidence": "high"
+    },
+    {
+     "parameter": "steering_type",
+     "value": "Two steering axles + differential locks",
+     "unit": "",
+     "variant": "2023 armed version",
+     "quote": "Konstruktorzy Łukasiewicz-PIAP zastosowali blokadę mechanizmów różnicowych i dwie osie skrętne, co poprawia dzielność terenową.",
+     "source_url": "https://zbiam.pl/hunter-z-zmu-03-debiutuje-na-poligonie/",
+     "confidence": "high"
+    },
+    {
+     "parameter": "drivetrain",
+     "value": "4x4 series (serial) hybrid; traction motors integrated with driving axles; 90 kW continuous / 220 kW peak drive power",
+     "unit": "kW",
+     "variant": "2020-2021 prototype spec (Army Recognition 2024)",
+     "quote": "The drive power is 90 kW continuous and 220 kW peak, facilitated by a serial hybrid system with traction electric motors integrated with the driving axles.",
+     "source_url": "https://armyrecognition.com/news/army-news/army-news-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "traction_motor_count",
+     "value": "2",
+     "unit": "",
+     "variant": "2023+ (Polish press)",
+     "quote": "Generator zasila akumulator trakcyjny, a pojazd napędzany jest przez dwa trakcyjne silniki elektryczne.",
+     "source_url": "https://spidersweb.pl/2023/07/oto-przyszlosc-polskiego-wojska-hunter.html",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "traction_layout_alt",
+     "value": "'independently driven wheels' (CONFLICTS with 2 axle motors; likely loose wording)",
+     "unit": "",
+     "variant": "MSPO exhibitor listing",
+     "quote": "[search summary paraphrase] hybrid 4×4 drivetrain with independently driven wheels and an operational range of approximately 450 km",
+     "source_url": "https://www.targikielce.pl/en/mspo/list-of-exhibitors/siec-badawcza-lukasiewicz-przemyslowy-instytut-automatyki-i-pomiarow-piap,4035187",
+     "confidence": "low"
+    },
+    {
+     "parameter": "battery",
+     "value": "40 kWh Li-Ion NMC with BTMS",
+     "unit": "kWh",
+     "variant": "prototype spec (Army Recognition 2024)",
+     "quote": "The power supply is managed by a Li-Ion NMC battery with a capacity of 40 kWh and BTMS system, alongside a 110 kW generator.",
+     "source_url": "https://armyrecognition.com/news/army-news/army-news-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "generator_power",
+     "value": "110",
+     "unit": "kW",
+     "variant": "2020 prototype and 2023 FEX",
+     "quote": "An electric motor, along with a 110kW generator, lets the vehicle reach speeds up to 50km/h, depending on the variant.",
+     "source_url": "https://www.overtdefense.com/2023/07/13/first-army-trials-of-piap-hunter-ugv/",
+     "confidence": "high"
+    },
+    {
+     "parameter": "exportable_power",
+     "value": "600 V DC, 400 V AC (3x400 VAC), 24 V DC",
+     "unit": "V",
+     "variant": "2020 prototype",
+     "quote": "provides on-board power generation for equipment that requires 600V DC, 400V AC or 24V DC supply",
+     "source_url": "https://defensehere.com/en/a-polish-company-unveils-a-hunter-ugv/",
+     "confidence": "high"
+    },
+    {
+     "parameter": "electric_only_mode",
+     "value": "silent electric-only driving possible",
+     "unit": "",
+     "variant": "2023+",
+     "quote": "Zastosowany układ zasilania pozwala na długą pracę robota i umożliwia bezgłośne poruszanie się w trybie wyłącznie elektrycznym.",
+     "source_url": "https://mspo.defence24.pl/na-ladzie/mspo-2023-robotyczne-platformy-lukasiewicz-piap-dla-sil-zbrojnych",
+     "confidence": "high"
+    },
+    {
+     "parameter": "sensor_suite",
+     "value": "GPS, 2 lidars, 4 hull-mounted HD navigation cameras, 5 additional HD cameras incl. PTZ (on vehicle and robotic arm)",
+     "unit": "",
+     "variant": "2020 prototype",
+     "quote": "A GPS receiver, two lidars, four hull-mounted high-definition (HD) navigation cameras, and a suite of five additional HD cameras – including a remotely operated pan, tilt, zoom (PTZ) camera – are distributed around the vehicle and its robotic arm.",
+     "source_url": "https://defencehub.live/threads/polish-lukasiewicz-piap-unveils-hunter-ugv.1331/",
+     "confidence": "high"
+    },
+    {
+     "parameter": "camera_count",
+     "value": "9 (1 PTZ + 4 hull navigation + 4 drive-assistant) + GPS + 2 lidars",
+     "unit": "",
+     "variant": "2020 prototype (milmag EN)",
+     "quote": "9 HD cameras (a pan, tilt, zoom (PTZ) camera, 4 hull-mounted navigation cameras and 4 drive assistant cameras, as well as a GPS receiver and two lidars)",
+     "source_url": "https://www.milmag.eu/news/view?news_id=4611",
+     "confidence": "high"
+    },
+    {
+     "parameter": "camera_count",
+     "value": "6 high-resolution cameras + day/thermal imaging",
+     "unit": "",
+     "variant": "2023/2024 armed version",
+     "quote": "outfitted with six high-resolution cameras, day and thermal imaging systems, and a robust radio communication system",
+     "source_url": "https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/polish-defense-industries-field-test-piap-hunter-ugv-for-combat-purposes",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "camera_count",
+     "value": "7 HD cameras (alternative count)",
+     "unit": "",
+     "variant": "2023 armed version (defence24.pl)",
+     "quote": "Platforma wyposażona została w siedem kamer wysokiej rozdzielczości HD",
+     "source_url": "https://defence24.pl/technologie/polski-robot-bojowy-na-poligonie",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "lidar_and_stereo",
+     "value": "additional lidars and stereovision cameras added",
+     "unit": "",
+     "variant": "MSPO 2024 version (official PIAP release)",
+     "quote": "additionally equipped with lidars and stereovision cameras to enhance the operator's situational awareness",
+     "source_url": "https://piap.lukasiewicz.gov.pl/en/2024/09/02/lukasiewicz-piap-mobile-robots-in-new-guises-at-the-mspo/",
+     "confidence": "high"
+    },
+    {
+     "parameter": "rws_model",
+     "value": "AREX GUNMATE ZMU-03 with 12.7 mm M2HB, thermal camera, smoke grenade launchers",
+     "unit": "",
+     "variant": "2023 FEX / MSPO 2023 / Eurosatory 2024 / FEX-2024",
+     "quote": "equipped with remotely controlled AREX's GUNMATE ZMU-03 system utilizing a 12.7mm M2HB heavy machine gun, thermal camera, and observation device",
+     "source_url": "https://www.overtdefense.com/2023/07/13/first-army-trials-of-piap-hunter-ugv/",
+     "confidence": "high"
+    },
+    {
+     "parameter": "rws_mass",
+     "value": "205 (ZMU-03 with 12.7 mm HMG, including weapon)",
+     "unit": "kg",
+     "variant": "ZMU-03 (AREX/WB Group)",
+     "quote": "which increases the turret's weight to 205 kg (including the weapon)",
+     "source_url": "https://milmag.pl/en/the-first-public-shooting-demonstration-of-zmu-03-and-zmu-07/",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "rws_mass",
+     "value": "~500 kg turret without ammunition (WLKM 12.7 mm Gatling anti-drone RCWS), 400 rounds onboard",
+     "unit": "kg",
+     "variant": "MSPO 2025 anti-drone version (ZM Tarnów WLKM)",
+     "quote": "[search summary paraphrase of wp.pl] Sama wieża z tym uzbrojeniem, bez amunicji, waży 500 kg, czyli o 100 kg mniej niż poprzednia wersja.",
+     "source_url": "https://tech.wp.pl/mspo-2025-potwor-z-tarnowa-jeszcze-lepszy-i-w-nowych-wcieleniach,7195460072086432a",
+     "confidence": "low"
+    },
+    {
+     "parameter": "rws_model",
+     "value": "Arex ZMU-05",
+     "unit": "",
+     "variant": "April 2026 Cyfrowy Legionista exercise",
+     "quote": "[search summary] Szczególną uwagę zwrócono na wariant HUNTeR-a z modułem ZMU-05 firmy Arex",
+     "source_url": "https://defence24.pl/technologie/roboty-lukasiewicz-piap-na-cwiczeniach-cyfrowy-legionista",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "mission_payload_minelayer",
+     "value": "Bluszcz scatterable mine-laying system: 20 cassettes x 5 MN-123 AT mines (3.7 kg each, 180 mm dia x 90 mm), laying strip 30-90 m beside vehicle",
+     "unit": "",
+     "variant": "Eurosatory 2026 / MSPO 2026 (BZE Belma on HUNTeR chassis)",
+     "quote": "System automatycznie rozstawia pola min przeciwpancernych MN-123. Wykorzystuje 20 kaset po 5 min, które mogą tworzyć pas w odległości od 30 do 90 metrów.",
+     "source_url": "https://milmag.pl/eurosatory-2026-bezzalogowy-system-minowania-narzutowego-bluszcz-na-podwoziu-piap-hunter/",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "optional_equipment",
+     "value": "hydraulic arm, cargo crates",
+     "unit": "",
+     "variant": "2020 prototype",
+     "quote": "the UGV can also be equipped with a range of support equipment, including a hydraulic arm and cargo crates",
+     "source_url": "https://defencehub.live/threads/polish-lukasiewicz-piap-unveils-hunter-ugv.1331/",
+     "confidence": "high"
+    },
+    {
+     "parameter": "program_history",
+     "value": "HUNTeR R&D project 2 Jan 2017 - 29 Sep 2020, approx. 7.8 mln PLN (EU funds 4.55 mln PLN, POIR 1.2); UGV + UAV relay; autonomous patrol",
+     "unit": "",
+     "variant": "R&D project",
+     "quote": "[search summary of project page] Projekt trwał od 2 stycznia 2017 do 29 września 2020 r. Wartość to około 7,8 mln zł",
+     "source_url": "https://piap.lukasiewicz.gov.pl/badanie/projekt-hunter/",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "DISCARDED_spec_block",
+     "value": "10 km/h, 250 kg curb, ~200 kg payload attributed to HUNTeR in some articles - inconsistent with every other source; almost certainly belongs to a smaller PIAP robot (IBIS/MULES)",
+     "unit": "",
+     "variant": "FEX-24 / OPEX 2025 articles",
+     "quote": "[search summary] One source gives a maximum speed of 10 km/h, a curb weight of 250 kg, and a payload of about 200 kg, which does not fit the other figures",
+     "source_url": "https://defence24.pl/technologie/wojny-robotow-na-cwiczeniach-fex-24",
+     "confidence": "low"
+    }
+   ],
+   "visual_descriptions": [
+    "Wheels: very large (1 m diameter) off-road tyres on a 4x4 layout; Polish press stresses that 1 m wheels give the platform its off-road capability and ground clearance ('Koła o średnicy 1 m zapewniają odpowiedni prześwit'). Source: https://portalobronny.se.pl/polityka-obronna/polskie-roboty-na-poligonie-z-podhalanczykami-beda-walczyc-i-ratowac-zycie-aa-gSKL-DPkK-Vp9R.html and https://defence24.com/industry/mspo-2023-lukasiewicz-piap-robots-for-the-armed-forces",
+    "Running gear (2020-2023): rigid (solid) steer-drive axles front and rear, each with an integrated electric traction motor, located by three reaction rods (3-link) plus a Panhard rod, coil springs and controlled-damping shock absorbers, 25 cm suspension stroke. Sources: Janes reposts (defencehub.live), PIAP INTARG poster, defence24.com field-test article.",
+    "Sensor layout (2020 prototype, Janes): GPS receiver, two lidars, four hull-mounted HD navigation cameras (likely one per side/corner), four drive-assistant cameras, and a PTZ camera; cameras are 'distributed around the vehicle and its robotic arm'. Source: https://defencehub.live/threads/polish-lukasiewicz-piap-unveils-hunter-ugv.1331/ and https://www.milmag.eu/news/view?news_id=4611",
+    "2020/2021 cargo-mule configuration: payload deck carrying cargo crates and an optional hydraulic arm; shown at Defence24 Day 2020 and Defence24 TV 2021 'in a cargo mule configuration'. Source: https://defence24.com/armed-forces/land/hunter-35-tonnes-hybrid-land-robot-defence24-tv",
+    "2023-2024 armed configuration: AREX ZMU-03 remote weapon station (12.7 mm M2HB plus smoke grenade launchers, day/thermal head, laser rangefinder) mounted on the top deck; turret operable from an onboard station or remotely from a portable console. Sources: overtdefense.com 2023, milmag.pl ZMU-03 articles, defence24.pl.",
+    "MSPO 2024 version: adds lidars and stereovision cameras to the ZMU-03 armed vehicle (official PIAP release https://piap.lukasiewicz.gov.pl/en/2024/09/02/lukasiewicz-piap-mobile-robots-in-new-guises-at-the-mspo/).",
+    "MSPO 2025 anti-drone version: RCWS with ZM Tarnów WLKM 12.7 mm Gatling-type gun, 400 rounds onboard, radar-cued (nano-drones detected up to 3.5 km). Source: https://milmag.pl/en/mspo-2025-piap-hunter-with-a-12-7-mm-weapon-module/",
+    "2026 minelayer version (Bluszcz, BZE Belma): launcher cassettes (20 cassettes x 5 MN-123 mines) on the deck, firing to the vehicle sides to make a strip 30-90 m away; controlled from the HUNTeR control panel; one or two systems can be fitted. Sources: milmag Eurosatory 2026, polska-zbrojna MSPO 2026.",
+    "Text sources found here describe no body shape, colour scheme, light positions or bumper details. Photos are the only route to those (milmag, defence24, armyrecognition, the PIAP X account, and the maquetland Eurosatory 2024 photo gallery at http://www.maquetland.com/article-phototheque/19653-piap-hunter-ugv-eurosatory-2024, which this environment cannot fetch)."
+   ],
+   "estimates": [
+    {
+     "parameter": "wheelbase (recommended URDF value)",
+     "value": "2.70 m primary (2.20 m alternative to keep as a xacro arg)",
+     "reasoning": "Two figures are published. 2.70 m comes from the PIAP-authored INTARG 2021 poster (via search summary), Army Recognition and Militär Aktuell. 2.20 m comes from Polish press (milmag 2020, defence24 2023 and the outlets that copied them). In several of those Polish sources width and wheelbase are both 220 cm, so the wheelbase looks like a transcription error copied from the width. Check against the overall length: 4.70 m length with 1.0 m wheels gives 1.00 m front/rear overhang from axle to bumper at 2.70 m wheelbase (0.50 m beyond the tyre), or 1.25 m at 2.20 m. Photos can settle it: at 2.7 m the gap between front and rear tyres is about 1.7 wheel diameters; at 2.2 m it is about 1.2."
+    },
+    {
+     "parameter": "track_width (wheel centre to wheel centre)",
+     "value": "~1.85 m (range 1.80-1.90 m)",
+     "reasoning": "Not published. Overall width is 2.20 m. A 1.0 m off-road tyre (e.g. 37x12.5R17, 335/80R20, 365/80R20 class) is about 0.31-0.37 m wide. If the tyres' outer sidewalls define the 2.20 m width, track = 2.20 - ~0.34 = ~1.86 m."
+    },
+    {
+     "parameter": "tyre size / wheel geometry",
+     "value": "OD 1.00 m (r = 0.50 m unloaded, ~0.47 m static loaded), tyre width ~0.34 m, rim ~20 in",
+     "reasoning": "Only the 1 m diameter is published. Width and rim are typical for 1 m military/off-road tyres carrying ~1-1.25 t per wheel."
+    },
+    {
+     "parameter": "overall height",
+     "value": "hull ~1.45-1.6 m without turret; ~2.1-2.3 m with ZMU-03; no mast data",
+     "reasoning": "Not published. Axle centre is at ~0.47-0.5 m. Wheel tops are at ~1.0 m, plus ~0.10-0.125 m bump travel and fender clearance, so the deck is at ~1.15-1.25 m. The hull houses the generator, 40 kWh battery and electronics, which suggests a top at ~1.45-1.6 m. ZMU-03 class turret height is ~0.6-0.7 m (estimate)."
+    },
+    {
+     "parameter": "ground clearance",
+     "value": "~0.30 m under axle/differential housings; ~0.45-0.50 m under hull belly",
+     "reasoning": "Not published. Rigid axles put the minimum clearance under the differential/motor housing: static loaded radius ~0.47 m minus a housing radius of ~0.17 m gives ~0.30 m. The belly sits higher because the axles move up into the wheel wells."
+    },
+    {
+     "parameter": "mass breakdown for URDF",
+     "value": "Base 3500 kg (2020 mule) or 4000 kg (2023+ armed). Unsprung ~2 x 300-350 kg per axle (beam + integrated motor + diff + hubs/brakes) + 4 x ~80 kg wheel/tyre, so ~950-1000 kg unsprung. Sprung chassis ~2500 kg (3.5 t) or ~3000 kg (4 t). Turret: ZMU-03 205 kg (published) or WLKM RCWS ~500 kg + ammo",
+     "reasoning": "Published totals are split using typical heavy solid-axle component masses. Only the totals and the 205 kg ZMU-03 mass are published."
+    },
+    {
+     "parameter": "chassis inertia (sprung body as box 4.7 x 2.2 x 1.0 m, 3000 kg)",
+     "value": "Ixx ~1460, Iyy ~5770, Izz ~6730 kg*m^2 (scale x0.83 for 2500 kg); CoM ~0.9-1.0 m above ground, roughly mid-wheelbase",
+     "reasoning": "Solid-box formula I = m/12 (a^2 + b^2). Real mass is concentrated (battery, generator low and central), so 0.8-0.9 of the box values is also defensible. Generator and battery placement are not published."
+    },
+    {
+     "parameter": "wheel spin inertia",
+     "value": "~12 kg*m^2 per wheel+tyre (80 kg, r_o 0.5 m, r_i ~0.25 m)",
+     "reasoning": "Thick-ring approximation I = m (r_o^2 + r_i^2)/2."
+    },
+    {
+     "parameter": "suspension travel split",
+     "value": "total 0.25 m (published); suggested +0.10 m bump / -0.15 m rebound, or symmetric +/-0.125 m",
+     "reasoning": "Only the total stroke is published."
+    },
+    {
+     "parameter": "spring rate (wheel rate, per corner)",
+     "value": "~60-65 kN/m",
+     "reasoning": "Sprung mass per corner ~800-825 kg (4 t vehicle). A 1.4 Hz ride frequency (typical for off-road military wheeled vehicles) gives k = m (2*pi*f)^2 ~ 62-64 kN/m. Static sag is then g/(2*pi*f)^2 ~ 0.127 m, about half of the published 0.25 m stroke, which is self-consistent."
+    },
+    {
+     "parameter": "damping (per corner)",
+     "value": "~4.5-5.5 kN*s/m (damping ratio 0.3-0.4)",
+     "reasoning": "c = 2*zeta*sqrt(k*m) with k ~62 kN/m and m ~800 kg. The real dampers are described as controlled/adjustable (semi-active)."
+    },
+    {
+     "parameter": "3-link + Panhard geometry",
+     "value": "Per axle: 2 lower trailing links ~0.9-1.0 m long, 1 upper central/offset link ~0.6-0.8 m, Panhard rod ~1.5-1.7 m running nearly full width",
+     "reasoning": "Typical heavy solid-axle 3-link proportions. The sources confirm only the link count ('three reaction rods') and the Panhard rod. For a URDF, model each axle as a beam with prismatic (heave) + revolute (roll about the longitudinal axis) joints relative to the chassis, or as a closed-chain approximation."
+    },
+    {
+     "parameter": "max steering angle per axle",
+     "value": "~30 deg (range 28-35 deg)",
+     "reasoning": "Not published. This is typical for steered rigid axles with ~1 m tyres and CV joints, limited by tyre-to-body clearance within a 2.2 m width."
+    },
+    {
+     "parameter": "turning radius",
+     "value": "4WS counter-phase at 30 deg, WB 2.7 m: centreline radius ~2.3 m, outer wheel path ~3.6-3.7 m radius, body swept circle ~8.3 m diameter. Front-steer only: centreline ~4.7 m. With WB 2.2 m: centreline ~1.9 m (4WS)",
+     "reasoning": "Kinematics: R_centre = (WB/2)/tan(delta) for symmetric 4WS, or WB/tan(delta) for 2WS. Outer path = sqrt((R + T/2)^2 + (WB/2)^2) with T ~1.85 m. Body corner at (2.35, R + 1.1) gives the swept radius. Nothing is published."
+    },
+    {
+     "parameter": "wheel angular speed at 50 km/h",
+     "value": "~27.8 rad/s unloaded radius (265 rpm); ~29.6 rad/s at 0.47 m loaded radius",
+     "reasoning": "v = 13.9 m/s divided by the wheel radius. Use this for the URDF velocity limit (about 32 rad/s to allow 'over 50 km/h')."
+    },
+    {
+     "parameter": "drive power per axle motor",
+     "value": "~45 kW continuous / ~110 kW peak per motor (2 motors)",
+     "reasoning": "Published totals are 90 kW continuous / 220 kW peak with 'two steering axles - each integrated with an electric motor' and 'dwa trakcyjne silniki elektryczne', so split equally."
+    },
+    {
+     "parameter": "gradient / side slope / fording / step / trench",
+     "value": "No HUNTeR data. Class-typical placeholders only: ~60% gradient, ~30% side slope, ~0.5-0.6 m fording, ~0.4-0.5 m step, ~0.6-0.8 m trench",
+     "reasoning": "Placeholders from typical 4x4 UGVs of this size and wheel diameter. A 0.5 m step is roughly the wheel radius limit for 4x4. Do not present these as published specs. HDT Hunter WOLF's 30 deg / 60 cm figures belong to a different vehicle and must not be used."
+    },
+    {
+     "parameter": "approach/departure angles",
+     "value": "~40-45 deg with WB 2.7 m (1.0 m overhang, nose/tail bottom edge ~0.5-0.6 m high); ~30-35 deg with WB 2.2 m",
+     "reasoning": "Geometry from the overhang and estimated bumper height. Not published."
+    }
+   ],
+   "sources_consulted": [
+    "https://milmag.pl/lukasiewicz-piap-prezentuje-bezzalogowego-huntera/",
+    "https://milmag.pl/en/lukasiewicz-piap-institute-presents-hunter-ugv/",
+    "https://www.milmag.eu/news/view?news_id=4611",
+    "https://www.janes.com/defence-news/news-detail/lukasiewicz-piap-unveils-hunter-ugv",
+    "https://defencehub.live/threads/polish-lukasiewicz-piap-unveils-hunter-ugv.1331/",
+    "https://defensehere.com/en/a-polish-company-unveils-a-hunter-ugv/",
+    "https://battle-updates.com/update/military-vehicle-news-600/",
+    "https://www.intarg.haller.pl/targi/pliki_wynalazki/posters/157-1623325091.pdf",
+    "https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle",
+    "https://armyrecognition.com/news/army-news/army-news-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle",
+    "https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/polish-defense-industries-field-test-piap-hunter-ugv-for-combat-purposes",
+    "https://militaeraktuell.at/en/poland-practices-with-unmanned-systems/",
+    "https://defence24.pl/technologie/polski-robot-bojowy-na-poligonie",
+    "https://defence24.com/technology/polish-hunter-armed-ugv-field-tested",
+    "https://defence24.com/industry/mspo-2023-lukasiewicz-piap-robots-for-the-armed-forces",
+    "https://mspo.defence24.pl/na-ladzie/mspo-2023-robotyczne-platformy-lukasiewicz-piap-dla-sil-zbrojnych",
+    "https://defence24.com/armed-forces/land/hunter-35-tonnes-hybrid-land-robot-defence24-tv",
+    "https://defence24.pl/przemysl/hunter-35-tonowy-robot-z-napedem-hybrydowym-defence24-tv",
+    "https://defence24.pl/technologie/roboty-lukasiewicz-piap-na-cwiczeniach-cyfrowy-legionista",
+    "https://defence24.pl/technologie/wojny-robotow-na-cwiczeniach-fex-24",
+    "https://www.overtdefense.com/2023/07/13/first-army-trials-of-piap-hunter-ugv/",
+    "https://breakingdefense.com/2023/07/with-live-field-experimentation-poland-shapes-its-future-force/",
+    "https://zbiam.pl/hunter-z-zmu-03-debiutuje-na-poligonie/",
+    "https://milmag.pl/en/hunter-with-zmu-03-turret-debuts-on-training-grounds/",
+    "https://milmag.pl/en/mspo-2025-piap-hunter-with-a-12-7-mm-weapon-module/",
+    "https://milmag.pl/en/autonomous-and-unmanned-systems-by-lukasiewicz-piap-at-the-opex-2025-training-ground-in-italy/",
+    "https://milmag.pl/en/polish-combat-robot-and-medical-evacuation-robot-participating-in-the-fex-2024-exercise/",
+    "https://milmag.pl/en/poland-piap-hunter-and-piap-ibis-transport-mule-robots-in-digital-legionnaire-exercises/",
+    "https://milmag.pl/robot-bojowy-i-robot-ewakuacji-medycznej-piap-na-mspo-2024/",
+    "https://milmag.pl/eurosatory-2026-bezzalogowy-system-minowania-narzutowego-bluszcz-na-podwoziu-piap-hunter/",
+    "https://milmag.pl/en/eurosatory-2026-bluszcz-unmanned-scatterable-mine-laying-system-on-piap-hunter-chassis/",
+    "https://milmag.pl/en/the-first-public-shooting-demonstration-of-zmu-03-and-zmu-07/",
+    "https://polska-zbrojna.pl/home/articleshow/47110?t=PIAP-HUNTeR-w-nowej-odslonie-na-MSPO",
+    "https://radiokielce.pl/1440214/technologiczne-nowosci-polskiej-produkcji-na-targach-zbrojeniowych/",
+    "https://portalobronny.se.pl/przemysl-zbrojeniowy/mspo-2024-roboty-piap-atakuja-ratuja-i-ewakuuja-to-sprzet-testowany-przez-wojsko-aa-3QTu-7phN-mQir.html",
+    "https://portalobronny.se.pl/polityka-obronna/polskie-roboty-na-poligonie-z-podhalanczykami-beda-walczyc-i-ratowac-zycie-aa-gSKL-DPkK-Vp9R.html",
+    "https://www.targikielce.pl/en/mspo/list-of-exhibitors/siec-badawcza-lukasiewicz-przemyslowy-instytut-automatyki-i-pomiarow-piap,4035187",
+    "https://piap.lukasiewicz.gov.pl/badanie/projekt-hunter/",
+    "https://piap.lukasiewicz.gov.pl/en/2024/09/02/lukasiewicz-piap-mobile-robots-in-new-guises-at-the-mspo/",
+    "https://piap.lukasiewicz.gov.pl/en/2023/08/29/lukasiewicz-piap-with-a-new-offer-for-the-armed-forces-at-mspo/",
+    "https://piap.lukasiewicz.gov.pl/en/2020/09/24/lukasiewicz-piap-warsaws-offensive-during-the-defence24-day/",
+    "https://www.pap.pl/mediaroom/lukasiewicz-pokazuje-na-mspo-w-kielcach-technologie-przyszlego-pola-walki",
+    "https://spidersweb.pl/2023/06/polski-robot-wojskowy-hunter.html",
+    "https://spidersweb.pl/2023/07/oto-przyszlosc-polskiego-wojska-hunter.html",
+    "https://spidersweb.pl/2025/12/polska-tworzy-autonomicznego-robota-wojskowego-unia-dolozyla-kase.html",
+    "https://www.wnp.pl/bezpieczenstwo/oto-polski-pomysl-na-walczacego-robota,724478.html",
+    "https://tek.info.pl/article/987/czy_rozpoznawczo_bojowy_robot_hunter_ma_szanse_sluzyc_w_polskiej_armii",
+    "https://geekweek.interia.pl/militaria/news-wloska-armia-testuje-polski-ciezki-robot-bojowy-piap-hunter,nId,23480283",
+    "https://tech.wp.pl/mspo-2025-potwor-z-tarnowa-jeszcze-lepszy-i-w-nowych-wcieleniach,7195460072086432a",
+    "https://defence-blog.com/polish-robotic-mules-join-eu-military-trials/",
+    "https://www.wbgroup.pl/en/zmu-05_eng_flyer_",
+    "WebFetch to milmag.pl and armyrecognition.com failed (DNS blocked); curl to the intarg.haller.pl poster PDF, ebooki.rp.pl MSPO supplement PDF, eda.europa.eu brief and piap.lukasiewicz.gov.pl failed (proxy 403)"
+   ],
+   "open_questions": [
+    "WHEELBASE CONFLICT: 2.70 m (PIAP INTARG poster via search summary, Army Recognition, Militär Aktuell) vs 2.20 m (milmag 2020 PL, defence24 2023, spidersweb, wnp, tek.info). The 2.20 m figure equals the published width and may be a copied error. Confirm from side-view photos by measuring the gap between the tyres in wheel diameters (1.7 means 2.7 m, 1.2 means 2.2 m), or by reading the INTARG poster PDF if any channel can download it.",
+    "Overall height (hull, with ZMU-03, with WLKM RCWS, with mast) is not published anywhere found.",
+    "Track width, ground clearance, tyre size/brand and rim size are not published.",
+    "Max steering angle, steering modes (counter-phase, crab, front-only) and turning radius/circle are not published. Sources confirm only 'two steering axles'.",
+    "Gradient, side slope, fording depth, vertical step, trench crossing, and approach/departure angles are not published.",
+    "Fuel type and tank capacity are not published. Range 450 km on a full tank (2026 press) and 'up to 8 h' operation (Portal Obronny 2024, single source).",
+    "Mass conflict: 3.5 t (2020 prototype, mule) vs 'over 4 t' (2023+ armed). Unknown whether 4 t includes the turret, or whether the hull itself grew. Gross mass is never stated; ~4.5-5 t is implied by the ~1 t payload.",
+    "Suspension: dependent 3-link + Panhard (2020-2023, PIAP poster) vs 'independent suspension' (defence24 April 2026) vs 'active suspension' (2017-2020 project page). Unclear whether a 2025/2026 redesign happened or whether this is press error.",
+    "Drive layout: 'two steering axles - each integrated with an electric motor' plus differential locks (2 axle motors), vs one exhibitor listing that says 'independently driven wheels'.",
+    "Camera count differs by year: 9 (2020), 6 or 7 (2023/24), plus extra lidars and stereo cameras (2024). Exact mounting positions are unknown without photos.",
+    "Generator engine type (diesel per Radio Kielce 'wspomagany dieslem'), battery and generator placement, and CoM height are not published.",
+    "The INTARG 2021 poster PDF (https://www.intarg.haller.pl/targi/pliki_wynalazki/posters/157-1623325091.pdf) is the most authoritative PIAP-authored spec sheet found, but it could not be downloaded here (proxy 403). It may contain further figures (clearance, height, gradient)."
+   ]
+  },
+  "research:chassis-suspension-steering": {
+   "findings": [
+    {
+     "parameter": "drive_axle_type_and_supplier",
+     "value": "Rigid (solid) FRONT-type drive axle, 'Ultimate Dana 60 or equivalent', 3 units bought for the HUNTeR project (2 fitted, front and rear, both steering, plus 1 spare is the likely reading)",
+     "quote": "Mosty napędowe do projektu HUNTeR – 3 sztuki ... Przedni, sztywny most napędowy Ultimate Dana 60 lub równoważne o następujących parametrach: Przełożenie przekładni 5.38, średnica koła talerzowego min 9,75\"",
+     "source_url": "https://piap.lukasiewicz.gov.pl/bip/Zamowienia-publiczne/ZO-11-07-2017-Dostawa-mostow-napedowych-do-projektu-Hunter",
+     "confidence": "high",
+     "variant": "2017 R&D project procurement (prototype, request for quotes ZO/11/07/2017 dated 27.07.2017; selection notice 04.08.2017)"
+    },
+    {
+     "parameter": "axle_final_drive_ratio",
+     "value": "5.38",
+     "unit": "ratio",
+     "quote": "Przełożenie przekładni 5.38, średnica koła talerzowego min 9,75\"",
+     "source_url": "https://piap.lukasiewicz.gov.pl/bip/Zamowienia-publiczne/ZO-11-07-2017-Dostawa-mostow-napedowych-do-projektu-Hunter",
+     "confidence": "high",
+     "variant": "2017 procurement spec"
+    },
+    {
+     "parameter": "axle_ring_gear_diameter",
+     "value": ">= 9.75",
+     "unit": "inch",
+     "quote": "średnica koła talerzowego min 9,75\"",
+     "source_url": "https://piap.lukasiewicz.gov.pl/bip/Zamowienia-publiczne/ZO-11-07-2017-Dostawa-mostow-napedowych-do-projektu-Hunter",
+     "confidence": "high",
+     "variant": "2017 procurement spec"
+    },
+    {
+     "parameter": "axle_wheel_mounting_surface_width (WMS-to-WMS)",
+     "value": "70 (= 1778 mm)",
+     "unit": "inch",
+     "quote": "Wymiar pomiędzy powierzchniami montażowymi kół 70\"",
+     "source_url": "https://piap.lukasiewicz.gov.pl/bip/Zamowienia-publiczne/ZO-11-07-2017-Dostawa-mostow-napedowych-do-projektu-Hunter",
+     "confidence": "high",
+     "variant": "2017 procurement spec"
+    },
+    {
+     "parameter": "wheel_bolt_pattern",
+     "value": "8 x 6.5 inch (8 x 165.1 mm)",
+     "unit": "inch",
+     "quote": "Rozkład śrub montażowych kół 8x6.5\"",
+     "source_url": "https://piap.lukasiewicz.gov.pl/bip/Zamowienia-publiczne/ZO-11-07-2017-Dostawa-mostow-napedowych-do-projektu-Hunter",
+     "confidence": "high",
+     "variant": "2017 procurement spec"
+    },
+    {
+     "parameter": "axle_tube_diameter",
+     "value": "3.5",
+     "unit": "inch",
+     "quote": "Średnica rur pochwy reakcyjnej 3.5\"",
+     "source_url": "https://piap.lukasiewicz.gov.pl/bip/Zamowienia-publiczne/ZO-11-07-2017-Dostawa-mostow-napedowych-do-projektu-Hunter",
+     "confidence": "high",
+     "variant": "2017 procurement spec"
+    },
+    {
+     "parameter": "brakes",
+     "value": "Disc brakes, outer rotor diameter >= 350 mm, twin-piston calipers (on the axles)",
+     "unit": "mm",
+     "quote": "Wymagane były hamulce tarczowe o zewnętrznej średnicy co najmniej 350 mm z zaciskami dwutłoczkowymi (search summary of the tender text)",
+     "source_url": "https://piap.lukasiewicz.gov.pl/bip/Zamowienia-publiczne/ZO-11-07-2017-Dostawa-mostow-napedowych-do-projektu-Hunter",
+     "confidence": "medium",
+     "variant": "2017 procurement spec"
+    },
+    {
+     "parameter": "traction_motor_type_and_count",
+     "value": "2 x three-phase permanent-magnet synchronous motors (PMSM), max supply voltage up to 700 Vdc, max speed not less than 4500 rpm at full load, peak current 450 A for >= 2 min",
+     "quote": "Przedmiotem zamówienia jest dostawa zestawu silników elektrycznych w zakresie określonym poniżej: 2 szt. ... silnik trójfazowy z magnesami trwałymi (PMSM) o maksymalnym napięciu zasilania do 700Vdc oraz obrotach nie mniejszych niż 4500 RPM",
+     "source_url": "https://piap.pl/bip/Zamowienia-publiczne/OGLOSZENIE-O-ZAMIARZE-ZAWARCIA-UMOWY-ZWR-01-2018-Dostawa-zestawu-silnikow-do-projektu-HUNTER-zamowienie-w-trybie-z-wolnej-reki",
+     "confidence": "high",
+     "variant": "2018 procurement (ZWR/01/2018, notice 500073417-N-2018, 05-04-2018, single-source award, CPV 31100000-7)"
+    },
+    {
+     "parameter": "traction_motor_count",
+     "value": "2 traction electric motors",
+     "quote": "Pojazd napędzany jest przez dwa trakcyjne silniki elektryczne. Zamontowany na pojeździe generator prądotwórczy zasila akumulator trakcyjny.",
+     "source_url": "https://spidersweb.pl/2023/07/oto-przyszlosc-polskiego-wojska-hunter.html",
+     "confidence": "high",
+     "variant": "2023 armed FEX version"
+    },
+    {
+     "parameter": "traction_motor_placement",
+     "value": "One electric motor integrated with each of the two steering axles (one motor per axle, driving through the axle differential)",
+     "quote": "Hunter's 4x4 chassis measures 4.7 m long and 2.2 m wide and features two steering axles – each integrated with an electric motor – with a 3-link Panhard suspension.",
+     "source_url": "https://www.janes.com/defence-news/news-detail/lukasiewicz-piap-unveils-hunter-ugv",
+     "confidence": "high",
+     "variant": "2020 prototype"
+    },
+    {
+     "parameter": "traction_motor_placement",
+     "value": "Traction electric motors integrated with the driving axles (serial hybrid)",
+     "quote": "The drive power is 90 kW continuous and 220 kW peak, facilitated by a serial hybrid system with traction electric motors integrated with the driving axles.",
+     "source_url": "https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle",
+     "confidence": "high",
+     "variant": "2024 'next-gen' coverage (spec text matches Intarg 2021 poster)"
+    },
+    {
+     "parameter": "drive_power",
+     "value": "90 kW continuous / 220 kW peak (total drive)",
+     "unit": "kW",
+     "quote": "The drive power is 90 kW continuous and 220 kW peak",
+     "source_url": "https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle",
+     "confidence": "medium",
+     "variant": "2024 coverage / poster spec"
+    },
+    {
+     "parameter": "drivetrain",
+     "value": "4x4 with differential locks, two steering axles, 1 m diameter wheels",
+     "quote": "The 4x4 drive system features differential locks, two steering axles, and 1m diameter wheels",
+     "source_url": "https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle",
+     "confidence": "high",
+     "variant": "2024 coverage / poster spec"
+    },
+    {
+     "parameter": "differential_locks_and_steering_axles",
+     "value": "Differential locks + two steering axles (designed by Lukasiewicz-PIAP engineers)",
+     "quote": "Konstruktorzy Łukasiewicz-PIAP zastosowali blokadę mechanizmów różnicowych i dwie osie skrętne poprawiające dzielność terenową.",
+     "source_url": "https://defence24.pl/technologie/polski-robot-bojowy-na-poligonie",
+     "confidence": "high",
+     "variant": "2023 armed FEX version"
+    },
+    {
+     "parameter": "steering_type",
+     "value": "Steering on both axles (front and rear steer axles)",
+     "quote": "The offroad performance is further enhanced by the PIAP HUNTeR's differential locks, and steering available on both axles.",
+     "source_url": "https://defence24.com/industry/mspo-2023-lukasiewicz-piap-robots-for-the-armed-forces",
+     "confidence": "high",
+     "variant": "2023 MSPO armed version"
+    },
+    {
+     "parameter": "steering_type",
+     "value": "Two steering axles combined with 3-link suspension for manoeuvrability",
+     "quote": "Dwie osie skrętne zapewniają w połączeniu z zawieszeniem 3-link zapewniają wysoką manewrowość i dzielność terenową.",
+     "source_url": "https://portalobronny.se.pl/polityka-obronna/polskie-roboty-na-poligonie-z-podhalanczykami-beda-walczyc-i-ratowac-zycie-aa-gSKL-DPkK-Vp9R.html",
+     "confidence": "high",
+     "variant": "2023 FEX"
+    },
+    {
+     "parameter": "steering_type",
+     "value": "All-wheel drive and all-wheel steering (Allradlenkung)",
+     "quote": "militaeraktuell beschreibt Allradantrieb und Allradlenkung (search summary)",
+     "source_url": "https://militaeraktuell.at/polen-uebt-mit-unbemannten-systemen-drohnen/",
+     "confidence": "medium",
+     "variant": "2024-2025 exercise with 1st Engineer Regiment"
+    },
+    {
+     "parameter": "suspension_type",
+     "value": "Dependent 3-link type with Panhard bar, coil springs, controlled-damping shock absorbers",
+     "quote": "Dependent 3-link type with Panhard bar, Coil springs, Controlled damping shock absorbers",
+     "source_url": "https://www.intarg.haller.pl/targi/pliki_wynalazki/posters/157-1623325091.pdf",
+     "confidence": "high",
+     "variant": "2021 PIAP spec poster (INTARG 2021) for prototype"
+    },
+    {
+     "parameter": "suspension_type",
+     "value": "Dependent (rigid axles) with three reaction rods and a Panhard rod, coil springs, adjustable-damping shock absorbers",
+     "quote": "Pojazd wyposażono w zawieszenie zależne (sztywne mosty) z trzema drążkami reakcyjnymi i drążkiem Panharda, ze sprężynami śrubowymi i amortyzatorami o regulowanym tłumieniu.",
+     "source_url": "https://defence24.pl/technologie/polski-robot-bojowy-na-poligonie",
+     "confidence": "high",
+     "variant": "2023 armed FEX version"
+    },
+    {
+     "parameter": "suspension_type",
+     "value": "Dependent 3-link with Panhard rod, coil springs, shock absorbers with controlled damping",
+     "quote": "Pojazd wyposażono w zawieszenie zależne typu 3-link z drążkiem Panharda, ze sprężynami śrubowymi i amortyzatorami o sterowanym tłumieniu.",
+     "source_url": "https://spidersweb.pl/2023/06/polski-robot-wojskowy-hunter.html",
+     "confidence": "high",
+     "variant": "2023"
+    },
+    {
+     "parameter": "suspension_type",
+     "value": "Dependent rigid suspension, three reaction rods, Panhard rod, 'screw' (coil) springs, adjustable shock absorbers",
+     "quote": "dependent (rigid) suspension, with three reaction rods, and a Panhard rod with screw springs and adjustable shock absorbers (search summary of article text)",
+     "source_url": "https://defence24.com/technology/polish-hunter-armed-ugv-field-tested",
+     "confidence": "high",
+     "variant": "2023 armed FEX version"
+    },
+    {
+     "parameter": "suspension_type",
+     "value": "3-link Panhard suspension",
+     "quote": "two steering axles – each integrated with an electric motor – with a 3-link Panhard suspension",
+     "source_url": "https://defensehere.com/en/a-polish-company-unveils-a-hunter-ugv/",
+     "confidence": "high",
+     "variant": "2020 prototype"
+    },
+    {
+     "parameter": "suspension_type (conflicting)",
+     "value": "'Independent suspension' claimed in 2026 article (contradicts all other sources; possibly journalistic error or a new chassis)",
+     "quote": "pojazd jest przystosowany do działania w trudnym terenie dzięki napędowi 4x4, dużym kołom oraz układowi niezależnego zawieszenia",
+     "source_url": "https://defence24.pl/technologie/roboty-lukasiewicz-piap-na-cwiczeniach-cyfrowy-legionista",
+     "confidence": "low",
+     "variant": "2026 (Cyfrowy Legionista exercise, Czerwony Bór, April 2026)"
+    },
+    {
+     "parameter": "suspension_active_claim",
+     "value": "Project page claims high mobility via 'active suspension' (aktywne zawieszenie) plus high speed (no details)",
+     "quote": "high mobility comes from an active suspension combined with high speed (search summary of the project page)",
+     "source_url": "https://piap.lukasiewicz.gov.pl/badanie/projekt-hunter/",
+     "confidence": "low",
+     "variant": "R&D project description 2017-2020"
+    },
+    {
+     "parameter": "suspension_travel",
+     "value": "25",
+     "unit": "cm",
+     "quote": "Suspension stroke 25 cm (poster spec: dependent 3-link type with Panhard bar, coil springs, controlled damping shock absorbers, suspension stroke of 25 cm)",
+     "source_url": "https://www.intarg.haller.pl/targi/pliki_wynalazki/posters/157-1623325091.pdf",
+     "confidence": "medium",
+     "variant": "2021 poster / 2024 Army Recognition repeat"
+    },
+    {
+     "parameter": "suspension_travel",
+     "value": "25",
+     "unit": "cm",
+     "quote": "its suspension is a dependent 3-link type with a Panhard bar, coil springs, and controlled damping shock absorbers, with a suspension stroke of 25 cm",
+     "source_url": "https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle",
+     "confidence": "medium",
+     "variant": "2024"
+    },
+    {
+     "parameter": "wheel_diameter",
+     "value": "1.0",
+     "unit": "m",
+     "quote": "Wheels, with a diameter of 1 meter, with offroad tyres, along with a 4x4 drivetrain, make the robot very agile offroad.",
+     "source_url": "https://defence24.com/industry/mspo-2023-lukasiewicz-piap-robots-for-the-armed-forces",
+     "confidence": "high",
+     "variant": "2023 MSPO"
+    },
+    {
+     "parameter": "wheel_diameter",
+     "value": "1.0",
+     "unit": "m",
+     "quote": "Koła o średnicy metra w połączeniu z układem napędowym 4×4 dają robotycznej platformie wysoką dzielność terenową.",
+     "source_url": "https://zbiam.pl/hunter-z-zmu-03-debiutuje-na-poligonie/",
+     "confidence": "high",
+     "variant": "2023 FEX"
+    },
+    {
+     "parameter": "tire_type",
+     "value": "Off-road tyres (no size/make published)",
+     "quote": "Wheels, with a diameter of 1 meter, with offroad tyres",
+     "source_url": "https://defence24.com/industry/mspo-2023-lukasiewicz-piap-robots-for-the-armed-forces",
+     "confidence": "high",
+     "variant": "2023"
+    },
+    {
+     "parameter": "wheelbase",
+     "value": "270",
+     "unit": "cm",
+     "quote": "The HUNTeR platform weighs 3500 kg and measures 470x220 cm with a wheelbase of 270 cm. It can reach a maximum speed of 50 km/h",
+     "source_url": "https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle",
+     "confidence": "medium",
+     "variant": "2024 coverage citing PIAP poster spec"
+    },
+    {
+     "parameter": "wheelbase",
+     "value": "270",
+     "unit": "cm",
+     "quote": "rozstaw osi 270 cm oraz skok zawieszenia wynoszący 25 cm (search summary of INTARG poster)",
+     "source_url": "https://www.intarg.haller.pl/targi/pliki_wynalazki/posters/157-1623325091.pdf",
+     "confidence": "medium",
+     "variant": "2021 poster"
+    },
+    {
+     "parameter": "wheelbase",
+     "value": "2.7",
+     "unit": "m",
+     "quote": "militaeraktuell nennt einen Radstand von 2,7 Metern (search summary)",
+     "source_url": "https://militaeraktuell.at/polen-uebt-mit-unbemannten-systemen-drohnen/",
+     "confidence": "medium",
+     "variant": "2024-2025"
+    },
+    {
+     "parameter": "wheelbase (conflicting)",
+     "value": "220",
+     "unit": "cm",
+     "quote": "PIAP HUNTeR ma ponad 4 tony masy własnej, 470 cm długości, 220 cm szerokości, rozstaw osi 220 cm, a koła mają średnicę 1 m.",
+     "source_url": "https://defence24.pl/technologie/polski-robot-bojowy-na-poligonie",
+     "confidence": "low",
+     "variant": "2023 (same 220 cm also in Milmag 2020 and wnp.pl 2023; likely copied/confused with width)"
+    },
+    {
+     "parameter": "wheelbase (conflicting)",
+     "value": "2.2",
+     "unit": "m",
+     "quote": "Bezzałogowy Hunter waży 3,5 tony, ma 4,7 m długości, 2,2 m szerokości i 2,2 m rozstaw osi.",
+     "source_url": "https://www.wnp.pl/bezpieczenstwo/oto-polski-pomysl-na-walczacego-robota,724478.html",
+     "confidence": "low",
+     "variant": "2023"
+    },
+    {
+     "parameter": "overall_length",
+     "value": "4.7",
+     "unit": "m",
+     "quote": "Hunter's 4x4 chassis measures 4.7 m long and 2.2 m wide",
+     "source_url": "https://www.janes.com/defence-news/news-detail/lukasiewicz-piap-unveils-hunter-ugv",
+     "confidence": "high",
+     "variant": "2020 prototype (also 470 cm in 2023-2026 sources)"
+    },
+    {
+     "parameter": "overall_width",
+     "value": "2.2",
+     "unit": "m",
+     "quote": "PIAP HUNTeR is a 4-ton unmanned vehicle measuring 470 cm in length and 220 cm in width.",
+     "source_url": "https://milmag.pl/en/mspo-2025-piap-hunter-with-a-12-7-mm-weapon-module/",
+     "confidence": "high",
+     "variant": "2025 MSPO"
+    },
+    {
+     "parameter": "curb_mass",
+     "value": "3500",
+     "unit": "kg",
+     "quote": "The 3.5-tonne multirole UGV is designed to conduct patrols and reconnaissance, and provide support to troops in hazardous areas.",
+     "source_url": "https://www.janes.com/defence-news/news-detail/lukasiewicz-piap-unveils-hunter-ugv",
+     "confidence": "high",
+     "variant": "2020 prototype (curb, 'masy własnej')"
+    },
+    {
+     "parameter": "mass",
+     "value": ">4000 (about 4 t)",
+     "unit": "kg",
+     "quote": "PIAP HUNTeR ma ponad 4 tony masy własnej",
+     "source_url": "https://defence24.pl/technologie/polski-robot-bojowy-na-poligonie",
+     "confidence": "high",
+     "variant": "2023+ armed version (ZMU-03); 2025-2026 sources say ~4 t"
+    },
+    {
+     "parameter": "max_speed",
+     "value": "50 (some say 'over 50')",
+     "unit": "km/h",
+     "quote": "PIAP HUNTeR osiąga prędkość maksymalną ponad 50 km/h.",
+     "source_url": "https://zbiam.pl/hunter-z-zmu-03-debiutuje-na-poligonie/",
+     "confidence": "high",
+     "variant": "2023"
+    },
+    {
+     "parameter": "powertrain_architecture",
+     "value": "Series hybrid: combustion engine drives 110 kW generator only; two electric motors drive the wheels",
+     "quote": "Układ hybrydowy ma dwa silniki elektryczne napędzające koła, a silnik spalinowy pracuje tylko jako generator prądu o mocy 110 kW (search summary)",
+     "source_url": "https://geekweek.interia.pl/militaria/news-wloska-armia-testuje-polski-ciezki-robot-bojowy-piap-hunter,nId,23480283",
+     "confidence": "high",
+     "variant": "2025 (HEDI OPEX 2025 Italy)"
+    },
+    {
+     "parameter": "generator_power",
+     "value": "110",
+     "unit": "kW",
+     "quote": "It is equipped with a 110 kW generator that provides power to its motors and provides on-board power generation for equipment that requires 600V DC, 400V AC or 24V DC supply.",
+     "source_url": "https://defencehub.live/threads/polish-lukasiewicz-piap-unveils-hunter-ugv.1331/",
+     "confidence": "high",
+     "variant": "2020 prototype"
+    },
+    {
+     "parameter": "battery",
+     "value": "Li-Ion NMC 40 kWh with BTMS",
+     "unit": "kWh",
+     "quote": "The power supply is managed by a Li-Ion NMC battery with a capacity of 40 kWh and BTMS system, alongside a 110 kW generator.",
+     "source_url": "https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle",
+     "confidence": "high",
+     "variant": "2024 / poster"
+    },
+    {
+     "parameter": "auxiliary_power_outputs",
+     "value": "600 VDC, 3x400 VAC, 24 VDC",
+     "quote": "Dodatkowe urządzenia mogą być zasilane z napięć 600VDC, 3 x 400VAC, 24VDC.",
+     "source_url": "https://milmag.pl/news/view?news_id=4608",
+     "confidence": "high",
+     "variant": "2020 prototype"
+    },
+    {
+     "parameter": "hv_bus_voltage (thermal system tender)",
+     "value": "600-720 VDC HV supply, J1939 CAN control; BTMS >=5 kW cooling at 50 C, >=2 kW heating; 3 cooling systems",
+     "quote": "Zasilanie wysokonapięciowe ma pracować w zakresie 600–720 V DC, a sterowanie odbywa się przez magistralę J1939 CAN (search summary of ZO/13/2024)",
+     "source_url": "https://piap.lukasiewicz.gov.pl/bip/layout/set/ajax/content/versionview/12108/2/pol-PL",
+     "confidence": "medium",
+     "variant": "Dec 2024 PIAP tender 'Zestaw urządzeń do zarządzania temperaturą komponentów pojazdu o napędzie hybrydowym' (HUNTeR not named explicitly)"
+    },
+    {
+     "parameter": "btms_cooling (2018 tender)",
+     "value": "Cooling set for hybrid vehicle components incl. BTMS for battery, min 4.5 kW cooling",
+     "quote": "Przedmiotem jest zestaw urządzeń do chłodzenia komponentów pojazdu hybrydowego, w tym układ BTMS dla akumulatora o mocy chłodzenia min. 4,5 kW (search summary)",
+     "source_url": "https://piap.lukasiewicz.gov.pl/bip/content/download/7015/111845/file/zapytanie.pdf",
+     "confidence": "medium",
+     "variant": "2018 PIAP request for quotes 03/05/2018 (POIR-funded, consistent with HUNTeR project)"
+    },
+    {
+     "parameter": "payload",
+     "value": "~1000",
+     "unit": "kg",
+     "quote": "\"The vehicle is presented in a cargo mule configuration. It can carry up to around 1,000 kilograms of payload\", he said.",
+     "source_url": "https://defence24.com/armed-forces/land/hunter-35-tonnes-hybrid-land-robot-defence24-tv",
+     "confidence": "medium",
+     "variant": "2021 cargo mule config (designer Rafał Więckowski, Defence24 Days Oct 2021); 2026 Polska Zbrojna also says up to one tonne"
+    },
+    {
+     "parameter": "range",
+     "value": "450 km on one full tank",
+     "unit": "km",
+     "quote": "maksymalny dystans 450 km bez ładowania przy pełnym zatankowaniu (search summary)",
+     "source_url": "https://polska-zbrojna.pl/home/articleshow/47110?t=PIAP-HUNTeR-w-nowej-odslonie-na-MSPO",
+     "confidence": "medium",
+     "variant": "2026 MSPO mine-laying variant"
+    },
+    {
+     "parameter": "drive_layout (conflicting)",
+     "value": "'hybrid 4x4 drivetrain with independently driven wheels' attributed to Targi Kielce exhibitor page; a second search could NOT confirm this wording",
+     "quote": "Targi Kielce describes a hybrid 4×4 drivetrain with independently driven wheels and a maximum road speed of 50 km/h (search summary, unverified)",
+     "source_url": "https://www.targikielce.pl/en/mspo/list-of-exhibitors/lukasiewicz-piap,4035187",
+     "confidence": "low",
+     "variant": "MSPO exhibitor listing (year unclear)"
+    },
+    {
+     "parameter": "teleoperation_interface",
+     "value": "Operator drives with steering wheel and pedal console",
+     "quote": "For manual driving, the operator uses a steering wheel and pedal console that is designed for intuitive control (search summary of Janes)",
+     "source_url": "https://www.janes.com/defence-news/news-detail/lukasiewicz-piap-unveils-hunter-ugv",
+     "confidence": "medium",
+     "variant": "2020 prototype"
+    },
+    {
+     "parameter": "sensors",
+     "value": "GPS, two lidars, four hull-mounted HD navigation cameras, five more HD cameras incl. one PTZ",
+     "quote": "a GPS receiver, two lidars, and four hull-mounted HD navigation cameras ... along with five more HD cameras, one of them a remotely operated PTZ unit (search summary of Janes)",
+     "source_url": "https://www.janes.com/defence-news/news-detail/lukasiewicz-piap-unveils-hunter-ugv",
+     "confidence": "medium",
+     "variant": "2020 prototype"
+    },
+    {
+     "parameter": "sensors",
+     "value": "9 HD cameras: 1 PTZ, 4 hull-mounted navigation, 4 drive-assistant; GPS; 2 lidars",
+     "quote": "9 HD cameras (a pan, tilt, zoom (PTZ) camera, 4 hull-mounted navigation cameras and 4 drive assistant cameras, as well as a GPS receiver and two lidars)",
+     "source_url": "https://milmag.pl/en/lukasiewicz-piap-institute-presents-hunter-ugv/",
+     "confidence": "medium",
+     "variant": "2020 prototype"
+    },
+    {
+     "parameter": "sensors",
+     "value": "Front and rear driving cameras, side cameras (2 per side), PTZ, top-view cameras on the railing; comms 800 m at 1.3/2.4 GHz",
+     "quote": "max range of communication 800m and Operating frequency to choose from, eg 1.3GHz, 2.4GHz or other",
+     "source_url": "https://www.intarg.haller.pl/targi/pliki_wynalazki/posters/157-1623325091.pdf",
+     "confidence": "medium",
+     "variant": "2021 poster"
+    },
+    {
+     "parameter": "sensors",
+     "value": "8 HD cameras + LIDARs",
+     "quote": "The platform is equipped with eight high-resolution HD cameras and LIDAR laser-radar sensors.",
+     "source_url": "https://milmag.pl/en/mspo-2025-piap-hunter-with-a-12-7-mm-weapon-module/",
+     "confidence": "medium",
+     "variant": "2025 MSPO"
+    },
+    {
+     "parameter": "armament/payload_variants",
+     "value": "AREX ZMU-03 RCWS with 12.7 mm M2 + 4 smoke launchers (2023-2024); ZMT WLKM 12.7 mm multi-barrel C-UAS module (MSPO 2025); AREX ZMU-05 (2026); BELMA Bluszcz/TMN mine layer, 20 tubes x 5 MN-123 mines (Eurosatory/MSPO 2026)",
+     "quote": "Opracowany przez AREX lekki system wieżowy uzbrojony w karabin kal. 12,7 mm (M2 Browning), 4 wyrzutniki granatów dymnych oraz głowicę obserwacyjną (search summary)",
+     "source_url": "https://milmag.pl/eurosatory-2024-debiut-zagraniczny-polskiego-robota-piap-hunter-z-wieza-zmu-03/",
+     "confidence": "high",
+     "variant": "2023-2026"
+    },
+    {
+     "parameter": "optional_equipment",
+     "value": "Hydraulic manipulator/arm, cargo crate, sensors, ground-penetrating radar, UAV landing pad",
+     "quote": "onboard equipment such as a hydraulic manipulator, cargo crate, sensors, ground-penetrating radar or a landing pad for a UAV.",
+     "source_url": "https://milmag.pl/en/lukasiewicz-piap-institute-presents-hunter-ugv/",
+     "confidence": "medium",
+     "variant": "2020 prototype"
+    },
+    {
+     "parameter": "project_info",
+     "value": "HUNTeR R&D project 02.01.2017-29.09.2020, POIR (Smart Growth OP) co-funded, value 7,835,598.91 PLN",
+     "quote": "Wartość projektu: 7.835.598,91 zł",
+     "source_url": "https://piap.lukasiewicz.gov.pl/badanie/projekt-hunter/",
+     "confidence": "high",
+     "variant": "R&D project"
+    },
+    {
+     "parameter": "system_testing",
+     "value": "PIAP tendered independent 'Badania systemu HUNTER' (tests + report) by a research institution, to finish by 30 June 2020",
+     "quote": "Badanie może wykonać tylko instytucja naukowo – badawcza.",
+     "source_url": "https://bip.piap.lukasiewicz.gov.pl//Zamowienia-publiczne/Badania-systemu-HUNTER",
+     "confidence": "medium",
+     "variant": "2020 prototype"
+    },
+    {
+     "parameter": "zmu05_mass (related RCWS, for payload mass modelling)",
+     "value": "ZMU-05: 1630 x 750 x 660 mm, 190 kg curb, 228 kg combat (ZMU-03 figures not found)",
+     "unit": "kg",
+     "quote": "dimensions 1630 x 750 x 660 mm, a curb weight of 190 kg, and a combat weight of 228 kg (search summary of WB Group flyer)",
+     "source_url": "https://www.wbgroup.pl/en/zmu-05_eng_flyer_",
+     "confidence": "medium",
+     "variant": "ZMU-05 (fitted to HUNTeR per 2026 sources)"
+    },
+    {
+     "parameter": "ultimate_dana60_reference_specs",
+     "value": "Spicer Ultimate 60: 35-spline 4340 chromoly shafts, 3.5 in tubes (0.370 in wall front), 8x6.5 bolt pattern, SPL70 U-joints, ball-joint knuckles, ELocker option, 5.38 ratio available",
+     "quote": "Spicer® 35 spline SAE-4340 nickel chromoly steel axle shafts ... Axle tubes measure 3.5\" outside diameter/.370\" (front) ... A heavy-duty 8 x 6.5\" wheel bolt pattern",
+     "source_url": "https://spicerparts.com/node/883",
+     "confidence": "medium",
+     "variant": "Manufacturer reference for the axle named in PIAP tender (not HUNTeR-specific)"
+    }
+   ],
+   "visual_descriptions": [
+    "4x4 wheeled, cab-less, angular hull ~4.7 m long x 2.2 m wide on four large (~1 m) off-road tyres; two rigid (beam) axles, both steerable (Janes 2020; Defence24 2023).",
+    "Railing around the top deck carries top-view cameras; front and rear driving cameras; two side cameras on each side; a PTZ camera for panoramic view (INTARG 2021 poster / Army Recognition 2024: https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle).",
+    "2020 prototype: GPS receiver, two lidars, four hull-mounted HD navigation cameras, plus additional HD cameras incl. PTZ; shown with optional hydraulic manipulator arm, cargo crate, GPR, or UAV landing pad (Janes https://www.janes.com/defence-news/news-detail/lukasiewicz-piap-unveils-hunter-ugv ; Milmag EN https://milmag.pl/en/lukasiewicz-piap-institute-presents-hunter-ugv/).",
+    "2021 cargo-mule configuration with ~1 t payload (Defence24 TV https://defence24.com/armed-forces/land/hunter-35-tonnes-hybrid-land-robot-defence24-tv).",
+    "2023-2024 armed version: AREX ZMU-03 RCWS (12.7 mm M2HB, 4 smoke grenade launchers, day/thermal/LRF head) mounted on top deck; can carry small UAV such as X-FRONTER (Overt Defense https://www.overtdefense.com/2023/07/13/first-army-trials-of-piap-hunter-ugv/ ; Milmag Eurosatory 2024).",
+    "2025 MSPO: remotely operated module with ZMT WLKM 12.7 mm Gatling-type gun, 400 rds, -20..+70 deg elevation, plus 8 HD cameras and LIDARs (https://milmag.pl/en/mspo-2025-piap-hunter-with-a-12-7-mm-weapon-module/).",
+    "2026: BELMA Bluszcz scatterable mine-laying system (20 launch tubes/cassettes x 5 MN-123 AT mines) on HUNTeR chassis at Eurosatory 2026 and MSPO 2026; one or two launchers can be fitted given ~1 t payload (https://milmag.pl/en/eurosatory-2026-bluszcz-unmanned-scatterable-mine-laying-system-on-piap-hunter-chassis/ ; https://polska-zbrojna.pl/home/articleshow/47110?t=PIAP-HUNTeR-w-nowej-odslonie-na-MSPO).",
+    "No textual source found describing tyre tread make/size, bumper design, light placement, or hull colour; photos exist on YouTube/X but could not be fetched (network policy)."
+   ],
+   "estimates": [
+    {
+     "parameter": "wheelbase (best value)",
+     "value": "2.70 m",
+     "reasoning": "Three independent sources (INTARG 2021 PIAP poster, Army Recognition 2024, militaeraktuell) give 270 cm; the 220 cm figure appears only in Milmag 2020 and articles copying it, always next to 220 cm width (likely a copy error). Geometric check: with 4.7 m length and 1.0 m wheels, a 2.2 m wheelbase would leave 2.5 m of total overhang (1.25 m each end), implausible for an off-road UGV; 2.7 m leaves ~1.0 m each end (~0.5 m beyond tyre)."
+    },
+    {
+     "parameter": "track width (wheel centre to centre)",
+     "value": "~1.78-1.85 m (use 1.80 m)",
+     "reasoning": "Tender specifies Ultimate Dana 60 with 70 in (1778 mm) WMS-to-WMS. Track = WMS - 2*wheel offset; with near-zero to slightly negative offset wheels the track is 1.78-1.85 m. Check: 1.80 m track + ~0.34 m tyre section = ~2.14 m outer tyre width, consistent with 2.2 m overall width."
+    },
+    {
+     "parameter": "tyre size",
+     "value": "~40x13.50R17 LT (OD ~1016 mm, width ~0.34 m) or similar 39-40 in tyre on 17 in 8x6.5 rim",
+     "reasoning": "Wheel diameter 1 m (~39.4 in) and 8x6.5 in bolt pattern (light-truck/Dana 60 standard). 40x13.50R17 is the common 8-lug off-road size at ~1 m OD. Military 335/80R20 (OD ~1.05 m) is also near 1 m but typically 10-stud. Size not published; treat as assumption."
+    },
+    {
+     "parameter": "rim size",
+     "value": "17 in (0.432 m) assumed",
+     "reasoning": "Most 8x6.5 off-road beadlock wheels for 40 in tyres are 17 in; ring gear/brake 350 mm rotor fits inside 17 in rim."
+    },
+    {
+     "parameter": "tyre loaded radius",
+     "value": "~0.47-0.48 m",
+     "reasoning": "1.0 m OD tyre with ~4-6% deflection under ~1000 kg per wheel."
+    },
+    {
+     "parameter": "total gear reduction motor-to-wheel",
+     "value": "~17:1 (≈3.1:1 reduction gearbox x 5.38 axle)",
+     "reasoning": "At 50 km/h a 1.0 m wheel turns 265 rpm; x5.38 = 1427 rpm at pinion. The PMSM tender requires >=4500 rpm at full load, implying an intermediate reduction of ~3.1:1 so the motor reaches ~4500 rpm at top speed. Not published."
+    },
+    {
+     "parameter": "motor power each",
+     "value": "~45 kW continuous / ~110 kW peak per motor",
+     "reasoning": "Total drive 90 kW cont / 220 kW peak split across 2 motors (one per axle)."
+    },
+    {
+     "parameter": "wheel torque limit (URDF effort)",
+     "value": "~4,000 Nm per wheel (traction-limited); ~1,450 Nm at each axle pinion peak",
+     "reasoning": "4,000 kg x 9.81 x mu 0.8 = 31.4 kN total tractive force x 0.5 m radius = 15.7 kNm total = ~3.9 kNm per wheel. Per axle 7.85 kNm /5.38 = 1,459 Nm at pinion; /3.1 reduction = ~470 Nm motor torque, consistent with a 110 kW PMSM peaking ~2,200 rpm."
+    },
+    {
+     "parameter": "max wheel steering angle",
+     "value": "~35-40 deg",
+     "reasoning": "Dana 60 front ball-joint knuckles with full-width housing typically give 35-40 deg lock (stock Ford Super Duty ~35 deg; aftermarket up to ~40 deg with 40 in tyres). Not published for HUNTeR."
+    },
+    {
+     "parameter": "turning radius",
+     "value": "Front-only steer: ~5.5 m outer-wheel radius; 4WS counter-phase: ~3.1-3.4 m outer-wheel radius",
+     "reasoning": "L=2.7 m, track 1.8 m, delta=35 deg. Front-only: R_rear-axle-centre = L/tan(delta)=3.86 m; outer front wheel = sqrt((3.86+0.9)^2+2.7^2)=5.47 m. 4WS: R_centre=(L/2)/tan(delta)=1.93 m; outer wheel = sqrt((1.93+0.9)^2+1.35^2)=3.13 m. Crab mode possible mechanically with two steered axles but not confirmed by any source."
+    },
+    {
+     "parameter": "steering modes",
+     "value": "Likely front, rear, 4WS counter-phase, possibly crab (all from two independently actuated steer axles)",
+     "reasoning": "Two identical steer axles each with own actuator permit all modes in software; no source names the modes."
+    },
+    {
+     "parameter": "steering actuator",
+     "value": "Likely one linear actuator per axle acting on the tie-rod/drag-link (electro-hydraulic ram or electric linear actuator); unknown",
+     "reasoning": "Dana 60 knuckles take conventional tie rod + steering arm; vehicle has 600 VDC/24 VDC buses and an optional hydraulic manipulator (implies onboard hydraulics). No source found."
+    },
+    {
+     "parameter": "suspension geometry per axle",
+     "value": "3-link + Panhard: two lower trailing links + one upper link (offset/central) + one transverse Panhard rod; coil-over or separate coil spring + semi-active damper per corner",
+     "reasoning": "'zawieszenie zależne (sztywne mosty) z trzema drążkami reakcyjnymi i drążkiem Panharda' = three reaction rods + Panhard rod per axle, standard off-road 3-link layout."
+    },
+    {
+     "parameter": "spring rate per corner",
+     "value": "~80-100 kN/m (wheel rate)",
+     "reasoning": "Sprung mass ~3,000-3,100 kg of 4,000 kg (unsprung per axle ~450-500 kg: axle ~200 kg + motor/gearbox ~60 kg + 2 wheels ~95 kg each + brakes) => ~750-770 kg per corner (~7.5 kN). Static sag ~8 cm (1/3 of 25 cm travel) => k ≈ 94 kN/m; ride frequency ~1.7 Hz."
+    },
+    {
+     "parameter": "damping per corner",
+     "value": "~4-6 kNs/m (zeta ~0.3), semi-active range e.g. 2-10 kNs/m",
+     "reasoning": "c = 2*zeta*sqrt(k*m) = 0.6*sqrt(90,000*765) ≈ 5.0 kNs/m; 'controlled damping' implies variable range."
+    },
+    {
+     "parameter": "wheel travel split",
+     "value": "25 cm total: ~9 cm bump (compression) / ~16 cm droop from static, or ~ +/-12.5 cm",
+     "reasoning": "Typical off-road 3-link setup; source gives only total stroke 25 cm."
+    },
+    {
+     "parameter": "axle articulation (roll of axle relative to body)",
+     "value": "~ +/-8 deg",
+     "reasoning": "atan(0.25 m / 1.80 m track) ≈ 7.9 deg if one wheel at full bump and the other at full droop."
+    },
+    {
+     "parameter": "unsprung mass per axle",
+     "value": "~450-500 kg",
+     "reasoning": "Dana 60 front ~180-210 kg; axle-mounted PMSM + reduction ~50-70 kg; wheels+tyres ~90-100 kg each; 350 mm disc brakes."
+    },
+    {
+     "parameter": "wheel+tyre mass and inertia",
+     "value": "~95 kg each; Iyy ≈ 0.6*m*r^2 ≈ 14 kg m^2",
+     "reasoning": "40 in LT tyre ~70 kg + 17 in steel/beadlock wheel ~25 kg."
+    },
+    {
+     "parameter": "ground clearance",
+     "value": "~0.30 m under differential housings",
+     "reasoning": "Loaded tyre radius ~0.47 m minus Dana 60 differential housing drop below axle centreline (~0.17 m) ≈ 0.30 m."
+    },
+    {
+     "parameter": "motor mounting",
+     "value": "Unsprung, on each axle housing driving the pinion via reduction gear",
+     "reasoning": "Janes: 'two steering axles – each integrated with an electric motor'; Army Recognition: 'traction electric motors integrated with the driving axles'. Both Dana axles are front-type steer axles (tender asked only for front axles, 3 units)."
+    },
+    {
+     "parameter": "chassis frame",
+     "value": "Likely purpose-built steel ladder/tube frame carrying hull panels (not a converted commercial chassis)",
+     "reasoning": "PIAP bought bare axles and motors separately in 2017-2018 and engineered the suspension and diff locks itself ('zastosowane przez konstruktorów Łukasiewicz-PIAP'), indicating a bespoke chassis. No source describes the frame."
+    },
+    {
+     "parameter": "CG height",
+     "value": "~0.85-1.0 m (cargo config), higher with RCWS",
+     "reasoning": "Axle centre ~0.48 m, hull floor ~0.6 m, battery/generator low in hull; ZMU-03/05 (~190-230 kg) on roof raises CG."
+    }
+   ],
+   "sources_consulted": [
+    "https://piap.lukasiewicz.gov.pl/bip/Zamowienia-publiczne/ZO-11-07-2017-Dostawa-mostow-napedowych-do-projektu-Hunter",
+    "https://bip.piap.lukasiewicz.gov.pl//Zamowienia-publiczne/ZO-11-07-2017-Dostawa-mostow-napedowych-do-projektu-Hunter",
+    "https://piap.pl/bip/Zamowienia-publiczne/OGLOSZENIE-O-ZAMIARZE-ZAWARCIA-UMOWY-ZWR-01-2018-Dostawa-zestawu-silnikow-do-projektu-HUNTER-zamowienie-w-trybie-z-wolnej-reki",
+    "https://piap.lukasiewicz.gov.pl/bip/content/download/7015/111845/file/zapytanie.pdf",
+    "https://piap.lukasiewicz.gov.pl/bip/layout/set/ajax/content/versionview/12108/2/pol-PL",
+    "https://bip.piap.lukasiewicz.gov.pl//Zamowienia-publiczne/Badania-systemu-HUNTER",
+    "https://www.przetargi.egospodarka.pl/zamawiajacy/Przemyslowy-Instytut-Automatyki-i-Pomiarow-PIAP.html",
+    "https://piap.lukasiewicz.gov.pl/badanie/projekt-hunter/",
+    "https://www.intarg.haller.pl/targi/pliki_wynalazki/posters/157-1623325091.pdf",
+    "https://www.janes.com/defence-news/news-detail/lukasiewicz-piap-unveils-hunter-ugv",
+    "https://defensehere.com/en/a-polish-company-unveils-a-hunter-ugv/",
+    "https://defencehub.live/threads/polish-lukasiewicz-piap-unveils-hunter-ugv.1331/",
+    "https://milmag.pl/news/view?news_id=4608",
+    "https://milmag.pl/en/lukasiewicz-piap-institute-presents-hunter-ugv/",
+    "https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle",
+    "https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/polish-defense-industries-field-test-piap-hunter-ugv-for-combat-purposes",
+    "https://defence24.pl/technologie/polski-robot-bojowy-na-poligonie",
+    "https://defence24.com/technology/polish-hunter-armed-ugv-field-tested",
+    "https://defence24.com/industry/mspo-2023-lukasiewicz-piap-robots-for-the-armed-forces",
+    "https://defence24.com/armed-forces/land/hunter-35-tonnes-hybrid-land-robot-defence24-tv",
+    "https://defence24.pl/przemysl/hunter-35-tonowy-robot-z-napedem-hybrydowym-defence24-tv",
+    "https://defence24.pl/technologie/roboty-lukasiewicz-piap-na-cwiczeniach-cyfrowy-legionista",
+    "https://spidersweb.pl/2023/06/polski-robot-wojskowy-hunter.html",
+    "https://spidersweb.pl/2023/07/oto-przyszlosc-polskiego-wojska-hunter.html",
+    "https://portalobronny.se.pl/polityka-obronna/polskie-roboty-na-poligonie-z-podhalanczykami-beda-walczyc-i-ratowac-zycie-aa-gSKL-DPkK-Vp9R.html",
+    "https://zbiam.pl/hunter-z-zmu-03-debiutuje-na-poligonie/",
+    "https://tek.info.pl/article/944/piap_hunter_z_wieza_zmu_03_od_grupy_wb_zadebiutowal_na_poligonie",
+    "https://www.wnp.pl/bezpieczenstwo/oto-polski-pomysl-na-walczacego-robota,724478.html",
+    "https://www.overtdefense.com/2023/07/13/first-army-trials-of-piap-hunter-ugv/",
+    "https://militaeraktuell.at/polen-uebt-mit-unbemannten-systemen-drohnen/",
+    "https://soldat-und-technik.de/2023/07/mobilitaet/35271/polnische-streitkraefte-erproben-einheimischen-ugv/",
+    "https://milmag.pl/eurosatory-2024-debiut-zagraniczny-polskiego-robota-piap-hunter-z-wieza-zmu-03/",
+    "https://milmag.pl/en/mspo-2025-piap-hunter-with-a-12-7-mm-weapon-module/",
+    "https://geekweek.interia.pl/militaria/news-wloska-armia-testuje-polski-ciezki-robot-bojowy-piap-hunter,nId,23480283",
+    "https://milmag.pl/en/eurosatory-2026-bluszcz-unmanned-scatterable-mine-laying-system-on-piap-hunter-chassis/",
+    "https://polska-zbrojna.pl/home/articleshow/47110?t=PIAP-HUNTeR-w-nowej-odslonie-na-MSPO",
+    "https://mikrokontroler.pl/2026/09/08/lukasiewicz-piap-pokaze-nowe-roboty-ladowe-na-mspo-2026/",
+    "https://www.targikielce.pl/en/mspo/list-of-exhibitors/lukasiewicz-piap,4035187",
+    "https://piap.lukasiewicz.gov.pl/en/2021/11/24/lukasiewicz-piap-with-new-trophies/",
+    "https://spicerparts.com/node/883",
+    "https://www.wbgroup.pl/en/zmu-05_eng_flyer_",
+    "https://radar.rp.pl/mspo/art42949781-bojowe-roboty-z-polski-wzbudzaja-duze-zainteresowanie",
+    "WebSearch: ~60 queries in English, Polish and German (standard and extended modes); WebFetch/curl to intarg.haller.pl, milmag.pl and piap.lukasiewicz.gov.pl failed (DNS/proxy 403); no GitHub repo or URDF for PIAP HUNTeR found"
+   ],
+   "open_questions": [
+    "Tyre size and make, rim size, run-flat inserts or CTIS: no source found; only '1 m diameter off-road tyres'.",
+    "Wheelbase conflict: 270 cm (PIAP poster 2021, Army Recognition, militaeraktuell) vs 220 cm (Milmag 2020, Defence24 2023, wnp.pl, spidersweb). 270 cm is better supported and geometrically plausible.",
+    "Steering actuator type (electric vs hydraulic), max steer angle, turning radius, and the steering modes offered (front, 4WS counter-phase, crab): nothing published.",
+    "Did the final vehicle actually use Ultimate Dana 60 axles or an 'equivalent'? The winner of tender ZO/11/07/2017 is in a 'wybor.pdf' that could not be read. Was a reduction gearbox fitted between the PMSM and the 5.38 pinion?",
+    "Who supplied the PMSM motors (ZWR/01/2018, single-source award) and what are their rated power and torque? Their continuous current limit was cut off in the snippets.",
+    "Mass growth: 3.5 t curb (2020-2021) vs >4 t (2023+). Is 4 t the curb mass of the armed version or a combat mass?",
+    "Defence24 (2026) says 'independent suspension' and the project page says 'active suspension'. Every detailed source says dependent 3-link + Panhard with semi-active (controlled-damping) shocks. Did a later chassis revision change this, or is it a journalistic error?",
+    "Targi Kielce reportedly says 'independently driven wheels', which conflicts with one motor per axle plus differentials and diff locks. This could not be verified.",
+    "Diff lock type (e-locker vs air locker), front/rear/both axles; the Ultimate 60 is sold with an Eaton ELocker option, but no HUNTeR source confirms which.",
+    "Ground clearance, approach/departure angles, fording depth, gradient/side slope: not found.",
+    "Frame/hull construction (ladder frame vs monocoque, materials): not found.",
+    "Motor location (axle-mounted unsprung vs chassis-mounted with propshafts): sources say motors are 'integrated with' the axles, but there is no drawing or photo description."
+   ]
+  },
+  "research:sensors-electronics": {
+   "findings": [
+    {
+     "parameter": "sensor_suite_2020_prototype",
+     "value": "GPS receiver, 2 lidars, 4 hull-mounted HD navigation cameras, plus 5 additional HD cameras including 1 remotely operated PTZ camera (9 HD cameras in total). Sensors are spread around the vehicle and its robotic arm.",
+     "unit": "count",
+     "variant": "2020 prototype (unveiled Sept 2020)",
+     "quote": "A GPS receiver, two lidars, four hull-mounted high-definition (HD) navigation cameras, and a suite of five additional HD cameras – including a remotely operated pan, tilt, zoom (PTZ) camera – are distributed around the vehicle and its robotic arm.",
+     "source_url": "https://janes.com/osint-insights/defence-news/lukasiewicz-piap-unveils-hunter-ugv",
+     "confidence": "high"
+    },
+    {
+     "parameter": "camera_count_breakdown_2020",
+     "value": "9 HD cameras: 1 PTZ + 4 hull-mounted navigation + 4 drive-assistant cameras; also GPS receiver and 2 lidars",
+     "unit": "count",
+     "variant": "2020 prototype",
+     "quote": "9 HD cameras (a pan, tilt, zoom (PTZ) camera, 4 hull-mounted navigation cameras and 4 drive assistant cameras, as well as a GPS receiver and two lidars)",
+     "source_url": "https://milmag.pl/en/lukasiewicz-piap-institute-presents-hunter-ugv/",
+     "confidence": "high"
+    },
+    {
+     "parameter": "camera_count_breakdown_2020 (second source)",
+     "value": "Same 9-camera / 2-lidar / GPS layout",
+     "unit": "count",
+     "variant": "2020 prototype",
+     "quote": "9 HD cameras (a pan, tilt, zoom (PTZ) camera, 4 hull-mounted navigation cameras and 4 drive assistant cameras, as well as a GPS receiver and two lidars)",
+     "source_url": "https://milmag.eu/news/view?news_id=4611",
+     "confidence": "high"
+    },
+    {
+     "parameter": "lidar_count",
+     "value": "2",
+     "unit": "count",
+     "variant": "2020 prototype",
+     "quote": "a GPS receiver and two lidars",
+     "source_url": "https://milmag.pl/en/lukasiewicz-piap-institute-presents-hunter-ugv/",
+     "confidence": "high"
+    },
+    {
+     "parameter": "gnss",
+     "value": "GPS receiver fitted. No make, model, or antenna position was found.",
+     "variant": "2020 prototype",
+     "quote": "A GPS receiver, two lidars, four hull-mounted high-definition (HD) navigation cameras...",
+     "source_url": "https://janes.com/osint-insights/defence-news/lukasiewicz-piap-unveils-hunter-ugv",
+     "confidence": "high"
+    },
+    {
+     "parameter": "robotic_arm_2020",
+     "value": "The 2020 prototype had a robotic arm, and some of the cameras were mounted on it",
+     "variant": "2020 prototype",
+     "quote": "...are distributed around the vehicle and its robotic arm.",
+     "source_url": "https://janes.com/osint-insights/defence-news/lukasiewicz-piap-unveils-hunter-ugv",
+     "confidence": "high"
+    },
+    {
+     "parameter": "curb_mass",
+     "value": "3.5",
+     "unit": "t",
+     "variant": "2020 prototype",
+     "quote": "The 3.5-tonne multirole UGV is designed to conduct patrols and reconnaissance",
+     "source_url": "https://janes.com/osint-insights/defence-news/lukasiewicz-piap-unveils-hunter-ugv",
+     "confidence": "high"
+    },
+    {
+     "parameter": "sensor_upgrade_2024",
+     "value": "Latest HUNTeR had more lidars and stereovision cameras added, to improve the operator's situational awareness",
+     "variant": "2024 MSPO version",
+     "quote": "PIAP says the latest HUNTeR was additionally equipped with lidars and stereovision cameras to enhance the operator's situational awareness. (search-summary wording of the PIAP page)",
+     "source_url": "https://piap.lukasiewicz.gov.pl/en/2024/09/02/lukasiewicz-piap-mobile-robots-in-new-guises-at-the-mspo/",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "sensor_suite_armed_field_tested",
+     "value": "Thermal imaging system, TV camera, driving (movement) cameras, radio communications suite",
+     "variant": "Armed version with AREX ZMU-03 (2023-2024 field tests)",
+     "quote": "The robot features a thermal imaging system, a TV camera, cameras used for movement, and a radio communications suite.",
+     "source_url": "https://defence24.com/technology/polish-hunter-armed-ugv-field-tested",
+     "confidence": "high"
+    },
+    {
+     "parameter": "camera_count_armed_version",
+     "value": "6 HD cameras: 2 for driving + 4 surround/perimeter (terrain-outline) cameras",
+     "unit": "count",
+     "variant": "Armed version with ZMU-03",
+     "quote": "the platform features six HD cameras: two for driving, and four for observing the outlining terrain",
+     "source_url": "https://defence24.com/technology/polish-hunter-armed-ugv-field-tested",
+     "confidence": "high"
+    },
+    {
+     "parameter": "camera_count_2024_field_test",
+     "value": "6 high-resolution cameras, day and thermal imaging, radio communication system",
+     "unit": "count",
+     "variant": "2024 field test (WB Group / Polish defence industry trials)",
+     "quote": "outfitted with six high-resolution cameras, day and thermal imaging systems, and a robust radio communication system",
+     "source_url": "https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/polish-defense-industries-field-test-piap-hunter-ugv-for-combat-purposes",
+     "confidence": "high"
+    },
+    {
+     "parameter": "camera_layout_next_gen",
+     "value": "HD driving cameras at front and rear; more cameras on the deck railing giving top views; 4 side cameras (2 per side); 1 PTZ camera for panoramic views",
+     "variant": "2024 'next-gen' HUNTeR",
+     "quote": "HD cameras for driving, positioned at the front and rear, and additional cameras on the railing for top views. It has four side cameras (two on each side) and a PTZ camera for panoramic views.",
+     "source_url": "https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "rws_eo_sensors",
+     "value": "ZMU-03 turret EO head: daytime camera, thermal imager, laser rangefinder",
+     "variant": "Armed version with AREX ZMU-03",
+     "quote": "The turret has also been fitted with an EO system featuring a daytime camera, thermal imaging system, and a laser rangefinder.",
+     "source_url": "https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/polish-defense-industries-field-test-piap-hunter-ugv-for-combat-purposes",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "camera_count_recon_version (PL)",
+     "value": "7 HD cameras, incl. 2 driving ('jezdne') and 4 perimeter ('obrysowe'). The ZMU-03 module camera can also act as the PTZ camera.",
+     "unit": "count",
+     "variant": "Recon / ZMU-03 version (FEX-24 era, 2024)",
+     "quote": "Platforma wyposażona została w siedem kamer wysokiej rozdzielczości HD (search summary adds: w tym dwie jezdne i cztery obrysowe, a kamera modułu ZMU-03 może też pełnić funkcję kamery PTZ)",
+     "source_url": "https://defence24.pl/technologie/wojny-robotow-na-cwiczeniach-fex-24",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "payload_sensor_options (PL)",
+     "value": "Can carry remote weapon modules, observation systems (day, thermal and stereovision cameras), lidars and counter-measure systems",
+     "variant": "2024+ modular version",
+     "quote": "zdalnie sterowane moduły uzbrojenia, systemy obserwacyjne (kamery dzienne, termowizyjne i stereowizyjne), lidary oraz systemy przeciwdział[ania]",
+     "source_url": "https://polska-zbrojna.pl/home/articleshow/47110?t=PIAP-HUNTeR-w-nowej-odslonie-na-MSPO",
+     "confidence": "low"
+    },
+    {
+     "parameter": "camera_system_description (PL)",
+     "value": "Large day/night and thermal camera system",
+     "variant": "Later version (Italian army trials era)",
+     "quote": "rozbudowany system kamer dzienno-nocnych oraz termowizyjnych",
+     "source_url": "https://geekweek.interia.pl/militaria/news-wloska-armia-testuje-polski-ciezki-robot-bojowy-piap-hunter,nId,23480283",
+     "confidence": "low"
+    },
+    {
+     "parameter": "curb_mass",
+     "value": "approx. 4",
+     "unit": "t",
+     "variant": "Later version (2023+)",
+     "quote": "Platforma o masie około 4 ton i długości blisko 4,7 m",
+     "source_url": "https://geekweek.interia.pl/militaria/news-wloska-armia-testuje-polski-ciezki-robot-bojowy-piap-hunter,nId,23480283",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "overall_length",
+     "value": "approx. 4.7",
+     "unit": "m",
+     "variant": "Later version (2023+)",
+     "quote": "Platforma o masie około 4 ton i długości blisko 4,7 m",
+     "source_url": "https://geekweek.interia.pl/militaria/news-wloska-armia-testuje-polski-ciezki-robot-bojowy-piap-hunter,nId,23480283",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "max_speed",
+     "value": "approx. 50",
+     "unit": "km/h",
+     "variant": "Later version (2023+)",
+     "quote": "prędkość do ok. 50 km/h (search-summary wording)",
+     "source_url": "https://geekweek.interia.pl/militaria/news-wloska-armia-testuje-polski-ciezki-robot-bojowy-piap-hunter,nId,23480283",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "powertrain",
+     "value": "Hybrid: combustion generator plus electric motors (series hybrid)",
+     "variant": "Later version (2023+)",
+     "quote": "Zastosowany napęd hybrydowy, obejmujący generator spalinowy i silniki elektryczne",
+     "source_url": "https://geekweek.interia.pl/militaria/news-wloska-armia-testuje-polski-ciezki-robot-bojowy-piap-hunter,nId,23480283",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "armament_FEX24",
+     "value": "AREX ZMU-03 module with 12.7 mm machine gun",
+     "variant": "FEX-24 exercise (2024)",
+     "quote": "Na FEX-24 pojazd był uzbrojony w moduł ZMU-03 z karabinem 12,7 mm (search-summary wording)",
+     "source_url": "https://defence24.pl/technologie/wojny-robotow-na-cwiczeniach-fex-24",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "armament_Cyfrowy_Legionista",
+     "value": "AREX ZMU-05 module",
+     "variant": "'Cyfrowy Legionista' exercise (2024/2025)",
+     "quote": "na ćwiczeniach „Cyfrowy Legionista” pojawiła się konfiguracja z modułem ZMU-05 firmy AREX (search-summary wording)",
+     "source_url": "https://defence24.pl/technologie/roboty-lukasiewicz-piap-na-cwiczeniach-cyfrowy-legionista",
+     "confidence": "medium"
+    },
+    {
+     "parameter": "foreign_trials",
+     "value": "Italian Army tested the HUNTeR",
+     "variant": "Later version (date not in snippet, likely 2025-2026)",
+     "quote": "Włoska armia testuje polski ciężki robot bojowy PIAP HUNTeR",
+     "source_url": "https://geekweek.interia.pl/militaria/news-wloska-armia-testuje-polski-ciezki-robot-bojowy-piap-hunter,nId,23480283",
+     "confidence": "high"
+    },
+    {
+     "parameter": "exercise_FEX_Anakonda23",
+     "value": "HUNTeR shown at FEX (Field Experimentation Exercises) during Anakonda-23",
+     "variant": "2023 armed version",
+     "quote": "Polski robot bojowy PIAP HUNTeR zaprezentowany na eksperymentalnych ćwiczeniach FEX- Field Experimentation Exercises w trakcie Anakonda 23.",
+     "source_url": "https://www.antyterroryzm.com/tag/ugv/",
+     "confidence": "high"
+    },
+    {
+     "parameter": "mission_role",
+     "value": "Patrol and reconnaissance (multirole)",
+     "variant": "2020 prototype",
+     "quote": "The 3.5-tonne multirole UGV is designed to conduct patrols and reconnaissance",
+     "source_url": "https://janes.com/osint-insights/defence-news/lukasiewicz-piap-unveils-hunter-ugv",
+     "confidence": "high"
+    }
+   ],
+   "visual_descriptions": [
+    "2020 prototype: GPS receiver, two lidars, four HD navigation cameras on the hull, and five more HD cameras including a remotely operated PTZ are 'distributed around the vehicle and its robotic arm'. So the 2020 prototype carried a manipulator arm, and some cameras (probably the PTZ and/or gripper cameras) sat on it. Source: https://janes.com/osint-insights/defence-news/lukasiewicz-piap-unveils-hunter-ugv",
+    "2024 'next-gen' HUNTeR: HD driving cameras at the front and rear of the hull; more cameras mounted on the deck railing to give top-down views; four side cameras, two on each side; one PTZ camera for panoramic views. Source: https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle",
+    "Armed version (2023-2024): AREX ZMU-03 remote weapon station with a 12.7 mm machine gun mounted on the payload deck. The turret has its own EO head (day camera, thermal imager, laser rangefinder). Polish reporting says the ZMU-03 camera can double as the PTZ camera, so the armed variant may not have a separate PTZ head. Sources: https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/polish-defense-industries-field-test-piap-hunter-ugv-for-combat-purposes ; https://defence24.pl/technologie/wojny-robotow-na-cwiczeniach-fex-24",
+    "Armed/recon version camera layout: 2 driving cameras plus 4 perimeter cameras ('obrysowe', translated by Defence24 as 'observing the outlining terrain'), which suggests a surround-view set at the hull corners or sides. Defence24 EN says 6 HD cameras; Defence24 PL says 7 HD cameras. Sources: https://defence24.com/technology/polish-hunter-armed-ugv-field-tested ; https://defence24.pl/technologie/wojny-robotow-na-cwiczeniach-fex-24",
+    "2024 MSPO: PIAP shows its mobile robots 'in new guises'. HUNTeR got more lidars and stereovision cameras. A later Polish description lists modular payloads: RWS, observation systems (day/thermal/stereovision cameras), lidars, counter-measure systems. Sources: https://piap.lukasiewicz.gov.pl/en/2024/09/02/lukasiewicz-piap-mobile-robots-in-new-guises-at-the-mspo/ ; https://polska-zbrojna.pl/home/articleshow/47110?t=PIAP-HUNTeR-w-nowej-odslonie-na-MSPO"
+   ],
+   "estimates": [
+    {
+     "parameter": "lidar_model",
+     "value": "Unknown. For the URDF, model two 16-32 channel 3D spinning lidars (Velodyne VLP-16 / Ouster OS1 class: ~360 deg HFOV, ~30-45 deg VFOV, ~100 m range, 10-20 Hz).",
+     "reasoning": "No source names the lidar make or model. Two lidars on a ~4.7 m hull most plausibly cover 360 deg, with each unit's blind sector hidden by the vehicle body. A 16-32 channel puck was the common choice for UGV prototypes around 2020. This is purely an estimate."
+    },
+    {
+     "parameter": "lidar_mount_positions",
+     "value": "One lidar high at the front of the hull/deck (front_lidar_link) and one high at the rear (rear_lidar_link), roughly on the centreline or diagonally opposite. Suggested height ~1.6-2.0 m above ground, just above the deck railing.",
+     "reasoning": "With two lidars, front + rear placement minimises self-occlusion on a long hull. Height is set to clear the deck railing and RWS. Not confirmed by any source."
+    },
+    {
+     "parameter": "camera_layout_2020_for_urdf",
+     "value": "4 navigation cameras, one per hull face (front, rear, left, right) or one per corner; 4 drive-assist cameras as wide-angle pairs at front and rear bumpers (2 front, 2 rear); 1 PTZ camera on the robotic arm or a mast/deck post.",
+     "reasoning": "Built from the Janes/Milmag breakdown (4 hull navigation + 4 drive-assist + 1 PTZ) and the note that cameras sit around the vehicle and its arm. The exact positions are an engineering guess."
+    },
+    {
+     "parameter": "camera_layout_2024_for_urdf",
+     "value": "front_drive_camera + rear_drive_camera (HD, ~90-110 deg HFOV); 4 side cameras (2 per side, wide-angle ~120-180 deg for surround view); 1-2 top-view cameras on the deck railing looking down; PTZ (or ZMU-03 EO head) on the deck; stereo camera pair(s) front-facing (2024 addition).",
+     "reasoning": "Follows the Army Recognition next-gen description (front/rear driving cams, railing top-view cams, two side cams per side, PTZ) and the PIAP 2024 stereovision note. FOV values are typical for driving and surround-view cameras, not sourced."
+    },
+    {
+     "parameter": "camera_fov_defaults",
+     "value": "Driving cams: 1920x1080, HFOV ~100 deg. Perimeter/side cams: HFOV ~120 deg. PTZ: HFOV ~60 deg (wide) to ~3 deg (tele, ~20-30x zoom). Thermal: 640x512, HFOV ~25-50 deg.",
+     "reasoning": "The sources only say 'HD' or 'high-resolution'. These are generic defaults for Gazebo camera sensors."
+    },
+    {
+     "parameter": "gnss_antenna_and_imu",
+     "value": "GNSS antenna on the roof/deck, toward the rear centreline, ~1.5 m above ground. IMU/INS inside the hull near the centre of gravity (~0.6-0.8 m above ground, mid-wheelbase).",
+     "reasoning": "Standard UGV practice. The sources confirm only a 'GPS receiver'. No IMU/INS was mentioned in any result."
+    },
+    {
+     "parameter": "radio_antennas",
+     "value": "Two whip/blade antennas at the rear deck corners for the datalink (frequency, range and make unknown).",
+     "reasoning": "The sources say only 'radio communications suite' / 'robust radio communication system'. Placement is a guess for the visual model."
+    }
+   ],
+   "sources_consulted": [
+    "https://janes.com/osint-insights/defence-news/lukasiewicz-piap-unveils-hunter-ugv",
+    "https://www.janes.com/defence-news/news-detail/lukasiewicz-piap-unveils-hunter-ugv",
+    "https://milmag.pl/en/lukasiewicz-piap-institute-presents-hunter-ugv/",
+    "https://milmag.eu/news/view?news_id=4611",
+    "https://defencehub.live/threads/polish-lukasiewicz-piap-unveils-hunter-ugv.1331/",
+    "https://defence24.com/technology/polish-hunter-armed-ugv-field-tested",
+    "https://defence24.com/industry/mspo-2023-lukasiewicz-piap-robots-for-the-armed-forces",
+    "https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/polish-defense-industries-field-test-piap-hunter-ugv-for-combat-purposes",
+    "https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle",
+    "https://piap.lukasiewicz.gov.pl/en/2024/09/02/lukasiewicz-piap-mobile-robots-in-new-guises-at-the-mspo/",
+    "https://polska-zbrojna.pl/home/articleshow/47110?t=PIAP-HUNTeR-w-nowej-odslonie-na-MSPO",
+    "https://defence24.pl/technologie/roboty-lukasiewicz-piap-na-cwiczeniach-cyfrowy-legionista",
+    "https://defence24.pl/technologie/wojny-robotow-na-cwiczeniach-fex-24",
+    "https://defence24.pl/sily-zbrojne/kto-dostarczy-roboty-rozpoznawcze-dla-wojska-polskiego",
+    "https://spidersweb.pl/2023/07/oto-przyszlosc-polskiego-wojska-hunter.html",
+    "https://spidersweb.pl/2023/06/polski-robot-wojskowy-hunter.html",
+    "https://geekweek.interia.pl/militaria/news-wloska-armia-testuje-polski-ciezki-robot-bojowy-piap-hunter,nId,23480283",
+    "https://antiterrorism.eu/tag/ugv-en/",
+    "https://www.antyterroryzm.com/tag/ugv/",
+    "https://yadda.icm.edu.pl/baztech/element/bwmeta1.element.baztech-59dd76a2-d1bd-4785-9c0e-238408139940/c/Kowalinski_Wysoko_PAR_1_2022.pdf (fetch failed: DNS/proxy blocked)",
+    "GitHub repository search 'piap hunter' (0 results) and code search '\"PIAP\" \"HUNTeR\"' (only irrelevant hits): no public URDF/CAD/ROS repo for the PIAP HUNTeR found"
+   ],
+   "open_questions": [
+    "RESEARCH LIMITATION: the web-search budget shared by all agents in this workflow (200 calls per turn) ran out after only 3 of my queries. Many angle items could not be searched. A follow-up run with a fresh budget is needed for: lidar make/model, IMU/INS, radio, mast, OCU, autonomy software, UAV integration.",
+    "Lidar make/model and exact mount positions are unknown for every variant: 2 lidars in 2020, 'additional lidars' in 2024. The count after the 2024 upgrade is also unknown.",
+    "Camera makes/models, resolutions and FOVs are unknown. Sources give only 'HD' / 'high-resolution'.",
+    "Camera counts conflict: 9 HD (2020: 1 PTZ + 4 navigation + 4 drive-assist), 6 HD (Defence24 EN / Army Recognition 2024: 2 driving + 4 perimeter), 7 HD (Defence24 PL; the ZMU-03 camera doubles as PTZ). Army Recognition next-gen also lists railing top-view cameras plus 4 side cameras plus PTZ. These need reconciling against photos.",
+    "Thermal camera make on the hull versus the one in the ZMU-03 EO head: not identified.",
+    "PTZ head make/model, and whether it sits on a telescopic mast, the robotic arm or a deck post: not identified. Whether the 2020 prototype's robotic arm was kept on later variants is also unknown.",
+    "No information found on radar, IMU/INS make, GNSS antenna position or type (RTK?), radio datalink make/frequency/range (mesh?), operator control unit, or a telescopic mast.",
+    "No information found on autonomy functions (waypoint following, obstacle avoidance, follow-me, convoy/leader-follower), ROS usage, or UAV integration (tethered drone?).",
+    "The PAR (Pomiary Automatyka Robotyka) 1/2022 paper by Kowalinski & Wysoko(-?) came up in a Polish search for 'Łukasiewicz PIAP HUNTeR ... lidar kamery GPS'. It may describe HUNTeR or a related PIAP system, but its content could not be retrieved (yadda.icm.edu.pl blocked). Worth checking via another route.",
+    "The Defence24 PL article 'Kto dostarczy roboty rozpoznawcze dla Wojska Polskiego' may hold a recon-variant sensor spec. Not retrieved.",
+    "Attribution caveat: the Polish-language values (7 cameras, ~4 t, ~4.7 m, ~50 km/h, hybrid generator + electric motors) came from a combined search summary that did not tie each sentence to a specific URL. My best-guess URL assignments are flagged medium/low confidence."
+   ]
+  },
+  "research:powertrain-energy": {
+   "findings": [
+    {
+     "parameter": "powertrain_architecture",
+     "value": "Series (serial) hybrid: combustion-engine generator + traction electric motors",
+     "quote": "The HUNTeR platform is a series hybrid UGV combining the benefits of a combustion and electric engine",
+     "source_url": "https://www.intarg.haller.pl/targi/pliki_wynalazki/posters/157-1623325091.pdf",
+     "confidence": "high",
+     "variant": "2020-2021 prototype (INTARG 2021 poster, PIAP-issued); same wording repeated by ArmyRecognition 2024"
+    },
+    {
+     "parameter": "drive_power_continuous_peak",
+     "value": "90 kW continuous / 220 kW peak",
+     "unit": "kW",
+     "quote": "its drive power is 90 kW continuous and 220 kW peak, facilitated by a serial hybrid system with traction electric motors integrated with the driving axles.",
+     "source_url": "https://armyrecognition.com/news/army-news/army-news-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle",
+     "confidence": "high",
+     "variant": "Spec sheet values repeated in 2024 article (prototype spec); same numbers on INTARG poster"
+    },
+    {
+     "parameter": "traction_motor_layout",
+     "value": "Traction electric motors integrated with the drive axles, one motor per axle (two axles, both steering)",
+     "quote": "Hunter's 4x4 chassis measures 4.7 m long and 2.2 m wide and features two steering axles – each integrated with an electric motor – with a 3-link Panhard suspension.",
+     "source_url": "https://defencehub.live/threads/polish-lukasiewicz-piap-unveils-hunter-ugv.1331/",
+     "confidence": "high",
+     "variant": "2020 prototype (repost of Janes, 24 Sep 2020: https://www.janes.com/defence-news/news-detail/lukasiewicz-piap-unveils-hunter-ugv)"
+    },
+    {
+     "parameter": "traction_motor_layout_PL",
+     "value": "Traction electric motors integrated with drive axles ('mosty napędowe' = beam drive axles)",
+     "quote": "trakcyjnych silników elektrycznych zintegrowanych z mostami napędowymi",
+     "source_url": "https://milmag.pl/lukasiewicz-piap-prezentuje-bezzalogowego-huntera/",
+     "confidence": "medium",
+     "variant": "2020 prototype (Milmag PL, 23 Sep 2020 unveiling); phrase relayed by search summary"
+    },
+    {
+     "parameter": "traction_motor_count",
+     "value": "2 (two electric motor sets procured)",
+     "quote": "Notice ZWR/01/2018 announced an intent to award a contract for an electric motor set for HUNTER in a single-source procedure ... published on 5 April 2018 as a notice of intent to conclude a contract, with the procurement carried out by single-source award (z wolnej ręki). Its reference number is ZWR/01/2018, and the scope covers two electric motor sets.",
+     "source_url": "https://bip.piap.lukasiewicz.gov.pl//Zamowienia-publiczne/OGLOSZENIE-O-ZAMIARZE-ZAWARCIA-UMOWY-ZWR-01-2018-Dostawa-zestawu-silnikow-do-projektu-HUNTER-zamowienie-w-trybie-z-wolnej-reki",
+     "confidence": "medium",
+     "variant": "2018 prototype build (PIAP public procurement record); supplier name NOT visible in search results"
+    },
+    {
+     "parameter": "traction_motor_count_later",
+     "value": "2 traction electric motors",
+     "quote": "A later article on the HUNTeR combat robot gives a weight of 4 tonnes and says the robot is powered by two electric motors.",
+     "source_url": "https://polandinsight.com/polands-lukasiewicz-piap-pushes-ahead-with-autonomous-combat-robots-28363/",
+     "confidence": "medium",
+     "variant": "Armed HUNTeR (2023+); attribution to this exact URL is from search-summary context, not verified verbatim"
+    },
+    {
+     "parameter": "generator_power",
+     "value": "110",
+     "unit": "kW",
+     "quote": "It is equipped with a 110 kW generator that provides power to its motors and provides on-board power generation for equipment that requires 600V DC, 400V AC or 24V DC supply.",
+     "source_url": "https://www.janes.com/defence-news/news-detail/lukasiewicz-piap-unveils-hunter-ugv",
+     "confidence": "high",
+     "variant": "2020 prototype (Janes 24 Sep 2020); also Milmag EN 2020, INTARG poster, ArmyRecognition 2024, Overt Defense 2023"
+    },
+    {
+     "parameter": "generator_battery_relation_PL",
+     "value": "110 kW generator works with Li-Ion battery (Polish wording ambiguous: 'generator is supplied by Li-Ion battery')",
+     "quote": "Generator prądotwórczy o mocy 110 kW jest zasilany akumulatorem litowo-jonowym (Li-Ion)",
+     "source_url": "https://milmag.pl/news/view?news_id=4608",
+     "confidence": "medium",
+     "variant": "2020 prototype (Milmag PL). Likely garbled description of a generator + Li-Ion buffer battery series hybrid"
+    },
+    {
+     "parameter": "battery_chemistry_capacity",
+     "value": "Li-Ion NMC, 40 kWh, with BTMS (battery thermal management system)",
+     "unit": "kWh",
+     "quote": "Battery and Power Supply 110kW generator Li-Ion NMC battery with a capacity of 40kWh with the BTMS system",
+     "source_url": "https://www.intarg.haller.pl/targi/pliki_wynalazki/posters/157-1623325091.pdf",
+     "confidence": "high",
+     "variant": "2020-2021 prototype (PIAP INTARG poster)"
+    },
+    {
+     "parameter": "battery_chemistry_capacity_2024",
+     "value": "Li-Ion NMC 40 kWh + BTMS, 110 kW generator",
+     "unit": "kWh",
+     "quote": "a Li-Ion NMC battery with a capacity of 40 kWh and BTMS system, alongside a 110 kW generator",
+     "source_url": "https://armyrecognition.com/news/army-news/army-news-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle",
+     "confidence": "high",
+     "variant": "2024 article (21st Rifles Brigade exercise, May 2024), spec-sheet values"
+    },
+    {
+     "parameter": "onboard_export_power",
+     "value": "600 VDC, 3x400 VAC, 24 VDC outputs for additional devices",
+     "quote": "The platform can power additional devices from 600VDC, 3x400VAC, 24VDC.",
+     "source_url": "https://www.intarg.haller.pl/targi/pliki_wynalazki/posters/157-1623325091.pdf",
+     "confidence": "high",
+     "variant": "2020-2021 prototype; not stated whether 600 V is also the traction DC bus"
+    },
+    {
+     "parameter": "combustion_generator_and_silent_mode",
+     "value": "Combustion generator + electric motors; silent electric-only movement",
+     "quote": "the power system allows for extended operation of the robot, and enables silent movement in electric-only mode.",
+     "source_url": "https://defence24.pl/technologie/polski-robot-bojowy-na-poligonie",
+     "confidence": "medium",
+     "variant": "Armed HUNTeR, 2025-2026 reporting; exact source URL among Defence24/Polska Zbrojna not pinned down by the search summary"
+    },
+    {
+     "parameter": "combustion_generator_PL",
+     "value": "Hybrid drive with combustion generator (generator spalinowy) and electric motors",
+     "quote": "Zastosowany napęd hybrydowy, obejmujący generator spalinowy i silniki elektryczne",
+     "source_url": "https://polska-zbrojna.pl/home/articleshow/47110?t=PIAP-HUNTeR-w-nowej-odslonie-na-MSPO",
+     "confidence": "medium",
+     "variant": "MSPO version with Belma mine-laying system (2026 per search summary; possibly 2025)"
+    },
+    {
+     "parameter": "range_full_tank",
+     "value": "450",
+     "unit": "km",
+     "quote": "Maksymalny dystans, który może pokonać bez ładowania i przy pełnym zatankowaniu, wynosi 450 km.",
+     "source_url": "https://polska-zbrojna.pl/home/articleshow/47110?t=PIAP-HUNTeR-w-nowej-odslonie-na-MSPO",
+     "confidence": "high",
+     "variant": "New MSPO version (search summary says 34th MSPO = Sept 2026; article also mentions Italian army HEDI OPEX 2025 tests)"
+    },
+    {
+     "parameter": "max_speed",
+     "value": "50",
+     "unit": "km/h",
+     "quote": "maximum road speed of 50 km/h",
+     "source_url": "https://www.janes.com/defence-news/news-detail/lukasiewicz-piap-unveils-hunter-ugv",
+     "confidence": "high",
+     "variant": "2020 prototype; poster: 'about 50 km/h' in both teleoperated and semi-autonomous modes; MSPO 2025: 'around 50 km/h (depending on the configuration and intended role)'"
+    },
+    {
+     "parameter": "max_speed_modes",
+     "value": "approx. 50 km/h in teleoperated and semi-autonomous modes",
+     "quote": "The poster lists a Weight 3500 kg and a top speed of about 50 km/h, which the poster says applies in both teleoperated and semi-autonomous modes.",
+     "source_url": "https://www.intarg.haller.pl/targi/pliki_wynalazki/posters/157-1623325091.pdf",
+     "confidence": "high",
+     "variant": "2020-2021 prototype"
+    },
+    {
+     "parameter": "curb_mass",
+     "value": "3500",
+     "unit": "kg",
+     "quote": "The HUNTeR platform weighs 3500 kg and measures 470x220 cm with a wheelbase of 270 cm.",
+     "source_url": "https://armyrecognition.com/news/army-news/army-news-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle",
+     "confidence": "high",
+     "variant": "Prototype spec (2020 poster value repeated in 2024)"
+    },
+    {
+     "parameter": "curb_mass_armed",
+     "value": ">4000 (approx. 4 t)",
+     "unit": "kg",
+     "quote": "PIAP HUNTeR is a 4-ton unmanned vehicle measuring 470 cm in length and 220 cm in width.",
+     "source_url": "https://milmag.pl/en/mspo-2025-piap-hunter-with-a-12-7-mm-weapon-module/",
+     "confidence": "high",
+     "variant": "MSPO 2025 armed version (WLKM 12.7 mm); ArmyRecognition 2024 field test also says 'over four tons' and 'about five meters long'"
+    },
+    {
+     "parameter": "payload_capacity",
+     "value": "up to 1000",
+     "unit": "kg",
+     "quote": "PIAP HUNTeR może udźwignąć nawet jednotonowy ładunek",
+     "source_url": "https://polska-zbrojna.pl/home/articleshow/47110?t=PIAP-HUNTeR-w-nowej-odslonie-na-MSPO",
+     "confidence": "medium",
+     "variant": "MSPO mine-laying version (2026 per summary)"
+    },
+    {
+     "parameter": "overall_length_width",
+     "value": "470 x 220",
+     "unit": "cm",
+     "quote": "Dimensions 470x220 cm. Wheelbase 270cm.",
+     "source_url": "https://www.intarg.haller.pl/targi/pliki_wynalazki/posters/157-1623325091.pdf",
+     "confidence": "high",
+     "variant": "2020-2021 prototype"
+    },
+    {
+     "parameter": "wheelbase",
+     "value": "270",
+     "unit": "cm",
+     "quote": "Dimensions 470x220 cm. Wheelbase 270cm.",
+     "source_url": "https://www.intarg.haller.pl/targi/pliki_wynalazki/posters/157-1623325091.pdf",
+     "confidence": "high",
+     "variant": "2020-2021 prototype; repeated by ArmyRecognition 2024 and Maquetland Eurosatory 2024"
+    },
+    {
+     "parameter": "suspension_type",
+     "value": "Dependent (rigid-axle) 3-link with Panhard bar, coil springs, controlled-damping shock absorbers, 25 cm stroke",
+     "unit": "cm",
+     "quote": "The dependent 3-link type suspension with Panhard bar, coil springs, and controlled damping shock absorbers offers a suspension stroke of 25 cm.",
+     "source_url": "https://armyrecognition.com/news/army-news/army-news-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle",
+     "confidence": "high",
+     "variant": "Prototype spec repeated in 2024 article"
+    },
+    {
+     "parameter": "suspension_active",
+     "value": "Active suspension mentioned on institute project page",
+     "quote": "Według strony instytutu platforma ma osiągać dużą prędkość (ok. 50 km/h), a mobilność zapewnia aktywne zawieszenie.",
+     "source_url": "https://piap.lukasiewicz.gov.pl/badanie/projekt-hunter/",
+     "confidence": "medium",
+     "variant": "2017-2020 HUNTeR R&D project; likely refers to the controlled (semi-active) dampers"
+    },
+    {
+     "parameter": "steering_type",
+     "value": "Two steering axles (front and rear), 4x4",
+     "quote": "features two steering axles – each integrated with an electric motor – with a 3-link Panhard suspension.",
+     "source_url": "https://defencehub.live/threads/polish-lukasiewicz-piap-unveils-hunter-ugv.1331/",
+     "confidence": "high",
+     "variant": "2020 prototype (Janes repost)"
+    },
+    {
+     "parameter": "drive_axle_hardware",
+     "value": "3 rigid front drive axles, Ultimate Dana 60 or equivalent, ring-and-pinion ratio 5.38, brake discs min. 350 mm (3 front axles bought = front+rear steer axles + spare)",
+     "quote": "Zamawiający szukał trzech sztywnych przednich mostów napędowych, wzorowanych na modelu Ultimate Dana 60 lub rozwiązaniu równoważnym. Oferta opisywała m.in. przełożenie 5.38, tarcze hamulcowe min. 350 mm i gwarancję minimum 12 miesięcy. Mosty napędowe do projektu HUNTeR – 3 sztuki",
+     "source_url": "https://bip.piap.lukasiewicz.gov.pl//Zamowienia-publiczne/ZO-11-07-2017-Dostawa-mostow-napedowych-do-projektu-Hunter",
+     "confidence": "medium",
+     "variant": "2017 prototype procurement (ZO/11/07/2017, issued 27 July 2017, selection 4 Aug 2017). Text is the search tool's Polish summary of the BIP page, only the last phrase looks verbatim; winner not visible"
+    },
+    {
+     "parameter": "final_drive_ratio",
+     "value": "5.38:1 (axle differential)",
+     "quote": "Oferta opisywała m.in. przełożenie 5.38, tarcze hamulcowe min. 350 mm",
+     "source_url": "https://bip.piap.lukasiewicz.gov.pl//Zamowienia-publiczne/ZO-11-07-2017-Dostawa-mostow-napedowych-do-projektu-Hunter",
+     "confidence": "medium",
+     "variant": "2017 tender requirement; whether an additional motor reduction gear exists is unknown"
+    },
+    {
+     "parameter": "ultimate_dana60_brakes_generic",
+     "value": "358 mm vented discs, 2-piston calipers (generic Ultimate Dana 60 crate axle, not Hunter-confirmed)",
+     "unit": "mm",
+     "quote": "wzmocnione hamulce z systemem ABS i wentylowane tarcze 358 mm z dwutłoczkowymi zaciskami są standardem w tej serii",
+     "source_url": "https://spicerparts.com/parts/axle/performance/ultimate-dana-60-bracketless-crate-axles",
+     "confidence": "low",
+     "variant": "Generic Dana product (Jeep JK/JL/JT crate axles); vendor listing also shows 8x6.5 lug pattern ('538 ARB Air Locker 8x65')"
+    },
+    {
+     "parameter": "camera_count",
+     "value": "9 HD cameras (1 PTZ, 4 hull navigation, 4 drive-assistant) + 2 lidars + GPS",
+     "quote": "9 HD cameras (a pan, tilt, zoom (PTZ) camera, 4 hull-mounted navigation cameras and 4 drive assistant cameras)",
+     "source_url": "https://milmag.pl/en/lukasiewicz-piap-institute-presents-hunter-ugv/",
+     "confidence": "high",
+     "variant": "2020 prototype; Spidersweb 2023 says six high-resolution cameras"
+    },
+    {
+     "parameter": "lidar_count",
+     "value": "2",
+     "quote": "Janes notes a GPS receiver, two lidars, and several HD navigation and PTZ cameras",
+     "source_url": "https://www.janes.com/defence-news/news-detail/lukasiewicz-piap-unveils-hunter-ugv",
+     "confidence": "high",
+     "variant": "2020 prototype; 2024 PIAP: 'The latest version is additionally equipped with lidars and stereovision cameras'"
+    },
+    {
+     "parameter": "sensors_2024",
+     "value": "Lidars + stereovision cameras added on latest version, ZMU-03 RWS",
+     "quote": "The latest version is additionally equipped with lidars and stereovision cameras to enhance the operator's situational awareness",
+     "source_url": "https://piap.lukasiewicz.gov.pl/en/2024/09/02/lukasiewicz-piap-mobile-robots-in-new-guises-at-the-mspo/",
+     "confidence": "high",
+     "variant": "MSPO 2024 version"
+    },
+    {
+     "parameter": "teleoperation",
+     "value": "GPS-waypoint patrol autonomy; remote driving via steering wheel and pedal console",
+     "quote": "The UGV can plan and execute a patrol route while recognising and avoiding major obstacles using user-preset GPS waypoints. It can also be driven remotely with a steering wheel and pedal console.",
+     "source_url": "https://www.janes.com/defence-news/news-detail/lukasiewicz-piap-unveils-hunter-ugv",
+     "confidence": "high",
+     "variant": "2020 prototype"
+    },
+    {
+     "parameter": "mission_equipment",
+     "value": "Hydraulic arm, cargo crates, ground-penetrating radar, UAV landing pad",
+     "quote": "The UGV can also be equipped with a range of support equipment, including a hydraulic arm and cargo crates.",
+     "source_url": "https://www.janes.com/defence-news/news-detail/lukasiewicz-piap-unveils-hunter-ugv",
+     "confidence": "high",
+     "variant": "2020 prototype; UAV landing pad per Milmag 2020"
+    },
+    {
+     "parameter": "armament_history",
+     "value": "AREX ZMU-03 (2023 MSPO/FEX, Eurosatory 2024); WLKM 12.7 mm multi-barrel MG by ZMT (MSPO 2025); ZMU-05 cited for combat version; Belma Bluszcz scatterable-mine system (Eurosatory 2026, MSPO); anti-drone version (2026)",
+     "quote": "Bydgoskie Zakłady Elektromechaniczne Belma zaprezentowały bezzałogowy system minowania narzutowego Bluszcz na podwoziu PIAP HUNTeR.",
+     "source_url": "https://milmag.pl/eurosatory-2026-bezzalogowy-system-minowania-narzutowego-bluszcz-na-podwoziu-piap-hunter/",
+     "confidence": "high",
+     "variant": "2023-2026 variants"
+    },
+    {
+     "parameter": "project_funding_period",
+     "value": "HUNTeR R&D project 02.01.2017-29.09.2020, NCBR / POIR 2014-2020 Action 1.2, total ~7.84 M PLN (EU ~4.55 M PLN)",
+     "quote": "PIAP's HUNTeR project page lists a total value of about 7.84 million PLN, with about 4.55 million PLN from EU funds, under the Smart Growth Operational Programme's R&D sector programmes (Action 1.2).",
+     "source_url": "https://piap.lukasiewicz.gov.pl/badanie/projekt-hunter/",
+     "confidence": "high",
+     "variant": "Prototype development project"
+    },
+    {
+     "parameter": "deployment_trials",
+     "value": "May 2024 exercise with Polish 21st Rifles Brigade; Italian army HEDI OPEX 2025 tests; iMUGS2 integration (Dec 2025)",
+     "quote": "Army Recognition reports the Hunter was seen in May 2024 during a training exercise with the Polish 21st Rifles Brigade.",
+     "source_url": "https://armyrecognition.com/news/army-news/army-news-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle",
+     "confidence": "high",
+     "variant": "2024-2025"
+    },
+    {
+     "parameter": "generator_with_electric_motor_OvertDefense",
+     "value": "110 kW generator with electric motor, up to 50 km/h depending on variant",
+     "quote": "Overt Defense also describes a 110 kW generator with an electric motor, with speeds up to 50 km/h depending on variant.",
+     "source_url": "https://www.overtdefense.com/2023/07/13/first-army-trials-of-piap-hunter-ugv/",
+     "confidence": "medium",
+     "variant": "2023 armed version (first army trials, ZMU-03)"
+    }
+   ],
+   "visual_descriptions": [
+    "Cab-less 4x4 hull about 4.7 m long and 2.2 m wide. Both axles steer, each is a rigid beam axle (Ultimate Dana 60-class front-steer axles per 2017 tender) with an integrated electric traction motor, located by a 3-link + Panhard bar with coil springs and controlled dampers giving 25 cm of travel (Janes 2020; ArmyRecognition 2024; PIAP BIP tender ZO/11/07/2017).",
+    "Sensor fit on the 2020 prototype: GPS receiver, two lidars, 9 HD cameras: one pan-tilt-zoom camera (mast/turret), 4 hull-mounted navigation cameras and 4 drive-assistant cameras (Milmag EN 2020, Janes 2020). The 2024 version adds lidars and stereovision cameras (PIAP MSPO 2024 page).",
+    "Payload options seen: cargo crates, hydraulic arm, ground-penetrating radar, UAV landing pad (Janes/Milmag 2020). Armed versions carry an AREX/WB ZMU-03 remote weapon station on the top deck (2023-2024), a ZMT WLKM 12.7 mm multi-barrel MG module (MSPO 2025), and a Belma Bluszcz scatterable-mine launcher (one or two units) on the deck (Eurosatory/MSPO 2026). There is also a counter-drone version (rp.pl 2026).",
+    "Teleoperation console uses a steering wheel and pedals (Janes 2020).",
+    "Hybrid drive allows silent, electric-only movement. A 2026 manufacturer listing cites reduced acoustic and thermal signatures in electric mode. No source found says where the genset, battery, fuel tank or exhaust sit in the hull."
+   ],
+   "estimates": [
+    {
+     "parameter": "battery_pack_mass",
+     "value": "approx. 270-330 kg (best guess 300 kg) for 40 kWh NMC with BTMS",
+     "reasoning": "Custom military NMC packs from 2018-2020, with liquid BTMS, enclosure and BMS, typically reach 120-150 Wh/kg at pack level: 40 kWh / 0.13-0.15 kWh/kg = 267-333 kg. Place it low and central in the hull to keep the CG low (common UGV practice); location is not confirmed."
+    },
+    {
+     "parameter": "genset_mass_and_engine_class",
+     "value": "Engine about 110-125 kW mechanical (about 150-170 hp), likely a 2.0-3.0 L automotive turbodiesel. Engine plus PM generator plus cooling plus exhaust approx. 300-400 kg (best guess 350 kg)",
+     "reasoning": "110 kW electrical output at about 92-95% generator efficiency needs about 116-120 kW at the shaft. Diesel is the likely fuel because of NATO single-fuel policy (F-34/diesel), but no source confirms it; sources only say 'combustion' / 'generator spalinowy'. A 2-3 L turbodiesel weighs about 180-250 kg dry, a 110 kW PM generator about 60-90 kg, and radiator and exhaust add about 40-60 kg."
+    },
+    {
+     "parameter": "fuel_tank_volume",
+     "value": "approx. 90-130 L (best guess about 110 L, about 90 kg of fuel)",
+     "reasoning": "Back-calculated from the 450 km full-tank range. A 3.5-4 t series-hybrid off-road vehicle on large off-road tyres probably uses about 20-28 L/100 km on mixed terrain, so 450 km needs about 90-126 L. This is unconfirmed."
+    },
+    {
+     "parameter": "silent_electric_range",
+     "value": "approx. 40-70 km on road at moderate speed; approx. 15-35 km off-road",
+     "reasoning": "40 kWh at about 80-90% usable gives 32-36 kWh. A 3.5-4 t vehicle with large off-road tyres probably uses about 0.45-0.8 kWh/km on road and 1-2 kWh/km off-road. No source gives this figure."
+    },
+    {
+     "parameter": "traction_motor_rating_each",
+     "value": "About 45 kW continuous / 110 kW peak per motor (2 motors). Estimated motor mass about 40-70 kg each including reduction stage",
+     "reasoning": "90/220 kW total split over the two axle-integrated motors (BIP ZWR/01/2018: two motor sets; Janes: each steering axle has an electric motor). PMSM or induction is unknown; the mass is typical of automotive PMSMs in this power class."
+    },
+    {
+     "parameter": "motor_to_axle_reduction",
+     "value": "Probably an extra reduction of about 3-5:1 between motor and the Dana 60 pinion (unconfirmed)",
+     "reasoning": "With a 5.38 ring and pinion and a 37-40 in tyre (rolling radius about 0.47-0.50 m), 50 km/h (13.9 m/s) equals about 265-282 wheel rpm, or about 1430-1520 pinion rpm. Automotive PMSMs of 45-110 kW usually reach 6000-12000 rpm, so a single-speed reduction stage is likely. Alternatively a low-speed high-torque motor drives the pinion directly."
+    },
+    {
+     "parameter": "wheel_torque_and_speed_limits_for_URDF",
+     "value": "Per-wheel peak torque about 3.0-3.5 kN·m. Wheel angular-velocity limit about 28-30 rad/s (50 km/h at r about 0.48 m)",
+     "reasoning": "Traction-limited tractive force is μ·m·g = 0.8 × 3500 × 9.81 ≈ 27.5 kN total, or about 6.9 kN per wheel, giving about 3.3 kN·m at r = 0.48 m. The 220 kW peak power corner then sits at about 220/27.5 = 8 m/s (about 29 km/h). The 90 kW continuous rating supports about 6.5 kN at 50 km/h, enough for about a 15% grade at that speed with 3.5 t."
+    },
+    {
+     "parameter": "power_to_weight",
+     "value": "Continuous 25.7 kW/t, peak 62.9 kW/t at 3.5 t. Continuous 22.5 kW/t, peak 55 kW/t at 4.0 t",
+     "reasoning": "Simple division of the reported 90/220 kW by the reported 3500 kg (2020) and about 4000 kg (armed 2023+) masses."
+    },
+    {
+     "parameter": "unsprung_mass",
+     "value": "About 750-850 kg total (about 375-425 kg per axle assembly including wheels)",
+     "reasoning": "An Ultimate Dana 60 front axle with brakes is about 180-200 kg, plus a motor and reducer of about 50-70 kg, plus two wheel/tyre assemblies (37-40 in off-road tyres on 17 in beadlock rims) of about 70-85 kg each, so about 370-440 kg per axle. With beam axles and Panhard links, the URDF should model each axle as a single rigid unsprung body with heave and roll DOF."
+    },
+    {
+     "parameter": "sprung_mass_budget",
+     "value": "At 3500 kg curb: about 2700 kg sprung, made up of battery about 300, genset and cooling about 350, fuel about 90, power electronics (traction inverters, DC/DC, 400 VAC inverter, 24 V system) about 80-120, hull/frame/body/electronics/sensors the rest (about 1850-1900 kg)",
+     "reasoning": "Total curb 3500 kg minus the estimated unsprung about 800 kg. Component masses as estimated above. For the armed 4 t version, add the RWS and ammunition (about 400-500 kg) on the top deck, which raises the CG."
+    },
+    {
+     "parameter": "longitudinal_mass_distribution",
+     "value": "Assume about 50/50 front/rear at curb; layout of genset and battery unknown",
+     "reasoning": "Both axles are identical (three identical front-steer axles were bought), both are driven by equal motors, and both steer. A symmetric design intent near 50:50 is plausible. With a 2.70 m wheelbase, place the CG about 1.35 m from each axle. CG height for a 4.7 x 2.2 m UGV with the battery low is probably about 0.85-1.0 m above ground (higher with an RWS)."
+    },
+    {
+     "parameter": "track_width",
+     "value": "About 1.80-1.85 m (wheel centre to centre)",
+     "reasoning": "Overall width is 2.2 m. With off-road tyres about 0.32 m wide, the track is at most 2.2 - 0.32 = 1.88 m. Ultimate Dana 60 JK-type front axles are about 1.73-1.75 m wheel-mount-surface to wheel-mount-surface, plus wheel offset or spacers. This is not confirmed by any source."
+    },
+    {
+     "parameter": "traction_dc_bus_voltage",
+     "value": "Probably about 600-700 V DC traction bus (the 600 VDC export output likely taps it)",
+     "reasoning": "The vehicle exports 600 VDC, and an NMC pack of about 165-190 series cells gives about 600-700 V nominal. This is consistent with 110 kW-class automotive inverters, but no source states the traction bus voltage."
+    }
+   ],
+   "sources_consulted": [
+    "https://www.intarg.haller.pl/targi/pliki_wynalazki/posters/157-1623325091.pdf (PIAP INTARG poster, via search snippets only; download blocked)",
+    "https://armyrecognition.com/news/army-news/army-news-2024/poland-deploys-piap-hunter-next-gen-unmanned-ground-vehicle (WebFetch blocked; snippets only)",
+    "https://www.armyrecognition.com/archives/archives-land-defense/land-defense-2024/polish-defense-industries-field-test-piap-hunter-ugv-for-combat-purposes",
+    "https://www.janes.com/defence-news/news-detail/lukasiewicz-piap-unveils-hunter-ugv",
+    "https://defencehub.live/threads/polish-lukasiewicz-piap-unveils-hunter-ugv.1331/",
+    "https://defensehere.com/en/a-polish-company-unveils-a-hunter-ugv/",
+    "https://milmag.pl/en/lukasiewicz-piap-institute-presents-hunter-ugv/",
+    "https://milmag.pl/lukasiewicz-piap-prezentuje-bezzalogowego-huntera/ (also milmag.pl/news/view?news_id=4608)",
+    "https://milmag.pl/en/mspo-2025-piap-hunter-with-a-12-7-mm-weapon-module/",
+    "https://milmag.pl/eurosatory-2026-bezzalogowy-system-minowania-narzutowego-bluszcz-na-podwoziu-piap-hunter/",
+    "https://milmag.pl/en/poland-piap-hunter-and-piap-ibis-transport-mule-robots-in-digital-legionnaire-exercises/",
+    "https://milmag.pl/en/autonomous-and-unmanned-systems-by-lukasiewicz-piap-at-the-opex-2025-training-ground-in-italy/",
+    "https://www.overtdefense.com/2023/07/13/first-army-trials-of-piap-hunter-ugv/",
+    "https://polska-zbrojna.pl/home/articleshow/47110?t=PIAP-HUNTeR-w-nowej-odslonie-na-MSPO",
+    "https://piap.lukasiewicz.gov.pl/badanie/projekt-hunter/",
+    "https://piap.lukasiewicz.gov.pl/en/2024/09/02/lukasiewicz-piap-mobile-robots-in-new-guises-at-the-mspo/",
+    "https://bip.piap.lukasiewicz.gov.pl//Zamowienia-publiczne/ZO-11-07-2017-Dostawa-mostow-napedowych-do-projektu-Hunter (curl blocked; snippets only)",
+    "https://bip.piap.lukasiewicz.gov.pl//Zamowienia-publiczne/OGLOSZENIE-O-ZAMIARZE-ZAWARCIA-UMOWY-ZWR-01-2018-Dostawa-zestawu-silnikow-do-projektu-HUNTER-zamowienie-w-trybie-z-wolnej-reki",
+    "https://bip.piap.lukasiewicz.gov.pl//Zamowienia-publiczne/Badania-systemu-HUNTER",
+    "https://www.targikielce.pl/en/mspo/list-of-exhibitors/lukasiewicz-piap,4035187",
+    "https://defence24.pl/technologie/polski-robot-bojowy-na-poligonie",
+    "https://defence24.pl/przemysl/hunter-35-tonowy-robot-z-napedem-hybrydowym-defence24-tv",
+    "https://spidersweb.pl/2023/07/oto-przyszlosc-polskiego-wojska-hunter.html",
+    "https://polandinsight.com/polands-lukasiewicz-piap-pushes-ahead-with-autonomous-combat-robots-28363/",
+    "https://radar.rp.pl/mspo/art42949781-bojowe-roboty-z-polski-wzbudzaja-duze-zainteresowanie",
+    "https://mikrokontroler.pl/2026/09/08/lukasiewicz-piap-pokaze-nowe-roboty-ladowe-na-mspo-2026/",
+    "http://www.maquetland.com/article-phototheque/19653-piap-hunter-ugv-eurosatory-2024",
+    "https://spicerparts.com/parts/axle/performance/ultimate-dana-60-bracketless-crate-axles (generic Dana axle data)",
+    "https://www.northridge4x4.com/part/10128141-dana-ultimate-60-rear-crate-axle-assembly-5-38-arb-air-locker-8x6-5 (generic Dana axle data)"
+   ],
+   "open_questions": [
+    "Engine make, model, displacement and fuel type: no source names them (searched Kubota, Deutz, VW, Cummins, 'silnik wysokoprężny'). Sources only say 'combustion engine' / 'generator spalinowy'. Diesel/F-34 is likely but unconfirmed.",
+    "Generator manufacturer and type (PM synchronous?): not found.",
+    "Traction motor maker, type (PMSM vs induction), torque and rated speed: the single-source ZWR/01/2018 notice (two motor sets, 5 April 2018) exists on PIAP BIP, but the supplier name was not visible in search snippets. The BIP page is blocked from this environment.",
+    "Winner of drive-axle tender ZO/11/07/2017 (3 rigid front axles, Ultimate Dana 60 or equivalent, 5.38 ratio, discs ≥350 mm): the 'Informacja o wyborze' file of 4 Aug 2017 was not readable. It is also unknown whether an extra motor reduction gear sits between motor and pinion.",
+    "Battery mass, voltage, cell supplier, BTMS type (liquid vs air), and usable capacity: only '40 kWh Li-Ion NMC with BTMS' is published. PIAP BIP also lists a separate 'Dostawa komponentów akumulatora' tender, but it was not confirmed as HUNTeR-related.",
+    "Electric-only (silent) range and endurance: not published anywhere found.",
+    "Fuel tank volume: not published. Only the 450 km full-tank range (Polska Zbrojna, MSPO version) is known.",
+    "Whether the 600 VDC export output equals the traction DC bus voltage.",
+    "Physical layout of genset, battery, fuel tank, radiator and exhaust (front/rear/centre): no textual source found. Photos would be needed.",
+    "Tyre size and wheel diameter: not found in this angle (needed for gear and speed calculations).",
+    "Whether the 2023-2026 armed (about 4 t) versions changed the powertrain (generator, battery) relative to the 2020 3.5 t prototype: no source reports a change.",
+    "Date of the Polska Zbrojna article 47110 (450 km range, 1 t payload, Belma mine-layer): the search summary says 34th MSPO (2026), but this is not verified.",
+    "One search summary claimed a 'separate, lighter 3.5 t Hunter' distinct from HUNTeR. This is almost certainly a summarizer error: the 3.5 t 2020 prototype and the later about 4 t armed HUNTeR are the same lineage.",
+    "The WebSearch budget for this turn ran out after about 32 queries, so further searches (e.g. Defence24 TV description, Overt Defense full text, engine-specific Polish queries) could not be run. A follow-up run could continue."
+   ]
+  },
+  "research:academic-patents": {
+   "findings": [],
+   "visual_descriptions": [
+    "No sourced visual descriptions were collected in this step. The shared WebSearch budget for this turn (200 calls across all agents) was already used up before this agent's first query, so no search ran and nothing could be quoted."
+   ],
+   "estimates": [
+    {
+     "parameter": "status_of_existing_project_values",
+     "value": "Unverified. hunter_description/config/vehicle.yaml lists wheelbase 2.7 m, track 1.85 m, length 4.7 m, width 2.2 m, height 1.9 m, ground clearance 0.4 m, chassis mass 2500 kg, wheel diameter 1.0 m, max steer 30 deg, max speed 13.9 m/s.",
+     "reasoning": "An earlier workflow step wrote these values into /home/user/hunter_urdf/hunter_description/config/vehicle.yaml. This agent found no source to confirm or contradict them, because no search could run. They should be treated as estimates until another research agent with search budget left can back them with a quoted source."
+    },
+    {
+     "parameter": "vehicle_class_context",
+     "value": "About 3.5-4 t, 4x4, hybrid drive, two steering axles (front and rear), Lukasiewicz-PIAP, unveiled 2020",
+     "reasoning": "This comes only from the orchestrator's task brief and the user's statement that the robot has front and rear steering. This agent did not verify it against any source in this step, so it is context, not a finding."
+    }
+   ],
+   "sources_consulted": [
+    "None. All three WebSearch calls were refused: 'Web search was not performed: this turn's web search budget is used up (limit: 200 WebSearch calls per turn, shared by every agent in it).'",
+    "Local file read for context only, not a source: /home/user/hunter_urdf/hunter_description/config/vehicle.yaml (values written by an earlier workflow step, no citations)"
+   ],
+   "open_questions": [
+    "SEARCH BUDGET EXHAUSTED: this agent could not run any web search. The academic/patent/funding angle is completely uncovered. To cover it, the user can send a follow-up message to continue the search in a new turn, or raise CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION.",
+    "Queries planned but not run (for the next attempt): 'PIAP HUNTeR JAMRIS'; 'site:jamris.org HUNTeR'; 'HUNTeR Łukasiewicz PIAP Pomiary Automatyka Robotyka'; 'bezzałogowa platforma lądowa HUNTeR NCBR projekt'; 'UGV klasy ciężkiej PIAP hybrydowy napęd skrętne osie'; 'Problemy Techniki Uzbrojenia bezzałogowa platforma PIAP'; 'Szybkobieżne Pojazdy Gąsienicowe PIAP platforma kołowa 4x4'; 'WAT bezzałogowy pojazd lądowy PIAP HUNTeR'; 'site:researchgate.net PIAP unmanned ground vehicle hybrid 4x4'; 'site:sciendo.com PIAP UGV'; 'UPRP patent PIAP układ skrętu pojazd bezzałogowy'; 'Espacenet PIAP Przemysłowy Instytut Automatyki i Pomiarów zawieszenie pojazd'; 'HUNTeR AREX ZMU-03 MSPO 2023'; 'HUNTeR WB Group 2024 testy'; 'site:github.com PIAP hunter urdf'.",
+    "Not yet confirmed from any source: overall length/width/height, wheelbase, track, curb and gross mass, payload, wheel/tire size, ground clearance, maximum speed, steering modes (front-only, counter-phase 4WS, crab), maximum steering angle, suspension type (independent or rigid axle, spring/damper type), hybrid powertrain layout (engine/generator/electric motors per wheel or per axle), and sensor suite (lidar/camera models and mounting).",
+    "Is there an NCBR or Agencja Uzbrojenia project number or call ('bezzałogowa platforma lądowa' programme) that funded HUNTeR, and does its public summary include technical parameters?",
+    "Has PIAP published HUNTeR control architecture details (e.g., ROS-based autonomy stack, teleoperation console, convoy/follow-me modes) in JAMRIS or Automation conference proceedings?"
+   ]
+  },
+  "research:payloads-variants": {
+   "findings": [],
+   "visual_descriptions": [
+    "NO SOURCE RETRIEVED. Every web search was refused because the shared budget was used up (200 WebSearch calls per turn, shared by all agents), and direct fetches were blocked. Nothing in this list comes from a source. The text below is only a weak, unverified recollection by the model and must not drive geometry: the HUNTeR looks like a boxy, angular hull with no cab, a flat payload deck on top, four large off-road tyres on two steered axles, and sensors (cameras or lidar) grouped at the front of the hull. Treat it as a placeholder until photos or the PIAP brochure are found.",
+    "The orchestrator's brief describes these configurations: a 2020 cargo/mule version (possibly crates and a hydraulic arm), a version with a UAV landing pad, an armed version shown at MSPO 2023 with the AREX ZMU-03 12.7 mm remote weapon station, FEX 2023 trials at Nowa Deba, and January 2024 trials with WB Group (possibly Warmate). I could not confirm any of them in this run. They come from the task text, not from a source."
+   ],
+   "estimates": [
+    {
+     "parameter": "research_status",
+     "value": "0 verified findings",
+     "reasoning": "All 3 WebSearch calls I made were refused because the shared per-turn budget (200 calls across all agents) was already used up. The tool told me not to work around this, so I did not use curl or proxies to reach search engines. The one allowed WebFetch try, https://www.arex.pl/, failed with a DNS error (ENOTFOUND). Curl to pl.wikipedia.org and en.wikipedia.org was refused by the proxy with 403. So every value below is an engineering estimate from vehicles of the same class, not a fact about the HUNTeR or the ZMU-03. To continue, the user can send a follow-up message or raise CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION."
+    },
+    {
+     "parameter": "rws_total_mass_ZMU03_with_12.7mm_weapon_and_ammo",
+     "value": "230 kg (plausible range 180-300 kg)",
+     "reasoning": "Comparison with other light remote weapon stations for a 12.7 mm gun. From general knowledge, a light RWS turret alone weighs about 130-200 kg. Add a 12.7 mm HMG (about 25-38 kg) and 200-300 linked rounds (about 25-40 kg including the box). This is for the URDF payload link mass on the armed variant only. It is NOT a ZMU-03 datasheet value."
+    },
+    {
+     "parameter": "rws_mass_without_weapon_and_ammo",
+     "value": "165 kg (range 120-220 kg)",
+     "reasoning": "Same comparison with the light RWS class: the turret, its electro-optical head and its drives without the gun or ammunition. Unverified."
+    },
+    {
+     "parameter": "rws_weapon",
+     "value": "12.7x99 mm HMG, most likely the Polish WKM-B family (ZM Tarnow), about 25-30 kg, overall length about 1.5 m",
+     "reasoning": "The brief says the ZMU-03 is 12.7 mm. WKM-B is the standard Polish 12.7 mm machine gun on Polish remote weapon stations, so it is the natural assumption for a PIAP/AREX integration. The mass and length are approximate recollections, not verified."
+    },
+    {
+     "parameter": "rws_ready_ammo",
+     "value": "200-300 rounds; about 0.115-0.12 kg per linked 12.7x99 round, so about 25-40 kg including the box",
+     "reasoning": "Typical ready-to-fire ammunition on light RWS. The per-round mass of 12.7x99 ammunition is well known to be about 115-120 g with links."
+    },
+    {
+     "parameter": "rws_height_above_mount_plate",
+     "value": "0.70 m (range 0.55-0.90 m)",
+     "reasoning": "Light 12.7 mm RWS usually stand 0.6-0.9 m high, measured from the base ring to the top of the sight or sensor head. Use it for the collision box of the armed variant."
+    },
+    {
+     "parameter": "rws_footprint",
+     "value": "base ring about 0.55-0.65 m in diameter; swept envelope about 0.9 m wide x about 1.0 m long, barrel excluded; the barrel sticks out about 0.8-1.0 m in front of the traverse axis",
+     "reasoning": "Usual light RWS layout: a cradle with the gun on one side and the sensor box on the other. Estimated from the size of the gun."
+    },
+    {
+     "parameter": "rws_elevation_traverse",
+     "value": "Traverse 360 deg continuous (URDF continuous joint); elevation -20 to +60 deg (URDF revolute limits -0.35 to +1.05 rad)",
+     "reasoning": "Common specification for light RWS. The real ZMU-03 numbers are unknown and should be replaced if the AREX datasheet turns up."
+    },
+    {
+     "parameter": "rws_sensors",
+     "value": "Day TV camera + uncooled or cooled thermal camera + laser rangefinder in one sensor head on the cradle, elevating with the gun",
+     "reasoning": "Standard sensor set on modern RWS. For the URDF, add camera frames (rws_day_cam_link, rws_ir_cam_link) as children of the elevation link."
+    },
+    {
+     "parameter": "rws_mount_location",
+     "value": "Payload deck centreline, roughly over or slightly behind the vehicle centre (x about -0.2 to +0.3 m from mid-wheelbase), mount plate at deck height",
+     "reasoning": "On a UGV with two steered axles, a centred mount keeps the axle loads balanced and gives 360 deg arcs of fire. This is a guess and needs checking against photos from MSPO 2023."
+    },
+    {
+     "parameter": "rws_com_height_above_mount",
+     "value": "0.30-0.40 m",
+     "reasoning": "Most of the mass (cradle, gun, ammunition box) sits low on the yoke. Estimated."
+    },
+    {
+     "parameter": "loitering_munition_payload (Jan 2024 WB Group trials, if Warmate)",
+     "value": "Single Warmate round about 5-6 kg; tube/canister launcher; a rack of 2-4 canisters about 50-100 kg in total including the frame",
+     "reasoning": "Warmate (WB Electronics) is a light man-portable loitering munition launched from a tube. I only remember its mass vaguely and could not verify it. The rack mass is a structural guess. Whether the January 2024 trials used Warmate at all is unconfirmed."
+    },
+    {
+     "parameter": "uav_landing_pad_module",
+     "value": "Flat plate about 1.2 x 1.2 m, 20-40 kg, possibly with a lid or housing for a small multirotor (UAV mass 2-10 kg)",
+     "reasoning": "Typical size of a UGV-mounted landing pad for a small quadcopter. No details on the HUNTeR pad or which drone was used were found."
+    },
+    {
+     "parameter": "hydraulic_arm_module",
+     "value": "If it exists: a small loader crane or manipulator of 150-300 kg, reach 2.5-4 m, lift about 100-300 kg at full reach",
+     "reasoning": "Size class of compact knuckle-boom cranes that fit a 3.5-4 t chassis. PIAP also builds EOD robot manipulators (PIAP robots such as Expert and Gryf). A PIAP-made electric or hydraulic manipulator is therefore as plausible as a commercial crane. Make, reach and lift are all unverified."
+    },
+    {
+     "parameter": "cargo_payload_capacity",
+     "value": "about 1,000-1,500 kg",
+     "reasoning": "UGVs of 3-4 t kerb mass usually carry about 30-40% of their own mass. This is a ratio from comparable vehicles, not a HUNTeR figure."
+    },
+    {
+     "parameter": "urdf_variant_strategy",
+     "value": "xacro arg variant:=cargo|armed_zmu03|uav_pad|loitering|arm; each adds a fixed or articulated payload link with the masses above. Armed: base_to_rws_yaw (continuous) and rws_yaw_to_pitch (revolute -0.35..1.05 rad).",
+     "reasoning": "Lets the one HUNTeR chassis model cover every configuration publicly reported, while the payload numbers stay estimates that are easy to replace."
+    }
+   ],
+   "sources_consulted": [
+    "WebSearch 'PIAP HUNTeR unmanned ground vehicle variants timeline' (extended): refused, shared 200-call search budget used up",
+    "WebSearch 'PIAP Hunter ZMU-03 AREX MSPO 2023 bezzałogowy pojazd' (standard): refused, budget used up",
+    "WebSearch 'AREX ZMU-03 zdalnie sterowany moduł uzbrojenia masa specyfikacja' (extended): refused, budget used up",
+    "WebFetch https://www.arex.pl/ : failed (getaddrinfo ENOTFOUND)",
+    "curl https://pl.wikipedia.org/wiki/Hunter_(bezza%C5%82ogowy_pojazd) and https://en.wikipedia.org/wiki/PIAP_Hunter : CONNECT tunnel 403",
+    "Local file /home/user/hunter_urdf/hunter_description/config/vehicle.yaml : read for context only. It holds earlier pipeline estimates (wheelbase 2.7 m, track 1.85 m, length 4.7 m, chassis 2500 kg, 1.0 m wheels, 30 deg steering). It is not an external source and gives no support to any of them."
+   ],
+   "open_questions": [
+    "Nothing was verified in this run because the web search budget was used up. The user can send a follow-up message to continue the search, or raise CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION.",
+    "Exact unveiling date and event for the HUNTeR (2020?), and the public specs of that prototype: mass, payload, speed, range, hybrid drivetrain, dimensions.",
+    "Was a hydraulic arm or crane shown on the 2020 cargo/mule prototype? Make, reach, lift capacity, mounting position.",
+    "UAV landing pad version: which drone (PIAP or WB product?), pad size and position, whether there is a hangar or lid.",
+    "MSPO 2023 armed version: confirm the RWS is the AREX ZMU-03 and the weapon is a 12.7 mm WKM-B; RWS mass with and without weapon and ammunition, height, footprint, elevation and traverse limits, sensor suite, ready rounds.",
+    "FEX 2023 at Nowa Deba: which configuration took part, and what trials were reported (firing, mobility, autonomy).",
+    "January 2024 WB Group trials: which payload was used (Warmate loitering munition launcher? Gladius components? FlyEye?), and how many canisters and where they were mounted.",
+    "Any 2024-2026 developments: Polish Armed Forces orders or contracts, a 'HUNTeR 2' or new version, export marketing, autonomy upgrades.",
+    "Mounting position of each payload module on the deck, measured from photos and used to set URDF joint origins.",
+    "Whether the payload interface is a standard rail or plate (e.g. a NATO-style mounting pattern) common to all modules."
+   ]
+  },
+  "research:visual-layout": {
+   "findings": [],
+   "visual_descriptions": [
+    "NO SOURCE-BACKED VISUAL DESCRIPTION WAS RETRIEVED IN THIS PASS. Every WebSearch call came back with 'Web search was not performed: this turn's web search budget is used up (limit: 200 WebSearch calls per turn, shared by every agent in it)'. That covers all three queries tried: 'PIAP HUNTeR unmanned ground vehicle 3.5 ton hybrid' (standard), 'Łukasiewicz-PIAP Hunter bezzałogowy pojazd lądowy wygląd platforma' (extended) and 'Hunter PIAP robot MSPO 2023 AREX ZMU-03 remote weapon station photo' (extended). The one WebFetch allowed (https://piap.lukasiewicz.gov.pl/en/hunter/) failed with 'getaddrinfo ENOTFOUND piap.lukasiewicz.gov.pl'. Direct curl to en/pl.wikipedia.org and defence24.pl returned HTTP 000 (blocked). Per the tool's instruction, I did not try to get around the search limit through other search engines, readers or archives. Any visual layout statements below in 'estimates' are unverified recollection or engineering assumptions, not sourced facts."
+   ],
+   "estimates": [
+    {
+     "parameter": "general_layout (UNVERIFIED RECOLLECTION)",
+     "value": "Cab-less, low, boxy 4x4 wheeled platform. Flat upper deck or payload bed over most of the length. Large off-road tyres at the four corners. Sensor and lighting clusters on the front face and corners. No crew cab or windscreen.",
+     "reasoning": "This comes from my general memory of press imagery of the 2020 Łukasiewicz-PIAP HUNTeR and of similar 3-4 t UGVs (e.g. Milrem/TRX-class wheeled UGVs). I could not check it against any source this pass because the search budget was used up. Treat it only as a placeholder for the mesh until another agent confirms it with quoted sources."
+    },
+    {
+     "parameter": "color (UNVERIFIED RECOLLECTION)",
+     "value": "Military olive/dark green single-tone paint, probably on the 2020 prototype",
+     "reasoning": "Weak recollection only. Polish Army equipment is typically olive green (RAL 6031-type). No source text was obtained. Confidence is low."
+    },
+    {
+     "parameter": "RWS_mount_location (ENGINEERING ASSUMPTION)",
+     "value": "AREX ZMU-03 RWS (2023 armed variant) mounted on the top deck, roughly centred laterally and between the axles or slightly rearward. Base plate on the deck surface, about 1.2-1.4 m above ground.",
+     "reasoning": "On a cab-less flat-deck UGV, a light RWS is normally bolted to the deck near the centre of mass to limit pitch moment and keep fields of fire clear. This is an assumption, not sourced. The user request names AREX ZMU-03 for the 2023 version, but I could not confirm it in this pass."
+    },
+    {
+     "parameter": "sensor_head_location (ENGINEERING ASSUMPTION)",
+     "value": "Front-facing perception suite: lidar(s) and day/thermal cameras on the front upper edge or a short front mast. Possibly a second lidar at the rear for reversing, since the vehicle steers on both axles and is likely bidirectional.",
+     "reasoning": "A typical layout for teleoperated or autonomous UGVs. Steering on both axles points to near-symmetric front/rear operation, which supports sensors at both ends. Not sourced."
+    },
+    {
+     "parameter": "existing_repo_values_not_verified",
+     "value": "The repo file /home/user/hunter_urdf/hunter_description/config/vehicle.yaml already holds wheelbase 2.7 m, track 1.85 m, length 4.7 m, width 2.2 m, height 1.9 m, ground clearance 0.4 m, wheel diameter 1.0 m, chassis mass 2500 kg",
+     "reasoning": "These values were put there by an earlier step in this workflow. None of them carries a source citation in the repo (grep found no URLs or quotes). This research pass could not confirm or refute any of them. They should be cross-checked against sourced findings from other angles before they are treated as authoritative."
+    }
+   ],
+   "sources_consulted": [
+    "WebSearch 'PIAP HUNTeR unmanned ground vehicle 3.5 ton hybrid' (standard): not performed, per-turn search budget (200, shared across agents) used up",
+    "WebSearch 'Łukasiewicz-PIAP Hunter bezzałogowy pojazd lądowy wygląd platforma' (extended): not performed, budget used up",
+    "WebSearch 'Hunter PIAP robot MSPO 2023 AREX ZMU-03 remote weapon station photo' (extended): not performed, budget used up",
+    "WebFetch https://piap.lukasiewicz.gov.pl/en/hunter/: failed, getaddrinfo ENOTFOUND",
+    "curl https://en.wikipedia.org/wiki/Przemys%C5%82owy_Instytut_Automatyki_i_Pomiar%C3%B3w: HTTP 000 (blocked)",
+    "curl https://pl.wikipedia.org/wiki/Przemys%C5%82owy_Instytut_Automatyki_i_Pomiar%C3%B3w: HTTP 000 (blocked)",
+    "curl https://www.defence24.pl/: HTTP 000 (blocked)",
+    "Local repo /home/user/hunter_urdf: checked for previously gathered, sourced research. None found; docs/ is empty and vehicle.yaml has no citations",
+    "Session scratchpad task outputs under /tmp/claude-0/-home-user-hunter-urdf/541c5ff6-659e-5de5-94e9-986086bfb632/tasks: empty or no research content"
+   ],
+   "open_questions": [
+    "THIS ANGLE IS STILL UNRESEARCHED: the shared per-turn WebSearch budget (200 calls) was used up before this agent ran. To finish it, the user needs to send a follow-up message (a new turn resets the budget) or raise CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION. After that, re-run this visual/layout angle.",
+    "Is the HUNTeR fully cab-less? Does it have a full armoured hull or a flat open cargo bed at the rear? Where is the engine/generator bay: front, centre or rear?",
+    "Where are the lidars (model and count), cameras (day/thermal, count), PTZ head or mast and its height, GNSS/radio antennas, work lights, headlights and marker lights?",
+    "Bumpers, tow hooks/shackles, winch, fenders, side panels, stowage boxes or hatches: what is present and where?",
+    "Wheel appearance: rim type (steel or beadlock), number of lug nuts, tyre size and tread pattern (e.g. 37-40 inch MT/AT or military NDT)?",
+    "Which suspension parts are visible: coil springs or leaf springs, independent wishbones or solid portal axles, dampers, Panhard rod or trailing arms?",
+    "Paint/camouflage on each variant: 2020 prototype, 2023 MSPO armed version with AREX ZMU-03, 2024 WB Group trials version.",
+    "Exact RWS mount location and height on the 2023 armed variant, and any added mast or sensor head on that variant.",
+    "Do the Defence24 TV 'Hunter - 3.5-ton Hybrid Land Robot' video description or transcript, and captions from the MSPO 2023 photo reports (defence24, milmag, zbiam, Polish MoD, LinkedIn/X posts by Łukasiewicz-PIAP), give text descriptions of the layout?"
+   ]
+  }
+ }
+}
