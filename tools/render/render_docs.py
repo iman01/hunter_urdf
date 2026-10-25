@@ -41,10 +41,6 @@ SCENES = [
     ("hunter_4ws_counter", "sensors:=false", steer_for("counter", 1.0, 0.0, 5.0), "90,89,8.5,0,0,0.5", XRAY),
     ("hunter_4ws_crab", "sensors:=false", steer_for("crab", 1.0, 0.6, 0.0), "90,89,8.5,0,0,0.5", XRAY),
     ("hunter_2ws_front", "sensors:=false", steer_for("front", 1.0, 0.0, 5.0), "90,89,8.5,0,0,0.5", XRAY),
-    ("hunter_rws_2023", "variant:=2023 payload:=rws", {"rws_yaw_joint": 0.5, "rws_pitch_joint": 0.15},
-     "35,18,11,0,0,1.0", {}),
-    ("hunter_cargo", "payload:=cargo", {}, "35,22,11,0,0,0.9", {}),
-    ("hunter_uav_pad", "payload:=uav_pad", {}, "215,25,11,0,0,0.9", {}),
 ]
 
 

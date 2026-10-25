@@ -82,10 +82,6 @@
         <xacro:position_iface name="ptz_pan_joint" lo="${-1e9}" hi="${1e9}"/>
         <xacro:position_iface name="ptz_tilt_joint" lo="${-radians(V.ptz.tilt_max_deg)}" hi="${-radians(V.ptz.tilt_min_deg)}"/>
       </xacro:if>
-      <xacro:if value="${payload == 'rws'}">
-        <xacro:position_iface name="rws_yaw_joint" lo="${-1e9}" hi="${1e9}"/>
-        <xacro:position_iface name="rws_pitch_joint" lo="${radians(V.payloads.rws.pitch_min_deg)}" hi="${radians(V.payloads.rws.pitch_max_deg)}"/>
-      </xacro:if>
     </ros2_control>
   </xacro:macro>
 

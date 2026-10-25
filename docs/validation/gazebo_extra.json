@@ -41,19 +41,5 @@
  },
  "timeout_stop": {
   "speed_after_6s_without_cmd": 6.150783377693537e-06
- },
- "armed_variant": {
-  "front_heave_m": 0.0263,
-  "rear_heave_m": 0.0309,
-  "expected_sag_front_m": 0.0232,
-  "expected_sag_rear_m": 0.028,
-  "rws_cmd": [
-   1.0,
-   0.3
-  ],
-  "rws_measured": [
-   1.0,
-   0.3
-  ]
  }
 }

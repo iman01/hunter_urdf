@@ -2,7 +2,7 @@
 the four-wheel-steering controller and the sensor bridge.
 
   ros2 launch hunter_gazebo sim.launch.py
-  ros2 launch hunter_gazebo sim.launch.py world:=offroad.sdf variant:=2023 payload:=rws
+  ros2 launch hunter_gazebo sim.launch.py world:=offroad.sdf
   ros2 launch hunter_gazebo sim.launch.py headless:=true rviz:=false steering_mode:=crab
 
 Drive it:
@@ -34,11 +34,10 @@ def _truthy(v):
     return str(v).lower() in ("true", "1", "yes")
 
 
-def _bridge_and_controllers(context):
-    """Bridge only the sensors present in this configuration and spawn the
-    optional PTZ / RWS position controllers."""
+def _bridge_and_controllers(context, spawn):
+    """Bridge only the sensors present in this configuration and, once the
+    robot is spawned, start the controllers (the PTZ one only with sensors)."""
     get = lambda n: LaunchConfiguration(n).perform(context)  # noqa: E731
-    variant, payload = get("variant"), get("payload")
     sensors, cameras = _truthy(get("sensors")), _truthy(get("camera_sensors"))
     veh = yaml.safe_load(open(os.path.join(DESC, "config", "vehicle.yaml")))
 
@@ -50,8 +49,6 @@ def _bridge_and_controllers(context):
     cams = []
     if sensors:
         for s in veh["sensors"]:
-            if variant not in s["variants"]:
-                continue
             n = s["name"]
             if s["type"] == "lidar":
                 bridge.append(entry(f"/{n}/points", f"/{n}/scan/points", "sensor_msgs/msg/PointCloud2",
@@ -62,12 +59,7 @@ def _bridge_and_controllers(context):
                 bridge.append(entry(f"/{n}/fix", f"/{n}/fix", "sensor_msgs/msg/NavSatFix", "gz.msgs.NavSat"))
             elif s["type"] == "camera":
                 cams.append(n)
-            elif s["type"] == "stereo":
-                cams += [f"{n}_left", f"{n}_right"]
-        if variant in veh["ptz"]["variants"] and payload != "rws":
-            cams.append("ptz_camera")
-        if payload == "rws":
-            cams.append("rws_camera")
+        cams.append("ptz_camera")
     if cameras:
         for c in cams:
             bridge.append(entry(f"/{c}/image_raw", f"/{c}/image_raw", "sensor_msgs/msg/Image", "gz.msgs.Image"))
@@ -79,25 +71,24 @@ def _bridge_and_controllers(context):
 
     actions = [Node(package="ros_gz_bridge", executable="parameter_bridge", output="screen",
                     parameters=[{"config_file": path, "use_sim_time": True}])]
-    extra = []
-    if sensors and variant in veh["ptz"]["variants"] and payload != "rws":
-        extra.append("ptz_controller")
-    if payload == "rws":
-        extra.append("rws_controller")
-    if extra:
-        actions.append(TimerAction(period=8.0, actions=[Node(
-            package="controller_manager", executable="spawner", output="screen",
-            arguments=extra + ["--controller-manager", "/controller_manager", "--controller-manager-timeout", "120"],
-            parameters=[{"use_sim_time": True}])]))
+    # One spawner for all controllers: parallel spawners serialise on a lock. The
+    # switch timeout is generous because a CPU-rendered sensor suite can slow the
+    # simulation well below real time.
+    names = ["joint_state_broadcaster", "steering_position_controller", "wheel_velocity_controller"]
+    if sensors:
+        names.append("ptz_controller")
+    controllers = Node(
+        package="controller_manager", executable="spawner", output="screen",
+        arguments=names + ["--controller-manager", "/controller_manager", "--controller-manager-timeout", "120",
+                           "--switch-timeout", "60"],
+        parameters=[{"use_sim_time": True}])
+    actions.append(RegisterEventHandler(OnProcessExit(target_action=spawn, on_exit=[controllers])))
     return actions
 
 
 def generate_launch_description():
     args = [
         DeclareLaunchArgument("world", default_value="flat.sdf", description="world file in hunter_gazebo/worlds"),
-        DeclareLaunchArgument("variant", default_value="2020", description="2020 | 2023"),
-        DeclareLaunchArgument("payload", default_value="none", description="none | cargo | rws | uav_pad"),
-        DeclareLaunchArgument("cargo_mass", default_value="0", description="kg (payload:=cargo), 0 = default"),
         DeclareLaunchArgument("sensors", default_value="true"),
         DeclareLaunchArgument("camera_sensors", default_value="true"),
         DeclareLaunchArgument("lidar_resolution", default_value="0.5", description="fraction of native lidar samples"),
@@ -119,7 +110,6 @@ def generate_launch_description():
     robot_description = ParameterValue(Command([
         FindExecutable(name="xacro"), " ", os.path.join(DESC, "urdf", "hunter.urdf.xacro"),
         " sim_mode:=gz controllers_file:=", controllers_file,
-        " variant:=", lc("variant"), " payload:=", lc("payload"), " cargo_mass:=", lc("cargo_mass"),
         " sensors:=", lc("sensors"), " camera_sensors:=", lc("camera_sensors"),
         " lidar_resolution:=", lc("lidar_resolution"), " visual_detail:=", lc("visual_detail"),
     ]), value_type=str)
@@ -146,14 +136,6 @@ def generate_launch_description():
                  arguments=["-name", "hunter", "-topic", "robot_description",
                             "-x", lc("x"), "-y", lc("y"), "-z", lc("z"), "-Y", lc("yaw")])
 
-    # One spawner for all drive controllers: parallel spawners serialise on a lock.
-    controllers = Node(
-        package="controller_manager", executable="spawner", output="screen",
-        arguments=["joint_state_broadcaster", "steering_position_controller", "wheel_velocity_controller",
-                   "--controller-manager", "/controller_manager", "--controller-manager-timeout", "120"],
-        parameters=[{"use_sim_time": True}])
-    start_controllers = RegisterEventHandler(OnProcessExit(target_action=spawn, on_exit=[controllers]))
-
     four_ws = Node(
         package="hunter_control", executable="four_ws_controller", output="screen",
         parameters=[{"use_sim_time": True,
@@ -168,6 +150,6 @@ def generate_launch_description():
 
     return LaunchDescription(args + [
         resource_env, resource_env_models, gz_server_only, gz_with_gui, rsp, spawn,
-        OpaqueFunction(function=_bridge_and_controllers), start_controllers,
+        OpaqueFunction(function=_bridge_and_controllers, args=[spawn]),
         TimerAction(period=3.0, actions=[four_ws, linkage_viz]), rviz,
     ])

@@ -42,9 +42,8 @@ Every number in the URDF comes from this report. Status: **published** (PIAP or 
 | `body.length` | 4.7 | m | published | POSTER21, JANES20 |
 | `body.width` | 2.2 | m | published | POSTER21, JANES20 |
 | `chassis.wheelbase` | 2.7 | m | published | POSTER21, ARMYREC24. PIAP's INTARG 2021 poster (known through search summaries), Army Recognition 2024 and Militaer Aktuell give 2.70 m. Milmag 2020, Defence24 2023 and wnp.pl print 2.20 m, always beside the 2.20 m width, which looks like a copy error. 2.70 m also gives more plausible overhangs (1.0 m) |
-| `mass.curb_2020` | 3500 | kg | published | POSTER21, JANES20. 2020 prototype, cargo deck |
-| `mass.curb_2023_armed` | 4050 | kg | estimated | D24_23, MILMAG25. press: 'over four tonnes' / '4-ton' for the armed vehicle; 4.05 t used with the RWS fitted (variant:=2023 without payload weighs 3.85 t) |
-| `mass.payload_max` | 1000 | kg | published | D24TV21, PZ26 |
+| `mass.curb` | 3500 | kg | published | POSTER21, JANES20. 2020 prototype, open deck |
+| `mass.payload_max` | 1000 | kg | published | PZ26 |
 | `limits.max_speed` | 13.89 | m/s | published | POSTER21, JANES20. 50 km/h |
 | `suspension.stroke` | 0.25 | m | published | POSTER21, ARMYREC24 |
 | `wheel.diameter` | 1 | m | published | D24_23, MILMAG20 |
@@ -92,7 +91,7 @@ Every number in the URDF comes from this report. Status: **published** (PIAP or 
 | `mass.cg_x_kerb` | 0.09563 | m | derived | + forward of mid-wheelbase |
 | `suspension.static_load_front` | 1.295e+04 | N | derived | sprung weight on the front springs (kerb 2020) |
 | `suspension.static_load_rear` | 1.052e+04 | N | derived | sprung weight on the rear springs (kerb 2020) |
-| `suspension.ride_frequency` | 1.5 | Hz | design | off-road military practice 1.2-1.7 Hz at kerb; drops to ~1.3 Hz at max payload |
+| `suspension.ride_frequency` | 1.5 | Hz | design | heavy off-road vehicle practice 1.2-1.7 Hz at kerb; drops to ~1.3 Hz at max payload |
 | `suspension.damping_ratio` | 0.35 | - | design | nominal setting of the controlled (semi-active) dampers; range 0.2-0.6 |
 | `suspension.wheel_rate_front` | 7.048e+04 | N/m | derived | k_w = K_ride k_t / (k_t - K_ride), K_ride = m_corner (2 pi f)^2, front corner sprung mass |
 | `suspension.wheel_rate_rear` | 5.517e+04 | N/m | derived | same, rear corner |
@@ -105,7 +104,7 @@ Every number in the URDF comes from this report. Status: **published** (PIAP or 
 | `suspension.sim_heave_stiffness_front` | 1.173e+05 | N/m | derived | 2 x (k_w k_t / (k_w + k_t)): both corners, spring and tyre in series |
 | `suspension.sim_heave_stiffness_rear` | 9.531e+04 | N/m | derived | same, rear |
 | `suspension.spring_track` | 1.24 | m | design | coil-overs on the axle tubes just inboard of the knuckles (clear of the steered tyre) |
-| `suspension.anti_roll_stiffness` | 1.5e+04 | N m/rad | design | per axle; brings the roll gradient to ~6 deg/g with the RWS fitted |
+| `suspension.anti_roll_stiffness` | 1.5e+04 | N m/rad | design | per axle; keeps the kerb roll gradient near 5 deg/g |
 | `suspension.roll_center_height` | 0.1 | m | design | Panhard rod 0.10 m above the axle centreline, horizontal at ride height |
 | `suspension.sim_roll_stiffness_front` | 6.169e+04 | N m/rad | derived | (2 k_w (s/2)^2 + k_arb) in series with the tyres' 2 k_t (T/2)^2 |
 | `suspension.sim_roll_stiffness_rear` | 5.215e+04 | N m/rad | derived | same, rear |
@@ -158,19 +157,11 @@ Unsprung, per axle: housing/diff/inner shafts 150 kg, motor + reduction 85 kg, s
 
 - **POSTER21**: Lukasiewicz-PIAP, HUNTeR poster, INTARG 2021 invention fair (intarg.haller.pl/targi/pliki_wynalazki/posters/157-1623325091.pdf): 3500 kg, 470x220 cm, wheelbase 270 cm, ~50 km/h, dependent 3-link suspension with Panhard bar, coil springs, controlled-damping shock absorbers, stroke 25 cm, 110 kW generator, 40 kWh Li-Ion NMC + BTMS, 600 VDC / 3x400 VAC / 24 VDC outputs, front/rear driving cameras, 2 side cameras per side, top-view cameras on the railing, PTZ, 800 m radio link
 - **JANES20**: Janes, 'Lukasiewicz-PIAP unveils Hunter UGV', 24 Sep 2020: 3.5 t, 4.7 x 2.2 m, two steering axles each integrated with an electric motor, 3-link Panhard suspension, 50 km/h, 110 kW generator, GPS, two lidars, 4 hull navigation cameras + 5 HD cameras incl. PTZ, robotic arm
-- **MILMAG20**: Milmag, 'Lukasiewicz-PIAP presents Hunter UGV', Sep 2020: 9 HD cameras (PTZ, 4 hull navigation, 4 drive assistant), GPS, 2 lidars; hydraulic arm, cargo crate, GPR, UAV landing pad options; 1 m wheels
+- **MILMAG20**: Milmag, 'Lukasiewicz-PIAP presents Hunter UGV', Sep 2020: 9 HD cameras (PTZ, 4 hull navigation, 4 drive assistant), GPS, 2 lidars, 1 m wheels
 - **ARMYREC24**: Army Recognition, 'Poland deploys PIAP Hunter next-gen UGV', 2024: 3500 kg, 470x220 cm, wheelbase 270 cm, 90 kW continuous / 220 kW peak serial hybrid with traction motors integrated with the driving axles, differential locks, two steering axles, 1 m wheels, 25 cm stroke
 - **TENDER17**: PIAP public procurement ZO/11/07/2017 'Dostawa mostow napedowych' (HUNTeR): 3 rigid FRONT drive axles, Ultimate Dana 60 or equivalent, ratio 5.38, ring gear >= 9.75 in, 70 in between wheel mounting surfaces, 8 x 6.5 in bolt pattern, 3.5 in tubes, disc brakes >= 350 mm, 2-piston calipers
 - **TENDER18**: PIAP notice ZWR/01/2018 (HUNTeR motor set): 2 x three-phase PMSM, up to 700 VDC, >= 4500 rpm at full load, 450 A peak for >= 2 min
-- **D24_23**: Defence24 (EN/PL) 2023 FEX/MSPO articles: > 4 t (armed), 4.7 m, 1 m wheels, dependent rigid-axle suspension with three reaction rods + Panhard rod, coil springs, adjustable dampers, differential locks, two steering axles, 6-7 HD cameras (2 driving + 4 perimeter), AREX ZMU-03 12.7 mm RWS
-- **MILMAG_ZMU03**: Milmag, ZMU-03/ZMU-07 shooting demonstration: ZMU-03 with 12.7 mm HMG 205 kg incl. weapon
-- **WB_ZMU05**: WB Group ZMU-05 flyer: 1630 x 750 x 660 mm, 190 kg kerb, 228 kg combat
-- **D24TV21**: Defence24 TV 2021: cargo-mule configuration, ~1000 kg payload
+- **D24_23**: Defence24 (EN/PL) 2023 articles: 4.7 m, 1 m wheels, dependent rigid-axle suspension with three reaction rods + Panhard rod, coil springs, adjustable dampers, differential locks, two steering axles, 2 driving + 4 perimeter cameras
 - **PZ26**: Polska Zbrojna, MSPO 2026: up to 1 t payload, 450 km range on a full tank
-- **PIAP24**: Lukasiewicz-PIAP, MSPO 2024 release: latest HUNTeR adds lidars and stereovision cameras
 - **SPICER**: Spicer/Dana, Ultimate Dana 60 crate axle data: 35-spline 4340 shafts, 3.5 in tubes, 8x6.5 bolt pattern, ~358 mm vented rotors, 2-piston calipers (generic crate axle, not HUNTeR-confirmed)
-- **ZBIAM23**: Zbiam, 'HUNTeR z ZMU-03 debiutuje na poligonie', 2023: differential locks and two steering axles, 1 m wheels, over 50 km/h
-- **MILMAG25**: Milmag, MSPO 2025: 4 t HUNTeR, 470 x 220 cm, ZMT WLKM 12.7 mm multi-barrel module, 8 HD cameras and lidars
-- **MILMAG26**: Milmag, Eurosatory 2026: BZE Belma 'Bluszcz' scatterable mine-laying system on the HUNTeR chassis
-- **D24_26**: Defence24 2026 ('Cyfrowy Legionista' exercise): about 4 t, nearly 4.7 m, ZMU-05 configuration
-- **ARMYREC24B**: Army Recognition 2024 (field test with WB Group): over 4 t, nearly 5 m, six HD cameras, day and thermal imaging, ZMU-03
+- **ZBIAM23**: Zbiam, 2023 field-trial report: differential locks and two steering axles, 1 m wheels, over 50 km/h

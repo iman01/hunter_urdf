@@ -19,11 +19,9 @@ VEHICLE = yaml.safe_load(open(os.path.join(PKG, "config", "vehicle.yaml")))
 
 CONFIGS = [
     ("", 3500.0),
-    ("payload:=cargo", 3500.0 + VEHICLE["payloads"]["cargo"]["mass"]),
-    ("payload:=uav_pad", 3500.0 + VEHICLE["payloads"]["uav_pad"]["mass"]),
-    ("variant:=2023 payload:=rws", VEHICLE["mass"]["curb_2023_armed"]),
     ("sensors:=false visual_detail:=primitive", 3500.0),
-    ("sim_mode:=gz controllers_file:=/tmp/c.yaml variant:=2023 payload:=rws", VEHICLE["mass"]["curb_2023_armed"]),
+    ("sim_mode:=gz controllers_file:=/tmp/c.yaml", 3500.0),
+    ("sim_mode:=gz controllers_file:=/tmp/c.yaml sensors:=false", 3500.0),
     ("sim_mode:=mock", 3500.0),
 ]
 # Sensors, PTZ and small parts are not in the 3500 kg mass budget: allow 1 %.

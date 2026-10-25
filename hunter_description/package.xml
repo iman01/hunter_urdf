@@ -3,7 +3,7 @@
 <package format="3">
   <name>hunter_description</name>
   <version>1.0.0</version>
-  <description>URDF/xacro replica of the Lukasiewicz-PIAP HUNTeR 4x4 hybrid UGV: two steering axles, rigid axles on 3-link + Panhard rod coil-over suspension, sensors and mission payloads, with procedurally generated meshes.</description>
+  <description>URDF/xacro replica of the Lukasiewicz-PIAP HUNTeR 4x4 hybrid UGV: two steering axles, rigid axles on 3-link + Panhard rod coil-over suspension, and the published sensor layout, with procedurally generated meshes.</description>
   <maintainer email="iman.esfandiyar@pit.lukasiewicz.gov.pl">Iman Esfandiyar</maintainer>
   <license>Apache-2.0</license>
 

@@ -55,8 +55,7 @@ SOURCES: Dict[str, str] = {
                "each integrated with an electric motor, 3-link Panhard suspension, 50 km/h, 110 kW generator, "
                "GPS, two lidars, 4 hull navigation cameras + 5 HD cameras incl. PTZ, robotic arm",
     "MILMAG20": "Milmag, 'Lukasiewicz-PIAP presents Hunter UGV', Sep 2020: 9 HD cameras (PTZ, 4 hull navigation, "
-                "4 drive assistant), GPS, 2 lidars; hydraulic arm, cargo crate, GPR, UAV landing pad options; "
-                "1 m wheels",
+                "4 drive assistant), GPS, 2 lidars, 1 m wheels",
     "ARMYREC24": "Army Recognition, 'Poland deploys PIAP Hunter next-gen UGV', 2024: 3500 kg, 470x220 cm, wheelbase "
                  "270 cm, 90 kW continuous / 220 kW peak serial hybrid with traction motors integrated with the "
                  "driving axles, differential locks, two steering axles, 1 m wheels, 25 cm stroke",
@@ -65,24 +64,14 @@ SOURCES: Dict[str, str] = {
                 "mounting surfaces, 8 x 6.5 in bolt pattern, 3.5 in tubes, disc brakes >= 350 mm, 2-piston calipers",
     "TENDER18": "PIAP notice ZWR/01/2018 (HUNTeR motor set): 2 x three-phase PMSM, up to 700 VDC, >= 4500 rpm at "
                 "full load, 450 A peak for >= 2 min",
-    "D24_23": "Defence24 (EN/PL) 2023 FEX/MSPO articles: > 4 t (armed), 4.7 m, 1 m wheels, dependent rigid-axle "
-              "suspension with three reaction rods + Panhard rod, coil springs, adjustable dampers, differential "
-              "locks, two steering axles, 6-7 HD cameras (2 driving + 4 perimeter), AREX ZMU-03 12.7 mm RWS",
-    "MILMAG_ZMU03": "Milmag, ZMU-03/ZMU-07 shooting demonstration: ZMU-03 with 12.7 mm HMG 205 kg incl. weapon",
-    "WB_ZMU05": "WB Group ZMU-05 flyer: 1630 x 750 x 660 mm, 190 kg kerb, 228 kg combat",
-    "D24TV21": "Defence24 TV 2021: cargo-mule configuration, ~1000 kg payload",
+    "D24_23": "Defence24 (EN/PL) 2023 articles: 4.7 m, 1 m wheels, dependent rigid-axle suspension with three "
+              "reaction rods + Panhard rod, coil springs, adjustable dampers, differential locks, two steering "
+              "axles, 2 driving + 4 perimeter cameras",
     "PZ26": "Polska Zbrojna, MSPO 2026: up to 1 t payload, 450 km range on a full tank",
-    "PIAP24": "Lukasiewicz-PIAP, MSPO 2024 release: latest HUNTeR adds lidars and stereovision cameras",
     "SPICER": "Spicer/Dana, Ultimate Dana 60 crate axle data: 35-spline 4340 shafts, 3.5 in tubes, 8x6.5 bolt "
               "pattern, ~358 mm vented rotors, 2-piston calipers (generic crate axle, not HUNTeR-confirmed)",
-    "ZBIAM23": "Zbiam, 'HUNTeR z ZMU-03 debiutuje na poligonie', 2023: differential locks and two steering axles, "
-               "1 m wheels, over 50 km/h",
-    "MILMAG25": "Milmag, MSPO 2025: 4 t HUNTeR, 470 x 220 cm, ZMT WLKM 12.7 mm multi-barrel module, 8 HD cameras "
-                "and lidars",
-    "MILMAG26": "Milmag, Eurosatory 2026: BZE Belma 'Bluszcz' scatterable mine-laying system on the HUNTeR chassis",
-    "D24_26": "Defence24 2026 ('Cyfrowy Legionista' exercise): about 4 t, nearly 4.7 m, ZMU-05 configuration",
-    "ARMYREC24B": "Army Recognition 2024 (field test with WB Group): over 4 t, nearly 5 m, six HD cameras, day and "
-                  "thermal imaging, ZMU-03",
+    "ZBIAM23": "Zbiam, 2023 field-trial report: differential locks and two steering axles, 1 m wheels, "
+               "over 50 km/h",
 }
 # General knowledge used for one comparison (not from the research sources):
 # Jeep Wrangler JK Unlimited wheelbase 2.946 m, the vehicle the Ultimate Dana 60 crate axle is sold for.
@@ -115,11 +104,8 @@ WHEELBASE = par("chassis.wheelbase", 2.70, "m", "published", "POSTER21, ARMYREC2
                 "PIAP's INTARG 2021 poster (known through search summaries), Army Recognition 2024 and Militaer "
                 "Aktuell give 2.70 m. Milmag 2020, Defence24 2023 and wnp.pl print 2.20 m, always beside the 2.20 m "
                 "width, which looks like a copy error. 2.70 m also gives more plausible overhangs (1.0 m)")
-M_CURB_2020 = par("mass.curb_2020", 3500.0, "kg", "published", "POSTER21, JANES20", "2020 prototype, cargo deck")
-M_CURB_2023 = par("mass.curb_2023_armed", 4050.0, "kg", "estimated", "D24_23, MILMAG25",
-                  "press: 'over four tonnes' / '4-ton' for the armed vehicle; 4.05 t used with the RWS fitted "
-                  "(variant:=2023 without payload weighs 3.85 t)")
-PAYLOAD_MAX = par("mass.payload_max", 1000.0, "kg", "published", "D24TV21, PZ26")
+M_CURB = par("mass.curb", 3500.0, "kg", "published", "POSTER21, JANES20", "2020 prototype, open deck")
+PAYLOAD_MAX = par("mass.payload_max", 1000.0, "kg", "published", "PZ26")
 V_MAX = par("limits.max_speed", 50.0 / 3.6, "m/s", "published", "POSTER21, JANES20", "50 km/h")
 STROKE = par("suspension.stroke", 0.25, "m", "published", "POSTER21, ARMYREC24")
 
@@ -180,7 +166,7 @@ M_UNSPRUNG_AXLE = M_AXLE_LINK + 2 * M_KNUCKLE + 2 * M_WHEEL
 M_UNSPRUNG = 2 * M_UNSPRUNG_AXLE
 par("mass.unsprung_per_axle", M_UNSPRUNG_AXLE, "kg", "derived", "axle + 2 knuckles + 2 wheels")
 
-W_WHEEL_STATIC = M_CURB_2020 * G / 4.0           # symmetric design, ~50/50
+W_WHEEL_STATIC = M_CURB * G / 4.0           # symmetric design, ~50/50
 TYRE_DEFL = W_WHEEL_STATIC / K_TYRE
 R_FREE = TYRE_OD / 2.0
 R_STATIC = par("wheel.static_loaded_radius", R_FREE - TYRE_DEFL, "m", "derived", "R - F_z / k_tyre at kerb")
@@ -234,9 +220,9 @@ box(HL - 0.11, HL, -0.95, 0.95, H_NOSE_BOTTOM, H_NOSE_BOTTOM + 0.14)            
 box(-HL, -HL + 0.11, -0.95, 0.95, H_NOSE_BOTTOM, H_NOSE_BOTTOM + 0.14)                       # rear bumper
 
 # ==========================================================================
-# 6. Sprung mass budget (2020 prototype, cargo deck, no payload)
+# 6. Sprung mass budget (2020 prototype, open deck, no payload)
 # ==========================================================================
-M_SPRUNG = M_CURB_2020 - M_UNSPRUNG
+M_SPRUNG = M_CURB - M_UNSPRUNG
 # name: (mass, (x, y, h_above_ground), (sx, sy, sz), status note)
 SPRUNG_ITEMS: List[Tuple[str, float, Tuple[float, float, float], Tuple[float, float, float], str]] = [
     ("diesel genset (engine + 110 kW generator)", 360.0, (1.45, 0.0, 1.03), (1.05, 0.70, 0.30),
@@ -319,7 +305,7 @@ par("suspension.static_load_rear", W_SPRUNG_R, "N", "derived", "sprung weight on
 # 8. Suspension design
 # ==========================================================================
 F_RIDE = par("suspension.ride_frequency", 1.50, "Hz", "design",
-             "off-road military practice 1.2-1.7 Hz at kerb; drops to ~1.3 Hz at max payload")
+             "heavy off-road vehicle practice 1.2-1.7 Hz at kerb; drops to ~1.3 Hz at max payload")
 ZETA = par("suspension.damping_ratio", 0.35, "-", "design",
            "nominal setting of the controlled (semi-active) dampers; range 0.2-0.6")
 # Each axle gets its own spring rate so both ends have the same ride frequency
@@ -366,7 +352,7 @@ SIM_HEAVE_R = par("suspension.sim_heave_stiffness_rear", 2 * series(K_WHEEL_R, K
 S_SPRING = par("suspension.spring_track", 1.24, "m", "design",
                "coil-overs on the axle tubes just inboard of the knuckles (clear of the steered tyre)")
 K_ARB = par("suspension.anti_roll_stiffness", 15_000.0, "N m/rad", "design",
-            "per axle; brings the roll gradient to ~6 deg/g with the RWS fitted")
+            "per axle; keeps the kerb roll gradient near 5 deg/g")
 H_RC = par("suspension.roll_center_height", 0.10, "m", "design",
            "Panhard rod 0.10 m above the axle centreline, horizontal at ride height")
 H_RC_GROUND = R_COLL + H_RC
@@ -518,59 +504,38 @@ SENSORS = [
     # Two 3D lidars (JANES20/MILMAG20): front and rear, on sensor brackets above the deck edge.
     S("front_lidar", "lidar", (HL - 0.10, 0.0, z_deck + 0.22), (0, 0, 0),
       model="32-channel spinning 3D lidar (Ouster OS1-32 class)", hfov_deg=360, vfov_deg=45,
-      h_samples=1024, v_samples=32, range_min=0.5, range_max=120.0, rate=10.0, variants=["2020", "2023"]),
+      h_samples=1024, v_samples=32, range_min=0.5, range_max=120.0, rate=10.0),
     S("rear_lidar", "lidar", (-HL + 0.10, 0.0, z_deck + 0.22), (0, 0, math.pi),
       model="32-channel spinning 3D lidar (Ouster OS1-32 class)", hfov_deg=360, vfov_deg=45,
-      h_samples=1024, v_samples=32, range_min=0.5, range_max=120.0, rate=10.0, variants=["2020", "2023"]),
+      h_samples=1024, v_samples=32, range_min=0.5, range_max=120.0, rate=10.0),
     # Driving cameras front and rear (POSTER21 'front and rear driving cameras').
     S("front_drive_camera", "camera", (HL - 0.02, 0.0, hz(1.10)), (0, math.radians(8), 0),
-      hfov_deg=100, width=1280, height=720, rate=30.0, variants=["2020", "2023"]),
+      hfov_deg=100, width=1280, height=720, rate=30.0),
     S("rear_drive_camera", "camera", (-HL + 0.02, 0.0, hz(1.10)), (0, math.radians(8), math.pi),
-      hfov_deg=100, width=1280, height=720, rate=30.0, variants=["2020", "2023"]),
+      hfov_deg=100, width=1280, height=720, rate=30.0),
     # Side / perimeter cameras, 2 per side (POSTER21; D24_23 'four perimeter cameras').
     S("left_front_camera", "camera", (1.10, W_OVERALL / 2 - 0.01, hz(1.28)), (0, math.radians(25), math.radians(60)),
-      hfov_deg=120, width=1280, height=720, rate=15.0, variants=["2020", "2023"]),
+      hfov_deg=120, width=1280, height=720, rate=15.0),
     S("left_rear_camera", "camera", (-1.10, W_OVERALL / 2 - 0.01, hz(1.28)), (0, math.radians(25), math.radians(120)),
-      hfov_deg=120, width=1280, height=720, rate=15.0, variants=["2020", "2023"]),
+      hfov_deg=120, width=1280, height=720, rate=15.0),
     S("right_front_camera", "camera", (1.10, -W_OVERALL / 2 + 0.01, hz(1.28)), (0, math.radians(25), math.radians(-60)),
-      hfov_deg=120, width=1280, height=720, rate=15.0, variants=["2020", "2023"]),
+      hfov_deg=120, width=1280, height=720, rate=15.0),
     S("right_rear_camera", "camera", (-1.10, -W_OVERALL / 2 + 0.01, hz(1.28)), (0, math.radians(25), math.radians(-120)),
-      hfov_deg=120, width=1280, height=720, rate=15.0, variants=["2020", "2023"]),
+      hfov_deg=120, width=1280, height=720, rate=15.0),
     # Top-view cameras on the deck railing (POSTER21), looking down at the wheels/terrain ahead and behind.
     # Mounted on the front/rear railing beside (not behind) the lidar posts.
     S("top_front_camera", "camera", (HL - 0.08, 0.45, z_rail + 0.06), (0, math.radians(50), 0),
-      hfov_deg=110, width=1280, height=720, rate=15.0, variants=["2020"]),
+      hfov_deg=110, width=1280, height=720, rate=15.0),
     S("top_rear_camera", "camera", (-HL + 0.08, -0.45, z_rail + 0.06), (0, math.radians(50), math.pi),
-      hfov_deg=110, width=1280, height=720, rate=15.0, variants=["2020"]),
-    # 2024 stereo pair (PIAP24), front, under the lidar.
-    S("front_stereo_camera", "stereo", (HL - 0.04, 0.0, z_deck + 0.06), (0, math.radians(5), 0),
-      baseline=0.12, hfov_deg=90, width=1280, height=720, rate=15.0, variants=["2023"]),
-    S("gnss", "navsat", (-1.60, 0.30, z_rail + 0.05), (0, 0, 0), rate=10.0, variants=["2020", "2023"]),
-    S("imu", "imu", (0.0, 0.0, hz(0.95)), (0, 0, 0), rate=200.0, variants=["2020", "2023"]),
+      hfov_deg=110, width=1280, height=720, rate=15.0),
+    S("gnss", "navsat", (-1.60, 0.30, z_rail + 0.05), (0, 0, 0), rate=10.0),
+    S("imu", "imu", (0.0, 0.0, hz(0.95)), (0, 0, 0), rate=200.0),
 ]
 PTZ = {"mount_xyz": [round(HL - 0.55, 4), 0.0, round(z_deck, 4)], "mast_height": 0.55, "head_size": 0.22,
-       "hfov_wide_deg": 60.0, "hfov_tele_deg": 3.0, "tilt_min_deg": -45.0, "tilt_max_deg": 90.0,
-       "variants": ["2020"]}
+       "hfov_wide_deg": 60.0, "hfov_tele_deg": 3.0, "tilt_min_deg": -45.0, "tilt_max_deg": 90.0}
 
 # ==========================================================================
-# 13. Payload modules
-# ==========================================================================
-PAYLOADS = {
-    "cargo": {"mass": 600.0, "box": [1.8, 1.7, 0.6], "xyz": [-0.55, 0.0, round(z_deck + 0.30, 4)],
-              "note": "crates; total up to 1000 kg (D24TV21) - default 600 kg"},
-    "rws": {"model": "AREX ZMU-03 12.7 mm", "mass": 205.0, "base_xyz": [-0.20, 0.0, round(z_deck, 4)],
-            "base_diameter": 0.62, "height": 0.66, "length": 1.63, "yaw_height": 0.18, "pitch_height": 0.40,
-            "pitch_min_deg": -20.0, "pitch_max_deg": 60.0, "note": "205 kg incl. weapon (MILMAG_ZMU03); envelope "
-            "from ZMU-05 1630x750x660 mm (WB_ZMU05)"},
-    "uav_pad": {"mass": 45.0, "size": [1.2, 1.2, 0.05], "xyz": [-1.25, 0.0, round(z_deck + 0.20, 4)],
-                "note": "UAV landing pad option (MILMAG20); UAV relay was part of the HUNTeR project"},
-}
-UPGRADE_2023 = {"mass": round(M_CURB_2023 - M_CURB_2020 - PAYLOADS["rws"]["mass"], 1),
-                "xyz": [round(COM_CH[0], 4), 0.0, round(hz(H_CG_SPRUNG), 4)],
-                "note": "armour/electronics/sensor growth to the 'over 4 t' armed kerb mass (D24_23)"}
-
-# ==========================================================================
-# 14. Assemble vehicle.yaml
+# 13. Assemble vehicle.yaml
 # ==========================================================================
 r4 = lambda v: round(float(v), 4)  # noqa: E731
 
@@ -589,11 +554,10 @@ VEHICLE = {
         "collision_boxes": COLLISION_BOXES,
     },
     "mass": {
-        "curb_2020": M_CURB_2020, "curb_2023_armed": M_CURB_2023, "payload_max": PAYLOAD_MAX,
+        "curb": M_CURB, "payload_max": PAYLOAD_MAX,
         "chassis": r4(M_CH),
         "chassis_com": [r4(COM_CH[0]), r4(COM_CH[1]), r4(hz(COM_CH[2]))],
         "chassis_inertia": {k: r4(v) for k, v in I_CH.items()},
-        "upgrade_2023": UPGRADE_2023,
     },
     "wheel": {
         "diameter": TYRE_OD, "width": TYRE_W, "rim_diameter": r4(RIM_D), "rim_width": r4(RIM_W),
@@ -647,12 +611,11 @@ VEHICLE = {
     },
     "sensors": SENSORS,
     "ptz": PTZ,
-    "payloads": PAYLOADS,
 }
 
 
 # ==========================================================================
-# 15. Report
+# 14. Report
 # ==========================================================================
 def report() -> str:
     o = io.StringIO()

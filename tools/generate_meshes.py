@@ -12,7 +12,7 @@ Frames
   knuckle_{left,right}.stl              kingpin centre of the FRONT knuckles (rear: other side, yaw = pi)
   tyre/rim/hub.stl                      wheel centre, +y outboard (left wheel; right wheel yaw = pi)
   link_rod.stl, coilover_*.stl          unit/normalised parts along +x for the linkage markers
-  sensors and payload parts             their own link frames (see sensors.xacro / payloads.xacro)
+  sensor parts                          their own link frames (see sensors.xacro)
 
 Usage: python3 tools/generate_meshes.py [--out DIR]
 """
@@ -170,7 +170,7 @@ def hull_details():
     for (xc, lx, ly) in ((1.25, 0.9, 1.3), (0.0, 1.1, 1.6), (-1.35, 0.9, 1.3)):
         for (dx, dy, sx, sy) in ((0, ly / 2, lx, 0.04), (0, -ly / 2, lx, 0.04), (lx / 2, 0, 0.04, ly), (-lx / 2, 0, 0.04, ly)):
             p.append(cbox(xc + dx - sx / 2, xc + dx + sx / 2, dy - sy / 2, dy + sy / 2, zt, zt + 0.012))
-    # Anti-slip ribs on the cargo area
+    # Anti-slip ribs on the deck
     for i in range(-6, 7):
         p.append(cbox(-1.95, 0.85, i * 0.12 - 0.008, i * 0.12 + 0.008, zt, zt + 0.006))
     # Tie-down rings along the deck edges
@@ -544,12 +544,6 @@ def camera():
                 cbox(-0.075, 0.03, -0.04, 0.04, 0.03, 0.035)])                    # sun shade
 
 
-def stereo():
-    return cat([cbox(-0.04, 0.0, -0.09, 0.09, -0.025, 0.025, 0.004),
-                cyl((0, 0.06, 0), (0.01, 0.06, 0), 0.012, 16),
-                cyl((0, -0.06, 0), (0.01, -0.06, 0), 0.012, 16)])
-
-
 def gnss():
     return cat([cyl((0, 0, -0.05), (0, 0, 0.0), 0.02, 12),
                 cyl((0, 0, 0), (0, 0, 0.04), 0.075, 32), sphere((0, 0, 0.04), 0.06, 2).slice_plane([0, 0, 0.04], [0, 0, 1])])
@@ -567,67 +561,6 @@ def ptz_parts():
                 cyl((s / 2, -0.05, 0), (s / 2 + 0.02, -0.05, 0), 0.025, 20),
                 cbox(-s / 2 - 0.01, s / 2 + 0.03, -0.11, 0.11, 0.07, 0.075)])
     return mast, yoke, head
-
-
-# =============================================================== PAYLOADS
-def rws_parts():
-    Pp = V["payloads"]["rws"]
-    rb = Pp["base_diameter"] / 2
-    base = cat([cyl((0, 0, 0), (0, 0, Pp["yaw_height"]), rb, 40),
-                ring(rb + 0.03, rb - 0.02, 0.03, 40, "z", (0, 0, 0.015))])
-    zp = Pp["pitch_height"] - Pp["yaw_height"]
-    turret = cat([cbox(-0.35, 0.30, -0.33, 0.33, 0.0, 0.12, 0.03),
-                  cbox(-0.18, 0.12, 0.20, 0.30, 0.10, zp + 0.10, 0.02),           # yoke arm right
-                  cbox(-0.18, 0.12, -0.30, -0.20, 0.10, zp + 0.10, 0.02),         # yoke arm left
-                  cbox(-0.45, -0.30, -0.25, 0.25, 0.0, 0.25, 0.02)])              # electronics box
-    # Smoke grenade launchers (4 tubes) on the turret sides
-    for sy in (-1, 1):
-        for k in range(2):
-            turret = cat([turret, cyl((-0.25, sy * (0.33 + 0.04 * k), 0.15), (-0.10, sy * (0.36 + 0.04 * k), 0.30), 0.033, 16)])
-    gun_len = Pp["length"]
-    cradle = cat([cbox(-0.35, 0.30, -0.13, 0.13, -0.10, 0.10, 0.02),              # cradle + receiver (M2HB)
-                  cyl((0.30, 0, 0.02), (gun_len - 0.33, 0, 0.02), 0.025, 16),     # barrel
-                  cyl((0.30, 0, 0.02), (0.55, 0, 0.02), 0.04, 16),                # barrel jacket
-                  cyl((gun_len - 0.40, 0, 0.02), (gun_len - 0.33, 0, 0.02), 0.035, 16),  # flash hider
-                  cbox(-0.30, 0.0, -0.20, -0.13, -0.12, 0.06, 0.01),              # ammo box
-                  cbox(-0.10, 0.20, 0.13, 0.30, -0.05, 0.15, 0.015),              # EO head (day/IR/LRF)
-                  cyl((0.20, 0.17, 0.08), (0.23, 0.17, 0.08), 0.035, 20),
-                  cyl((0.20, 0.25, 0.02), (0.23, 0.25, 0.02), 0.025, 20)])
-    return base, turret, cradle
-
-
-def cargo():
-    Pp = V["payloads"]["cargo"]
-    sx, sy, sz = Pp["box"]
-    p = []
-    for i, (dx, dy, h) in enumerate(((-sx / 4, -sy / 4, sz), (sx / 4, -sy / 4, sz * 0.7), (-sx / 4, sy / 4, sz * 0.7),
-                                     (sx / 4, sy / 4, sz))):
-        p.append(cbox(dx - sx / 4 + 0.02, dx + sx / 4 - 0.02, dy - sy / 4 + 0.02, dy + sy / 4 - 0.02, -sz / 2,
-                      -sz / 2 + h, 0.02))
-        p.append(cbox(dx - 0.08, dx + 0.08, dy - sy / 4 + 0.01, dy + sy / 4 - 0.01, -sz / 2 + h, -sz / 2 + h + 0.015))
-    # Straps
-    for dx in (-sx / 4, sx / 4):
-        p.append(cbox(dx - 0.025, dx + 0.025, -sy / 2, sy / 2, sz / 2 - 0.005, sz / 2 + 0.005))
-    return cat(p)
-
-
-def uav_pad():
-    Pp = V["payloads"]["uav_pad"]
-    sx, sy, sz = Pp["size"]
-    pad = cat([cbox(-sx / 2, sx / 2, -sy / 2, sy / 2, -sz / 2, sz / 2, 0.01)] +
-              [cyl((x, y, -sz / 2), (x, y, -0.20), 0.025, 12) for x in (-sx / 2 + 0.1, sx / 2 - 0.1)
-               for y in (-sy / 2 + 0.1, sy / 2 - 0.1)])
-    t = sz / 2
-    mark = cat([cbox(-0.25, 0.25, -0.20, -0.14, t, t + 0.003), cbox(-0.25, 0.25, 0.14, 0.20, t, t + 0.003),
-                cbox(-0.03, 0.03, -0.14, 0.14, t, t + 0.003), ring(0.45, 0.42, 0.003, 64, "z", (0, 0, t + 0.0015))])
-    # Small quadcopter (relay UAV) parked on the pad
-    q = [cbox(-0.12, 0.12, -0.08, 0.08, t + 0.06, t + 0.13, 0.02)]
-    for a in (45, 135, 225, 315):
-        r = math.radians(a)
-        ex, ey = 0.33 * math.cos(r), 0.33 * math.sin(r)
-        q += [cyl((0, 0, t + 0.10), (ex, ey, t + 0.10), 0.012, 8), cyl((ex, ey, t + 0.10), (ex, ey, t + 0.14), 0.025, 12),
-              ring(0.17, 0.16, 0.004, 32, "z", (ex, ey, t + 0.145)), cyl((ex, ey, t + 0.10), (ex, ey, t), 0.008, 6)]
-    return pad, mark, cat(q)
 
 
 # =================================================================== main
@@ -660,21 +593,11 @@ def main():
     save("coilover_spring.stl", spring)
     save("lidar.stl", lidar())
     save("camera.stl", camera())
-    save("stereo_camera.stl", stereo())
     save("gnss.stl", gnss())
     mast, yoke, head = ptz_parts()
     save("ptz_mast.stl", mast)
     save("ptz_yoke.stl", yoke)
     save("ptz_head.stl", head)
-    b, t, c = rws_parts()
-    save("rws_base.stl", b)
-    save("rws_turret.stl", t)
-    save("rws_cradle.stl", c)
-    save("cargo.stl", cargo())
-    pad, mark, quad = uav_pad()
-    save("uav_pad.stl", pad)
-    save("uav_pad_marking.stl", mark)
-    save("uav.stl", quad)
 
     total = 0
     for name, m in OUT.items():

@@ -11,7 +11,7 @@ x = json.load(open(os.path.join(V, "gazebo_extra.json")))
 L = []
 w = L.append
 w("# Validation\n")
-w("Closed-loop results from Gazebo Harmonic (DART, 1 ms step) with the default model (`variant:=2020`, trapezoid "
+w("Closed-loop results from Gazebo Harmonic (DART, 1 ms step) with the default model (trapezoid "
   "steering linkage), produced by `tools/sim_tests/drive_test.py` and written by `tools/sim_tests/write_report.py`. "
   "Raw reports are in [`validation/`](validation/). Expected values come from the kinematics module and "
   "`vehicle.yaml`, so these tests check that the simulated vehicle behaves like its own design.\n")
@@ -62,19 +62,15 @@ w(f"| Course completed | {o['completed']} (final x {o['final_x']:.1f} m) |\n")
 w("The 0.30 m humps exceed the 250 mm stroke, so the axles reach the articulation limit and the body takes the rest as "
   "roll, the expected behaviour of the published suspension.\n")
 w("## Configurations\n")
-ar = x["armed_variant"]
 w("| Check | Expected | Measured |\n|---|---|---|")
-w(f"| Armed configuration (`variant:=2023 payload:=rws`, +550 kg): front / rear sag | {ar['expected_sag_front_m']*1000:.1f} / "
-  f"{ar['expected_sag_rear_m']*1000:.1f} mm | {ar['front_heave_m']*1000:.1f} / {ar['rear_heave_m']*1000:.1f} mm |")
-w(f"| RWS position controller: yaw / pitch | {ar['rws_cmd'][0]} / {ar['rws_cmd'][1]} rad | {ar['rws_measured'][0]} / {ar['rws_measured'][1]} rad |")
 w("| Sensors (rendered under Xvfb, CPU): lidar clouds 16384 points, 1280x720 images, NavSat, IMU | published | "
   "published, frame ids = optical / sensor frames |\n")
 w("Sensor images from the simulation (front driving camera and PTZ looking at the off-road course):\n")
 w("![front driving camera](images/sim_front_drive_camera.png)\n")
 w("![PTZ camera](images/sim_ptz_camera.png)\n")
 w("## Static tests (`colcon test`)\n")
-w("* `hunter_description/test/test_urdf.py`: 7 configurations; `check_urdf`; total mass within 1 % of the kerb mass "
-  "(3500 kg published; 4050 kg estimated for the armed configuration; + payload); every inertia positive definite and "
+w("* `hunter_description/test/test_urdf.py`: 5 configurations; `check_urdf`; total mass within 1 % of the published "
+  "3500 kg kerb mass; every inertia positive definite and "
   "satisfying the triangle inequality; every mesh present; ros2_control joints exist; heave travel equals the "
   "published 250 mm stroke on both axles; published envelope (4.70 x 2.20 m, 2.70 m wheelbase, 1 m wheels); design "
   "outputs up to date.")

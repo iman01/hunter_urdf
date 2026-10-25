@@ -21,9 +21,6 @@ controller_manager:
     ptz_controller:
       type: position_controllers/JointGroupPositionController
 
-    rws_controller:
-      type: position_controllers/JointGroupPositionController
-
 # gz_ros2_control turns position commands into joint velocity commands:
 # v = -gain * (q - q_cmd) * update_rate, i.e. a 60 1/s P loop at 200 Hz (a stiffer
 # loop keeps the knuckles on target against tyre aligning torque).
@@ -51,11 +48,7 @@ wheel_velocity_controller:
       - rear_left_wheel_joint
       - rear_right_wheel_joint
 
-# Optional: PTZ camera head (variant:=2020) and remote weapon station (payload:=rws).
+# PTZ camera head (spawned when sensors:=true).
 ptz_controller:
   ros__parameters:
     joints: [ptz_pan_joint, ptz_tilt_joint]
-
-rws_controller:
-  ros__parameters:
-    joints: [rws_yaw_joint, rws_pitch_joint]

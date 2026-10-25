@@ -1,6 +1,6 @@
 # Validation
 
-Closed-loop results from Gazebo Harmonic (DART, 1 ms step) with the default model (`variant:=2020`, trapezoid steering linkage), produced by `tools/sim_tests/drive_test.py` and written by `tools/sim_tests/write_report.py`. Raw reports are in [`validation/`](validation/). Expected values come from the kinematics module and `vehicle.yaml`, so these tests check that the simulated vehicle behaves like its own design.
+Closed-loop results from Gazebo Harmonic (DART, 1 ms step) with the default model (trapezoid steering linkage), produced by `tools/sim_tests/drive_test.py` and written by `tools/sim_tests/write_report.py`. Raw reports are in [`validation/`](validation/). Expected values come from the kinematics module and `vehicle.yaml`, so these tests check that the simulated vehicle behaves like its own design.
 
 ## Flat ground (`flat.sdf`)
 
@@ -46,8 +46,6 @@ The 0.30 m humps exceed the 250 mm stroke, so the axles reach the articulation l
 
 | Check | Expected | Measured |
 |---|---|---|
-| Armed configuration (`variant:=2023 payload:=rws`, +550 kg): front / rear sag | 23.2 / 28.0 mm | 26.3 / 30.9 mm |
-| RWS position controller: yaw / pitch | 1.0 / 0.3 rad | 1.0 / 0.3 rad |
 | Sensors (rendered under Xvfb, CPU): lidar clouds 16384 points, 1280x720 images, NavSat, IMU | published | published, frame ids = optical / sensor frames |
 
 Sensor images from the simulation (front driving camera and PTZ looking at the off-road course):
@@ -58,6 +56,6 @@ Sensor images from the simulation (front driving camera and PTZ looking at the o
 
 ## Static tests (`colcon test`)
 
-* `hunter_description/test/test_urdf.py`: 7 configurations; `check_urdf`; total mass within 1 % of the kerb mass (3500 kg published; 4050 kg estimated for the armed configuration; + payload); every inertia positive definite and satisfying the triangle inequality; every mesh present; ros2_control joints exist; heave travel equals the published 250 mm stroke on both axles; published envelope (4.70 x 2.20 m, 2.70 m wheelbase, 1 m wheels); design outputs up to date.
+* `hunter_description/test/test_urdf.py`: 5 configurations; `check_urdf`; total mass within 1 % of the published 3500 kg kerb mass; every inertia positive definite and satisfying the triangle inequality; every mesh present; ros2_control joints exist; heave travel equals the published 250 mm stroke on both axles; published envelope (4.70 x 2.20 m, 2.70 m wheelbase, 1 m wheels); design outputs up to date.
 * `hunter_control/test/test_kinematics.py`: 4WS kinematics (straight line, reverse, counter-phase symmetry, Ackermann normals meeting at the instantaneous centre, crab, forward/inverse round trip in every mode for the ideal linkage and in every ICR mode for both linkages and both differential settings, steering limits, trapezoid symmetry and Ackermann error, locked differential, turning radius).
 * `hunter_control/test/test_command_shaper.py`: curvature held while accelerating, acceleration/deceleration limits, no steering windup, ramped slowdown on steering lag, linkage-consistent steering slew, yaw-rate and lateral-acceleration limits, rotate-in-place pre-steer, reverse arcs, free-mode anti-windup.

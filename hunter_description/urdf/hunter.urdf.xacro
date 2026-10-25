@@ -5,11 +5,6 @@
   Arguments
     sim_mode        none | gz | mock | hardware   (ros2_control backend; none = no ros2_control tag)
     controllers_file  absolute path of the ros2_control controller YAML (required for sim_mode:=gz)
-    variant         2020 | 2023                     (2020 prototype, 3.5 t, PTZ mast and top-view cameras;
-                                                     2023+ armed era, 3.85 t, stereo camera; 4.05 t with
-                                                     payload:=rws)
-    payload         none | cargo | rws | uav_pad      (mission module on the deck)
-    cargo_mass      kg, 0 = default from vehicle.yaml (payload:=cargo only)
     sensors         true | false                    (lidars, cameras, GNSS, IMU, PTZ)
     camera_sensors  true | false                    (Gazebo camera sensors; frames are always present)
     lidar_resolution  0..1 fraction of the lidar's native horizontal samples simulated
@@ -23,9 +18,6 @@
 
   <xacro:arg name="sim_mode" default="none"/>
   <xacro:arg name="controllers_file" default=""/>
-  <xacro:arg name="variant" default="2020"/>
-  <xacro:arg name="payload" default="none"/>
-  <xacro:arg name="cargo_mass" default="0"/>
   <xacro:arg name="sensors" default="true"/>
   <xacro:arg name="camera_sensors" default="true"/>
   <xacro:arg name="lidar_resolution" default="0.5"/>
@@ -34,21 +26,17 @@
 
   <xacro:property name="V" value="${xacro.load_yaml('$(arg vehicle_file)')}"/>
   <xacro:property name="sim_mode" value="$(arg sim_mode)"/>
-  <!-- Normalise booleans; compare the variant with str(variant) (xacro turns '2020' into an int). -->
-  <xacro:property name="variant" value="$(arg variant)"/>
-  <xacro:property name="payload" value="$(arg payload)"/>
-  <xacro:property name="cargo_mass" value="$(arg cargo_mass)"/>
+  <!-- Normalise booleans. -->
   <xacro:property name="sensors_on" value="${'$(arg sensors)'.lower() in ('true', '1')}"/>
   <xacro:property name="camera_sensors" value="${'$(arg camera_sensors)'.lower() in ('true', '1')}"/>
   <xacro:property name="lidar_resolution" value="$(arg lidar_resolution)"/>
-  <xacro:property name="has_ptz" value="${sensors_on and str(variant) in V.ptz.variants and payload != 'rws'}"/>
+  <xacro:property name="has_ptz" value="${sensors_on}"/>
   <xacro:property name="visual_detail" value="$(arg visual_detail)"/>
 
   <xacro:include filename="include/common.xacro"/>
   <xacro:include filename="include/chassis.xacro"/>
   <xacro:include filename="include/suspension.xacro"/>
   <xacro:include filename="include/sensors.xacro"/>
-  <xacro:include filename="include/payloads.xacro"/>
   <xacro:include filename="include/ros2_control.xacro"/>
   <xacro:include filename="include/gazebo.xacro"/>
 
@@ -60,8 +48,6 @@
   <xacro:if value="${sensors_on}">
     <xacro:hunter_sensors/>
   </xacro:if>
-
-  <xacro:hunter_payload payload="${payload}"/>
 
   <xacro:unless value="${sim_mode == 'none'}">
     <xacro:hunter_ros2_control sim_mode="${sim_mode}"/>

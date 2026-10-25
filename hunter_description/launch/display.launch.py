@@ -1,7 +1,7 @@
 """View the HUNTeR replica in RViz with joint sliders (no simulation).
 
   ros2 launch hunter_description display.launch.py
-  ros2 launch hunter_description display.launch.py variant:=2023 payload:=rws
+  ros2 launch hunter_description display.launch.py sensors:=false gui:=false
 """
 
 import os
@@ -19,8 +19,6 @@ def generate_launch_description():
     share = get_package_share_directory("hunter_description")
     lc = LaunchConfiguration
     args = [
-        DeclareLaunchArgument("variant", default_value="2020", description="2020 | 2023"),
-        DeclareLaunchArgument("payload", default_value="none", description="none | cargo | rws | uav_pad"),
         DeclareLaunchArgument("sensors", default_value="true"),
         DeclareLaunchArgument("visual_detail", default_value="mesh", description="mesh | primitive"),
         DeclareLaunchArgument("gui", default_value="true", description="joint_state_publisher_gui sliders"),
@@ -28,7 +26,6 @@ def generate_launch_description():
     ]
     description = ParameterValue(Command([
         FindExecutable(name="xacro"), " ", os.path.join(share, "urdf", "hunter.urdf.xacro"),
-        " variant:=", lc("variant"), " payload:=", lc("payload"),
         " sensors:=", lc("sensors"), " visual_detail:=", lc("visual_detail"),
     ]), value_type=str)
 

@@ -17,8 +17,7 @@ odom (wheel odometry, four_ws_controller)
       │        │        └─ front_left_wheel_link   tyre + beadlock rim (102 kg)
       │        └─ front_right_...
       ├─ rear_axle_... (droop 0.095 / bump 0.155 m; the rear axle is a front axle turned by 180 deg)
-      ├─ sensors (fixed): front/rear_lidar, cameras + optical frames, gnss, imu, PTZ (pan/tilt joints)
-      └─ payload: cargo | rws (yaw/pitch joints) | uav_pad, variant_2023_mass
+      └─ sensors (fixed): front/rear_lidar, cameras + optical frames, gnss, imu, PTZ (pan/tilt joints)
 ```
 
 Every camera has a `<name>_optical_frame` (z forward) used as the `frame_id` of its images. Lidar points are in `<name>_sensor_frame` (optical centre). The odometry publishes `odom -> base_footprint`, so the tree stays single-parented (REP 105).
@@ -97,7 +96,7 @@ Two PMSM traction motors (PIAP notice ZWR/01/2018: up to 700 VDC, at least 4500 
 
 ## Mass and inertia
 
-The 3500 kg kerb mass is split into a documented budget (genset 360 kg, battery 300 kg, power electronics, cooling, fuel, body, frame as the remainder). The sensors are separate URDF links (about 15 kg on the 2020 variant) and are taken out of the budget, so the model totals 3500 kg. The chassis inertia tensor is the parallel-axis sum of the budget blocks: Ixx 700, Iyy 3930, Izz 4421 kg m^2 about the sprung COM at 0.98 m height, 0.14 m ahead of mid-wheelbase. The axle link inertia is likewise a parallel-axis sum (housing, motor, actuator) about its own COM. The armed configuration adds the 205 kg ZMU-03 (published) and 345 kg of growth to reach the reported "over 4 t" (4.05 t is an estimate).
+The 3500 kg kerb mass is split into a documented budget (genset 360 kg, battery 300 kg, power electronics, cooling, fuel, body, frame as the remainder). The sensors are separate URDF links (about 15 kg) and are taken out of the budget, so the model totals 3500 kg. The chassis inertia tensor is the parallel-axis sum of the budget blocks: Ixx 700, Iyy 3930, Izz 4421 kg m^2 about the sprung COM at 0.98 m height, 0.14 m ahead of mid-wheelbase. The axle link inertia is likewise a parallel-axis sum (housing, motor, actuator) about its own COM.
 
 ## Sensors
 
@@ -105,10 +104,9 @@ The 3500 kg kerb mass is split into a documented budget (genset 360 kg, battery 
 |---|---|---|
 | 2 x 3D lidar | 32 channel, 360 x 45 deg, 120 m, 10 Hz, front and rear deck posts | "two lidars" (2020); make, model and position not published |
 | Driving cameras | front + rear, 100 deg HFOV | poster: front and rear driving cameras |
-| Side cameras | 2 per side, 120 deg, angled fore/aft | poster: two side cameras per side; 2023: "four perimeter cameras" |
+| Side cameras | 2 per side, 120 deg, angled fore/aft | poster: two side cameras per side; Defence24 2023: "four perimeter cameras" |
 | Top-view cameras | 2 on the front/rear railing, pitched 50 deg down | poster: cameras on the railing for top views, count not published (2 makes the 2020 total 9) |
-| PTZ | mast at the front deck, pan continuous, tilt -90..+45 deg | 2020; on armed vehicles the RWS optics can take this role |
-| Stereo camera | 12 cm baseline, front (variant 2023) | 2024: "additionally equipped with lidars and stereovision cameras" (the extra lidars are not modelled) |
+| PTZ | mast at the front deck, pan continuous, tilt -90..+45 deg | 2020 |
 | GNSS, IMU | navsat + IMU with noise | "GPS receiver"; IMU assumed |
 
 ## Collision model

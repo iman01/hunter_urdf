@@ -26,16 +26,11 @@ body:
   - [-2.295, 0.0, 0.2382, 0.11, 1.9, 0.14]
   - [0.0, 0.0, 0.6032, 3.94, 0.76, 0.21]
 mass:
-  curb_2020: 3500.0
-  curb_2023_armed: 4050.0
+  curb: 3500.0
   payload_max: 1000.0
   chassis: 2394.0
   chassis_com: [0.1398, 0.0, 0.4925]
   chassis_inertia: {ixx: 699.6455, iyy: 3930.1155, izz: 4421.1534, ixy: 0.0, ixz: -30.9218, iyz: 0.0}
-  upgrade_2023:
-    mass: 345.0
-    xyz: [0.1398, 0.0, 0.4925]
-    note: armour/electronics/sensor growth to the 'over 4 t' armed kerb mass (D24_23)
 wheel: {diameter: 1.0, width: 0.343, rim_diameter: 0.4318, rim_width: 0.2286, offset: -0.0127, rolling_radius: 0.4918,
   static_loaded_radius: 0.4755, collision_radius: 0.4918, mass: 102.0, ixx: 8.8361, iyy: 15.6721, vertical_stiffness: 350000.0,
   mu: 0.9, mu2: 0.9, bolt_count: 8, bolt_circle: 0.1651}
@@ -131,7 +126,6 @@ sensors:
   range_min: 0.5
   range_max: 120.0
   rate: 10.0
-  variants: ['2020', '2023']
 - name: rear_lidar
   type: lidar
   xyz: [-2.25, 0.0, 1.0782]
@@ -144,7 +138,6 @@ sensors:
   range_min: 0.5
   range_max: 120.0
   rate: 10.0
-  variants: ['2020', '2023']
 - name: front_drive_camera
   type: camera
   xyz: [2.33, 0.0, 0.6082]
@@ -153,7 +146,6 @@ sensors:
   width: 1280
   height: 720
   rate: 30.0
-  variants: ['2020', '2023']
 - name: rear_drive_camera
   type: camera
   xyz: [-2.33, 0.0, 0.6082]
@@ -162,7 +154,6 @@ sensors:
   width: 1280
   height: 720
   rate: 30.0
-  variants: ['2020', '2023']
 - name: left_front_camera
   type: camera
   xyz: [1.1, 1.09, 0.7882]
@@ -171,7 +162,6 @@ sensors:
   width: 1280
   height: 720
   rate: 15.0
-  variants: ['2020', '2023']
 - name: left_rear_camera
   type: camera
   xyz: [-1.1, 1.09, 0.7882]
@@ -180,7 +170,6 @@ sensors:
   width: 1280
   height: 720
   rate: 15.0
-  variants: ['2020', '2023']
 - name: right_front_camera
   type: camera
   xyz: [1.1, -1.09, 0.7882]
@@ -189,7 +178,6 @@ sensors:
   width: 1280
   height: 720
   rate: 15.0
-  variants: ['2020', '2023']
 - name: right_rear_camera
   type: camera
   xyz: [-1.1, -1.09, 0.7882]
@@ -198,7 +186,6 @@ sensors:
   width: 1280
   height: 720
   rate: 15.0
-  variants: ['2020', '2023']
 - name: top_front_camera
   type: camera
   xyz: [2.27, 0.45, 1.1682]
@@ -207,7 +194,6 @@ sensors:
   width: 1280
   height: 720
   rate: 15.0
-  variants: ['2020']
 - name: top_rear_camera
   type: camera
   xyz: [-2.27, -0.45, 1.1682]
@@ -216,29 +202,16 @@ sensors:
   width: 1280
   height: 720
   rate: 15.0
-  variants: ['2020']
-- name: front_stereo_camera
-  type: stereo
-  xyz: [2.31, 0.0, 0.9182]
-  rpy: [0, 0.0873, 0]
-  baseline: 0.12
-  hfov_deg: 90
-  width: 1280
-  height: 720
-  rate: 15.0
-  variants: ['2023']
 - name: gnss
   type: navsat
   xyz: [-1.6, 0.3, 1.1582]
   rpy: [0, 0, 0]
   rate: 10.0
-  variants: ['2020', '2023']
 - name: imu
   type: imu
   xyz: [0.0, 0.0, 0.4582]
   rpy: [0, 0, 0]
   rate: 200.0
-  variants: ['2020', '2023']
 ptz:
   mount_xyz: [1.8, 0.0, 0.8582]
   mast_height: 0.55
@@ -247,27 +220,3 @@ ptz:
   hfov_tele_deg: 3.0
   tilt_min_deg: -45.0
   tilt_max_deg: 90.0
-  variants: ['2020']
-payloads:
-  cargo:
-    mass: 600.0
-    box: [1.8, 1.7, 0.6]
-    xyz: [-0.55, 0.0, 1.1582]
-    note: crates; total up to 1000 kg (D24TV21) - default 600 kg
-  rws:
-    model: AREX ZMU-03 12.7 mm
-    mass: 205.0
-    base_xyz: [-0.2, 0.0, 0.8582]
-    base_diameter: 0.62
-    height: 0.66
-    length: 1.63
-    yaw_height: 0.18
-    pitch_height: 0.4
-    pitch_min_deg: -20.0
-    pitch_max_deg: 60.0
-    note: 205 kg incl. weapon (MILMAG_ZMU03); envelope from ZMU-05 1630x750x660 mm (WB_ZMU05)
-  uav_pad:
-    mass: 45.0
-    size: [1.2, 1.2, 0.05]
-    xyz: [-1.25, 0.0, 1.0582]
-    note: UAV landing pad option (MILMAG20); UAV relay was part of the HUNTeR project
