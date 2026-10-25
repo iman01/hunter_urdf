@@ -22,9 +22,11 @@ import math
 from typing import List, Optional
 
 import rclpy
+from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
 from rclpy.parameter import Parameter
 from rclpy.qos import DurabilityPolicy, QoSProfile
+from rclpy.time import Time
 from rcl_interfaces.msg import SetParametersResult
 
 from geometry_msgs.msg import TransformStamped, Twist, TwistStamped
@@ -72,6 +74,7 @@ class FourWsController(Node):
         p("max_accel", float(lim["max_accel"]))
         p("max_decel", float(lim["max_decel"]))
         p("max_yaw_rate", float(lim["max_yaw_rate"]))
+        p("max_lateral_accel", float(lim["max_lateral_accel"]))
         p("max_lateral_speed", float(lim["max_crab_speed"]))
         p("steer_rate", math.radians(cfg["steering"]["max_rate_deg_s"]))
 
@@ -172,7 +175,7 @@ class FourWsController(Node):
             return
         self.meas_steer = [msg.position[idx[n]] for n in sj]
         self.meas_omega = [msg.velocity[idx[n]] for n in wj]
-        stamp = rclpy.time.Time.from_msg(msg.header.stamp)
+        stamp = Time.from_msg(msg.header.stamp)
         if self.last_js_time is not None:
             dt = (stamp - self.last_js_time).nanoseconds * 1e-9
             if 0.0 < dt < 0.5:
@@ -198,6 +201,12 @@ class FourWsController(Node):
         self.ref[0] += _clamp(dv, -a_lim * self.dt, a_lim * self.dt)
         self.ref[1] += _clamp(vy_t - self.ref[1], -gp("max_accel") * self.dt, gp("max_accel") * self.dt)
         self.ref[2] += _clamp(wz_t - self.ref[2], -2.0 * self.dt, 2.0 * self.dt)
+
+        # Rollover protection: |v * yaw_rate| below the lateral acceleration limit
+        # (the 4.05 t armed variant has a static stability factor of ~1).
+        a_lat = gp("max_lateral_accel")
+        if abs(self.ref[0] * self.ref[2]) > a_lat:
+            self.ref[2] = math.copysign(a_lat / max(abs(self.ref[0]), 1e-6), self.ref[2])
 
         cmd = self.kin.inverse(self.mode, *self.ref, hold=self.steer_cmd,
                                differential=self.get_parameter("differential").value)
@@ -270,7 +279,7 @@ def main(args=None) -> None:
     node = FourWsController()
     try:
         rclpy.spin(node)
-    except (KeyboardInterrupt, rclpy.executors.ExternalShutdownException):
+    except (KeyboardInterrupt, ExternalShutdownException):
         pass
     finally:
         node.destroy_node()

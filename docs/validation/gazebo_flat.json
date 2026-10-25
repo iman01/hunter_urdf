@@ -1,0 +1,75 @@
+{
+  "static": {
+    "front_heave_m": 0.002314967786886709,
+    "rear_heave_m": 0.001998723864964712,
+    "front_roll_deg": 0.004835913083631422,
+    "rear_roll_deg": -0.0046233907986914,
+    "base_footprint_z_m": -0.002184775161836276,
+    "expected": "heave ~0 at kerb mass (spring references set for the 2020 kerb load)"
+  },
+  "straight": {
+    "cmd_v": 8.0,
+    "mean_speed_gt": 7.982677629936498,
+    "distance_gt": 79.82617929979595,
+    "distance_odom": 80.05520052883213,
+    "odom_error_pct": 0.28689990056528153,
+    "lateral_drift_m": 0.3266358917482901
+  },
+  "counter": {
+    "mode": "counter",
+    "cmd_v": 2.0,
+    "cmd_wz": 0.25,
+    "realised_wz": 0.25,
+    "expected_radius_base": 8.0,
+    "fit_radius_base": 8.006809895902034,
+    "radius_error_pct": 0.08512369877542447,
+    "mean_speed": 1.995024482960242,
+    "yaw_rate": 0.24906682096216434,
+    "expected_yaw_rate": 0.25
+  },
+  "front": {
+    "mode": "front",
+    "cmd_v": 2.0,
+    "cmd_wz": 0.15,
+    "realised_wz": 0.15,
+    "expected_radius_base": 13.401502817884932,
+    "fit_radius_base": 13.467172744760477,
+    "radius_error_pct": 0.49001912522754815,
+    "mean_speed": 2.0046276395163973,
+    "yaw_rate": 0.14898427044584303,
+    "expected_yaw_rate": 0.15
+  },
+  "crab": {
+    "cmd_track_angle_deg": 21.80140948635181,
+    "gt_track_angle_deg": 23.324322104252232,
+    "heading_change_deg": -0.21597634042649472
+  },
+  "minturn_counter": {
+    "mode": "counter",
+    "cmd_v": 1.5,
+    "cmd_wz": 2.0,
+    "realised_wz": 0.5406976125068468,
+    "expected_radius_base": 2.77419386604191,
+    "fit_radius_base": 2.7410141909655557,
+    "radius_error_pct": -1.1960114065025185,
+    "mean_speed": 1.4602160861563924,
+    "yaw_rate": 0.532816066791935,
+    "expected_yaw_rate": 0.5406976125068468
+  },
+  "minturn_front": {
+    "mode": "front",
+    "cmd_v": 1.5,
+    "cmd_wz": 2.0,
+    "realised_wz": 0.2703488062525139,
+    "expected_radius_base": 5.710263253628975,
+    "fit_radius_base": 5.57398117315283,
+    "radius_error_pct": -2.3866164206971647,
+    "mean_speed": 1.5233709083618259,
+    "yaw_rate": 0.27330078760131993,
+    "expected_yaw_rate": 0.2703488062525139
+  },
+  "turning_radius_outer_tyre_design": {
+    "counter": 3.9243616640796897,
+    "front": 7.002737433829345
+  }
+}

@@ -127,6 +127,25 @@ class SteeringTrapezoid:
             r = -self.inner_from_outer(-d)
         return self.side * r
 
+    def pair_for_mean_angle(self, delta_mean: float, limit: float) -> Tuple[float, float]:
+        """Left/right angles whose mean equals `delta_mean` (pure translation /
+        crab: both tyres pull, so the vehicle tracks their mean direction)."""
+        if abs(delta_mean) < 1e-9:
+            return 0.0, 0.0
+        dm = abs(delta_mean)
+        lo, hi = 0.0, limit
+        for _ in range(60):
+            mid = 0.5 * (lo + hi)
+            if 0.5 * (mid + self.outer_from_inner(mid)) > dm:
+                hi = mid
+            else:
+                lo = mid
+        d_in = 0.5 * (lo + hi)
+        d_out = self.outer_from_inner(d_in)
+        front_frame_positive = (self.side * delta_mean) > 0.0
+        left, right = (d_in, d_out) if front_frame_positive else (-d_out, -d_in)
+        return self.side * left, self.side * right
+
     def pair_for_center_angle(self, delta_center: float, limit: float) -> Tuple[float, float]:
         """Left/right knuckle angles whose Ackermann-equivalent centre angle
         (cot dc = (cot dl + cot dr)/2) equals `delta_center`."""
@@ -278,10 +297,11 @@ class FourWheelSteeringKinematics:
                     continue
                 dc, _ = _wrap_half_pi(math.atan2(uy, ux))
                 if abs(wz) < 1e-12:
-                    # Pure translation: centre angle has no ICR; the linkage
-                    # still dictates a (slightly toed) pair.
-                    pass
-                dl, dr = g.trapezoids[axle].pair_for_center_angle(dc, 1.2 * g.max_steer)
+                    # Pure translation (crab): no ICR; the linkage dictates a
+                    # slightly toed pair, centred on the commanded direction.
+                    dl, dr = g.trapezoids[axle].pair_for_mean_angle(dc, 1.2 * g.max_steer)
+                else:
+                    dl, dr = g.trapezoids[axle].pair_for_center_angle(dc, 1.2 * g.max_steer)
                 out[il], out[ir] = dl, dr
         return out
 

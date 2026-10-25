@@ -191,8 +191,8 @@ sensors:
   variants: ['2020', '2023']
 - name: top_front_camera
   type: camera
-  xyz: [2.0, 0.0, 1.1582]
-  rpy: [0, 0.9599, 0]
+  xyz: [2.27, 0.45, 1.1682]
+  rpy: [0, 0.8727, 0]
   hfov_deg: 110
   width: 1280
   height: 720
@@ -200,8 +200,8 @@ sensors:
   variants: ['2020']
 - name: top_rear_camera
   type: camera
-  xyz: [-2.0, 0.0, 1.1582]
-  rpy: [0, 0.9599, 3.1416]
+  xyz: [-2.27, -0.45, 1.1682]
+  rpy: [0, 0.8727, 3.1416]
   hfov_deg: 110
   width: 1280
   height: 720

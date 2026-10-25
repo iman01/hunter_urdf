@@ -132,3 +132,11 @@ def test_counter_phase_turns_tighter_than_front(kin):
 def test_geometry_validation():
     with pytest.raises(ValueError):
         VehicleGeometry(1.0, -1.0, 1.0, 1.2, 0.5, 0.5, arm_length=0.6, trapezoid_angle=math.radians(60))
+
+
+def test_trapezoid_crab_tracks_commanded_direction():
+    kin = make("trapezoid")
+    c = kin.inverse("crab", 2.0, 0.6, 0.0)
+    target = math.atan2(0.6, 2.0)
+    assert 0.5 * (c.steer[0] + c.steer[1]) == pytest.approx(target, abs=1e-6)
+    assert 0.5 * (c.steer[2] + c.steer[3]) == pytest.approx(target, abs=1e-6)

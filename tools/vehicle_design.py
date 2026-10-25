@@ -470,9 +470,10 @@ SENSORS = [
     S("right_rear_camera", "camera", (-1.10, -W_OVERALL / 2 + 0.01, hz(1.28)), (0, math.radians(25), math.radians(-120)),
       hfov_deg=120, width=1280, height=720, rate=15.0, variants=["2020", "2023"]),
     # Top-view cameras on the deck railing (POSTER21), looking down at the wheels/terrain ahead and behind.
-    S("top_front_camera", "camera", (HL - 0.35, 0.0, z_rail + 0.05), (0, math.radians(55), 0),
+    # Mounted on the front/rear railing beside (not behind) the lidar posts.
+    S("top_front_camera", "camera", (HL - 0.08, 0.45, z_rail + 0.06), (0, math.radians(50), 0),
       hfov_deg=110, width=1280, height=720, rate=15.0, variants=["2020"]),
-    S("top_rear_camera", "camera", (-HL + 0.35, 0.0, z_rail + 0.05), (0, math.radians(55), math.pi),
+    S("top_rear_camera", "camera", (-HL + 0.08, -0.45, z_rail + 0.06), (0, math.radians(50), math.pi),
       hfov_deg=110, width=1280, height=720, rate=15.0, variants=["2020"]),
     # 2024 stereo pair (PIAP24), front, under the lidar.
     S("front_stereo_camera", "stereo", (HL - 0.04, 0.0, z_deck + 0.06), (0, math.radians(5), 0),
