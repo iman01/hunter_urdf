@@ -52,7 +52,8 @@ def main():
         views = []
         for name, args, joints, view, opts in SCENES:
             urdf = os.path.join(tmp, f"{name}.urdf")
-            raw = subprocess.check_output(["xacro", xacro] + args.split(), text=True)
+            vehicle = os.path.join(ROOT, "hunter_description", "config", "vehicle.yaml")
+            raw = subprocess.check_output(["xacro", xacro, f"vehicle_file:={vehicle}"] + args.split(), text=True)
             open(urdf + ".raw", "w").write(raw)
             js = ",".join(f"{k}:{v}" for k, v in joints.items())
             subprocess.check_call([sys.executable, os.path.join(HERE, "add_linkage_visuals.py"), urdf + ".raw", urdf,

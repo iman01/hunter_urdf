@@ -6,25 +6,58 @@ chassis: {wheelbase: 2.7, track: 1.8034}
 body:
   length: 4.7
   width: 2.2
-  deck_height: 1.35
+  deck_height: 1.46
   wheel_arch_height: 1.2
-  railing_height: 0.25
+  chine_half_width: 1.06
+  deck_half_width: 0.96
+  deck_front_x: 1.86
+  deck_front_half_width: 0.82
+  band_top_height: 1.07
+  band_bottom_height: 0.8
+  band_flat_half_width: 0.56
+  band_corner_x: 2.05
+  band_half_width: 1.04
+  chin_bottom_height: 0.52
+  chin_half_width: 0.5
+  nose_bottom_height: 0.4
+  rear_bottom_height: 0.5
   belly_height: 0.47
   keel_height: 0.99
-  nose_bottom_height: 0.66
-  tub_half_length: 0.6
+  tub_half_length: 0.75
   tub_half_width: 1.0
+  tub_bottom_half_width: 0.7
   keel_half_width: 0.38
   nose_start: 1.97
+  tub_bottom_half_length: 0.45
+  rear_tray_start: -1.6
+  rear_tray_end: -2.18
+  rear_tray_height: 1.38
+  rear_deck_edge_height: 1.3
+  rear_panel_top_height: 1.05
+  rear_panel_bottom_height: 0.68
+  outrigger: [1.74, 1.02, 1.62]
   ground_z: -0.4918
   collision_boxes:
-  - [0.0, 0.0, 0.7832, 4.6, 2.2, 0.15]
-  - [0.0, 0.0, 0.3432, 1.2, 2.0, 0.73]
-  - [2.16, 0.0, 0.4982, 0.38, 2.0, 0.42]
-  - [-2.16, 0.0, 0.4982, 0.38, 2.0, 0.42]
-  - [2.295, 0.0, 0.2382, 0.11, 1.9, 0.14]
-  - [-2.295, 0.0, 0.2382, 0.11, 1.9, 0.14]
-  - [0.0, 0.0, 0.6032, 3.94, 0.76, 0.21]
+  - [0.13, 0.0, 0.8382, 3.46, 2.12, 0.26, 0.0]
+  - [2.0311, 0.0, 0.6962, 0.6107, 1.64, 0.2, 0.6926]
+  - [1.98, 0.0, 0.6432, 0.24, 2.08, 0.13, 0.0]
+  - [2.15, 0.0, 0.4432, 0.36, 1.12, 0.27, 0.0]
+  - [2.045, -0.8, 0.4432, 0.15, 0.48, 0.27, 0.0]
+  - [2.045, 0.8, 0.4432, 0.15, 0.48, 0.27, 0.0]
+  - [2.14, 0.0, 0.1682, 0.34, 1.0, 0.28, 0.0]
+  - [2.3, 0.0, -0.0318, 0.1, 1.04, 0.12, 0.0]
+  - [0.0, 0.0, 0.5832, 1.32, 1.96, 0.25, 0.0]
+  - [0.0, 0.0, 0.2932, 1.06, 1.76, 0.33, 0.0]
+  - [0.0, 0.0, 0.0532, 0.9, 1.48, 0.15, 0.0]
+  - [-1.89, 0.0, 0.7582, 0.58, 2.12, 0.1, 0.0]
+  - [-2.075, 0.0, 0.6332, 0.21, 2.08, 0.15, 0.0]
+  - [-1.8832, 0.0, 0.7986, 0.5855, 1.88, 0.1, -0.1371]
+  - [-2.1693, 0.0, 0.6317, 0.2915, 1.88, 0.2, -1.0304]
+  - [-2.15, 0.0, 0.3732, 0.36, 1.2, 0.37, 0.0]
+  - [-2.045, -0.82, 0.3732, 0.15, 0.44, 0.37, 0.0]
+  - [-2.045, 0.82, 0.3732, 0.15, 0.44, 0.37, 0.0]
+  - [-2.3, 0.0, 0.0682, 0.1, 1.04, 0.12, 0.0]
+  - [0.0, 0.0, 0.6032, 3.94, 0.76, 0.21, 0.0]
 mass:
   curb: 3500.0
   payload_max: 1000.0
@@ -116,7 +149,7 @@ limits: {max_speed: 13.8889, max_reverse_speed: 4.0, max_accel: 2.0, max_decel: 
 sensors:
 - name: front_lidar
   type: lidar
-  xyz: [2.25, 0.0, 1.0782]
+  xyz: [1.78, 0.0, 1.0882]
   rpy: [0, 0, 0]
   model: 32-channel spinning 3D lidar (Ouster OS1-32 class)
   hfov_deg: 360
@@ -128,7 +161,7 @@ sensors:
   rate: 10.0
 - name: rear_lidar
   type: lidar
-  xyz: [-2.25, 0.0, 1.0782]
+  xyz: [-2.0, 0.0, 1.0882]
   rpy: [0, 0, 3.1416]
   model: 32-channel spinning 3D lidar (Ouster OS1-32 class)
   hfov_deg: 360
@@ -140,7 +173,7 @@ sensors:
   rate: 10.0
 - name: front_drive_camera
   type: camera
-  xyz: [2.33, 0.0, 0.6082]
+  xyz: [2.345, 0.0, 0.4432]
   rpy: [0, 0.1396, 0]
   hfov_deg: 100
   width: 1280
@@ -148,7 +181,7 @@ sensors:
   rate: 30.0
 - name: rear_drive_camera
   type: camera
-  xyz: [-2.33, 0.0, 0.6082]
+  xyz: [-2.345, 0.0, 0.4782]
   rpy: [0, 0.1396, 3.1416]
   hfov_deg: 100
   width: 1280
@@ -156,7 +189,7 @@ sensors:
   rate: 30.0
 - name: left_front_camera
   type: camera
-  xyz: [1.1, 1.09, 0.7882]
+  xyz: [1.1, 1.025, 0.8382]
   rpy: [0, 0.4363, 1.0472]
   hfov_deg: 120
   width: 1280
@@ -164,7 +197,7 @@ sensors:
   rate: 15.0
 - name: left_rear_camera
   type: camera
-  xyz: [-1.1, 1.09, 0.7882]
+  xyz: [-1.1, 1.025, 0.8382]
   rpy: [0, 0.4363, 2.0944]
   hfov_deg: 120
   width: 1280
@@ -172,7 +205,7 @@ sensors:
   rate: 15.0
 - name: right_front_camera
   type: camera
-  xyz: [1.1, -1.09, 0.7882]
+  xyz: [1.1, -1.025, 0.8382]
   rpy: [0, 0.4363, -1.0472]
   hfov_deg: 120
   width: 1280
@@ -180,7 +213,7 @@ sensors:
   rate: 15.0
 - name: right_rear_camera
   type: camera
-  xyz: [-1.1, -1.09, 0.7882]
+  xyz: [-1.1, -1.025, 0.8382]
   rpy: [0, 0.4363, -2.0944]
   hfov_deg: 120
   width: 1280
@@ -188,7 +221,7 @@ sensors:
   rate: 15.0
 - name: top_front_camera
   type: camera
-  xyz: [2.27, 0.45, 1.1682]
+  xyz: [1.79, 1.02, 1.1282]
   rpy: [0, 0.8727, 0]
   hfov_deg: 110
   width: 1280
@@ -196,7 +229,7 @@ sensors:
   rate: 15.0
 - name: top_rear_camera
   type: camera
-  xyz: [-2.27, -0.45, 1.1682]
+  xyz: [-2.12, -0.9, 1.0882]
   rpy: [0, 0.8727, 3.1416]
   hfov_deg: 110
   width: 1280
@@ -204,7 +237,7 @@ sensors:
   rate: 15.0
 - name: gnss
   type: navsat
-  xyz: [-1.6, 0.3, 1.1582]
+  xyz: [-1.3, 0.35, 1.0182]
   rpy: [0, 0, 0]
   rate: 10.0
 - name: imu
@@ -212,11 +245,3 @@ sensors:
   xyz: [0.0, 0.0, 0.4582]
   rpy: [0, 0, 0]
   rate: 200.0
-ptz:
-  mount_xyz: [1.8, 0.0, 0.8582]
-  mast_height: 0.55
-  head_size: 0.22
-  hfov_wide_deg: 60.0
-  hfov_tele_deg: 3.0
-  tilt_min_deg: -45.0
-  tilt_max_deg: 90.0

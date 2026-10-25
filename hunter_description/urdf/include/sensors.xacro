@@ -6,8 +6,11 @@
                        cameras + 4 drive-assist cameras; poster: front/rear driving
                        cameras, two side cameras per side, top-view cameras on the
                        railing (count not published), PTZ
-     Modelled here: 2 top-view cameras (so the total is 9) and an IMU (assumed).
-     Positions are reconstructions.
+     Modelled here: 8 fixed cameras (2 top-view, count not published) and an IMU
+     (assumed). The 2020 PTZ mast is not modelled: the photographed vehicles carry
+     a weapon station or payload with its own sensor head there instead.
+     Positions are reconstructions on the photographed 2023-2025 hull (no railing:
+     the top-view cameras sit on the deck-corner outriggers / a rear deck post).
 
      Every camera has a <name>_optical_frame (z forward, x right, y down) used as
      the frame_id of its images. -->
@@ -175,73 +178,6 @@
     </gazebo>
   </xacro:macro>
 
-  <!-- =============================================================== PTZ -->
-  <xacro:macro name="hunter_ptz">
-    <xacro:property name="P" value="${V.ptz}"/>
-    <link name="ptz_mast_link">
-      <xacro:inertial_box mass="6.0" x="0.18" y="0.18" z="${P.mast_height}"><origin xyz="0 0 ${P.mast_height / 2}"/></xacro:inertial_box>
-      <xacro:mesh_visual file="ptz_mast.stl" material="hunter_green_dark"/>
-    </link>
-    <joint name="ptz_mast_joint" type="fixed">
-      <parent link="base_link"/>
-      <child link="ptz_mast_link"/>
-      <origin xyz="${P.mount_xyz[0]} ${P.mount_xyz[1]} ${P.mount_xyz[2]}" rpy="0 0 0"/>
-    </joint>
-    <link name="ptz_pan_link">
-      <xacro:inertial_box mass="2.0" x="0.12" y="0.26" z="0.22"><origin xyz="0 0 0.11"/></xacro:inertial_box>
-      <xacro:mesh_visual file="ptz_yoke.stl" material="sensor_grey"/>
-    </link>
-    <joint name="ptz_pan_joint" type="continuous">
-      <parent link="ptz_mast_link"/>
-      <child link="ptz_pan_link"/>
-      <origin xyz="0 0 ${P.mast_height}" rpy="0 0 0"/>
-      <axis xyz="0 0 1"/>
-      <limit effort="50" velocity="1.5"/>
-      <dynamics damping="2.0"/>
-    </joint>
-    <link name="ptz_camera_link">
-      <xacro:inertial_box mass="3.0" x="${P.head_size}" y="0.2" z="0.14"><origin xyz="0 0 0"/></xacro:inertial_box>
-      <xacro:mesh_visual file="ptz_head.stl" material="sensor_grey"/>
-    </link>
-    <joint name="ptz_tilt_joint" type="revolute">
-      <parent link="ptz_pan_link"/>
-      <child link="ptz_camera_link"/>
-      <origin xyz="0 0 0.15" rpy="0 0 0"/>
-      <axis xyz="0 1 0"/>
-      <!-- +y axis: positive tilt looks down -->
-      <limit lower="${-radians(P.tilt_max_deg)}" upper="${-radians(P.tilt_min_deg)}" effort="50" velocity="1.0"/>
-      <dynamics damping="2.0"/>
-    </joint>
-    <link name="ptz_lens_link"/>
-    <joint name="ptz_lens_joint" type="fixed">
-      <parent link="ptz_camera_link"/>
-      <child link="ptz_lens_link"/>
-      <origin xyz="${P.head_size / 2 + 0.02} 0.04 0" rpy="0 0 0"/>
-    </joint>
-    <link name="ptz_camera_optical_frame"/>
-    <joint name="ptz_camera_optical_joint" type="fixed">
-      <parent link="ptz_lens_link"/>
-      <child link="ptz_camera_optical_frame"/>
-      <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
-    </joint>
-    <xacro:if value="${camera_sensors}">
-      <gazebo reference="ptz_lens_link">
-        <sensor name="ptz_camera" type="camera">
-          <always_on>true</always_on>
-          <update_rate>15</update_rate>
-          <topic>ptz_camera/image_raw</topic>
-          <gz_frame_id>ptz_camera_optical_frame</gz_frame_id>
-          <camera>
-            <camera_info_topic>ptz_camera/camera_info</camera_info_topic>
-            <horizontal_fov>${radians(P.hfov_wide_deg)}</horizontal_fov>
-            <image><width>1280</width><height>720</height><format>R8G8B8</format></image>
-            <clip><near>0.1</near><far>1000</far></clip>
-          </camera>
-        </sensor>
-      </gazebo>
-    </xacro:if>
-  </xacro:macro>
-
   <!-- ============================================================ driver -->
   <xacro:macro name="sensor_list" params="items">
     <xacro:if value="${len(items) > 0}">
@@ -256,7 +192,6 @@
 
   <xacro:macro name="hunter_sensors">
     <xacro:sensor_list items="${V.sensors}"/>
-    <xacro:hunter_ptz/>
   </xacro:macro>
 
 </robot>

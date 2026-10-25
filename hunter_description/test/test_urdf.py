@@ -24,7 +24,7 @@ CONFIGS = [
     ("sim_mode:=gz controllers_file:=/tmp/c.yaml sensors:=false", 3500.0),
     ("sim_mode:=mock", 3500.0),
 ]
-# Sensors, PTZ and small parts are not in the 3500 kg mass budget: allow 1 %.
+# Sensors and small parts are not in the 3500 kg mass budget: allow 1 %.
 MASS_TOL = 0.01
 
 
@@ -121,9 +121,47 @@ def test_published_envelope():
     assert xf - xr == pytest.approx(2.70)
     assert VEHICLE["body"]["length"] == 4.70 and VEHICLE["body"]["width"] == 2.20
     assert VEHICLE["wheel"]["diameter"] == 1.0
-    boxes = np.array(VEHICLE["body"]["collision_boxes"])
-    assert (boxes[:, 0] + boxes[:, 3] / 2).max() <= 2.35 + 1e-6
-    assert (boxes[:, 1] + boxes[:, 4] / 2).max() <= 1.10 + 1e-6
+    lo, hi = collision_extents()
+    assert hi[0] <= 2.35 + 1e-6 and lo[0] >= -2.35 - 1e-6
+    assert hi[1] <= 1.10 + 1e-6 and lo[1] >= -1.10 - 1e-6
+
+
+def collision_extents():
+    """Axis-aligned extents of the hull collision boxes [cx, cy, cz, sx, sy, sz, pitch] in base_link."""
+    corners = []
+    for cx, cy, cz, sx, sy, sz, pitch in VEHICLE["body"]["collision_boxes"]:
+        c, s = np.cos(pitch), np.sin(pitch)
+        for dx in (-sx / 2, sx / 2):
+            for dy in (-sy / 2, sy / 2):
+                for dz in (-sz / 2, sz / 2):
+                    # rotation about y by pitch (URDF rpy)
+                    corners.append((cx + c * dx + s * dz, cy + dy, cz - s * dx + c * dz))
+    corners = np.array(corners)
+    return corners.min(axis=0), corners.max(axis=0)
+
+
+def test_hull_above_ground_and_published_heights():
+    """Lowest hull point is the front tow bar (0.40 m); the deck sits at the photographed height."""
+    lo, hi = collision_extents()
+    ground = VEHICLE["body"]["ground_z"]
+    assert lo[2] - ground == pytest.approx(VEHICLE["body"]["nose_bottom_height"], abs=1e-3)
+    assert hi[2] - ground == pytest.approx(VEHICLE["body"]["deck_height"], abs=1e-3)
+    # Arches clear the tyre at full bump
+    tyre_top = VEHICLE["wheel"]["collision_radius"] + VEHICLE["wheel"]["diameter"] / 2 + \
+        max(VEHICLE["suspension"]["travel_bump_front"], VEHICLE["suspension"]["travel_bump_rear"])
+    assert VEHICLE["body"]["wheel_arch_height"] > tyre_top + 0.03
+
+
+def test_hull_clears_running_gear():
+    """Hull meshes against tyres, wheels, axles and knuckles over the steering/suspension envelope."""
+    tool = os.path.join(os.path.dirname(PKG), "tools", "check_clearance.py")
+    if not os.path.isfile(tool):
+        pytest.skip("source tree tools not available")
+    pytest.importorskip("trimesh")
+    if shutil.which("xacro") is None:
+        pytest.skip("xacro not available")
+    out = subprocess.run(["python3", tool], capture_output=True, text=True)
+    assert out.returncode == 0, out.stdout + out.stderr
 
 
 def test_design_outputs_up_to_date():

@@ -1,10 +1,14 @@
 # HUNTeR URDF: Łukasiewicz-PIAP HUNTeR UGV replica for ROS 2
 
-A simulation-ready replica of the **Łukasiewicz-PIAP HUNTeR**, the 3.5 t hybrid 4x4 unmanned ground vehicle from the Łukasiewicz Research Network, Industrial Research Institute for Automation and Measurements (Warsaw). The model is the bare platform as first shown in 2020: two steering axles, rigid axles on a 3-link + Panhard rod suspension with coil springs and controlled dampers, an open deck with railing, and the published sensor layout. It targets **ROS 2 Jazzy + Gazebo Harmonic** with `ros2_control`.
+A simulation-ready replica of the **Łukasiewicz-PIAP HUNTeR**, the 3.5 t hybrid 4x4 unmanned ground vehicle from the Łukasiewicz Research Network, Industrial Research Institute for Automation and Measurements (Warsaw). The running gear is the bare platform as published from 2020 on: two steering axles, rigid axles on a 3-link + Panhard rod suspension with coil springs and controlled dampers, and the published sensor layout. The hull follows the closed, faceted body of the vehicle as photographed in 2023-2025: a flat deck, a sloped glacis above a full-width black sensor band with four LED lamps, a narrow chin with a tow bar and two shackles, angular wheel arches with dark trims, inward-leaning side panels and a dark, stepped-down rear deck. It targets **ROS 2 Jazzy + Gazebo Harmonic** with `ros2_control`.
 
-No CAD of the real vehicle is public. Everything here was rebuilt from PIAP's published specifications (the INTARG 2021 poster as quoted in search results, 2017/2018 PIAP procurement notices) and press coverage, then completed by engineering calculation. Every number is traceable: see [`docs/DESIGN_REPORT.md`](docs/DESIGN_REPORT.md).
+No CAD of the real vehicle is public. Everything here was rebuilt from PIAP's published specifications (the INTARG 2021 poster as quoted in search results, 2017/2018 PIAP procurement notices), press coverage and press photos measured against the 1 m wheel, then completed by engineering calculation. Every number is traceable: see [`docs/DESIGN_REPORT.md`](docs/DESIGN_REPORT.md).
 
 ![HUNTeR replica](docs/images/hunter_iso.png)
+
+| Front | Side | Rear |
+|---|---|---|
+| ![](docs/images/hunter_front.png) | ![](docs/images/hunter_side.png) | ![](docs/images/hunter_iso_rear.png) |
 
 | Running gear (hull hidden) | Counter-phase 4WS at full lock | Axle articulation |
 |---|---|---|
@@ -16,15 +20,16 @@ No CAD of the real vehicle is public. Everything here was rebuilt from PIAP's pu
 |---|---|---|
 | Length x width, wheelbase | published | 4.70 x 2.20 m; 2.70 m (PIAP poster via search summaries, Army Recognition, Militär Aktuell; some Polish press prints 2.20 m, likely copied from the width) |
 | Wheels | published | 1.00 m diameter; 40x13.50R17-class tyre on 17x9 beadlocks (estimated from the 8x6.5 in bolt pattern) |
-| Kerb mass | published | 3500 kg (2020 prototype) |
+| Kerb mass | published | 3500 kg (2020 prototype; later configurations are quoted at "over 4 t", not modelled) |
 | Axles | published request + assumptions | PIAP tender ZO/11/07/2017 asked for 3 rigid front drive axles, "Ultimate Dana 60 or equivalent": ratio 5.38, 70 in wheel-mount width, 8x6.5 in bolts, discs >= 350 mm. Assumed: such axles fitted at both ends; track 1.803 m (derived with an estimated wheel offset); 358 mm discs (generic crate axle) |
 | Suspension | published type and stroke | dependent 3-link + Panhard rod, coil springs, controlled dampers, 250 mm stroke |
 | Steering | published: two steering axles | 4WS; 35 deg lock, one actuator and tie rod per axle, trapezoid optimised for counter-phase (all estimated / design) |
 | Drive | published | 2 PMSM traction motors (one per axle), 90 kW continuous / 220 kW peak, 110 kW generator, 40 kWh NMC |
 | Top speed, payload | published | 50 km/h, 1000 kg |
-| Sensors | published layout, assumed details | published: GPS, 2 lidars, front/rear driving cameras, 2 side cameras per side, top-view cameras on the railing, PTZ. Modelled: those, with 2 top-view cameras (count not published) and an IMU (assumed) |
+| Sensors | published layout, assumed details | published: GPS, 2 lidars, front/rear driving cameras, 2 side cameras per side, top-view cameras (on the 2020 railing), PTZ. Modelled: those except the PTZ (see "Not modelled"), with 2 top-view cameras (count not published) and an IMU (assumed), mounted on the photographed hull: driving camera in the front sensor band, side cameras in the upper flanks, top-view cameras on the deck-corner outriggers |
 | Spring/damper rates, mass distribution, inertias | **derived/design** | sized for the published stroke and masses: 70.5 / 55.2 kN/m front/rear, 1.5 Hz ride at both ends, zeta 0.35 |
-| Hull shape, sensor positions | **reconstructed** | no drawings or usable photos were available to this build; see "Improving fidelity" |
+| Hull shape | **photo-measured** | 2023-2025 press photos scaled by the 1 m wheel: deck 1.46 m, arch tops 1.20 m, sensor band 0.80-1.07 m, front / rear tow bar lower edge 0.40 / 0.50 m (+/-5 to 10 %). Approach / departure 25 / 30 deg (derived) |
+| Sensor positions | **reconstructed** | mounting points visible in the photos are used where they exist; exact positions are not published |
 
 ## Packages
 
@@ -45,7 +50,7 @@ git clone <this repository> hunter_urdf
 cd ~/hunter_ws && rosdep install --from-paths src -iy
 colcon build && source install/setup.bash
 
-# Inspect the model with joint sliders (suspension, steering, PTZ)
+# Inspect the model with joint sliders (suspension, steering)
 ros2 launch hunter_description display.launch.py
 
 # Simulate
@@ -91,11 +96,10 @@ Also available: `differential:=locked` (emulates the axle differential locks), a
 | `/cmd_vel`, `/ackermann_cmd` | Twist (or TwistStamped), AckermannDriveStamped |
 | `/four_ws_controller/steering_mode` | std_msgs/String |
 | `/odom`, `/ground_truth/odom` | nav_msgs/Odometry (`odom -> base_footprint`) |
-| `/joint_states` | sensor_msgs/JointState (wheels, knuckles, axle heave/roll, PTZ) |
+| `/joint_states` | sensor_msgs/JointState (wheels, knuckles, axle heave/roll) |
 | `/front_lidar/points`, `/rear_lidar/points` | sensor_msgs/PointCloud2 |
-| `/<camera>/image_raw`, `/<camera>/camera_info` | front/rear_drive, left/right_front/rear, top_front/rear, ptz |
+| `/<camera>/image_raw`, `/<camera>/camera_info` | front/rear_drive, left/right_front/rear, top_front/rear |
 | `/imu/data`, `/gnss/fix` | sensor_msgs/Imu, sensor_msgs/NavSatFix |
-| `/ptz_controller/commands` | std_msgs/Float64MultiArray [pan, tilt] |
 | `/suspension_linkage/markers`, `/suspension_linkage/coilover_lengths` | RViz linkage, coil-over lengths |
 
 ## Suspension and steering model
@@ -106,7 +110,7 @@ Details, simplifications and their error bounds are in [`docs/MODEL.md`](docs/MO
 
 ## Validation
 
-`colcon test` runs the URDF checks (5 configurations: parse, total mass against the kerb mass, inertia validity, meshes, joint limits, design file up to date), the 4WS kinematics and odometry tests and the command-shaping tests (86 tests). The model and code were also put through a six-lens adversarial review (geometry, controller, physics, source fidelity, ROS integration, linkage/meshes); its confirmed findings are fixed. Closed-loop Gazebo results ([`docs/VALIDATION.md`](docs/VALIDATION.md)):
+`colcon test` runs the URDF checks (5 configurations: parse, total mass against the kerb mass, inertia validity, meshes, joint limits, published envelope and heights, hull clearance against the running gear, design file up to date), the 4WS kinematics and odometry tests and the command-shaping tests (88 tests). The model and code were also put through a six-lens adversarial review (geometry, controller, physics, source fidelity, ROS integration, linkage/meshes); its confirmed findings are fixed. Closed-loop Gazebo results ([`docs/VALIDATION.md`](docs/VALIDATION.md)) were recorded before the hull was reshaped to the photographed vehicle. Mass, inertia, suspension, steering and drivetrain did not change, so they still describe the dynamics; hull-terrain contact on the off-road course was not re-run (the lowest overhang point is now the 0.40 m tow bar, approach angle 25 deg, still above the course's 30 % grade):
 
 | Test | Expected | Gazebo |
 |---|---|---|
@@ -125,20 +129,21 @@ Details, simplifications and their error bounds are in [`docs/MODEL.md`](docs/MO
 ```bash
 python3 tools/vehicle_design.py        # parameters + design report (edit this file, never vehicle.yaml)
 python3 tools/generate_meshes.py       # meshes from the parameters
+python3 tools/check_clearance.py       # hull vs tyres/axles over the steering and suspension envelope
 python3 tools/render/render_docs.py    # docs/images (needs node: see tools/render/render.mjs)
 ```
 
 ## Not modelled
 
-Deck-mounted mission equipment (for example the hydraulic manipulator and ground-penetrating radar mentioned in 2020) is not part of this model, which covers the bare platform only.
+Mission equipment is not part of this model, which covers the bare platform only: the AREX ZMU-03 / ZMU-05 remote weapon stations, the deck cargo box seen at OPEX 2025, and the hydraulic manipulator and ground-penetrating radar mentioned in 2020. The 2020 PTZ camera mast is not modelled either: on the photographed vehicles that role is taken by the weapon station's or payload's own sensor head.
 
 ## Improving fidelity
 
-The weakest parts are the hull shape and sensor positions. They respect the published overall size and the replica's own design constraints (wheel clearances at full lock and bump, a 39 deg approach angle; approach angles are not published), but no photos could be measured during this build. With press photos, the 1 m wheel gives a scale reference to measure deck height, overhang shape and sensor positions; edit the geometry section of `tools/vehicle_design.py` and the hull functions of `tools/generate_meshes.py`. If PIAP CAD becomes available, drop the meshes into `hunter_description/meshes/visual/` with the same frames.
+The hull was measured off five press photos of the 2023-2025 vehicle (listed under `PHOTOS` in `docs/DESIGN_REPORT.md`), so its heights carry roughly +/-5 to 10 % uncertainty; plan-view details that no photo shows squarely (the exact chamfer angles of the nose and tail, the tub end slope, the underbody) are design choices that respect the running-gear clearances, which `tools/check_clearance.py` verifies over the full steering and suspension envelope. The weakest parts are now the sensor positions and the mass budget, which is still the 2020 open-deck estimate (a closed hull would move the CG up by about 2 cm). To refine the hull, edit the geometry section of `tools/vehicle_design.py` and the hull functions of `tools/generate_meshes.py`, then re-run both and the clearance check. If PIAP CAD becomes available, drop the meshes into `hunter_description/meshes/visual/` with the same frames.
 
 ## Sources
 
-PIAP INTARG 2021 poster; PIAP procurement notices ZO/11/07/2017 (drive axles) and ZWR/01/2018 (traction motors); Janes (2020); Milmag (2020); Defence24 (2023); Army Recognition (2024); Zbiam (2023); Polska Zbrojna (2026); Spicer/Dana Ultimate 60 data. Full list with what each one states: [`docs/DESIGN_REPORT.md`](docs/DESIGN_REPORT.md#sources). Raw search results are archived in [`docs/research/raw_findings.json`](docs/research/raw_findings.json).
+PIAP INTARG 2021 poster; PIAP procurement notices ZO/11/07/2017 (drive axles) and ZWR/01/2018 (traction motors); Janes (2020); Milmag (2020, 2024, 2025); Defence24 (2023); Army Recognition (2024); Zbiam (2023); Polska Zbrojna (2026); Spicer/Dana Ultimate 60 data; press photos from FEX-23/24 (Nowa Dęba), Eurosatory 2024, OPEX 2025 and the 2025 Italian Army trials. Full list with what each one states: [`docs/DESIGN_REPORT.md`](docs/DESIGN_REPORT.md#sources). Raw search results are archived in [`docs/research/raw_findings.json`](docs/research/raw_findings.json).
 
 This is an independent research model, not an official PIAP product.
 

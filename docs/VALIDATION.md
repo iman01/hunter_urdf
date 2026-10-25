@@ -48,11 +48,9 @@ The 0.30 m humps exceed the 250 mm stroke, so the axles reach the articulation l
 |---|---|---|
 | Sensors (rendered under Xvfb, CPU): lidar clouds 16384 points, 1280x720 images, NavSat, IMU | published | published, frame ids = optical / sensor frames |
 
-Sensor images from the simulation (front driving camera and PTZ looking at the off-road course):
+Sensor image from the simulation (front driving camera looking at the off-road course):
 
 ![front driving camera](images/sim_front_drive_camera.png)
-
-![PTZ camera](images/sim_ptz_camera.png)
 
 ## Static tests (`colcon test`)
 

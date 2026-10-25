@@ -36,7 +36,7 @@ def _truthy(v):
 
 def _bridge_and_controllers(context, spawn):
     """Bridge only the sensors present in this configuration and, once the
-    robot is spawned, start the controllers (the PTZ one only with sensors)."""
+    robot is spawned, start the controllers."""
     get = lambda n: LaunchConfiguration(n).perform(context)  # noqa: E731
     sensors, cameras = _truthy(get("sensors")), _truthy(get("camera_sensors"))
     veh = yaml.safe_load(open(os.path.join(DESC, "config", "vehicle.yaml")))
@@ -59,7 +59,6 @@ def _bridge_and_controllers(context, spawn):
                 bridge.append(entry(f"/{n}/fix", f"/{n}/fix", "sensor_msgs/msg/NavSatFix", "gz.msgs.NavSat"))
             elif s["type"] == "camera":
                 cams.append(n)
-        cams.append("ptz_camera")
     if cameras:
         for c in cams:
             bridge.append(entry(f"/{c}/image_raw", f"/{c}/image_raw", "sensor_msgs/msg/Image", "gz.msgs.Image"))
@@ -75,8 +74,6 @@ def _bridge_and_controllers(context, spawn):
     # switch timeout is generous because a CPU-rendered sensor suite can slow the
     # simulation well below real time.
     names = ["joint_state_broadcaster", "steering_position_controller", "wheel_velocity_controller"]
-    if sensors:
-        names.append("ptz_controller")
     controllers = Node(
         package="controller_manager", executable="spawner", output="screen",
         arguments=names + ["--controller-manager", "/controller_manager", "--controller-manager-timeout", "120",

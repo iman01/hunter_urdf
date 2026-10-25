@@ -5,7 +5,7 @@
   Arguments
     sim_mode        none | gz | mock | hardware   (ros2_control backend; none = no ros2_control tag)
     controllers_file  absolute path of the ros2_control controller YAML (required for sim_mode:=gz)
-    sensors         true | false                    (lidars, cameras, GNSS, IMU, PTZ)
+    sensors         true | false                    (lidars, cameras, GNSS, IMU)
     camera_sensors  true | false                    (Gazebo camera sensors; frames are always present)
     lidar_resolution  0..1 fraction of the lidar's native horizontal samples simulated
     visual_detail   mesh | primitive                (primitive = boxes/cylinders, faster rendering)
@@ -30,7 +30,6 @@
   <xacro:property name="sensors_on" value="${'$(arg sensors)'.lower() in ('true', '1')}"/>
   <xacro:property name="camera_sensors" value="${'$(arg camera_sensors)'.lower() in ('true', '1')}"/>
   <xacro:property name="lidar_resolution" value="$(arg lidar_resolution)"/>
-  <xacro:property name="has_ptz" value="${sensors_on}"/>
   <xacro:property name="visual_detail" value="$(arg visual_detail)"/>
 
   <xacro:include filename="include/common.xacro"/>

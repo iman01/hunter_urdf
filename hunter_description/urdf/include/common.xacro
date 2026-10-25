@@ -3,11 +3,18 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <!-- ===================================================== materials -->
-  <!-- Olive green body paint (approx. RAL 6031). -->
-  <material name="hunter_green"><color rgba="0.247 0.290 0.180 1.0"/></material>
-  <material name="hunter_green_dark"><color rgba="0.180 0.212 0.137 1.0"/></material>
+  <!-- Matte grey-olive body paint as photographed (NATO-green family). -->
+  <material name="hunter_green"><color rgba="0.262 0.302 0.235 1.0"/></material>
+  <material name="hunter_green_dark"><color rgba="0.200 0.232 0.180 1.0"/></material>
+  <material name="hunter_green_light"><color rgba="0.330 0.370 0.290 1.0"/></material>
+  <!-- Front sensor band, frame tunnel, tray floor. -->
+  <material name="hull_black"><color rgba="0.060 0.060 0.065 1.0"/></material>
+  <!-- Wheel-arch trims and the sloped rear lip. -->
+  <material name="trim_anthracite"><color rgba="0.170 0.180 0.180 1.0"/></material>
+  <material name="pin_blue"><color rgba="0.100 0.300 0.800 1.0"/></material>
+  <material name="tiedown_orange"><color rgba="0.900 0.450 0.080 1.0"/></material>
   <material name="tyre_black"><color rgba="0.055 0.055 0.055 1.0"/></material>
-  <material name="rim_dark"><color rgba="0.200 0.220 0.170 1.0"/></material>
+  <material name="rim_dark"><color rgba="0.100 0.100 0.100 1.0"/></material>
   <material name="steel"><color rgba="0.420 0.430 0.440 1.0"/></material>
   <material name="steel_dark"><color rgba="0.250 0.255 0.260 1.0"/></material>
   <material name="chrome"><color rgba="0.780 0.790 0.800 1.0"/></material>

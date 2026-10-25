@@ -17,7 +17,7 @@ odom (wheel odometry, four_ws_controller)
       │        │        └─ front_left_wheel_link   tyre + beadlock rim (102 kg)
       │        └─ front_right_...
       ├─ rear_axle_... (droop 0.095 / bump 0.155 m; the rear axle is a front axle turned by 180 deg)
-      └─ sensors (fixed): front/rear_lidar, cameras + optical frames, gnss, imu, PTZ (pan/tilt joints)
+      └─ sensors (fixed): front/rear_lidar, cameras + optical frames, gnss, imu
 ```
 
 Every camera has a `<name>_optical_frame` (z forward) used as the `frame_id` of its images. Lidar points are in `<name>_sensor_frame` (optical centre). The odometry publishes `odom -> base_footprint`, so the tree stays single-parented (REP 105).
@@ -94,21 +94,24 @@ Consequences you will see in simulation: tiny tyre scrub in 2WS (the trapezoid o
 
 Two PMSM traction motors (PIAP notice ZWR/01/2018: up to 700 VDC, at least 4500 rpm at full load), one on each axle's pinion, 90 kW continuous / 220 kW peak in total. A reduction of 2.98:1 ahead of the 5.38 ring-and-pinion is estimated so the motors reach 4500 rpm at 52 km/h. In the simulation each wheel is velocity controlled with a 4300 N m torque limit (peak motor torque through the gearing, split by the differential); the controller's `electronic` differential mode commands kinematically consistent wheel speeds and `locked` equal speeds per axle.
 
+## Hull
+
+The hull is the closed, faceted body of the 2023-2025 vehicle, measured off press photos against the 1 m wheel (status `photo` in the design report). It is assembled from convex plate bodies in `tools/generate_meshes.py`: the full-width upper hull over the wheels (arch tops 1.20 m, deck 1.46 m, side flanks leaning ~20 deg inward), the nose block with the ~41 deg glacis, the black sensor band (0.80-1.07 m, flat centre, ends wrapped back to the corners with two LED lamps each), the chin whose lower plates converge on the front tow bar, the tub between the wheels (trapezoidal in side view, sides leaning inward), and the rear: a dark anthracite section with a gently sloping rear deck and a steep rear face above the olive rear panel, open underneath. Where no photo shows a detail squarely, the replica's clearances decide: the nose and tail blocks start ahead of the steered tyre sweep (1.97 m), the arch tops sit above the tyre at full bump, and the inclined tub ends stay clear of the axle motors. `tools/check_clearance.py` verifies the hull meshes against tyres, wheels, axles and knuckles over the steering lock and the per-wheel suspension travel.
+
 ## Mass and inertia
 
-The 3500 kg kerb mass is split into a documented budget (genset 360 kg, battery 300 kg, power electronics, cooling, fuel, body, frame as the remainder). The sensors are separate URDF links (about 15 kg) and are taken out of the budget, so the model totals 3500 kg. The chassis inertia tensor is the parallel-axis sum of the budget blocks: Ixx 700, Iyy 3930, Izz 4421 kg m^2 about the sprung COM at 0.98 m height, 0.14 m ahead of mid-wheelbase. The axle link inertia is likewise a parallel-axis sum (housing, motor, actuator) about its own COM.
+The 3500 kg kerb mass is split into a documented budget (kept from the 2020 open-deck build when the hull was reshaped, so the dynamics validation stays valid; the closed hull would raise the CG by roughly 2 cm): genset 360 kg, battery 300 kg, power electronics, cooling, fuel, body, frame as the remainder. The sensors are separate URDF links (about 4 kg) and are taken out of the budget, so the model totals 3504 kg. The chassis inertia tensor is the parallel-axis sum of the budget blocks: Ixx 700, Iyy 3930, Izz 4421 kg m^2 about the sprung COM at 0.98 m height, 0.14 m ahead of mid-wheelbase. The axle link inertia is likewise a parallel-axis sum (housing, motor, actuator) about its own COM.
 
 ## Sensors
 
 | Sensor | Model in the replica | Basis |
 |---|---|---|
-| 2 x 3D lidar | 32 channel, 360 x 45 deg, 120 m, 10 Hz, front and rear deck posts | "two lidars" (2020); make, model and position not published |
-| Driving cameras | front + rear, 100 deg HFOV | poster: front and rear driving cameras |
-| Side cameras | 2 per side, 120 deg, angled fore/aft | poster: two side cameras per side; Defence24 2023: "four perimeter cameras" |
-| Top-view cameras | 2 on the front/rear railing, pitched 50 deg down | poster: cameras on the railing for top views, count not published (2 makes the 2020 total 9) |
-| PTZ | mast at the front deck, pan continuous, tilt -90..+45 deg | 2020 |
+| 2 x 3D lidar | 32 channel, 360 x 45 deg, 120 m, 10 Hz; front on a short post at the deck front edge, rear on a post on the rear deck | "two lidars" (2020), "lidars" (2025); make, model and position not published |
+| Driving cameras | front in the centre of the black sensor band, rear at the top of the rear panel, 100 deg HFOV | poster: front and rear driving cameras; photos: camera ports in the band |
+| Side cameras | 2 per side in the upper flanks, 120 deg, angled fore/aft | poster: two side cameras per side; Defence24 2023: "four perimeter cameras" |
+| Top-view cameras | front on the left deck-corner outrigger, rear on a post at the right rear deck corner, pitched 50 deg down | poster: cameras on the (2020) railing for top views, count not published (2 makes the 2020 total 9); photos: outriggers at both front deck corners |
 | GNSS, IMU | navsat + IMU with noise | "GPS receiver"; IMU assumed |
 
 ## Collision model
 
-Hull: deck/fenders, centre tub, keel/tunnels (above the highest axle-mounted part at full bump), nose, tail and front/rear bumpers, matching the visual hull. Axles: a sphere at each differential (the lowest point, 0.327 m ground clearance). Tyres: cylinders, unnamed so the tyre friction (mu 0.9) reaches Gazebo. Gazebo uses DART with the Bullet collision detector at a 1 ms step.
+Hull (16 boxes, two of them inclined): upper hull, glacis plate, sensor band, chin, tub (three tiers following its trapezoidal sides), keel/tunnels (above the highest axle-mounted part at full bump), rear upper hull, rear deck and rear face plates, rear panel and the two tow bars, matching the visual hull. The lowest points are the tow bars (0.40 m front, 0.50 m rear). Axles: a sphere at each differential (the lowest point, 0.327 m ground clearance). Tyres: cylinders, unnamed so the tyre friction (mu 0.9) reaches Gazebo. Gazebo uses DART with the Bullet collision detector at a 1 ms step.

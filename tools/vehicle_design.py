@@ -10,6 +10,8 @@ Each input carries its status and source:
   design     - an engineering choice made for this replica, consistent with the
                published constraints (e.g. spring rates sized for the published
                25 cm stroke)
+  photo      - measured off press photos of the 2023-2025 vehicle, scaled by the
+               published 1 m wheel (see PHOTOS; typically +/-5 to 10 %)
 
 Outputs
   hunter_description/config/vehicle.yaml   consumed by xacro, controllers, mesh generator
@@ -72,6 +74,12 @@ SOURCES: Dict[str, str] = {
               "pattern, ~358 mm vented rotors, 2-piston calipers (generic crate axle, not HUNTeR-confirmed)",
     "ZBIAM23": "Zbiam, 2023 field-trial report: differential locks and two steering axles, 1 m wheels, "
                "over 50 km/h",
+    "PHOTOS": "Press photos of the 2023-2025 vehicle, measured against the 1 m wheel: FEX-24 Nowa Deba front "
+              "3/4 (M. Fortuna-Ptasiewicz, Lukasiewicz-PIAP), OPEX 2025 rear 3/4 side (S. Puchalski), Eurosatory "
+              "2024 head-on (Milmag), Italian Army trial head-on (2025), FEX-23 front 3/4 with ZMU-03. They show a "
+              "closed, faceted, windowless hull: flat deck, sloped front glacis above a full-width black sensor "
+              "band with 2+2 LED headlights, a narrow chin with a tow bar and two shackles, large angular wheel "
+              "arches with dark trims, inward-leaning side panels, and a stepped-down rear tray above a sloped lip",
 }
 # General knowledge used for one comparison (not from the research sources):
 # Jeep Wrangler JK Unlimited wheelbase 2.946 m, the vehicle the Ultimate Dana 60 crate axle is sold for.
@@ -190,34 +198,101 @@ WHEEL_IXX = par("wheel.ixx", 0.5 * WHEEL_IYY + M_WHEEL * TYRE_W ** 2 / 12.0, "kg
 # 5. Hull geometry (base_link frame: x fwd, z up, origin mid-wheelbase at
 #    wheel-centre height at kerb static; heights below are above ground)
 # ==========================================================================
-H_DECK_TOP = par("body.deck_height", 1.35, "m", "estimated",
-                 "1 m wheels + 156 mm bump + clearance => fenders/deck at ~1.2 m; 0.15 m deck structure")
+# The hull follows the vehicle as photographed 2023-2025 (PHOTOS): a closed,
+# faceted body. Heights were measured against the 1 m wheel; where the photos
+# leave room, the replica's own clearances decide (tyre at full bump and full
+# lock, axle-mounted parts). All convex pieces are listed in generate_meshes.py.
+H_DECK_TOP = par("body.deck_height", 1.46, "m", "photo",
+                 "deck edge above the near rear wheel in the OPEX 2025 photo: 1.44-1.49 m (two crops); upper "
+                 "flank ~0.25 m tall above the arch tops")
 H_DECK_BOTTOM = par("body.wheel_arch_height", 1.20, "m", "derived",
-                    "tyre top at full bump (R_coll + R + bump) + ~5 cm clearance")
-H_RAIL = par("body.railing_height", 0.25, "m", "estimated", "deck railing carrying top-view cameras (POSTER21)")
+                    "tyre top at full bump (R_coll + R + bump) + ~5 cm clearance; matches the arch tops in PHOTOS")
+Y_CHINE = par("body.chine_half_width", 1.06, "m", "photo",
+              "widest point of the upper hull, at the arch tops, flush with the tyre outer faces (1.073 m)")
+Y_DECK = par("body.deck_half_width", 0.96, "m", "photo", "upper side flanks lean inward ~20 deg (tumblehome)")
+X_DECK_FRONT = par("body.deck_front_x", 1.86, "m", "photo",
+                   "front edge of the flat deck; the glacis below it slopes ~41 deg down to the sensor band")
+Y_DECK_FRONT = par("body.deck_front_half_width", 0.82, "m", "photo",
+                   "flat part of the deck front edge; small triangular facets at the glacis top corners")
+H_BAND_TOP = par("body.band_top_height", 1.07, "m", "photo", "top of the black front sensor band")
+H_BAND_BOTTOM = par("body.band_bottom_height", 0.80, "m", "photo",
+                    "bottom of the band; band ~0.27 m tall, about as tall as the lower nose below it")
+Y_BAND_FLAT = par("body.band_flat_half_width", 0.56, "m", "photo",
+                  "flat centre of the nose; outboard the band wraps back to the corners, which carry 2 LED lamps each")
+X_BAND_CORNER = par("body.band_corner_x", 2.05, "m", "photo", "where the angled band ends meet the hull sides")
+Y_BAND = par("body.band_half_width", 1.04, "m", "photo", "band at the hull corners, the widest part in front view")
+H_CHIN_BOTTOM = par("body.chin_bottom_height", 0.52, "m", "photo",
+                    "lower nose plates run from the band ends inward and down to the tow bar")
+Y_CHIN = par("body.chin_half_width", 0.50, "m", "photo", "chin width at the tow bar, between the front tyres")
+H_NOSE_BOTTOM = par("body.nose_bottom_height", 0.40, "m", "photo",
+                    "lower edge of the front tow bar (rear: 0.44 m), the lowest point of the overhangs")
 H_TUB_BOTTOM = par("body.belly_height", 0.47, "m", "design", "battery/equipment tub between the axles")
-H_NOSE_BOTTOM = par("body.nose_bottom_height", 0.66, "m", "design", "front/rear bumper lower edge, sets ~39 deg approach")
-X_TUB = par("body.tub_half_length", 0.60, "m", "design", "clear of the axle motors (end at ~0.65 m) and tyres")
-Y_TUB = par("body.tub_half_width", 1.00, "m", "design", "")
+X_TUB = par("body.tub_half_length", 0.75, "m", "photo",
+             "tub side panel between the wheels is a trapezoid (PHOTOS): long at the arch tops, short at the belly")
+X_TUB_BOTTOM = par("body.tub_bottom_half_length", 0.45, "m", "design",
+                   "photo suggests ~0.37 m at 0.56 m height; kept at 0.45 m so the tub still covers the lower-link "
+                   "chassis brackets (x 0.40 m); the inclined ends stay clear of the axle motors at full bump")
+Y_TUB = par("body.tub_half_width", 1.00, "m", "photo",
+            "tub sides between the wheels lean inward: 1.00 m at the arch tops, 0.92 m at 0.75 m, 0.70 m at the belly")
+Y_TUB_BOTTOM = par("body.tub_bottom_half_width", 0.70, "m", "photo", "see body.tub_half_width")
 Y_KEEL = par("body.keel_half_width", 0.38, "m", "derived", "inside the steered-tyre sweep (~0.45 m at 35 deg lock)")
-X_NOSE = par("body.nose_start", 1.97, "m", "derived", "ahead of the steered front tyre sweep (1.93 m)")
+X_NOSE = par("body.nose_start", 1.97, "m", "derived",
+             "rear face of the nose and tail blocks, ahead of the steered front tyre sweep (1.93 m)")
+X_TRAY = par("body.rear_tray_start", -1.60, "m", "photo",
+              "the deck steps down here to a dark anthracite rear deck that slopes gently to the rear edge")
+H_TRAY = par("body.rear_tray_height", 1.38, "m", "photo", "rear deck height at the step (0.08 m below the deck)")
+X_TRAY_END = par("body.rear_tray_end", -2.18, "m", "photo", "rear edge of the rear deck")
+H_TRAY_END = par("body.rear_deck_edge_height", 1.30, "m", "photo",
+                 "rear deck at its rear edge; below it a steep dark face runs down to the olive rear panel")
+H_TAIL_TOP = par("body.rear_panel_top_height", 1.05, "m", "photo", "top of the near-vertical olive rear panel")
+H_TAIL_PANEL_BOTTOM = par("body.rear_panel_bottom_height", 0.68, "m", "photo",
+                          "lower edge of the rear panel; under it the rear axle and links are exposed")
+H_TAIL_BOTTOM = par("body.rear_bottom_height", 0.50, "m", "photo", "lower edge of the rear tow bar (bar 0.50-0.62 m)")
 
 hz = lambda h: h - R_COLL  # noqa: E731  height above ground -> base_link z
-COLLISION_BOXES = []  # [cx, cy, cz, sx, sy, sz]
+COLLISION_BOXES = []  # [cx, cy, cz, sx, sy, sz, pitch]
 
 
 def box(x0, x1, y0, y1, h0, h1):
     COLLISION_BOXES.append([round((x0 + x1) / 2, 4), round((y0 + y1) / 2, 4), round((hz(h0) + hz(h1)) / 2, 4),
-                            round(x1 - x0, 4), round(y1 - y0, 4), round(h1 - h0, 4)])
+                            round(x1 - x0, 4), round(y1 - y0, 4), round(h1 - h0, 4), 0.0])
+
+
+def slab(xa, ha, xb, hb, half_width, thickness):
+    """Plate whose top surface runs from (xa, ha) to (xb, hb) in the x-z plane, `thickness` below it."""
+    run, rise = xb - xa, hb - ha
+    length = math.hypot(run, rise)
+    ux, uz = run / length, rise / length
+    nx, nz = -uz, ux                       # normal on the upper side of the plate
+    if nz < 0:
+        nx, nz = -nx, -nz
+    cx = (xa + xb) / 2 - nx * thickness / 2
+    ch = (ha + hb) / 2 - nz * thickness / 2
+    pitch = -math.atan2(uz, ux) if ux > 0 else -math.atan2(-uz, -ux)
+    COLLISION_BOXES.append([round(cx, 4), 0.0, round(hz(ch), 4), round(length, 4), round(2 * half_width, 4),
+                            round(thickness, 4), round(pitch, 4)])
 
 
 HL = L_OVERALL / 2.0
-box(-HL + 0.05, HL - 0.05, -W_OVERALL / 2, W_OVERALL / 2, H_DECK_BOTTOM, H_DECK_TOP)       # deck / fenders
-box(-X_TUB, X_TUB, -Y_TUB, Y_TUB, H_TUB_BOTTOM, H_DECK_BOTTOM)                              # centre tub
-box(X_NOSE, HL, -1.0, 1.0, H_NOSE_BOTTOM + 0.12, H_DECK_BOTTOM)                             # front nose
-box(-HL, -X_NOSE, -1.0, 1.0, H_NOSE_BOTTOM + 0.12, H_DECK_BOTTOM)                           # rear tail
-box(HL - 0.11, HL, -0.95, 0.95, H_NOSE_BOTTOM, H_NOSE_BOTTOM + 0.14)                         # front bumper
-box(-HL, -HL + 0.11, -0.95, 0.95, H_NOSE_BOTTOM, H_NOSE_BOTTOM + 0.14)                       # rear bumper
+box(X_TRAY, X_DECK_FRONT, -Y_CHINE, Y_CHINE, H_DECK_BOTTOM, H_DECK_TOP)                      # upper hull
+slab(HL - 0.02, H_BAND_TOP, X_DECK_FRONT, H_DECK_TOP, Y_DECK_FRONT, 0.20)                     # glacis
+box(X_DECK_FRONT, X_BAND_CORNER + 0.05, -Y_BAND, Y_BAND, H_BAND_TOP, H_DECK_BOTTOM)          # under the glacis
+box(X_NOSE, HL - 0.02, -Y_BAND_FLAT, Y_BAND_FLAT, H_BAND_BOTTOM, H_BAND_TOP)                 # sensor band, centre
+box(X_NOSE, X_BAND_CORNER + 0.07, -Y_BAND, -Y_BAND_FLAT, H_BAND_BOTTOM, H_BAND_TOP)          # band, right end
+box(X_NOSE, X_BAND_CORNER + 0.07, Y_BAND_FLAT, Y_BAND, H_BAND_BOTTOM, H_BAND_TOP)            # band, left end
+box(X_NOSE, HL - 0.04, -Y_CHIN, Y_CHIN, H_CHIN_BOTTOM, H_BAND_BOTTOM)                        # chin
+box(HL - 0.10, HL, -0.52, 0.52, H_NOSE_BOTTOM, H_CHIN_BOTTOM)                                # front tow bar
+box(-0.66, 0.66, -Y_TUB + 0.02, Y_TUB - 0.02, 0.95, H_DECK_BOTTOM)                          # tub, upper
+box(-0.53, 0.53, -0.88, 0.88, 0.62, 0.95)                                                     # tub, middle
+box(-X_TUB_BOTTOM, X_TUB_BOTTOM, -0.74, 0.74, H_TUB_BOTTOM, 0.62)                             # tub, lower
+box(X_TRAY_END, X_TRAY, -Y_CHINE, Y_CHINE, H_DECK_BOTTOM, H_TRAY_END)                          # rear upper hull
+box(-X_BAND_CORNER - 0.13, -X_NOSE, -Y_BAND, Y_BAND, H_TAIL_TOP, H_DECK_BOTTOM)              # behind the rear face
+slab(X_TRAY_END, H_TRAY_END, X_TRAY, H_TRAY, Y_DECK - 0.02, 0.10)                              # rear deck
+slab(-HL + 0.02, H_TAIL_TOP, X_TRAY_END, H_TRAY_END, Y_BAND - 0.10, 0.20)                      # rear upper face
+box(-HL + 0.02, -X_NOSE, -0.60, 0.60, H_TAIL_PANEL_BOTTOM, H_TAIL_TOP)                         # rear panel, centre
+box(-X_BAND_CORNER - 0.07, -X_NOSE, -Y_BAND, -0.60, H_TAIL_PANEL_BOTTOM, H_TAIL_TOP)           # rear panel, right
+box(-X_BAND_CORNER - 0.07, -X_NOSE, 0.60, Y_BAND, H_TAIL_PANEL_BOTTOM, H_TAIL_TOP)             # rear panel, left
+box(-HL, -HL + 0.10, -0.52, 0.52, H_TAIL_BOTTOM, H_TAIL_BOTTOM + 0.12)                         # rear tow bar
 
 # ==========================================================================
 # 6. Sprung mass budget (2020 prototype, open deck, no payload)
@@ -236,9 +311,10 @@ SPRUNG_ITEMS: List[Tuple[str, float, Tuple[float, float, float], Tuple[float, fl
     ("cooling (radiators, BTMS chiller, fans)", 70.0, (2.15, 0.0, 1.00), (0.35, 1.60, 0.45), "behind the front grille"),
     ("24 V system, computers, radios, harness", 140.0, (0.0, 0.0, 1.00), (1.00, 1.60, 0.30), "centre tub, upper"),
     ("lights, sensor brackets, cabling", 30.0, (1.6, 0.0, 1.45), (1.0, 1.6, 0.4),
-     "the sensors themselves (~15 kg incl. PTZ) are separate URDF links"),
+     "the sensors themselves (~4 kg) are separate URDF links"),
     ("suspension (sprung half of links, coil-overs, anti-roll bars)", 70.0, (0.0, 0.0, 0.95), (2.7, 1.3, 0.3), ""),
-    ("deck plates and railing", 300.0, (0.0, 0.0, 1.30), (4.6, 2.2, 0.15), "steel/aluminium deck"),
+    ("deck plates and upper body panels", 300.0, (0.0, 0.0, 1.30), (4.6, 2.2, 0.15),
+     "steel/aluminium; budget kept from the 2020 open-deck build, see MODEL.md"),
     ("left side panels, fender, bumper half", 110.0, (0.0, 0.95, 1.00), (4.6, 0.15, 0.5), ""),
     ("right side panels, fender, bumper half", 110.0, (0.0, -0.95, 1.00), (4.6, 0.15, 0.5), ""),
 ]
@@ -482,16 +558,25 @@ def tangent_angle(px, ph, cx, ch, r):
 
 
 APPROACH = tangent_angle(HL, H_NOSE_BOTTOM, WHEELBASE / 2, R_COLL, R_FREE)
+DEPARTURE = tangent_angle(HL, H_TAIL_BOTTOM, WHEELBASE / 2, R_COLL, R_FREE)
 BREAKOVER = 2 * tangent_angle(0.0, H_TUB_BOTTOM, WHEELBASE / 2, R_COLL, R_FREE)
-par("performance.approach_angle", APPROACH, "deg", "derived", "nose lower edge tangent to the front tyre")
+par("performance.approach_angle", APPROACH, "deg", "derived", "front tow bar lower edge tangent to the front tyre")
+par("performance.departure_angle", DEPARTURE, "deg", "derived", "rear tow bar lower edge tangent to the rear tyre")
 par("performance.breakover_angle", BREAKOVER, "deg", "derived", "belly centre tangent to both tyres")
 par("performance.ground_clearance", CLR_DIFF, "m", "derived", "under the differential housings")
 
 # ==========================================================================
 # 12. Sensors (positions in base_link; heights above ground converted)
+#     Mounting points follow the photographed hull: driving camera in the
+#     front sensor band, side cameras in the upper flanks, top-view cameras on
+#     the outriggers at the deck corners, lidars on short deck posts.
 # ==========================================================================
 z_deck = hz(H_DECK_TOP)
-z_rail = hz(H_DECK_TOP + H_RAIL)
+
+
+def flank_y(h):
+    """Half-width of the inward-leaning upper side flank at height h (above ground)."""
+    return Y_CHINE - (h - H_DECK_BOTTOM) / (H_DECK_TOP - H_DECK_BOTTOM) * (Y_CHINE - Y_DECK)
 
 
 def S(name, kind, xyz, rpy, **kw):
@@ -500,39 +585,45 @@ def S(name, kind, xyz, rpy, **kw):
     return d
 
 
+H_SIDE_CAM = 1.33
+Y_SIDE_CAM = flank_y(H_SIDE_CAM) + 0.015
+OUTRIGGER = (X_DECK_FRONT - 0.12, Y_DECK + 0.06, 1.62)   # front corner outrigger, camera head (h above ground)
 SENSORS = [
-    # Two 3D lidars (JANES20/MILMAG20): front and rear, on sensor brackets above the deck edge.
-    S("front_lidar", "lidar", (HL - 0.10, 0.0, z_deck + 0.22), (0, 0, 0),
+    # Two 3D lidars (JANES20/MILMAG20; MILMAG25 'lidars'): positions not published. Front: short post at the
+    # deck front edge, over the glacis. Rear: post rising from the rear deck, near its rear edge.
+    S("front_lidar", "lidar", (X_DECK_FRONT - 0.08, 0.0, hz(H_DECK_TOP + 0.12)), (0, 0, 0),
       model="32-channel spinning 3D lidar (Ouster OS1-32 class)", hfov_deg=360, vfov_deg=45,
       h_samples=1024, v_samples=32, range_min=0.5, range_max=120.0, rate=10.0),
-    S("rear_lidar", "lidar", (-HL + 0.10, 0.0, z_deck + 0.22), (0, 0, math.pi),
+    S("rear_lidar", "lidar", (X_TRAY_END + 0.18, 0.0, hz(H_DECK_TOP + 0.12)), (0, 0, math.pi),
       model="32-channel spinning 3D lidar (Ouster OS1-32 class)", hfov_deg=360, vfov_deg=45,
       h_samples=1024, v_samples=32, range_min=0.5, range_max=120.0, rate=10.0),
-    # Driving cameras front and rear (POSTER21 'front and rear driving cameras').
-    S("front_drive_camera", "camera", (HL - 0.02, 0.0, hz(1.10)), (0, math.radians(8), 0),
+    # Driving cameras (POSTER21): front in the centre of the black sensor band (PHOTOS: camera ports there),
+    # rear at the top of the rear panel.
+    S("front_drive_camera", "camera", (HL - 0.005, 0.0, hz(0.5 * (H_BAND_TOP + H_BAND_BOTTOM))),
+      (0, math.radians(8), 0), hfov_deg=100, width=1280, height=720, rate=30.0),
+    S("rear_drive_camera", "camera", (-HL + 0.005, 0.0, hz(H_TAIL_TOP - 0.08)), (0, math.radians(8), math.pi),
       hfov_deg=100, width=1280, height=720, rate=30.0),
-    S("rear_drive_camera", "camera", (-HL + 0.02, 0.0, hz(1.10)), (0, math.radians(8), math.pi),
-      hfov_deg=100, width=1280, height=720, rate=30.0),
-    # Side / perimeter cameras, 2 per side (POSTER21; D24_23 'four perimeter cameras').
-    S("left_front_camera", "camera", (1.10, W_OVERALL / 2 - 0.01, hz(1.28)), (0, math.radians(25), math.radians(60)),
+    # Side / perimeter cameras, 2 per side (POSTER21; D24_23 'four perimeter cameras'), in the upper flanks.
+    S("left_front_camera", "camera", (1.10, Y_SIDE_CAM, hz(H_SIDE_CAM)), (0, math.radians(25), math.radians(60)),
       hfov_deg=120, width=1280, height=720, rate=15.0),
-    S("left_rear_camera", "camera", (-1.10, W_OVERALL / 2 - 0.01, hz(1.28)), (0, math.radians(25), math.radians(120)),
+    S("left_rear_camera", "camera", (-1.10, Y_SIDE_CAM, hz(H_SIDE_CAM)), (0, math.radians(25), math.radians(120)),
       hfov_deg=120, width=1280, height=720, rate=15.0),
-    S("right_front_camera", "camera", (1.10, -W_OVERALL / 2 + 0.01, hz(1.28)), (0, math.radians(25), math.radians(-60)),
+    S("right_front_camera", "camera", (1.10, -Y_SIDE_CAM, hz(H_SIDE_CAM)), (0, math.radians(25), math.radians(-60)),
       hfov_deg=120, width=1280, height=720, rate=15.0),
-    S("right_rear_camera", "camera", (-1.10, -W_OVERALL / 2 + 0.01, hz(1.28)), (0, math.radians(25), math.radians(-120)),
+    S("right_rear_camera", "camera", (-1.10, -Y_SIDE_CAM, hz(H_SIDE_CAM)), (0, math.radians(25), math.radians(-120)),
       hfov_deg=120, width=1280, height=720, rate=15.0),
-    # Top-view cameras on the deck railing (POSTER21), looking down at the wheels/terrain ahead and behind.
-    # Mounted on the front/rear railing beside (not behind) the lidar posts.
-    S("top_front_camera", "camera", (HL - 0.08, 0.45, z_rail + 0.06), (0, math.radians(50), 0),
+    # Top-view cameras (POSTER21: 'on the railing' of the 2020 prototype). The current hull has no railing;
+    # PHOTOS show outriggers at the front deck corners, so the front one sits on the left outrigger and the rear
+    # one on a post at the right rear deck corner, both looking down at the terrain ahead / behind.
+    S("top_front_camera", "camera", (OUTRIGGER[0] + 0.05, OUTRIGGER[1], hz(OUTRIGGER[2])), (0, math.radians(50), 0),
       hfov_deg=110, width=1280, height=720, rate=15.0),
-    S("top_rear_camera", "camera", (-HL + 0.08, -0.45, z_rail + 0.06), (0, math.radians(50), math.pi),
-      hfov_deg=110, width=1280, height=720, rate=15.0),
-    S("gnss", "navsat", (-1.60, 0.30, z_rail + 0.05), (0, 0, 0), rate=10.0),
+    S("top_rear_camera", "camera", (X_TRAY_END + 0.06, -(Y_DECK - 0.06), hz(H_DECK_TOP + 0.12)),
+      (0, math.radians(50), math.pi), hfov_deg=110, width=1280, height=720, rate=15.0),
+    S("gnss", "navsat", (-1.30, 0.35, z_deck + 0.05), (0, 0, 0), rate=10.0),
     S("imu", "imu", (0.0, 0.0, hz(0.95)), (0, 0, 0), rate=200.0),
 ]
-PTZ = {"mount_xyz": [round(HL - 0.55, 4), 0.0, round(z_deck, 4)], "mast_height": 0.55, "head_size": 0.22,
-       "hfov_wide_deg": 60.0, "hfov_tele_deg": 3.0, "tilt_min_deg": -45.0, "tilt_max_deg": 90.0}
+# The 2020 PTZ mast (POSTER21, MILMAG20) is not modelled: the 2023-2025 vehicles carry a weapon station or a
+# payload with its own sensor head in that place.
 
 # ==========================================================================
 # 13. Assemble vehicle.yaml
@@ -548,9 +639,22 @@ VEHICLE = {
     "chassis": {"wheelbase": WHEELBASE, "track": r4(TRACK)},
     "body": {
         "length": L_OVERALL, "width": W_OVERALL, "deck_height": H_DECK_TOP, "wheel_arch_height": H_DECK_BOTTOM,
-        "railing_height": H_RAIL, "belly_height": H_TUB_BOTTOM, "keel_height": H_KEEL_BOTTOM,
-        "nose_bottom_height": H_NOSE_BOTTOM, "tub_half_length": X_TUB, "tub_half_width": Y_TUB,
-        "keel_half_width": Y_KEEL, "nose_start": X_NOSE, "ground_z": r4(Z_GROUND),
+        "chine_half_width": Y_CHINE, "deck_half_width": Y_DECK,
+        "deck_front_x": X_DECK_FRONT, "deck_front_half_width": Y_DECK_FRONT,
+        "band_top_height": H_BAND_TOP, "band_bottom_height": H_BAND_BOTTOM,
+        "band_flat_half_width": Y_BAND_FLAT, "band_corner_x": X_BAND_CORNER, "band_half_width": Y_BAND,
+        "chin_bottom_height": H_CHIN_BOTTOM, "chin_half_width": Y_CHIN,
+        "nose_bottom_height": H_NOSE_BOTTOM, "rear_bottom_height": H_TAIL_BOTTOM,
+        "belly_height": H_TUB_BOTTOM, "keel_height": H_KEEL_BOTTOM,
+        "tub_half_length": X_TUB, "tub_half_width": Y_TUB, "tub_bottom_half_width": Y_TUB_BOTTOM,
+        "keel_half_width": Y_KEEL, "nose_start": X_NOSE,
+        "tub_bottom_half_length": X_TUB_BOTTOM,
+        "rear_tray_start": X_TRAY, "rear_tray_end": X_TRAY_END, "rear_tray_height": H_TRAY,
+        "rear_deck_edge_height": H_TRAY_END, "rear_panel_top_height": H_TAIL_TOP,
+        "rear_panel_bottom_height": H_TAIL_PANEL_BOTTOM,
+        "outrigger": [round(v, 4) for v in OUTRIGGER],
+        "ground_z": r4(Z_GROUND),
+        # [cx, cy, cz, sx, sy, sz, pitch] in base_link (pitch about y, for the glacis and the rear lip)
         "collision_boxes": COLLISION_BOXES,
     },
     "mass": {
@@ -610,7 +714,6 @@ VEHICLE = {
         "max_yaw_rate": 1.0, "max_lateral_accel": 3.5, "max_crab_speed": 3.0,
     },
     "sensors": SENSORS,
-    "ptz": PTZ,
 }
 
 
@@ -624,7 +727,8 @@ def report() -> str:
     w("_Generated by `tools/vehicle_design.py`. Do not edit by hand._\n\n")
     w("Every number in the URDF comes from this report. Status: **published** (PIAP or press quoting PIAP), "
       "**derived** (computed from published values), **estimated** (engineering estimate where nothing is "
-      "published), **design** (an engineering choice for this replica that respects the published constraints).\n\n")
+      "published), **design** (an engineering choice for this replica that respects the published constraints), "
+      "**photo** (measured off 2023-2025 press photos against the 1 m wheel, typically +/-5 to 10 %).\n\n")
     w("## Key results\n\n")
     rows = [
         ("Kerb mass (2020 prototype)", f"{m_total:.0f} kg", "published 3500 kg"),
@@ -653,7 +757,7 @@ def report() -> str:
         ("Continuous grade at 50 km/h", f"{grade_cont * 100:.0f} %", "90 kW x 0.92, 900 N rolling + aero"),
         ("Static stability factor", f"{SSF:.2f}", f"tilt-table angle {tilt:.1f} deg"),
         ("Ground clearance (diffs)", f"{CLR_DIFF:.3f} m", ""),
-        ("Approach / departure angle", f"{APPROACH:.0f} deg", "symmetric"),
+        ("Approach / departure angle", f"{APPROACH:.0f} / {DEPARTURE:.0f} deg", "tow bars are the lowest points of the overhangs"),
         ("Ramp breakover angle", f"{BREAKOVER:.0f} deg", ""),
         ("3-link instant centre", f"{x_ic:+.2f} m, {z_ic:+.2f} m", "axle frame, x outward"),
         ("Panhard lateral shift at full bump", f"{panhard_shift * 1000:.1f} mm", "neglected in the URDF"),

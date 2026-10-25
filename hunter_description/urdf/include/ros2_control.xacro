@@ -78,10 +78,6 @@
       <xacro:passive_iface name="front_axle_roll_joint"/>
       <xacro:passive_iface name="rear_axle_heave_joint"/>
       <xacro:passive_iface name="rear_axle_roll_joint"/>
-      <xacro:if value="${has_ptz}">
-        <xacro:position_iface name="ptz_pan_joint" lo="${-1e9}" hi="${1e9}"/>
-        <xacro:position_iface name="ptz_tilt_joint" lo="${-radians(V.ptz.tilt_max_deg)}" hi="${-radians(V.ptz.tilt_min_deg)}"/>
-      </xacro:if>
     </ros2_control>
   </xacro:macro>
 

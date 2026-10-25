@@ -1,13 +1,15 @@
 <?xml version="1.0"?>
-<!-- Hull / sprung mass of the HUNTeR replica. -->
+<!-- Hull / sprung mass of the HUNTeR replica.
+     Shape: the closed, faceted hull of the 2023-2025 vehicle (see docs/MODEL.md). -->
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <!-- Recursive helper: one <collision> per [cx, cy, cz, sx, sy, sz] entry. -->
+  <!-- Recursive helper: one <collision> per [cx, cy, cz, sx, sy, sz, pitch] entry
+       (pitch about y: the glacis and the rear lip are inclined plates). -->
   <xacro:macro name="box_collisions" params="boxes idx:=0">
     <xacro:if value="${len(boxes) > 0}">
       <xacro:property name="b" value="${boxes[0]}"/>
       <collision name="hull_collision_${idx}">
-        <origin xyz="${b[0]} ${b[1]} ${b[2]}" rpy="0 0 0"/>
+        <origin xyz="${b[0]} ${b[1]} ${b[2]}" rpy="0 ${b[6] if len(b) > 6 else 0} 0"/>
         <geometry><box size="${b[3]} ${b[4]} ${b[5]}"/></geometry>
       </collision>
       <xacro:box_collisions boxes="${boxes[1:]}" idx="${idx + 1}"/>
@@ -18,7 +20,7 @@
     <xacro:if value="${len(boxes) > 0}">
       <xacro:property name="b" value="${boxes[0]}"/>
       <visual name="hull_box_${idx}">
-        <origin xyz="${b[0]} ${b[1]} ${b[2]}" rpy="0 0 0"/>
+        <origin xyz="${b[0]} ${b[1]} ${b[2]}" rpy="0 ${b[6] if len(b) > 6 else 0} 0"/>
         <geometry><box size="${b[3]} ${b[4]} ${b[5]}"/></geometry>
         <material name="${material}"/>
       </visual>
@@ -48,8 +50,15 @@
       </inertial>
       <xacro:if value="${visual_detail == 'mesh'}">
         <xacro:mesh_visual name="hull" file="hull.stl" material="hunter_green"/>
+        <xacro:mesh_visual name="hull_black" file="hull_black.stl" material="hull_black"/>
+        <xacro:mesh_visual name="hull_trim" file="hull_trim.stl" material="trim_anthracite"/>
+        <xacro:mesh_visual name="hull_plates" file="hull_plates.stl" material="hunter_green_light"/>
+        <xacro:mesh_visual name="hull_glass" file="hull_glass.stl" material="glass"/>
         <xacro:mesh_visual name="hull_details" file="hull_details.stl" material="hunter_green_dark"/>
         <xacro:mesh_visual name="hull_steel" file="hull_steel.stl" material="steel_dark"/>
+        <xacro:mesh_visual name="hull_shackles" file="hull_shackles.stl" material="chrome"/>
+        <xacro:mesh_visual name="hull_shackle_pins" file="hull_shackle_pins.stl" material="pin_blue"/>
+        <xacro:mesh_visual name="hull_tiedowns" file="hull_tiedowns.stl" material="tiedown_orange"/>
         <xacro:mesh_visual name="lamps_white" file="lamps_white.stl" material="lamp_white"/>
         <xacro:mesh_visual name="lamps_amber" file="lamps_amber.stl" material="lamp_amber"/>
         <xacro:mesh_visual name="lamps_red" file="lamps_red.stl" material="lamp_red"/>

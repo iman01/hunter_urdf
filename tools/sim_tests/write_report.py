@@ -65,9 +65,8 @@ w("## Configurations\n")
 w("| Check | Expected | Measured |\n|---|---|---|")
 w("| Sensors (rendered under Xvfb, CPU): lidar clouds 16384 points, 1280x720 images, NavSat, IMU | published | "
   "published, frame ids = optical / sensor frames |\n")
-w("Sensor images from the simulation (front driving camera and PTZ looking at the off-road course):\n")
+w("Sensor image from the simulation (front driving camera looking at the off-road course):\n")
 w("![front driving camera](images/sim_front_drive_camera.png)\n")
-w("![PTZ camera](images/sim_ptz_camera.png)\n")
 w("## Static tests (`colcon test`)\n")
 w("* `hunter_description/test/test_urdf.py`: 5 configurations; `check_urdf`; total mass within 1 % of the published "
   "3500 kg kerb mass; every inertia positive definite and "
