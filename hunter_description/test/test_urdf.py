@@ -33,9 +33,10 @@ MASS_TOL = 0.01
 def xacro(args):
     if shutil.which("xacro") is None:
         pytest.skip("xacro not available")
-    env = dict(os.environ)
-    # Resolve $(find hunter_description) to this source tree when not installed.
-    return subprocess.check_output(["xacro", XACRO] + args.split(), text=True, env=env)
+    # Includes are resolved relative to the top-level file ($(dirname)); pass the
+    # parameter file explicitly so the source tree under test is used throughout.
+    return subprocess.check_output(
+        ["xacro", XACRO, f"vehicle_file:={os.path.join(PKG, 'config', 'vehicle.yaml')}"] + args.split(), text=True)
 
 
 @pytest.fixture(scope="module", params=CONFIGS, ids=[c[0] or "default" for c in CONFIGS])

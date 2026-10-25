@@ -10,27 +10,30 @@ Every number in the URDF comes from this report. Status: **published** (PIAP or 
 |---|---|---|
 | Kerb mass (2020 prototype) | 3500 kg | published 3500 kg |
 | Sprung / unsprung | 2394 / 1106 kg | mass budget |
-| CG height (kerb) | 0.832 m |  |
-| CG x (from mid-wheelbase) | +0.102 m | front axle share 53.8 % |
+| CG height (kerb) | 0.829 m |  |
+| CG x (from mid-wheelbase) | +0.096 m | front axle share 53.5 % |
 | Track (tyre centres) | 1.8034 m | Dana 60 WMS 70 in + wheel offset |
 | Kingpin track | 1.538 m |  |
 | Rolling / static loaded radius | 0.4918 / 0.4755 m | tyre deflection 24.5 mm |
-| Wheel rate / damping per corner | 62.7 kN/m / 4.29 kN s/m | 1.5 Hz, zeta 0.35 |
-| Travel bump / droop | 146 / 104 mm | published stroke 250 mm |
-| Roll gradient | 4.6 deg/g | roll centre 0.592 m |
+| Wheel rate per corner front / rear | 70.5 / 55.2 kN/m | 1.5 Hz at both ends |
+| Damping per corner front / rear | 4.78 / 3.81 kN s/m | zeta 0.35 |
+| Travel bump / droop front | 158 / 92 mm | published stroke 250 mm |
+| Travel bump / droop rear | 155 / 95 mm |  |
+| Roll stiffness front / rear (incl. tyres) | 61.7 / 52.2 kN m/rad |  |
+| Roll gradient | 5.0 deg/g | roll centre 0.592 m |
 | Axle articulation | +/-7.9 deg |  |
-| Wheel-hop frequency | 6.1 Hz | heavy e-axles |
-| Steering lock | 35 deg | trapezoid beta 38.2 deg, RMS Ackermann error 0.35 deg (stock Jeep JK arms: 4.3 deg) |
+| Wheel-hop frequency | 6.2 Hz | heavy e-axles |
+| Steering lock | 35 deg | trapezoid beta 38.2 deg, RMS Ackermann error 0.35 deg (arms laid out for a 2.946 m 2WS wheelbase: 4.3 deg) |
 | Turning radius 4WS / 2WS | 3.92 / 7.00 m | outer tyre centre; ideal Ackermann 3.85 / 6.16 m |
 | Total reduction motor-wheel | 16.03 | 2.98 x 5.38 |
 | Wheel torque limit | 4300 N m | tractive force 35.0 kN (1.02 g) |
-| Continuous grade at 50 km/h | 16 % | 90 kW |
-| Static stability factor | 1.08 | tilt-table angle 47.3 deg |
+| Continuous grade at 50 km/h | 15 % | 90 kW x 0.92, 900 N rolling + aero |
+| Static stability factor | 1.09 | tilt-table angle 47.4 deg |
 | Ground clearance (diffs) | 0.327 m |  |
 | Approach / departure angle | 39 deg | symmetric |
 | Ramp breakover angle | 42 deg |  |
-| 3-link instant centre | +8.23 m, -1.19 m | axle frame, x outward |
-| Panhard lateral shift at full bump | 9.1 mm | neglected in the URDF |
+| 3-link instant centre | -43.66 m, +5.44 m | axle frame, x outward |
+| Panhard lateral shift at full bump | 12.5 mm | neglected in the URDF |
 
 ## Parameters
 
@@ -38,9 +41,9 @@ Every number in the URDF comes from this report. Status: **published** (PIAP or 
 |---|---|---|---|---|
 | `body.length` | 4.7 | m | published | POSTER21, JANES20 |
 | `body.width` | 2.2 | m | published | POSTER21, JANES20 |
-| `chassis.wheelbase` | 2.7 | m | published | POSTER21, ARMYREC24. Polish press also prints 2.20 m next to the 2.20 m width; 2.70 m is PIAP's own poster figure and is the only value compatible with 1 m wheels inside a 4.70 m hull |
+| `chassis.wheelbase` | 2.7 | m | published | POSTER21, ARMYREC24. PIAP's INTARG 2021 poster (known through search summaries), Army Recognition 2024 and Militaer Aktuell give 2.70 m. Milmag 2020, Defence24 2023 and wnp.pl print 2.20 m, always beside the 2.20 m width, which looks like a copy error. 2.70 m also gives more plausible overhangs (1.0 m) |
 | `mass.curb_2020` | 3500 | kg | published | POSTER21, JANES20. 2020 prototype, cargo deck |
-| `mass.curb_2023_armed` | 4050 | kg | estimated | D24_23. 'over four tonnes' kerb for the ZMU-03 armed version; 4.05 t used |
+| `mass.curb_2023_armed` | 4050 | kg | estimated | D24_23, MILMAG25. press: 'over four tonnes' / '4-ton' for the armed vehicle; 4.05 t used with the RWS fitted (variant:=2023 without payload weighs 3.85 t) |
 | `mass.payload_max` | 1000 | kg | published | D24TV21, PZ26 |
 | `limits.max_speed` | 13.89 | m/s | published | POSTER21, JANES20. 50 km/h |
 | `suspension.stroke` | 0.25 | m | published | POSTER21, ARMYREC24 |
@@ -53,7 +56,7 @@ Every number in the URDF comes from this report. Status: **published** (PIAP or 
 | `wheel.rim_mass` | 27 | kg | estimated | 17x9 steel beadlock wheel |
 | `wheel.vertical_stiffness` | 3.5e+05 | N/m | estimated | 40 in LT tyre at ~2.0 bar: 300-400 kN/m |
 | `wheel.mu` | 0.9 | - | design | dry soil / asphalt peak friction for an off-road tread |
-| `axle.wms_width` | 1.778 | m | published | TENDER17. wheel-mounting-surface to WMS |
+| `axle.wms_width` | 1.778 | m | published | TENDER17. wheel-mounting-surface to WMS. The tender is a request for 3 axles ('Ultimate Dana 60 or equivalent'); the winning offer could not be read, so the fitted axle is assumed to match it |
 | `chassis.track` | 1.803 | m | derived | track = WMS - 2 * offset |
 | `axle.kingpin_to_wms` | 0.12 | m | estimated | Dana 60 ball-joint knuckle: kingpin axis ~120 mm inboard of the hub face |
 | `steering.kingpin_track` | 1.538 | m | derived | WMS - 2 * kingpin_to_wms |
@@ -62,7 +65,7 @@ Every number in the URDF comes from this report. Status: **published** (PIAP or 
 | `drive.axle_ratio` | 5.38 | - | published | TENDER17 |
 | `axle.tube_diameter` | 0.0889 | m | published | TENDER17 |
 | `axle.ring_gear_diameter` | 0.2476 | m | published | TENDER17. minimum |
-| `axle.brake_rotor_diameter` | 0.358 | m | estimated | SPICER (tender: >= 350 mm) |
+| `axle.brake_rotor_diameter` | 0.358 | m | estimated | SPICER generic crate axle (tender: >= 350 mm) |
 | `axle.diff_radius` | 0.165 | m | estimated | 9.75 in ring gear housing, cover radius |
 | `axle.diff_offset_y` | 0.1 | m | estimated | Dana 60 front: differential offset to the left |
 | `axle.housing_mass` | 150 | kg | estimated | Ultimate Dana 60 front ~205 kg with brakes: 150 kg housing/diff/inner shafts + 2 x 27.5 kg ends |
@@ -80,28 +83,37 @@ Every number in the URDF comes from this report. Status: **published** (PIAP or 
 | `body.wheel_arch_height` | 1.2 | m | derived | tyre top at full bump (R_coll + R + bump) + ~5 cm clearance |
 | `body.railing_height` | 0.25 | m | estimated | deck railing carrying top-view cameras (POSTER21) |
 | `body.belly_height` | 0.47 | m | design | battery/equipment tub between the axles |
-| `body.keel_height` | 0.86 | m | derived | frame/tunnel above the axle housings and motors at full bump |
 | `body.nose_bottom_height` | 0.66 | m | design | front/rear bumper lower edge, sets ~39 deg approach |
 | `body.tub_half_length` | 0.6 | m | design | clear of the axle motors (end at ~0.65 m) and tyres |
 | `body.tub_half_width` | 1 | m | design |  |
 | `body.keel_half_width` | 0.38 | m | derived | inside the steered-tyre sweep (~0.45 m at 35 deg lock) |
 | `body.nose_start` | 1.97 | m | derived | ahead of the steered front tyre sweep (1.93 m) |
-| `mass.cg_height_kerb` | 0.8323 | m | derived | composite of the mass budget |
-| `mass.cg_x_kerb` | 0.1025 | m | derived | + forward of mid-wheelbase |
-| `suspension.static_load_front` | 1.304e+04 | N | derived | sprung weight on the front springs (kerb 2020) |
-| `suspension.static_load_rear` | 1.044e+04 | N | derived | sprung weight on the rear springs (kerb 2020) |
+| `mass.cg_height_kerb` | 0.8287 | m | derived | composite of the mass budget |
+| `mass.cg_x_kerb` | 0.09563 | m | derived | + forward of mid-wheelbase |
+| `suspension.static_load_front` | 1.295e+04 | N | derived | sprung weight on the front springs (kerb 2020) |
+| `suspension.static_load_rear` | 1.052e+04 | N | derived | sprung weight on the rear springs (kerb 2020) |
 | `suspension.ride_frequency` | 1.5 | Hz | design | off-road military practice 1.2-1.7 Hz at kerb; drops to ~1.3 Hz at max payload |
 | `suspension.damping_ratio` | 0.35 | - | design | nominal setting of the controlled (semi-active) dampers; range 0.2-0.6 |
-| `suspension.wheel_rate` | 6.268e+04 | N/m | derived | k_w = K_ride k_t / (k_t - K_ride), K_ride = m_corner (2 pi f)^2 |
-| `suspension.damping_wheel` | 4288 | N s/m | derived | c = 2 zeta sqrt(k_w m_corner) |
-| `suspension.travel_rebound` | 0.104 | m | design | coil spring just unloaded at full droop (no preload) => droop = static sag |
-| `suspension.travel_bump` | 0.146 | m | derived | stroke - droop |
+| `suspension.wheel_rate_front` | 7.048e+04 | N/m | derived | k_w = K_ride k_t / (k_t - K_ride), K_ride = m_corner (2 pi f)^2, front corner sprung mass |
+| `suspension.wheel_rate_rear` | 5.517e+04 | N/m | derived | same, rear corner |
+| `suspension.damping_wheel_front` | 4776 | N s/m | derived | c = 2 zeta sqrt(k_w m_corner) |
+| `suspension.damping_wheel_rear` | 3808 | N s/m | derived | same, rear |
+| `suspension.travel_rebound_front` | 0.0919 | m | design | coil spring just unloaded at full droop (no preload) => droop = static sag |
+| `suspension.travel_rebound_rear` | 0.0954 | m | design | same, rear |
+| `suspension.travel_bump_front` | 0.1581 | m | derived | stroke - droop |
+| `suspension.travel_bump_rear` | 0.1546 | m | derived | stroke - droop |
+| `suspension.sim_heave_stiffness_front` | 1.173e+05 | N/m | derived | 2 x (k_w k_t / (k_w + k_t)): both corners, spring and tyre in series |
+| `suspension.sim_heave_stiffness_rear` | 9.531e+04 | N/m | derived | same, rear |
 | `suspension.spring_track` | 1.24 | m | design | coil-overs on the axle tubes just inboard of the knuckles (clear of the steered tyre) |
 | `suspension.anti_roll_stiffness` | 1.5e+04 | N m/rad | design | per axle; brings the roll gradient to ~6 deg/g with the RWS fitted |
 | `suspension.roll_center_height` | 0.1 | m | design | Panhard rod 0.10 m above the axle centreline, horizontal at ride height |
-| `suspension.roll_gradient` | 4.571 | deg/g | derived | m_s g (h_s - h_rc) / (K_phi - m_s g (h_s - h_rc)) |
-| `suspension.articulation_limit_deg` | 7.943 | deg | derived | one wheel at full bump, the other at full droop: (bump + droop) / track |
-| `suspension.wheel_hop_frequency` | 6.149 | Hz | derived | unsprung axle on springs + tyres |
+| `suspension.sim_roll_stiffness_front` | 6.169e+04 | N m/rad | derived | (2 k_w (s/2)^2 + k_arb) in series with the tyres' 2 k_t (T/2)^2 |
+| `suspension.sim_roll_stiffness_rear` | 5.215e+04 | N m/rad | derived | same, rear |
+| `suspension.roll_gradient` | 5.047 | deg/g | derived | m_s g (h_s - h_rc) / (K_phi - m_s g (h_s - h_rc)) |
+| `suspension.articulation_limit_deg` | 7.943 | deg | derived | one wheel at full bump, the other at full droop: stroke / track |
+| `axle.top_above_centre` | 0.32 | m | design | highest axle-mounted part above the axle centreline: upper-link tower (0.30 m pivot + 0.02 m); motor + junction box reach 0.27 m, high-steer tie rod 0.23 m |
+| `body.keel_height` | 0.99 | m | derived | frame/tunnel above the highest axle-mounted part at full bump + 20 mm |
+| `suspension.wheel_hop_frequency` | 6.206 | Hz | derived | unsprung axle on springs + tyres |
 | `steering.max_angle_deg` | 35 | deg | estimated | Dana 60 ball-joint knuckles with ~1 m tyres: 33-38 deg lock |
 | `steering.max_rate_deg_s` | 40 | deg/s | estimated | electric linear actuator, ~3.5 s lock-to-lock |
 | `steering.arm_length` | 0.155 | m | estimated | Dana 60 knuckle steering arm |
@@ -130,15 +142,15 @@ Every number in the URDF comes from this report. Status: **published** (PIAP or 
 | power electronics (2 traction inverters, generator inverter, DC/DC, 400 VAC) | 120 | -1.85, +0.00, 1.03 | rear compartment |
 | cooling (radiators, BTMS chiller, fans) | 70 | +2.15, +0.00, 1.00 | behind the front grille |
 | 24 V system, computers, radios, harness | 140 | +0.00, +0.00, 1.00 | centre tub, upper |
-| sensors, PTZ mast, lights | 45 | +1.60, +0.00, 1.55 | front sensor area |
+| lights, sensor brackets, cabling | 30 | +1.60, +0.00, 1.45 | the sensors themselves (~15 kg incl. PTZ) are separate URDF links |
 | suspension (sprung half of links, coil-overs, anti-roll bars) | 70 | +0.00, +0.00, 0.95 |  |
 | deck plates and railing | 300 | +0.00, +0.00, 1.30 | steel/aluminium deck |
 | left side panels, fender, bumper half | 110 | +0.00, +0.95, 1.00 |  |
 | right side panels, fender, bumper half | 110 | +0.00, -0.95, 1.00 |  |
-| frame (ladder/space frame) + tub structure + misc | 652 | +0.00, +0.00, 0.92 | remainder to the published 3500 kg kerb mass |
-| **total sprung** | **2394** | COM +0.150, +0.000, 0.990 | |
+| frame (ladder/space frame) + tub structure + misc | 667 | +0.00, +0.00, 0.92 | remainder to the published 3500 kg kerb mass |
+| **total sprung** | **2394** | COM +0.140, +0.000, 0.984 | |
 
-Chassis inertia about its COM [kg m^2]: Ixx 708, Iyy 3947, Izz 4431, Ixz -47.4.
+Chassis inertia about its COM [kg m^2]: Ixx 700, Iyy 3930, Izz 4421, Ixz -30.9.
 
 Unsprung, per axle: housing/diff/inner shafts 150 kg, motor + reduction 85 kg, steering actuator 25 kg, links (half) 25 kg => axle link 285 kg; knuckles 2 x 32 kg; wheels 2 x 102 kg => 553 kg.
 
@@ -156,4 +168,9 @@ Unsprung, per axle: housing/diff/inner shafts 150 kg, motor + reduction 85 kg, s
 - **D24TV21**: Defence24 TV 2021: cargo-mule configuration, ~1000 kg payload
 - **PZ26**: Polska Zbrojna, MSPO 2026: up to 1 t payload, 450 km range on a full tank
 - **PIAP24**: Lukasiewicz-PIAP, MSPO 2024 release: latest HUNTeR adds lidars and stereovision cameras
-- **SPICER**: Spicer/Dana, Ultimate Dana 60 crate axle data: 35-spline 4340 shafts, 3.5 in tubes, 8x6.5 bolt pattern, ~358 mm vented rotors, 2-piston calipers, crate axle for Jeep JK (wheelbase 2.946 m)
+- **SPICER**: Spicer/Dana, Ultimate Dana 60 crate axle data: 35-spline 4340 shafts, 3.5 in tubes, 8x6.5 bolt pattern, ~358 mm vented rotors, 2-piston calipers (generic crate axle, not HUNTeR-confirmed)
+- **ZBIAM23**: Zbiam, 'HUNTeR z ZMU-03 debiutuje na poligonie', 2023: differential locks and two steering axles, 1 m wheels, over 50 km/h
+- **MILMAG25**: Milmag, MSPO 2025: 4 t HUNTeR, 470 x 220 cm, ZMT WLKM 12.7 mm multi-barrel module, 8 HD cameras and lidars
+- **MILMAG26**: Milmag, Eurosatory 2026: BZE Belma 'Bluszcz' scatterable mine-laying system on the HUNTeR chassis
+- **D24_26**: Defence24 2026 ('Cyfrowy Legionista' exercise): about 4 t, nearly 4.7 m, ZMU-05 configuration
+- **ARMYREC24B**: Army Recognition 2024 (field test with WB Group): over 4 t, nearly 5 m, six HD cameras, day and thermal imaging, ZMU-03

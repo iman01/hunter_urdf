@@ -24,6 +24,13 @@ controller_manager:
     rws_controller:
       type: position_controllers/JointGroupPositionController
 
+# gz_ros2_control turns position commands into joint velocity commands:
+# v = -gain * (q - q_cmd) * update_rate, i.e. a 60 1/s P loop at 200 Hz (a stiffer
+# loop keeps the knuckles on target against tyre aligning torque).
+gz_ros_control:
+  ros__parameters:
+    position_proportional_gain: 0.3
+
 joint_state_broadcaster:
   ros__parameters:
     use_local_topics: false

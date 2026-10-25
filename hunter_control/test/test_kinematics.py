@@ -140,3 +140,29 @@ def test_trapezoid_crab_tracks_commanded_direction():
     target = math.atan2(0.6, 2.0)
     assert 0.5 * (c.steer[0] + c.steer[1]) == pytest.approx(target, abs=1e-6)
     assert 0.5 * (c.steer[2] + c.steer[3]) == pytest.approx(target, abs=1e-6)
+
+
+@pytest.mark.parametrize("linkage", ["ideal", "trapezoid"])
+@pytest.mark.parametrize("differential", ["electronic", "locked"])
+@pytest.mark.parametrize("mode", ["front", "rear", "counter", "adaptive"])
+def test_odometry_round_trip_icr_modes(linkage, differential, mode):
+    """forward(inverse(twist)) recovers the twist for every linkage and
+    differential setting in the modes with an instantaneous centre."""
+    kin = make(linkage)
+    rnd = random.Random(11)
+    for _ in range(40):
+        vx = rnd.uniform(0.3, 8.0) * rnd.choice((1, -1))
+        c = kin.inverse(mode, vx, 0.0, rnd.uniform(-0.6, 0.6), differential=differential)
+        est = kin.forward(c.steer, c.omega, differential=differential)
+        speed = math.hypot(c.twist[0], c.twist[1])
+        assert math.hypot(est[0] - c.twist[0], est[1] - c.twist[1]) < 1e-6 * max(speed, 1.0)
+        assert est[2] == pytest.approx(c.twist[2], abs=1e-6)
+
+
+def test_odometry_crab_trapezoid_close():
+    kin = make("trapezoid")
+    c = kin.inverse("crab", 2.0, 0.7, 0.0)
+    est = kin.forward(c.steer, c.omega)
+    assert abs(est[2]) < 1e-6
+    track = math.atan2(est[1], est[0])
+    assert track == pytest.approx(math.atan2(c.twist[1], c.twist[0]), abs=math.radians(2.0))

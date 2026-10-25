@@ -11,11 +11,11 @@
                   (revolute x, roll)    [axle]_axle_link
 
      with the two coil-overs lumped into equivalent heave and roll springs and
-     dampers (see docs/SUSPENSION_DESIGN.md):
+     dampers (see docs/MODEL.md):
        k_heave = 2 k_w            c_heave = 2 c_w
        k_roll  = 2 k_w (s/2)^2    c_roll  = 2 c_w (s/2)^2
-     with k_w, c_w the wheel-rate spring and damper per side and s the
-     spring track. The heave spring reference is set so that q = 0 at the
+     with k_w, c_w the wheel-rate spring and damper per side (per axle) and s
+     the spring track. The heave spring reference is set so that q = 0 at the
      kerb-weight static equilibrium; extra payload sags the suspension.
      The physical links (lower trailing arms, upper link, Panhard rod,
      dampers) are drawn by the linkage visualiser (hunter_control). -->
@@ -23,11 +23,18 @@
 
   <xacro:macro name="hunter_axle" params="axle x static_load">
     <xacro:property name="S" value="${V.suspension}"/>
-    <xacro:property name="kw" value="${S.wheel_rate}"/>
-    <xacro:property name="cw" value="${S.damping_wheel}"/>
+    <!-- Spring rates are sized per axle for the same ride frequency, so each
+         spring unloads exactly at its own full droop. -->
+    <xacro:property name="kw" value="${S.wheel_rate_front if axle == 'front' else S.wheel_rate_rear}"/>
+    <xacro:property name="cw" value="${S.damping_wheel_front if axle == 'front' else S.damping_wheel_rear}"/>
+    <xacro:property name="droop" value="${S.travel_rebound_front if axle == 'front' else S.travel_rebound_rear}"/>
+    <xacro:property name="bump" value="${S.travel_bump_front if axle == 'front' else S.travel_bump_rear}"/>
     <xacro:property name="half_s" value="${0.5 * S.spring_track}"/>
-    <xacro:property name="k_heave" value="${2.0 * kw}"/>
-    <xacro:property name="k_roll" value="${2.0 * kw * half_s * half_s + S.anti_roll_stiffness}"/>
+    <!-- The simulated tyre is rigid: these springs carry the coil springs (and
+         anti-roll bar) in series with the tyres, so the body keeps the design
+         ride frequency and static drop. -->
+    <xacro:property name="k_heave" value="${S.sim_heave_stiffness_front if axle == 'front' else S.sim_heave_stiffness_rear}"/>
+    <xacro:property name="k_roll" value="${S.sim_roll_stiffness_front if axle == 'front' else S.sim_roll_stiffness_rear}"/>
     <xacro:property name="h_rc" value="${S.roll_center_height}"/>
 
     <joint name="${axle}_axle_heave_joint" type="prismatic">
@@ -35,7 +42,7 @@
       <child link="${axle}_axle_heave_link"/>
       <origin xyz="${x} 0 0" rpy="0 0 0"/>
       <axis xyz="0 0 1"/>
-      <limit lower="${-S.travel_rebound}" upper="${S.travel_bump}" effort="${S.joint_effort_limit}" velocity="${S.joint_velocity_limit}"/>
+      <limit lower="${-droop}" upper="${bump}" effort="${S.joint_effort_limit}" velocity="${S.joint_velocity_limit}"/>
       <dynamics damping="${2.0 * cw}" friction="${S.coulomb_friction}"/>
     </joint>
     <gazebo reference="${axle}_axle_heave_joint">
@@ -65,10 +72,15 @@
     <!-- Axle housing: beam, differential, traction motor, hubs' inner parts.
          Frame origin on the roll axis; the axle centreline is h_rc below. -->
     <link name="${axle}_axle_link">
-      <!-- The traction motor on the pinion shifts the COM toward the vehicle centre. -->
-      <xacro:property name="com_x" value="${-V.axle.com_x_toward_centre if axle == 'front' else V.axle.com_x_toward_centre}"/>
-      <xacro:inertial_tensor mass="${V.axle.mass}" xyz="${com_x} 0 ${-h_rc + V.axle.com_z_offset}"
-                             ixx="${V.axle.ixx}" iyy="${V.axle.iyy}" izz="${V.axle.izz}"/>
+      <!-- The traction motor on the pinion shifts the COM toward the vehicle centre
+           (and toward the offset differential). The rear axle is the front one
+           turned by pi about z: x and y offsets and the xz/yz products change sign. -->
+      <xacro:property name="m" value="${1 if axle == 'front' else -1}"/>
+      <xacro:property name="C" value="${V.axle.com_front}"/>
+      <xacro:property name="I" value="${V.axle.inertia_front}"/>
+      <xacro:inertial_tensor mass="${V.axle.mass}" xyz="${m * C[0]} ${m * C[1]} ${-h_rc + C[2]}"
+                             ixx="${I.ixx}" iyy="${I.iyy}" izz="${I.izz}"
+                             ixy="${I.ixy}" ixz="${m * I.ixz}" iyz="${m * I.iyz}"/>
       <xacro:if value="${visual_detail == 'mesh'}">
         <xacro:mesh_visual name="housing" file="axle_housing.stl" material="hunter_green_dark"
                            xyz="0 0 ${-h_rc}" rpy="0 0 ${0 if axle == 'front' else pi}"/>
@@ -166,7 +178,9 @@
           <material name="tyre_black"/>
         </visual>
       </xacro:unless>
-      <collision name="${axle}_${side}_tyre_collision">
+      <!-- Unnamed on purpose: libsdformat only applies the link's <gazebo> friction
+           (mu1/mu2 below) to collisions it names itself. -->
+      <collision>
         <origin xyz="0 0 0" rpy="${pi/2} 0 0"/>
         <geometry><cylinder radius="${W.collision_radius}" length="${W.width}"/></geometry>
       </collision>

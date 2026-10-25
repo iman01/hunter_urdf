@@ -283,18 +283,22 @@ def frame_brackets():
             c = L["coilover"]["chassis"]
             q = w((c[0], sy * c[1], c[2]))
             p.append(cbox(q[0] - 0.08, q[0] + 0.08, q[1] - 0.08, q[1] + 0.08, q[2], hz(h_arch) + 0.001, 0.01))
-            # Bump stop above the axle tube
-            q = w((0.0, sy * 0.48, 0.0))
-            p.append(cyl((q[0], q[1], hz(h_keel) - 0.02), (q[0], q[1], 0.30), 0.045, 16))
+            # Bump stop under the keel edge: touches the axle tube at full bump
+            q = w((0.0, sy * (Y_KEEL - 0.03), 0.0))
+            z_stop = V["axle"]["tube_diameter"] / 2 + max(V["suspension"]["travel_bump_front"],
+                                                         V["suspension"]["travel_bump_rear"]) + 0.005
+            p.append(cyl((q[0], q[1], hz(h_keel) + 0.01), (q[0], q[1], z_stop), 0.045, 16))
         c = L["upper_link"]["chassis"]
         q = w(c)
         p.append(cbox(q[0] - 0.06, q[0] + 0.06, q[1] - 0.06, q[1] + 0.06, q[2] - 0.04, hz(h_keel) + 0.01))
+        # Panhard bracket: from the pivot up and inboard to the keel underside
         c = L["panhard_rod"]["chassis"]
         q = w(c)
-        p.append(chull([(q[0] - 0.05, q[1] - 0.05, q[2] - 0.05), (q[0] + 0.05, q[1] - 0.05, q[2] - 0.05),
-                        (q[0] - 0.05, q[1] + 0.05, q[2] - 0.05), (q[0] + 0.05, q[1] + 0.05, q[2] - 0.05),
-                        (q[0] - 0.12, q[1] - 0.12 * s, hz(h_keel) + 0.01), (q[0] + 0.12, q[1] - 0.12 * s, hz(h_keel) + 0.01),
-                        (q[0] - 0.12, q[1] + 0.06 * s, hz(h_keel) + 0.01), (q[0] + 0.12, q[1] + 0.06 * s, hz(h_keel) + 0.01)]))
+        yk = s * (Y_KEEL - 0.02)
+        p.append(chull([(q[0] - 0.04, q[1] - 0.04, q[2] - 0.05), (q[0] + 0.04, q[1] - 0.04, q[2] - 0.05),
+                        (q[0] - 0.04, q[1] + 0.04, q[2] - 0.05), (q[0] + 0.04, q[1] + 0.04, q[2] - 0.05),
+                        (q[0] - 0.10, yk, hz(h_keel) + 0.01), (q[0] + 0.10, yk, hz(h_keel) + 0.01),
+                        (q[0] - 0.10, yk - s * 0.12, hz(h_keel) + 0.01), (q[0] + 0.10, yk - s * 0.12, hz(h_keel) + 0.01)]))
     return cat(p)
 
 
@@ -338,14 +342,18 @@ def axle_housing():
         # Coil-over lower mounts
         a = LK["coilover"]["axle"]
         p.append(cbox(a[0] - 0.05, a[0] + 0.05, sy * a[1] - 0.05, sy * a[1] + 0.05, 0.02, a[2] + 0.02, 0.01))
-    # Upper link bracket on the diff
+    # Upper-link tower on the tube
     a = LK["upper_link"]["axle"]
-    p.append(chull([(a[0] - 0.05, a[1] - 0.05, a[2] + 0.02), (a[0] + 0.05, a[1] - 0.05, a[2] + 0.02),
-                    (a[0] - 0.05, a[1] + 0.05, a[2] + 0.02), (a[0] + 0.05, a[1] + 0.05, a[2] + 0.02),
-                    (-0.08, ry - 0.09, 0.08), (0.08, ry - 0.09, 0.08), (-0.08, ry + 0.09, 0.08), (0.08, ry + 0.09, 0.08)]))
-    # Panhard bracket
+    p.append(chull([(a[0] - 0.03, a[1] - 0.03, a[2] + 0.02), (a[0] + 0.03, a[1] - 0.03, a[2] + 0.02),
+                    (a[0] - 0.03, a[1] + 0.03, a[2] + 0.02), (a[0] + 0.03, a[1] + 0.03, a[2] + 0.02),
+                    (a[0] - 0.08, a[1] - 0.06, 0.0), (a[0] + 0.05, a[1] - 0.06, 0.0),
+                    (a[0] - 0.08, a[1] + 0.06, 0.0), (a[0] + 0.05, a[1] + 0.06, 0.0)]))
+    # Panhard bracket, forward of the differential cover
     a = LK["panhard_rod"]["axle"]
-    p.append(cbox(a[0] - 0.04, a[0] + 0.04, a[1] - 0.05, a[1] + 0.05, -0.02, a[2] + 0.03, 0.01))
+    p.append(chull([(0.03, a[1] - 0.03, -0.04), (0.03, a[1] + 0.03, -0.04), (0.03, a[1] - 0.03, 0.04),
+                    (0.03, a[1] + 0.03, 0.04), (a[0] + 0.03, a[1] - 0.03, a[2] - 0.03),
+                    (a[0] + 0.03, a[1] + 0.03, a[2] - 0.03), (a[0] + 0.03, a[1] - 0.03, a[2] + 0.04),
+                    (a[0] + 0.03, a[1] + 0.03, a[2] + 0.04)]))
     return cat(p)
 
 
@@ -362,23 +370,25 @@ def axle_motor():
     for k in range(9):  # cooling ribs
         x = x0 - 0.18 - k * 0.04
         p.append(ring(r + 0.012, r - 0.01, 0.012, 32, "x", (x, ry, z)))
-    p.append(cbox(x0 - 0.40, x0 - 0.22, ry - 0.07, ry + 0.07, z + r - 0.01, z + r + 0.06, 0.01))  # HV junction box
+    p.append(cbox(x0 - 0.40, x0 - 0.22, ry - 0.07, ry + 0.07, z + r - 0.01, z + r + 0.05, 0.01))  # HV junction box
     # Torque-reaction strut to the axle tube
     p.append(cyl((x0 - 0.10, ry - 0.10, z - 0.10), (-0.02, ry - 0.30, 0.0), 0.02, 12))
     return cat(p)
 
 
 def steering_actuator():
-    """Electric linear actuator on the axle, pushing the tie rod."""
+    """Electric linear actuator on the axle, pushing the high-steer tie rod."""
     arm = V["steering"]["arm_length"]
     beta = math.radians(V["steering"]["trapezoid_angle_deg"])
     xt = -arm * math.cos(beta)
-    z = V["steering"]["arm_height"] + 0.075
-    p = [cyl((xt - 0.03, -0.05, z), (xt - 0.03, 0.42, z), 0.038, 24),
-         cbox(xt - 0.08, xt + 0.02, 0.42, 0.52, z - 0.05, z + 0.05, 0.01),        # motor/gear head
-         cbox(xt - 0.07, xt + 0.01, 0.15, 0.22, z, 0.05, 0.005),                  # bracket to the tube
-         cyl((xt - 0.03, -0.05, z), (xt - 0.03, -0.30, z), 0.018, 12)]            # push rod
-    p.append(cyl((xt - 0.03, -0.30, z), (xt, -0.30, V["steering"]["arm_height"]), 0.015, 12))
+    zt = V["steering"]["arm_height"]
+    xa, za = -0.06, zt + 0.02
+    p = [cyl((xa, -0.05, za), (xa, 0.42, za), 0.038, 24),                       # actuator body
+         cbox(xa - 0.05, xa + 0.05, 0.42, 0.52, za - 0.05, za + 0.05, 0.01),     # motor / gear head
+         chull([(xa - 0.04, 0.15, za), (xa + 0.04, 0.15, za), (xa - 0.04, 0.22, za), (xa + 0.04, 0.22, za),
+                (-0.04, 0.33, 0.03), (0.04, 0.33, 0.03), (-0.04, 0.40, 0.03), (0.04, 0.40, 0.03)]),  # bracket to the tube
+         cyl((xa, -0.05, za), (xa, -0.30, za), 0.018, 12),                       # push rod
+         cyl((xa, -0.30, za), (xt, -0.30, zt), 0.015, 12)]                       # clamp to the tie rod
     return cat(p)
 
 
@@ -387,19 +397,20 @@ def knuckle(side_left=True):
     beta = math.radians(V["steering"]["trapezoid_angle_deg"])
     za = V["steering"]["arm_height"]
     rotor_r = AX["brake_rotor_diameter"] / 2
-    wms = KPO + 0.0127  # mounting face position from the kingpin (wheel offset -12.7 mm)
+    wms = KPO + V["wheel"]["offset"]  # mounting face: kingpin -> tyre centre plane, minus the wheel's offset
     p = [cyl((0, 0, -0.14), (0, 0, 0.14), 0.05, 24),                            # ball-joint boss / kingpin
          cbox(-0.045, 0.045, 0.0, 0.07, 0.07, 0.15, 0.01),                      # upper arm
          cbox(-0.045, 0.045, 0.0, 0.07, -0.15, -0.07, 0.01),                    # lower arm
          cyl((0, 0.02, 0), (0, wms - 0.03, 0), 0.075, 32),                      # spindle housing
          ring(rotor_r, 0.09, 0.028, 48, "y", (0, wms - 0.045, 0)),              # brake rotor (vented)
          ]
-    # Caliper (2-piston), rear-top of the rotor
+    # Caliper (2-piston), rear-top of the rotor, inboard of the mounting face
     a = math.radians(130)
     cx, cz = rotor_r * 0.82 * math.cos(a), rotor_r * 0.82 * math.sin(a)
-    p.append(cbox(cx - 0.06, cx + 0.06, wms - 0.085, wms - 0.005, cz - 0.05, cz + 0.05, 0.01))
-    # Steering arm toward the vehicle centre, angled inward by beta
+    p.append(cbox(cx - 0.06, cx + 0.06, wms - 0.085, wms - 0.012, cz - 0.05, cz + 0.05, 0.01))
+    # High-steer arm bolted on top of the knuckle, toward the vehicle centre, inclined inward by beta
     ex, ey = -arm * math.cos(beta), -arm * math.sin(beta)
+    p.append(cyl((0, 0, 0.13), (0, 0, za + 0.02), 0.032, 16))
     p.append(cyl((0, 0, za), (ex, ey, za), 0.022, 12))
     p.append(sphere((ex, ey, za), 0.03, 1))
     m = cat(p)
@@ -486,6 +497,9 @@ def hub():
 
 
 # ======================================================= LINKAGE (markers)
+# The coil spring is drawn at its real length: RViz uses a LINE_STRIP helix
+# (suspension_linkage_publisher), static renders generate helix meshes
+# (tools/render/add_linkage_visuals.py). coilover_spring.stl is the static-length spring.
 def link_rod():
     """Unit rod along +x (length 1, diameter 1); markers scale it to length x diameter."""
     return cyl((0.0, 0, 0), (1.0, 0, 0), 0.5, 16)
@@ -494,23 +508,26 @@ def link_rod():
 def coilover_parts():
     L = V["suspension"]["linkage"]["coilover"]
     body_r = L["body_diameter"] / 2
-    body = cat([cyl((0, 0, 0), (0.30, 0, 0), body_r, 24),
-                cyl((0.02, 0.07, 0), (0.22, 0.07, 0), 0.03, 16),                 # remote reservoir
+    bl, rl = L["body_length"], L["rod_length"]
+    body = cat([cyl((0, 0, 0), (bl, 0, 0), body_r, 24),
+                cyl((0.02, 0.07, 0), (bl - 0.08, 0.07, 0), 0.03, 16),            # remote reservoir
                 cyl((0.03, 0, 0), (0.03, 0.07, 0), 0.012, 8),
                 ring(L["spring_diameter"] / 2 + 0.01, body_r, 0.02, 24, "x", (0.08, 0, 0)),  # upper spring seat
                 ring(0.03, 0.014, 0.04, 16, "y", (0, 0, 0))])
-    rod = cat([cyl((0, 0, 0), (0.45, 0, 0), L["rod_diameter"] / 2, 16),
+    rod = cat([cyl((0, 0, 0), (rl, 0, 0), L["rod_diameter"] / 2, 16),
                ring(L["spring_diameter"] / 2 + 0.01, 0.02, 0.02, 24, "x", (0.03, 0, 0)),   # lower seat
                ring(0.03, 0.014, 0.04, 16, "y", (0, 0, 0))])
-    # Helical spring of unit length along +x, unit diameter; scaled at runtime
-    turns, seg = 7, 18
-    pts = []
-    for i in range(turns * seg + 1):
-        t = i / (turns * seg)
-        a = 2 * math.pi * turns * t
-        pts.append((t, 0.5 * math.cos(a), 0.5 * math.sin(a)))
-    spring = cat([cyl(pts[i], pts[i + 1], 0.06, 6) for i in range(len(pts) - 1)])
-    return body, rod, spring
+    return body, rod, helix(0.53, L["spring_diameter"], L["wire_diameter"], L["turns"])
+
+
+def helix(length, coil_d, wire_d, turns, seg=16):
+    """Coil spring along +x from 0 to `length` at its real length (no scaling)."""
+    r = 0.5 * (coil_d - wire_d)
+    n = turns * seg
+    x0, x1 = wire_d / 2, length - wire_d / 2
+    pts = [(x0 + (x1 - x0) * i / n, r * math.cos(2 * math.pi * turns * i / n), r * math.sin(2 * math.pi * turns * i / n))
+           for i in range(n + 1)]
+    return cat([cyl(pts[i], pts[i + 1], wire_d / 2, 6) for i in range(n)])
 
 
 # ================================================================ SENSORS

@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <!-- ros2_control interfaces of the HUNTeR replica.
-     Steering knuckles: position command (one electric steering actuator per
-     axle drives both knuckles through the tie rod; the 4WS controller sends
-     the linkage-consistent left/right pair).
+     Steering knuckles: position command. The replica assumes one steering
+     actuator per axle driving both knuckles through the tie rod; the 4WS
+     controller sends linkage-consistent left/right pairs.
      Wheels: velocity command (axle traction motors + differentials; the
      controller emulates the electronic / locked differential).
      Suspension: passive, state interfaces only. -->
@@ -15,9 +15,9 @@
     <ros2_control name="HunterSystem" type="system">
       <hardware>
         <xacro:if value="${sim_mode == 'gz'}">
+          <!-- The knuckle position gain is a parameter of the gz_ros_control node,
+               set in hunter_control/config/controllers.yaml. -->
           <plugin>gz_ros2_control/GazeboSimSystem</plugin>
-          <!-- P gain turning knuckle position commands into joint velocity commands. -->
-          <param name="position_proportional_gain">${V.steering.sim_position_gain}</param>
         </xacro:if>
         <xacro:if value="${sim_mode == 'mock'}">
           <plugin>mock_components/GenericSystem</plugin>

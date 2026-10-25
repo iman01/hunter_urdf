@@ -1,13 +1,16 @@
 <?xml version="1.0"?>
 <!-- Sensor suite of the HUNTeR replica, generated from vehicle.yaml.
 
-     Published layout (see docs/DESIGN_REPORT.md):
-       2020 prototype: GPS, two lidars, 9 HD cameras = PTZ + 4 hull/side
-                       navigation cameras + 4 drive-assist cameras
-                       (front/rear driving + 2 top-view cameras on the railing)
-       2023+ armed:    2 driving + 4 perimeter cameras, RWS optics act as PTZ,
-                       stereovision cameras and extra lidars (2024)
-     Positions are reconstructions (no drawings are public).
+     Published (see docs/DESIGN_REPORT.md):
+       2020 prototype: GPS, two lidars, 9 HD cameras = PTZ + 4 hull navigation
+                       cameras + 4 drive-assist cameras; poster: front/rear driving
+                       cameras, two side cameras per side, top-view cameras on the
+                       railing (count not published), PTZ
+       2023+ armed:    2 driving + 4 perimeter cameras, RWS optics can act as PTZ;
+                       2024: additional lidars and stereovision cameras
+     Modelled here: 2 top-view cameras (so the 2020 total is 9), one stereo
+     camera for 2023 (the extra 2024 lidars are not modelled: count and position
+     unknown), and an IMU (assumed). Positions are reconstructions.
 
      Every camera has a <name>_optical_frame (z forward, x right, y down) used as
      the frame_id of its images. -->

@@ -339,26 +339,60 @@ class FourWheelSteeringKinematics:
         return WheelCommand(steer=steer, omega=omega, twist=(vx, vy, wz))
 
     # ------------------------------------------------------------- forward FK
-    def forward(self, steer: Sequence[float], omega: Sequence[float]) -> Tuple[float, float, float]:
-        """Least-squares body twist from measured knuckle angles and wheel
-        rates. Each wheel contributes its contact-point velocity vector."""
+    @staticmethod
+    def axle_angle(dl: float, dr: float) -> float:
+        """Ackermann-equivalent steering angle of an axle centre from its two
+        knuckle angles: cot(dc) = (cot(dl) + cot(dr)) / 2; the mean when the
+        pair is (near) parallel or straddles zero."""
+        tl, tr = math.tan(dl), math.tan(dr)
+        if tl * tr <= 1e-12 or abs(tl + tr) < 1e-12:
+            return 0.5 * (dl + dr)
+        return math.atan(2.0 * tl * tr / (tl + tr))
+
+    def forward(self, steer: Sequence[float], omega: Sequence[float],
+                differential: str = "electronic") -> Tuple[float, float, float]:
+        """Least-squares body twist (vx, vy, wz) from measured knuckle angles
+        and wheel rates.
+
+        Lateral (no side-slip) constraint: one per axle, at the axle centre,
+        along its Ackermann-equivalent angle. Per-wheel lateral rows would
+        fight each other whenever the steering linkage toes the pair away from
+        exact Ackermann (the trapezoid does, by design).
+        Longitudinal (rolling) rows: one per wheel, in the wheel's own frame:
+            cos(d)(vx - wz cy) + sin(d)(vy + wz cx) = omega r
+        With locked differentials both wheels of an axle turn at the same rate
+        whatever the path, so each axle gives one averaged rolling row instead
+        (their speed difference carries no yaw information).
+        """
         g = self.g
-        # Normal equations for unknowns (vx, vy, wz):
-        #   vx - wz*cy = v*cos(d) ; vy + wz*cx = v*sin(d)
-        a = [[0.0] * 3 for _ in range(3)]
-        b = [0.0] * 3
-        for i, (px, py, side) in enumerate(g.pivots()):
+        rows: List[Tuple[List[float], float, float]] = []
+        lon = []
+        piv = g.pivots()
+        for i, (px, py, side) in enumerate(piv):
             d = steer[i]
             o = side * g.kingpin_offset
             cx, cy = px - o * math.sin(d), py + o * math.cos(d)
-            v = omega[i] * g.wheel_radius
-            rows = (([1.0, 0.0, -cy], v * math.cos(d)), ([0.0, 1.0, cx], v * math.sin(d)))
-            for row, rhs in rows:
-                for r in range(3):
-                    b[r] += row[r] * rhs
-                    for c in range(3):
-                        a[r][c] += row[r] * row[c]
-        return tuple(_solve3(a, b))  # type: ignore[return-value]
+            c, s = math.cos(d), math.sin(d)
+            lon.append(([c, s, -c * cy + s * cx], omega[i] * g.wheel_radius))
+        for (a, b), xa in (((0, 1), g.front_axle_x), ((2, 3), g.rear_axle_x)):
+            da = self.axle_angle(steer[a], steer[b])
+            # velocity of the axle centre (xa, 0) is perpendicular to its axle normal
+            rows.append(([-math.sin(da), math.cos(da), math.cos(da) * xa], 0.0, 10.0))
+            if differential == "locked":
+                coef = [0.5 * (lon[a][0][k] + lon[b][0][k]) for k in range(3)]
+                rows.append((coef, 0.5 * (lon[a][1] + lon[b][1]), 1.4142))
+            else:
+                rows.append((lon[a][0], lon[a][1], 1.0))
+                rows.append((lon[b][0], lon[b][1], 1.0))
+        m = [[0.0] * 3 for _ in range(3)]
+        v = [0.0] * 3
+        for coef, rhs, w in rows:
+            w2 = w * w
+            for r in range(3):
+                v[r] += w2 * coef[r] * rhs
+                for cc in range(3):
+                    m[r][cc] += w2 * coef[r] * coef[cc]
+        return tuple(_solve3(m, v))  # type: ignore[return-value]
 
     # --------------------------------------------------------------- helpers
     def turning_radius(self, mode: str) -> float:

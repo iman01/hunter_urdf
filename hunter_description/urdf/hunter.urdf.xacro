@@ -5,8 +5,9 @@
   Arguments
     sim_mode        none | gz | mock | hardware   (ros2_control backend; none = no ros2_control tag)
     controllers_file  absolute path of the ros2_control controller YAML (required for sim_mode:=gz)
-    variant         2020 | 2023                     (2020 prototype 3.5 t with PTZ mast and top-view
-                                                     cameras; 2023+ armed-era 4.05 t with stereo camera)
+    variant         2020 | 2023                     (2020 prototype, 3.5 t, PTZ mast and top-view cameras;
+                                                     2023+ armed era, 3.85 t, stereo camera; 4.05 t with
+                                                     payload:=rws)
     payload         none | cargo | rws | uav_pad      (mission module on the deck)
     cargo_mass      kg, 0 = default from vehicle.yaml (payload:=cargo only)
     sensors         true | false                    (lidars, cameras, GNSS, IMU, PTZ)
@@ -43,13 +44,13 @@
   <xacro:property name="has_ptz" value="${sensors_on and str(variant) in V.ptz.variants and payload != 'rws'}"/>
   <xacro:property name="visual_detail" value="$(arg visual_detail)"/>
 
-  <xacro:include filename="$(find hunter_description)/urdf/include/common.xacro"/>
-  <xacro:include filename="$(find hunter_description)/urdf/include/chassis.xacro"/>
-  <xacro:include filename="$(find hunter_description)/urdf/include/suspension.xacro"/>
-  <xacro:include filename="$(find hunter_description)/urdf/include/sensors.xacro"/>
-  <xacro:include filename="$(find hunter_description)/urdf/include/payloads.xacro"/>
-  <xacro:include filename="$(find hunter_description)/urdf/include/ros2_control.xacro"/>
-  <xacro:include filename="$(find hunter_description)/urdf/include/gazebo.xacro"/>
+  <xacro:include filename="include/common.xacro"/>
+  <xacro:include filename="include/chassis.xacro"/>
+  <xacro:include filename="include/suspension.xacro"/>
+  <xacro:include filename="include/sensors.xacro"/>
+  <xacro:include filename="include/payloads.xacro"/>
+  <xacro:include filename="include/ros2_control.xacro"/>
+  <xacro:include filename="include/gazebo.xacro"/>
 
   <xacro:hunter_chassis/>
 

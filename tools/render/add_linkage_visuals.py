@@ -16,7 +16,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 sys.path.insert(0, os.path.join(ROOT, "hunter_control"))
 
-from hunter_control.suspension_linkage import SuspensionLinkage, look_rpy  # noqa: E402
+from hunter_control.suspension_linkage import SuspensionLinkage, look_rpy, spring_seats  # noqa: E402
+
+sys.path.insert(0, os.path.join(ROOT, "tools"))
 
 MESH = "package://hunter_description/meshes/visual/"
 
@@ -39,20 +41,24 @@ def main():
     cfg = yaml.safe_load(open(os.path.join(ROOT, "hunter_description", "config", "vehicle.yaml")))
     joints = {k: float(v) for k, v in (kv.split(":") for kv in a.joints.split(",") if kv)}
     lk = SuspensionLinkage(cfg)
-    sd = cfg["suspension"]["linkage"]["coilover"]["spring_diameter"]
+    co = cfg["suspension"]["linkage"]["coilover"]
+    gen_dir = os.path.join(ROOT, "hunter_description", "meshes", "visual", "generated")
+    os.makedirs(gen_dir, exist_ok=True)
+    from generate_meshes import helix  # noqa: E402  (needs trimesh)
     xml = ""
     for e in lk.elements(joints):
         if e.kind in ("rod", "tie_rod"):
             xml += link_xml(f"viz_{e.name}", "link_rod.stl", e.start, e.end, (e.length, e.diameter, e.diameter),
                             "0.35 0.36 0.37 1")
         else:
-            d = [(b - x) / e.length for x, b in zip(e.end, e.start)]
-            s0 = tuple(x + 0.03 * di for x, di in zip(e.end, d))
-            s1 = tuple(x - 0.08 * di for x, di in zip(e.start, d))
+            s0, s1 = spring_seats(e, co)
+            length = round(sum((b - x) ** 2 for x, b in zip(s0, s1)) ** 0.5, 3)
+            name = f"spring_{int(length * 1000)}mm.stl"
+            if not os.path.exists(os.path.join(gen_dir, name)):
+                helix(length, co["spring_diameter"], co["wire_diameter"], co["turns"]).export(os.path.join(gen_dir, name))
             xml += link_xml(f"viz_{e.name}_body", "coilover_body.stl", e.start, e.end, (1, 1, 1), "0.15 0.15 0.16 1")
             xml += link_xml(f"viz_{e.name}_rod", "coilover_rod.stl", e.end, e.start, (1, 1, 1), "0.78 0.79 0.80 1")
-            xml += link_xml(f"viz_{e.name}_spring", "coilover_spring.stl", s0, s1, (e.length - 0.11, sd, sd),
-                            "0.60 0.11 0.09 1")
+            xml += link_xml(f"viz_{e.name}_spring", "generated/" + name, s0, s1, (1, 1, 1), "0.60 0.11 0.09 1")
     src = open(a.inp).read()
     open(a.out, "w").write(src.replace("</robot>", xml + "</robot>"))
 

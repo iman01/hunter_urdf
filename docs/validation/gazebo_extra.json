@@ -1,0 +1,59 @@
+{
+ "reverse_counter": {
+  "mode": "counter",
+  "cmd_v": -1.5,
+  "cmd_wz": 0.2,
+  "realised_wz": 0.2,
+  "expected_radius_base": 7.5,
+  "fit_radius_base": 7.537334873945873,
+  "radius_error_pct": 0.49779831927831236,
+  "mean_speed": 1.4844010543786654,
+  "yaw_rate": 0.1972367770264388,
+  "expected_yaw_rate": 0.2
+ },
+ "rear_mode": {
+  "mode": "rear",
+  "cmd_v": 2.0,
+  "cmd_wz": 0.15,
+  "realised_wz": 0.15,
+  "expected_radius_base": 13.401502817884932,
+  "fit_radius_base": 13.4008300349345,
+  "radius_error_pct": -0.0050202052678265515,
+  "mean_speed": 1.9939062008429316,
+  "yaw_rate": 0.14914950760713516,
+  "expected_yaw_rate": 0.15
+ },
+ "adaptive_10mps": {
+  "mode": "adaptive",
+  "cmd_v": 10.0,
+  "cmd_wz": 0.1,
+  "realised_wz": 0.1,
+  "expected_radius_base": 100.00911208484953,
+  "fit_radius_base": 97.86024815265674,
+  "radius_error_pct": -2.148668143728405,
+  "mean_speed": 9.946165801859584,
+  "yaw_rate": 0.1010973900639016,
+  "expected_yaw_rate": 0.1
+ },
+ "ackermann_counter": {
+  "expected_radius": 6.6597590820423065,
+  "fit_radius": 6.6973371288522685
+ },
+ "timeout_stop": {
+  "speed_after_6s_without_cmd": 6.150783377693537e-06
+ },
+ "armed_variant": {
+  "front_heave_m": 0.0263,
+  "rear_heave_m": 0.0309,
+  "expected_sag_front_m": 0.0232,
+  "expected_sag_rear_m": 0.028,
+  "rws_cmd": [
+   1.0,
+   0.3
+  ],
+  "rws_measured": [
+   1.0,
+   0.3
+  ]
+ }
+}

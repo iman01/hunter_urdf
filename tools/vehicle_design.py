@@ -74,8 +74,18 @@ SOURCES: Dict[str, str] = {
     "PZ26": "Polska Zbrojna, MSPO 2026: up to 1 t payload, 450 km range on a full tank",
     "PIAP24": "Lukasiewicz-PIAP, MSPO 2024 release: latest HUNTeR adds lidars and stereovision cameras",
     "SPICER": "Spicer/Dana, Ultimate Dana 60 crate axle data: 35-spline 4340 shafts, 3.5 in tubes, 8x6.5 bolt "
-              "pattern, ~358 mm vented rotors, 2-piston calipers, crate axle for Jeep JK (wheelbase 2.946 m)",
+              "pattern, ~358 mm vented rotors, 2-piston calipers (generic crate axle, not HUNTeR-confirmed)",
+    "ZBIAM23": "Zbiam, 'HUNTeR z ZMU-03 debiutuje na poligonie', 2023: differential locks and two steering axles, "
+               "1 m wheels, over 50 km/h",
+    "MILMAG25": "Milmag, MSPO 2025: 4 t HUNTeR, 470 x 220 cm, ZMT WLKM 12.7 mm multi-barrel module, 8 HD cameras "
+                "and lidars",
+    "MILMAG26": "Milmag, Eurosatory 2026: BZE Belma 'Bluszcz' scatterable mine-laying system on the HUNTeR chassis",
+    "D24_26": "Defence24 2026 ('Cyfrowy Legionista' exercise): about 4 t, nearly 4.7 m, ZMU-05 configuration",
+    "ARMYREC24B": "Army Recognition 2024 (field test with WB Group): over 4 t, nearly 5 m, six HD cameras, day and "
+                  "thermal imaging, ZMU-03",
 }
+# General knowledge used for one comparison (not from the research sources):
+# Jeep Wrangler JK Unlimited wheelbase 2.946 m, the vehicle the Ultimate Dana 60 crate axle is sold for.
 
 
 @dataclass
@@ -102,11 +112,13 @@ def par(name: str, value, unit: str, status: str, source: str, note: str = ""):
 L_OVERALL = par("body.length", 4.70, "m", "published", "POSTER21, JANES20")
 W_OVERALL = par("body.width", 2.20, "m", "published", "POSTER21, JANES20")
 WHEELBASE = par("chassis.wheelbase", 2.70, "m", "published", "POSTER21, ARMYREC24",
-                "Polish press also prints 2.20 m next to the 2.20 m width; 2.70 m is PIAP's own poster figure "
-                "and is the only value compatible with 1 m wheels inside a 4.70 m hull")
+                "PIAP's INTARG 2021 poster (known through search summaries), Army Recognition 2024 and Militaer "
+                "Aktuell give 2.70 m. Milmag 2020, Defence24 2023 and wnp.pl print 2.20 m, always beside the 2.20 m "
+                "width, which looks like a copy error. 2.70 m also gives more plausible overhangs (1.0 m)")
 M_CURB_2020 = par("mass.curb_2020", 3500.0, "kg", "published", "POSTER21, JANES20", "2020 prototype, cargo deck")
-M_CURB_2023 = par("mass.curb_2023_armed", 4050.0, "kg", "estimated", "D24_23",
-                  "'over four tonnes' kerb for the ZMU-03 armed version; 4.05 t used")
+M_CURB_2023 = par("mass.curb_2023_armed", 4050.0, "kg", "estimated", "D24_23, MILMAG25",
+                  "press: 'over four tonnes' / '4-ton' for the armed vehicle; 4.05 t used with the RWS fitted "
+                  "(variant:=2023 without payload weighs 3.85 t)")
 PAYLOAD_MAX = par("mass.payload_max", 1000.0, "kg", "published", "D24TV21, PZ26")
 V_MAX = par("limits.max_speed", 50.0 / 3.6, "m/s", "published", "POSTER21, JANES20", "50 km/h")
 STROKE = par("suspension.stroke", 0.25, "m", "published", "POSTER21, ARMYREC24")
@@ -131,7 +143,9 @@ MU = par("wheel.mu", 0.9, "-", "design", "dry soil / asphalt peak friction for a
 # ==========================================================================
 # 3. Axles (Ultimate Dana 60 front steer axles, both ends)
 # ==========================================================================
-WMS = par("axle.wms_width", 70 * IN, "m", "published", "TENDER17", "wheel-mounting-surface to WMS")
+WMS = par("axle.wms_width", 70 * IN, "m", "published", "TENDER17",
+          "wheel-mounting-surface to WMS. The tender is a request for 3 axles ('Ultimate Dana 60 or "
+          "equivalent'); the winning offer could not be read, so the fitted axle is assumed to match it")
 TRACK = par("chassis.track", WMS - 2 * WHEEL_OFFSET, "m", "derived", "track = WMS - 2 * offset")
 KP_TO_WMS = par("axle.kingpin_to_wms", 0.120, "m", "estimated",
                 "Dana 60 ball-joint knuckle: kingpin axis ~120 mm inboard of the hub face")
@@ -143,7 +157,7 @@ CASTER = par("steering.caster", 5.0, "deg", "estimated", "typical solid-axle set
 RATIO_AXLE = par("drive.axle_ratio", 5.38, "-", "published", "TENDER17")
 TUBE_D = par("axle.tube_diameter", 3.5 * IN, "m", "published", "TENDER17")
 RING_GEAR = par("axle.ring_gear_diameter", 9.75 * IN, "m", "published", "TENDER17", "minimum")
-ROTOR_D = par("axle.brake_rotor_diameter", 0.358, "m", "estimated", "SPICER (tender: >= 350 mm)")
+ROTOR_D = par("axle.brake_rotor_diameter", 0.358, "m", "estimated", "SPICER generic crate axle (tender: >= 350 mm)")
 DIFF_R = par("axle.diff_radius", 0.165, "m", "estimated", "9.75 in ring gear housing, cover radius")
 DIFF_Y = par("axle.diff_offset_y", 0.10, "m", "estimated", "Dana 60 front: differential offset to the left")
 
@@ -196,8 +210,6 @@ H_DECK_BOTTOM = par("body.wheel_arch_height", 1.20, "m", "derived",
                     "tyre top at full bump (R_coll + R + bump) + ~5 cm clearance")
 H_RAIL = par("body.railing_height", 0.25, "m", "estimated", "deck railing carrying top-view cameras (POSTER21)")
 H_TUB_BOTTOM = par("body.belly_height", 0.47, "m", "design", "battery/equipment tub between the axles")
-H_KEEL_BOTTOM = par("body.keel_height", 0.86, "m", "derived",
-                    "frame/tunnel above the axle housings and motors at full bump")
 H_NOSE_BOTTOM = par("body.nose_bottom_height", 0.66, "m", "design", "front/rear bumper lower edge, sets ~39 deg approach")
 X_TUB = par("body.tub_half_length", 0.60, "m", "design", "clear of the axle motors (end at ~0.65 m) and tyres")
 Y_TUB = par("body.tub_half_width", 1.00, "m", "design", "")
@@ -216,9 +228,10 @@ def box(x0, x1, y0, y1, h0, h1):
 HL = L_OVERALL / 2.0
 box(-HL + 0.05, HL - 0.05, -W_OVERALL / 2, W_OVERALL / 2, H_DECK_BOTTOM, H_DECK_TOP)       # deck / fenders
 box(-X_TUB, X_TUB, -Y_TUB, Y_TUB, H_TUB_BOTTOM, H_DECK_BOTTOM)                              # centre tub
-box(-X_NOSE, X_NOSE, -Y_KEEL, Y_KEEL, H_KEEL_BOTTOM, H_DECK_BOTTOM)                          # keel / tunnels
 box(X_NOSE, HL, -1.0, 1.0, H_NOSE_BOTTOM + 0.12, H_DECK_BOTTOM)                             # front nose
 box(-HL, -X_NOSE, -1.0, 1.0, H_NOSE_BOTTOM + 0.12, H_DECK_BOTTOM)                           # rear tail
+box(HL - 0.11, HL, -0.95, 0.95, H_NOSE_BOTTOM, H_NOSE_BOTTOM + 0.14)                         # front bumper
+box(-HL, -HL + 0.11, -0.95, 0.95, H_NOSE_BOTTOM, H_NOSE_BOTTOM + 0.14)                       # rear bumper
 
 # ==========================================================================
 # 6. Sprung mass budget (2020 prototype, cargo deck, no payload)
@@ -236,7 +249,8 @@ SPRUNG_ITEMS: List[Tuple[str, float, Tuple[float, float, float], Tuple[float, fl
      (-1.85, 0.0, 1.03), (0.80, 0.70, 0.30), "rear compartment"),
     ("cooling (radiators, BTMS chiller, fans)", 70.0, (2.15, 0.0, 1.00), (0.35, 1.60, 0.45), "behind the front grille"),
     ("24 V system, computers, radios, harness", 140.0, (0.0, 0.0, 1.00), (1.00, 1.60, 0.30), "centre tub, upper"),
-    ("sensors, PTZ mast, lights", 45.0, (1.6, 0.0, 1.55), (1.0, 1.6, 0.4), "front sensor area"),
+    ("lights, sensor brackets, cabling", 30.0, (1.6, 0.0, 1.45), (1.0, 1.6, 0.4),
+     "the sensors themselves (~15 kg incl. PTZ) are separate URDF links"),
     ("suspension (sprung half of links, coil-overs, anti-roll bars)", 70.0, (0.0, 0.0, 0.95), (2.7, 1.3, 0.3), ""),
     ("deck plates and railing", 300.0, (0.0, 0.0, 1.30), (4.6, 2.2, 0.15), "steel/aluminium deck"),
     ("left side panels, fender, bumper half", 110.0, (0.0, 0.95, 1.00), (4.6, 0.15, 0.5), ""),
@@ -268,14 +282,18 @@ def composite(items):
 M_CH, COM_CH, I_CH = composite(SPRUNG_ITEMS)
 H_CG_SPRUNG = COM_CH[2]
 
-# Axle inertia (housing as a 1.55 m tube + diff + motor), about its own COM
-ax_len = KP_TRACK
-I_AXLE = dict(
-    ixx=M_AXLE_HOUSING * ax_len ** 2 / 12 + M_MOTOR * (0.12 ** 2) + M_STEER_ACT * 0.3 ** 2,
-    iyy=M_AXLE_HOUSING * 0.12 ** 2 + M_MOTOR * (0.42 ** 2 + 0.12 ** 2 / 2),
-    izz=M_AXLE_HOUSING * ax_len ** 2 / 12 + M_MOTOR * 0.42 ** 2 + M_STEER_ACT * 0.3 ** 2,
-)
-AXLE_COM_X_TOWARD_CENTRE = M_MOTOR * 0.42 / M_AXLE_LINK  # motor sits 0.42 m toward the vehicle centre
+# Axle link inertia about its own COM: parallel-axis sum of housing (tube along y),
+# traction motor (0.42 m toward the vehicle centre, 0.10 m up) and steering
+# actuator/links (0.13 m toward the centre). x below = toward the vehicle centre.
+AXLE_PARTS = [
+    ("housing", M_AXLE_HOUSING, (0.0, 0.0, 0.0), (0.30, KP_TRACK, 0.25)),
+    ("motor", M_MOTOR, (0.42, 0.10, 0.10), (0.64, 0.28, 0.26)),
+    ("actuator_links", M_STEER_ACT + M_LINKS_UNSPRUNG, (0.13, 0.0, 0.0), (0.20, 1.20, 0.15)),
+]
+_m, _c, I_AXLE = composite([(n, m, (p[0], p[1], p[2]), d, "") for n, m, p, d in AXLE_PARTS])
+AXLE_COM_X_TOWARD_CENTRE = _c[0]
+AXLE_COM_Y = _c[1]
+AXLE_COM_Z = _c[2]
 
 # Whole-vehicle CG
 m_total = M_CH + M_UNSPRUNG
@@ -304,16 +322,47 @@ F_RIDE = par("suspension.ride_frequency", 1.50, "Hz", "design",
              "off-road military practice 1.2-1.7 Hz at kerb; drops to ~1.3 Hz at max payload")
 ZETA = par("suspension.damping_ratio", 0.35, "-", "design",
            "nominal setting of the controlled (semi-active) dampers; range 0.2-0.6")
+# Each axle gets its own spring rate so both ends have the same ride frequency
+# (and therefore nearly the same static sag): the front carries more sprung load.
+m_corner_f = W_SPRUNG_F / G / 2.0
+m_corner_r = W_SPRUNG_R / G / 2.0
 m_corner = M_CH / 4.0
-K_RIDE = m_corner * (2 * math.pi * F_RIDE) ** 2
-K_WHEEL = par("suspension.wheel_rate", K_RIDE * K_TYRE / (K_TYRE - K_RIDE), "N/m", "derived",
-              "k_w = K_ride k_t / (k_t - K_ride), K_ride = m_corner (2 pi f)^2")
-C_WHEEL = par("suspension.damping_wheel", 2 * ZETA * math.sqrt(K_WHEEL * m_corner), "N s/m", "derived",
-              "c = 2 zeta sqrt(k_w m_corner)")
-SAG = W_SPRUNG_F / 2.0 / K_WHEEL
-REBOUND = par("suspension.travel_rebound", round(SAG, 3), "m", "design",
-              "coil spring just unloaded at full droop (no preload) => droop = static sag")
-BUMP = par("suspension.travel_bump", round(STROKE - REBOUND, 3), "m", "derived", "stroke - droop")
+
+
+def wheel_rate(m):
+    k_ride = m * (2 * math.pi * F_RIDE) ** 2
+    return k_ride * K_TYRE / (K_TYRE - k_ride)
+
+
+K_WHEEL_F = par("suspension.wheel_rate_front", wheel_rate(m_corner_f), "N/m", "derived",
+                "k_w = K_ride k_t / (k_t - K_ride), K_ride = m_corner (2 pi f)^2, front corner sprung mass")
+K_WHEEL_R = par("suspension.wheel_rate_rear", wheel_rate(m_corner_r), "N/m", "derived", "same, rear corner")
+C_WHEEL_F = par("suspension.damping_wheel_front", 2 * ZETA * math.sqrt(K_WHEEL_F * m_corner_f), "N s/m", "derived",
+                "c = 2 zeta sqrt(k_w m_corner)")
+C_WHEEL_R = par("suspension.damping_wheel_rear", 2 * ZETA * math.sqrt(K_WHEEL_R * m_corner_r), "N s/m", "derived",
+                "same, rear")
+SAG_F = W_SPRUNG_F / 2.0 / K_WHEEL_F
+SAG_R = W_SPRUNG_R / 2.0 / K_WHEEL_R
+REBOUND_F = par("suspension.travel_rebound_front", round(SAG_F, 4), "m", "design",
+                "coil spring just unloaded at full droop (no preload) => droop = static sag")
+REBOUND_R = par("suspension.travel_rebound_rear", round(SAG_R, 4), "m", "design", "same, rear")
+BUMP_F = par("suspension.travel_bump_front", round(STROKE - REBOUND_F, 4), "m", "derived", "stroke - droop")
+BUMP_R = par("suspension.travel_bump_rear", round(STROKE - REBOUND_R, 4), "m", "derived", "stroke - droop")
+BUMP = max(BUMP_F, BUMP_R)
+K_WHEEL = 0.5 * (K_WHEEL_F + K_WHEEL_R)
+
+
+def series(a, b):
+    return a * b / (a + b)
+
+
+# The simulated tyre is rigid, so the URDF heave/roll springs carry the coil
+# spring and the tyre in series (the ride rate). The body then bounces at the
+# design 1.5 Hz in simulation too, and the static drop equals spring sag plus
+# tyre deflection.
+SIM_HEAVE_F = par("suspension.sim_heave_stiffness_front", 2 * series(K_WHEEL_F, K_TYRE), "N/m", "derived",
+                  "2 x (k_w k_t / (k_w + k_t)): both corners, spring and tyre in series")
+SIM_HEAVE_R = par("suspension.sim_heave_stiffness_rear", 2 * series(K_WHEEL_R, K_TYRE), "N/m", "derived", "same, rear")
 S_SPRING = par("suspension.spring_track", 1.24, "m", "design",
                "coil-overs on the axle tubes just inboard of the knuckles (clear of the steered tyre)")
 K_ARB = par("suspension.anti_roll_stiffness", 15_000.0, "N m/rad", "design",
@@ -321,28 +370,45 @@ K_ARB = par("suspension.anti_roll_stiffness", 15_000.0, "N m/rad", "design",
 H_RC = par("suspension.roll_center_height", 0.10, "m", "design",
            "Panhard rod 0.10 m above the axle centreline, horizontal at ride height")
 H_RC_GROUND = R_COLL + H_RC
-K_ROLL_AXLE = 2 * K_WHEEL * (S_SPRING / 2) ** 2 + K_ARB
+K_ROLL_TYRE = 2 * K_TYRE * (TRACK / 2) ** 2
+K_ROLL_F = series(2 * K_WHEEL_F * (S_SPRING / 2) ** 2 + K_ARB, K_ROLL_TYRE)
+K_ROLL_R = series(2 * K_WHEEL_R * (S_SPRING / 2) ** 2 + K_ARB, K_ROLL_TYRE)
+par("suspension.sim_roll_stiffness_front", K_ROLL_F, "N m/rad", "derived",
+    "(2 k_w (s/2)^2 + k_arb) in series with the tyres' 2 k_t (T/2)^2")
+par("suspension.sim_roll_stiffness_rear", K_ROLL_R, "N m/rad", "derived", "same, rear")
 roll_arm = H_CG_SPRUNG - H_RC_GROUND
-ROLL_GRAD = M_CH * G * roll_arm / (2 * K_ROLL_AXLE - M_CH * G * roll_arm)
+ROLL_GRAD = M_CH * G * roll_arm / (K_ROLL_F + K_ROLL_R - M_CH * G * roll_arm)
 par("suspension.roll_gradient", math.degrees(ROLL_GRAD), "deg/g", "derived",
     "m_s g (h_s - h_rc) / (K_phi - m_s g (h_s - h_rc))")
-ART = par("suspension.articulation_limit_deg", math.degrees((BUMP + REBOUND) / TRACK), "deg", "derived",
-          "one wheel at full bump, the other at full droop: (bump + droop) / track")
-f_hop = math.sqrt(2 * (K_WHEEL + K_TYRE) / M_UNSPRUNG_AXLE) / (2 * math.pi)
+ART = par("suspension.articulation_limit_deg", math.degrees(STROKE / TRACK), "deg", "derived",
+          "one wheel at full bump, the other at full droop: stroke / track")
+f_hop = math.sqrt(2 * (K_WHEEL_F + K_TYRE) / M_UNSPRUNG_AXLE) / (2 * math.pi)
+AXLE_TOP = par("axle.top_above_centre", 0.32, "m", "design",
+               "highest axle-mounted part above the axle centreline: upper-link tower (0.30 m pivot + 0.02 m); "
+               "motor + junction box reach 0.27 m, high-steer tie rod 0.23 m")
+H_KEEL_BOTTOM = par("body.keel_height", round(R_COLL + BUMP + AXLE_TOP + 0.02, 3), "m", "derived",
+                    "frame/tunnel above the highest axle-mounted part at full bump + 20 mm")
+box(-X_NOSE, X_NOSE, -Y_KEEL, Y_KEEL, H_KEEL_BOTTOM, H_DECK_BOTTOM)                          # keel / tunnels
 par("suspension.wheel_hop_frequency", f_hop, "Hz", "derived", "unsprung axle on springs + tyres")
 
 # Linkage hard points (axle frame: origin axle centre, x toward the vehicle
 # OUTSIDE i.e. forward for the front axle; the rear axle is the mirror image).
 LINKAGE = {
+    # Two lower trailing links under the tubes.
     "lower_link": {"axle": [-0.05, 0.42, -0.13], "chassis": [-0.95, 0.40, -0.015], "diameter": 0.06},
-    "upper_link": {"axle": [-0.10, 0.10, 0.24], "chassis": [-0.80, 0.10, 0.36], "diameter": 0.055},
-    "panhard_rod": {"axle": [0.10, -0.62, 0.10], "chassis": [0.10, 0.55, 0.10], "diameter": 0.05},
+    # Upper link on a tower to the right of the differential: clear of the traction motor
+    # (y -0.04..0.24), above the high-steer tie rod (z 0.21) over the whole stroke.
+    "upper_link": {"axle": [0.05, -0.25, 0.30], "chassis": [-0.80, -0.25, 0.40], "diameter": 0.055},
+    # Panhard rod outboard of the differential cover (cover + bolts reach x 0.165) and
+    # inside the steered tyre sweep (y +/-0.50).
+    "panhard_rod": {"axle": [0.22, -0.50, 0.10], "chassis": [0.22, 0.50, 0.10], "diameter": 0.05},
     "coilover": {"axle": [0.0, 0.62, 0.06], "chassis": [0.0, 0.58, 0.70], "body_diameter": 0.075,
-                 "spring_diameter": 0.115, "rod_diameter": 0.032},
+                 "spring_diameter": 0.115, "rod_diameter": 0.032, "wire_diameter": 0.014, "turns": 7,
+                 "body_length": 0.40, "rod_length": 0.45},
     "anti_roll_bar": {"arm_length": 0.35, "bar_width": 1.05, "diameter": 0.032},
 }
 lo, up = LINKAGE["lower_link"], LINKAGE["upper_link"]
-LINK_LEN = {k: math.dist(v["axle"], v["chassis"]) for k, v in LINKAGE.items() if "axle" in v}
+LINK_LEN = {k: math.dist(v["axle"], v["chassis"]) for k, v in LINKAGE.items() if "axle" in v and "chassis" in v}
 # Side-view instant centre of the 3-link (lower vs upper link lines, x-z plane)
 sl = (lo["chassis"][2] - lo["axle"][2]) / (lo["chassis"][0] - lo["axle"][0])
 su = (up["chassis"][2] - up["axle"][2]) / (up["chassis"][0] - up["axle"][0])
@@ -381,7 +447,7 @@ par("steering.trapezoid_angle_deg", round(math.degrees(BETA), 2), "deg", "design
     "optimised for counter-phase 4WS (ICR on the mid-wheelbase line), min RMS outer-angle error")
 TRAP_RMS = math.degrees(trapezoid_error(BETA))
 BETA_JK = math.atan((KP_TRACK / 2) / 2.946)
-TRAP_RMS_JK = math.degrees(trapezoid_error(BETA_JK))
+TRAP_RMS_JK = math.degrees(trapezoid_error(BETA_JK))  # Ackermann laid out for a 2.946 m (Jeep JK) wheelbase
 
 geom = VehicleGeometry(WHEELBASE / 2, -WHEELBASE / 2, KP_TRACK, TRACK, R_ROLL, math.radians(STEER_MAX),
                        "trapezoid", ARM, BETA)
@@ -412,7 +478,8 @@ T_WHEEL_PEAK = par("drive.wheel_torque_limit", round(T_MOTOR_PEAK * RATIO_TOTAL 
 W_WHEEL_MAX = par("drive.wheel_max_speed", round(V_DESIGN_TOP / R_ROLL, 2), "rad/s", "derived", "52 km/h / r_roll")
 F_TRACT = 4 * T_WHEEL_PEAK / R_ROLL
 par("drive.tractive_force_peak", F_TRACT, "N", "derived", "motor-limited; traction-limited at mu m g")
-grade_cont = (P_CONT / V_MAX - 900.0) / (m_total * G)
+F_RESIST = 900.0  # N at 50 km/h: rolling 0.015 m g (~515 N) + aero 0.5 rho CdA v^2 (CdA ~3.2 m^2, ~370 N)
+grade_cont = math.tan(math.asin((P_CONT * ETA / V_MAX - F_RESIST) / (m_total * G)))
 
 # ==========================================================================
 # 11. Performance checks
@@ -535,16 +602,26 @@ VEHICLE = {
         "vertical_stiffness": K_TYRE, "mu": MU, "mu2": MU, "bolt_count": 8, "bolt_circle": r4(6.5 * IN),
     },
     "axle": {
-        "mass": M_AXLE_LINK, "knuckle_mass": M_KNUCKLE, "com_x_toward_centre": r4(AXLE_COM_X_TOWARD_CENTRE),
-        "com_z_offset": 0.03, "ixx": r4(I_AXLE["ixx"]), "iyy": r4(I_AXLE["iyy"]), "izz": r4(I_AXLE["izz"]),
+        "mass": M_AXLE_LINK, "knuckle_mass": M_KNUCKLE,
+        # COM and inertia of the FRONT axle link in vehicle axes, relative to the axle
+        # centre (x toward the centre is -x here). The rear axle is turned by pi about z.
+        "com_front": [r4(-AXLE_COM_X_TOWARD_CENTRE), r4(AXLE_COM_Y), r4(AXLE_COM_Z)],
+        "inertia_front": {"ixx": r4(I_AXLE["ixx"]), "iyy": r4(I_AXLE["iyy"]), "izz": r4(I_AXLE["izz"]),
+                          "ixy": r4(-I_AXLE["ixy"]), "ixz": r4(-I_AXLE["ixz"]), "iyz": r4(I_AXLE["iyz"])},
         "wms_width": r4(WMS), "tube_diameter": r4(TUBE_D), "diff_radius": DIFF_R, "diff_offset_y": DIFF_Y,
         "housing_radius": r4(TUBE_D / 2), "brake_rotor_diameter": ROTOR_D,
         "motor": {"radius": 0.12, "length": 0.50, "x_toward_centre": 0.42, "z": 0.10},
     },
     "suspension": {
         "type": "dependent rigid axles, 3-link + Panhard rod, coil-over springs, controlled dampers",
-        "stroke": STROKE, "travel_bump": BUMP, "travel_rebound": REBOUND,
-        "wheel_rate": r4(K_WHEEL), "damping_wheel": r4(C_WHEEL), "ride_frequency": F_RIDE, "damping_ratio": ZETA,
+        "stroke": STROKE,
+        "travel_bump_front": BUMP_F, "travel_rebound_front": REBOUND_F,
+        "travel_bump_rear": BUMP_R, "travel_rebound_rear": REBOUND_R,
+        "wheel_rate_front": r4(K_WHEEL_F), "wheel_rate_rear": r4(K_WHEEL_R),
+        "damping_wheel_front": r4(C_WHEEL_F), "damping_wheel_rear": r4(C_WHEEL_R),
+        "sim_heave_stiffness_front": r4(SIM_HEAVE_F), "sim_heave_stiffness_rear": r4(SIM_HEAVE_R),
+        "sim_roll_stiffness_front": r4(K_ROLL_F), "sim_roll_stiffness_rear": r4(K_ROLL_R),
+        "ride_frequency": F_RIDE, "damping_ratio": ZETA,
         "spring_track": S_SPRING, "anti_roll_stiffness": K_ARB, "roll_center_height": H_RC,
         "articulation_limit_deg": r4(ART),
         "static_load_front": r4(W_SPRUNG_F), "static_load_rear": r4(W_SPRUNG_R),
@@ -554,8 +631,10 @@ VEHICLE = {
     "steering": {
         "max_angle_deg": STEER_MAX, "max_rate_deg_s": STEER_RATE, "kingpin_track": r4(KP_TRACK),
         "kingpin_inclination_deg": KPI, "caster_deg": CASTER, "arm_length": ARM,
-        "trapezoid_angle_deg": round(math.degrees(BETA), 2), "arm_height": -0.07, "linkage": "trapezoid",
-        "sim_position_gain": 20.0, "knuckle_torque_limit": 6000.0, "knuckle_damping": 80.0,
+        # High-steer arms: tie rod 0.21 m above the axle centreline, over the differential (0.165 m)
+        # and the pinion nose (0.175 m).
+        "trapezoid_angle_deg": round(math.degrees(BETA), 2), "arm_height": 0.21, "linkage": "trapezoid",
+        "knuckle_torque_limit": 6000.0, "knuckle_damping": 80.0,
         "adaptive": {"low_speed": 2.0, "high_speed": 8.0},
     },
     "drive": {
@@ -592,20 +671,23 @@ def report() -> str:
         ("Track (tyre centres)", f"{TRACK:.4f} m", "Dana 60 WMS 70 in + wheel offset"),
         ("Kingpin track", f"{KP_TRACK:.3f} m", ""),
         ("Rolling / static loaded radius", f"{R_ROLL:.4f} / {R_STATIC:.4f} m", f"tyre deflection {TYRE_DEFL * 1000:.1f} mm"),
-        ("Wheel rate / damping per corner", f"{K_WHEEL / 1000:.1f} kN/m / {C_WHEEL / 1000:.2f} kN s/m",
-         f"{F_RIDE} Hz, zeta {ZETA}"),
-        ("Travel bump / droop", f"{BUMP * 1000:.0f} / {REBOUND * 1000:.0f} mm", "published stroke 250 mm"),
+        ("Wheel rate per corner front / rear", f"{K_WHEEL_F / 1000:.1f} / {K_WHEEL_R / 1000:.1f} kN/m",
+         f"{F_RIDE} Hz at both ends"),
+        ("Damping per corner front / rear", f"{C_WHEEL_F / 1000:.2f} / {C_WHEEL_R / 1000:.2f} kN s/m", f"zeta {ZETA}"),
+        ("Travel bump / droop front", f"{BUMP_F * 1000:.0f} / {REBOUND_F * 1000:.0f} mm", "published stroke 250 mm"),
+        ("Travel bump / droop rear", f"{BUMP_R * 1000:.0f} / {REBOUND_R * 1000:.0f} mm", ""),
+        ("Roll stiffness front / rear (incl. tyres)", f"{K_ROLL_F / 1000:.1f} / {K_ROLL_R / 1000:.1f} kN m/rad", ""),
         ("Roll gradient", f"{math.degrees(ROLL_GRAD):.1f} deg/g", f"roll centre {H_RC_GROUND:.3f} m"),
         ("Axle articulation", f"+/-{ART:.1f} deg", ""),
         ("Wheel-hop frequency", f"{f_hop:.1f} Hz", "heavy e-axles"),
         ("Steering lock", f"{STEER_MAX:.0f} deg", f"trapezoid beta {math.degrees(BETA):.1f} deg, RMS Ackermann "
-         f"error {TRAP_RMS:.2f} deg (stock Jeep JK arms: {TRAP_RMS_JK:.1f} deg)"),
+         f"error {TRAP_RMS:.2f} deg (arms laid out for a 2.946 m 2WS wheelbase: {TRAP_RMS_JK:.1f} deg)"),
         ("Turning radius 4WS / 2WS", f"{TURN['counter']:.2f} / {TURN['front']:.2f} m",
          f"outer tyre centre; ideal Ackermann {TURN_IDEAL['counter']:.2f} / {TURN_IDEAL['front']:.2f} m"),
         ("Total reduction motor-wheel", f"{RATIO_TOTAL:.2f}", f"{RED} x 5.38"),
         ("Wheel torque limit", f"{T_WHEEL_PEAK:.0f} N m", f"tractive force {F_TRACT / 1000:.1f} kN "
          f"({F_TRACT / (m_total * G):.2f} g)"),
-        ("Continuous grade at 50 km/h", f"{grade_cont * 100:.0f} %", "90 kW"),
+        ("Continuous grade at 50 km/h", f"{grade_cont * 100:.0f} %", "90 kW x 0.92, 900 N rolling + aero"),
         ("Static stability factor", f"{SSF:.2f}", f"tilt-table angle {tilt:.1f} deg"),
         ("Ground clearance (diffs)", f"{CLR_DIFF:.3f} m", ""),
         ("Approach / departure angle", f"{APPROACH:.0f} deg", "symmetric"),

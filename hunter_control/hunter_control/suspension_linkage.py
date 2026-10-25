@@ -1,11 +1,14 @@
 """Pose of the physical suspension and steering linkage of the HUNTeR replica.
 
 The URDF models each rigid axle with two joints (heave + roll), because URDF
-cannot hold the closed 3-link + Panhard loops. This module closes the loops
-for visualisation: given the axle joint states and knuckle angles it returns
-every linkage element as a segment between its two hard points, expressed in
-base_link. Used by the suspension_linkage_publisher node (RViz markers) and by
-tools/render (static renders).
+cannot hold the closed 3-link + Panhard loops. This module draws the links for
+visualisation: given the axle joint states and knuckle angles it returns every
+linkage element as a segment between its chassis hard point and its axle hard
+point (moved with the URDF axle), expressed in base_link. The axle pitch,
+fore-aft and Panhard lateral shift that the real loops would add are not
+solved, so the drawn rigid links change length by a few centimetres over the
+full travel. Used by the suspension_linkage_publisher node (RViz markers) and
+by tools/render (static renders).
 
 Hard points come from vehicle.yaml (suspension.linkage), in the axle frame of
 the FRONT axle: origin at the axle centre, x pointing away from the vehicle
@@ -130,3 +133,33 @@ def look_rotation(start: Sequence[float], end: Sequence[float]) -> Tuple[float, 
 def look_rpy(start: Sequence[float], end: Sequence[float]) -> Tuple[float, float, float]:
     dx, dy, dz = (end[0] - start[0], end[1] - start[1], end[2] - start[2])
     return 0.0, -math.atan2(dz, math.hypot(dx, dy)), math.atan2(dy, dx)
+
+
+def spring_seats(e: Element, co: Dict) -> Tuple[Vec, Vec]:
+    """Lower seat (on the rod, 30 mm from the axle eye) and upper seat (on the
+    body, 80 mm from the chassis eye) of a coil-over element."""
+    d = [(b - a) / e.length for a, b in zip(e.end, e.start)]
+    s0 = tuple(a + 0.03 * di for a, di in zip(e.end, d))
+    s1 = tuple(a - 0.08 * di for a, di in zip(e.start, d))
+    return s0, s1  # type: ignore[return-value]
+
+
+def helix_points(e: Element, co: Dict, seg: int = 16) -> List[Vec]:
+    """Centre line of the coil spring between its seats at the current length."""
+    s0, s1 = spring_seats(e, co)
+    ax = [b - a for a, b in zip(s0, s1)]
+    n = math.sqrt(sum(c * c for c in ax))
+    u = [c / n for c in ax]
+    ref = (0.0, 0.0, 1.0) if abs(u[2]) < 0.9 else (1.0, 0.0, 0.0)
+    n1 = [u[1] * ref[2] - u[2] * ref[1], u[2] * ref[0] - u[0] * ref[2], u[0] * ref[1] - u[1] * ref[0]]
+    m = math.sqrt(sum(c * c for c in n1))
+    n1 = [c / m for c in n1]
+    n2 = [u[1] * n1[2] - u[2] * n1[1], u[2] * n1[0] - u[0] * n1[2], u[0] * n1[1] - u[1] * n1[0]]
+    r = 0.5 * (co["spring_diameter"] - co["wire_diameter"])
+    turns = co["turns"]
+    pts: List[Vec] = []
+    for i in range(turns * seg + 1):
+        t = i / (turns * seg)
+        th = 2 * math.pi * turns * t
+        pts.append(tuple(s0[k] + t * ax[k] + r * (math.cos(th) * n1[k] + math.sin(th) * n2[k]) for k in range(3)))
+    return pts

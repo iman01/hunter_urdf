@@ -92,7 +92,9 @@ class Tester(Node):
 
     def _js(self, m):
         self.js = m
-        self.jtrace.append(dict(zip(m.name, m.position)))
+        d = dict(zip(m.name, m.position))
+        d["_x"] = self.gt.pose.pose.position.x if self.gt is not None else 0.0
+        self.jtrace.append(d)
 
     def now(self):
         return self.get_clock().now().nanoseconds * 1e-9
@@ -207,7 +209,7 @@ def scenario_course(t, v=2.0):
 
     out = {"completed": ok, "final_x": t.gt.pose.pose.position.x}
     tw = seg(9, 23)
-    jt = t.jtrace
+    jt = [j for j in t.jtrace if 9.0 <= j["_x"] <= 23.0]   # twister section only
     out["twister"] = {
         "max_front_axle_roll_deg": max(abs(math.degrees(j.get("front_axle_roll_joint", 0))) for j in jt),
         "max_rear_axle_roll_deg": max(abs(math.degrees(j.get("rear_axle_roll_joint", 0))) for j in jt),

@@ -10,7 +10,7 @@ body:
   wheel_arch_height: 1.2
   railing_height: 0.25
   belly_height: 0.47
-  keel_height: 0.86
+  keel_height: 0.99
   nose_bottom_height: 0.66
   tub_half_length: 0.6
   tub_half_width: 1.0
@@ -20,19 +20,21 @@ body:
   collision_boxes:
   - [0.0, 0.0, 0.7832, 4.6, 2.2, 0.15]
   - [0.0, 0.0, 0.3432, 1.2, 2.0, 0.73]
-  - [0.0, 0.0, 0.5382, 3.94, 0.76, 0.34]
   - [2.16, 0.0, 0.4982, 0.38, 2.0, 0.42]
   - [-2.16, 0.0, 0.4982, 0.38, 2.0, 0.42]
+  - [2.295, 0.0, 0.2382, 0.11, 1.9, 0.14]
+  - [-2.295, 0.0, 0.2382, 0.11, 1.9, 0.14]
+  - [0.0, 0.0, 0.6032, 3.94, 0.76, 0.21]
 mass:
   curb_2020: 3500.0
   curb_2023_armed: 4050.0
   payload_max: 1000.0
   chassis: 2394.0
-  chassis_com: [0.1498, 0.0, 0.4977]
-  chassis_inertia: {ixx: 707.9836, iyy: 3947.2898, izz: 4431.4895, ixy: 0.0, ixz: -47.4318, iyz: 0.0}
+  chassis_com: [0.1398, 0.0, 0.4925]
+  chassis_inertia: {ixx: 699.6455, iyy: 3930.1155, izz: 4421.1534, ixy: 0.0, ixz: -30.9218, iyz: 0.0}
   upgrade_2023:
     mass: 345.0
-    xyz: [0.1498, 0.0, 0.4977]
+    xyz: [0.1398, 0.0, 0.4925]
     note: armour/electronics/sensor growth to the 'over 4 t' armed kerb mass (D24_23)
 wheel: {diameter: 1.0, width: 0.343, rim_diameter: 0.4318, rim_width: 0.2286, offset: -0.0127, rolling_radius: 0.4918,
   static_loaded_radius: 0.4755, collision_radius: 0.4918, mass: 102.0, ixx: 8.8361, iyy: 15.6721, vertical_stiffness: 350000.0,
@@ -40,11 +42,8 @@ wheel: {diameter: 1.0, width: 0.343, rim_diameter: 0.4318, rim_width: 0.2286, of
 axle:
   mass: 285.0
   knuckle_mass: 32.0
-  com_x_toward_centre: 0.1253
-  com_z_offset: 0.03
-  ixx: 33.0421
-  iyy: 17.766
-  izz: 46.812
+  com_front: [-0.1481, 0.0298, 0.0298]
+  inertia_front: {ixx: 38.6702, iyy: 15.7338, izz: 50.5033, ixy: 2.3114, ixz: 2.3114, iyz: -0.5965}
   wms_width: 1.778
   tube_diameter: 0.0889
   diff_radius: 0.165
@@ -55,18 +54,26 @@ axle:
 suspension:
   type: dependent rigid axles, 3-link + Panhard rod, coil-over springs, controlled dampers
   stroke: 0.25
-  travel_bump: 0.146
-  travel_rebound: 0.104
-  wheel_rate: 62683.88
-  damping_wheel: 4287.5387
+  travel_bump_front: 0.1581
+  travel_rebound_front: 0.0919
+  travel_bump_rear: 0.1546
+  travel_rebound_rear: 0.0954
+  wheel_rate_front: 70482.7889
+  wheel_rate_rear: 55169.0036
+  damping_wheel_front: 4776.0614
+  damping_wheel_rear: 3808.3598
+  sim_heave_stiffness_front: 117336.4369
+  sim_heave_stiffness_rear: 95314.0596
+  sim_roll_stiffness_front: 61688.1389
+  sim_roll_stiffness_rear: 52152.8694
   ride_frequency: 1.5
   damping_ratio: 0.35
   spring_track: 1.24
   anti_roll_stiffness: 15000.0
   roll_center_height: 0.1
   articulation_limit_deg: 7.9427
-  static_load_front: 13041.3917
-  static_load_rear: 10435.7284
+  static_load_front: 12954.2214
+  static_load_rear: 10522.8987
   joint_effort_limit: 200000.0
   joint_velocity_limit: 3.0
   coulomb_friction: 0.0
@@ -76,12 +83,12 @@ suspension:
       chassis: [-0.95, 0.4, -0.015]
       diameter: 0.06
     upper_link:
-      axle: [-0.1, 0.1, 0.24]
-      chassis: [-0.8, 0.1, 0.36]
+      axle: [0.05, -0.25, 0.3]
+      chassis: [-0.8, -0.25, 0.4]
       diameter: 0.055
     panhard_rod:
-      axle: [0.1, -0.62, 0.1]
-      chassis: [0.1, 0.55, 0.1]
+      axle: [0.22, -0.5, 0.1]
+      chassis: [0.22, 0.5, 0.1]
       diameter: 0.05
     coilover:
       axle: [0.0, 0.62, 0.06]
@@ -89,6 +96,10 @@ suspension:
       body_diameter: 0.075
       spring_diameter: 0.115
       rod_diameter: 0.032
+      wire_diameter: 0.014
+      turns: 7
+      body_length: 0.4
+      rod_length: 0.45
     anti_roll_bar: {arm_length: 0.35, bar_width: 1.05, diameter: 0.032}
 steering:
   max_angle_deg: 35.0
@@ -98,9 +109,8 @@ steering:
   caster_deg: 5.0
   arm_length: 0.155
   trapezoid_angle_deg: 38.2
-  arm_height: -0.07
+  arm_height: 0.21
   linkage: trapezoid
-  sim_position_gain: 20.0
   knuckle_torque_limit: 6000.0
   knuckle_damping: 80.0
   adaptive: {low_speed: 2.0, high_speed: 8.0}

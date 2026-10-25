@@ -19,10 +19,11 @@ import rclpy
 from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
 from sensor_msgs.msg import JointState
+from geometry_msgs.msg import Point
 from std_msgs.msg import ColorRGBA, Float64MultiArray
 from visualization_msgs.msg import Marker, MarkerArray
 
-from .suspension_linkage import SuspensionLinkage, look_rotation
+from .suspension_linkage import SuspensionLinkage, helix_points, look_rotation
 from .vehicle_config import load_vehicle
 
 MESH = "package://hunter_description/meshes/visual/"
@@ -40,8 +41,7 @@ class LinkagePublisher(Node):
         self.declare_parameter("rate", 20.0)
         cfg = load_vehicle(self.get_parameter("vehicle_config_file").value or None)
         self.linkage = SuspensionLinkage(cfg)
-        co = cfg["suspension"]["linkage"]["coilover"]
-        self.spring_d = co["spring_diameter"]
+        self.co = cfg["suspension"]["linkage"]["coilover"]
         self.joints: Dict[str, float] = {}
         self.create_subscription(JointState, "joint_states", self._on_js, 20)
         self.pub = self.create_publisher(MarkerArray, "suspension_linkage/markers", 5)
@@ -78,16 +78,22 @@ class LinkagePublisher(Node):
                 arr.markers.append(self._marker(mid, "link_rod.stl", e.start, e.end,
                                                 (e.length, e.diameter, e.diameter), STEEL, stamp))
                 mid += 1
-            else:  # coil-over: body at the chassis end, rod at the axle end, spring between seats
+            else:  # coil-over: body at the chassis end, rod at the axle end, spring between the seats
                 lengths[e.name] = e.length
                 arr.markers.append(self._marker(mid, "coilover_body.stl", e.start, e.end, (1.0, 1.0, 1.0), DARK, stamp))
                 arr.markers.append(self._marker(mid + 1, "coilover_rod.stl", e.end, e.start, (1.0, 1.0, 1.0), CHROME, stamp))
-                d = [(b - a) / e.length for a, b in zip(e.end, e.start)]
-                s0 = tuple(a + 0.03 * di for a, di in zip(e.end, d))
-                s1 = tuple(a - 0.08 * di for a, di in zip(e.start, d))
-                spring_len = max(e.length - 0.11, 0.05)
-                arr.markers.append(self._marker(mid + 2, "coilover_spring.stl", s0, s1,
-                                                (spring_len, self.spring_d, self.spring_d), SPRING, stamp))
+                spring = Marker()
+                spring.header.frame_id = self.get_parameter("frame_id").value
+                spring.header.stamp = stamp
+                spring.ns = "suspension_linkage"
+                spring.id = mid + 2
+                spring.type = Marker.LINE_STRIP
+                spring.action = Marker.ADD
+                spring.pose.orientation.w = 1.0
+                spring.scale.x = self.co["wire_diameter"]
+                spring.color = SPRING
+                spring.points = [Point(x=p[0], y=p[1], z=p[2]) for p in helix_points(e, self.co)]
+                arr.markers.append(spring)
                 mid += 3
         self.pub.publish(arr)
         order = ("front_coilover_left", "front_coilover_right", "rear_coilover_left", "rear_coilover_right")

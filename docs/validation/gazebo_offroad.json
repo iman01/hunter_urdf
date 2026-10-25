@@ -1,25 +1,25 @@
 {
   "course": {
     "completed": true,
-    "final_x": 66.01669469079687,
+    "final_x": 66.00535242462902,
     "twister": {
-      "max_front_axle_roll_deg": 7.947225244242781,
-      "max_rear_axle_roll_deg": 7.946743772431404,
-      "max_body_roll_deg": 6.692775255685586,
+      "max_front_axle_roll_deg": 7.944387137663909,
+      "max_rear_axle_roll_deg": 7.948597245711612,
+      "max_body_roll_deg": 7.4009818534173855,
       "heave_range_m": [
-        -0.10400005290762139,
-        0.10103071615031448
+        -0.04194760566815489,
+        0.035563664159983036
       ],
       "articulation_limit_deg": 7.9427
     },
     "grade": {
-      "mean_pitch_deg": -17.74886029212499,
-      "mean_speed": 1.996923897297867,
+      "mean_pitch_deg": -17.9159659219267,
+      "mean_speed": 1.9969667046227824,
       "expected_pitch_deg": -16.69924423399362
     },
     "step": {
       "passed": true,
-      "max_pitch_deg": 8.289887895038344
+      "max_pitch_deg": 7.9141598422377735
     }
   }
 }
